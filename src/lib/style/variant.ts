@@ -2,14 +2,41 @@ import { tv } from 'tailwind-variants';
 
 export const COLOR = {
 	none: '',
-	primary: 'bg-blue-500 text-white',
-	secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
-	tertiary: 'bg-gray-300 text-gray-800',
-	danger: 'bg-red-500 text-white',
-	warning: 'bg-yellow-500 text-white',
-	success: 'bg-green-500 text-white'
+	primary: 'bg-blue-500 text-white outline-blue-500',
+	secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 outline-gray-200',
+	tertiary: 'bg-gray-300 text-gray-800 outline-gray-300',
+	danger: 'bg-red-500 text-white outline-red-500',
+	warning: 'bg-yellow-500 text-white outline-yellow-500',
+	success: 'bg-green-500 text-white outline-green-500'
+};
+export const BACKGROUND_COLOR = {
+	none: '',
+	primary: 'bg-blue-500 hover:bg-blue-600',
+	secondary: 'bg-gray-200 hover:bg-gray-300',
+	tertiary: 'bg-gray-100 hover:bg-gray-300',
+	danger: ' bg-red-500 hover:bg-red-600',
+	warning: 'bg-yellow-500 hover:bg-yellow-600',
+	success: 'bg-green-500 hover:bg-green-600'
+};
+export const CONTENT_COLOR = {
+	none: '',
+	primary: 'text-blue-500 ',
+	secondary: 'text-gray-800',
+	tertiary: 'text-gray-800 ',
+	danger: ' text-red-500 ',
+	warning: 'text-yellow-500 ',
+	success: 'text-green-500'
 };
 
+export const BORDER_COLOR = {
+	none: '',
+	primary: 'border-blue-500 ',
+	secondary: 'border-gray-800',
+	tertiary: 'border-gray-800 ',
+	danger: ' border-red-500 ',
+	warning: 'border-yellow-500 ',
+	success: 'border-green-500'
+};
 export const SIZE = {
 	xs: 'w-4 h-4',
 	sm: 'w-6 h-6',
@@ -26,18 +53,18 @@ export const SIZE = {
 };
 
 export const TEXT_SIZE = {
-	xs: 'text-xs',
-	sm: 'text-sm',
-	md: 'text-base',
-	lg: 'text-lg',
-	xl: 'text-xl',
-	'2xl': 'text-2xl',
-	'3xl': ' text-3xl',
-	'4xl': ' text-4xl',
-	'5xl': 'text-5xl',
-	'6xl': 'text-6xl',
-	'7xl': 'text-7xl',
-	'8xl': 'text-8xl'
+	xs: 'text-xs h-6',
+	sm: 'text-sm h-8',
+	md: 'text-base h-10',
+	lg: 'text-lg h-12',
+	xl: 'text-xl h-14',
+	'2xl': 'text-2xl h-16',
+	'3xl': ' text-3xl h-20',
+	'4xl': ' text-4xl h-24',
+	'5xl': 'text-5xl h-28',
+	'6xl': 'text-6xl h-32',
+	'7xl': 'text-7xl h-36',
+	'8xl': 'text-8xl h-40'
 };
 
 export const PADDING = {
@@ -71,11 +98,18 @@ export const ROUNDED = {
 
 export const VARIANT = {
 	none: '',
-	outline: 'border  border-gray-500',
+	outline:
+		'bg-transparent border  outline-1  text-gray-900 border-gray-900/30 active:outline-2 focus:outline-2',
 	filled: 'filled',
 	ghost: 'ghost'
 };
 
+export const BORDER = {
+	none: '',
+	1: 'border',
+	2: 'border-2',
+	3: 'border-3'
+};
 export const SIZE_PRESET = {
 	xs: 'text-xs px-2 h-6 gap-0.75',
 	sm: 'text-sm px-3 h-8 gap-1',
@@ -107,13 +141,16 @@ export const ICON_SIZE = {
 };
 
 export const baseVariant = tv({
-	base: 'inline-flex transition-all ease-in-out duration-200ms',
+	base: 'transition-all ease-in-out duration-200ms disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-400',
 	variants: {
-		colorVariant: COLOR,
 		variant: VARIANT,
 		textSize: TEXT_SIZE,
-		rounded: ROUNDED,
-		padding: PADDING
+		roundedVariant: ROUNDED,
+		padding: PADDING,
+		contentColor: CONTENT_COLOR,
+		backgroundColor: BACKGROUND_COLOR,
+		borderColor: BORDER_COLOR,
+		border: BORDER
 	}
 });
 
@@ -123,3 +160,8 @@ export type SizePresetVariant = keyof typeof SIZE_PRESET;
 export type RoundedVariant = keyof typeof ROUNDED;
 export type TextSizeVariant = keyof typeof TEXT_SIZE;
 export type SizeVariant = keyof typeof SIZE;
+export type BorderVariant = keyof typeof BORDER;
+export type BackgroundColor = keyof typeof BACKGROUND_COLOR;
+export type ContentColor = keyof typeof CONTENT_COLOR;
+export type BorderColor = keyof typeof BORDER_COLOR;
+export type PaddingVariant = keyof typeof PADDING;

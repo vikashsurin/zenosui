@@ -10,11 +10,12 @@
 		href,
 		iconLeft,
 		iconRight,
-		size,
+		sizeVariant,
 		class: _class,
-		colorVariant,
+		backgroundColor,
 		variant,
-		rounded,
+		border,
+		roundedVariant,
 		active,
 		children,
 		...props
@@ -24,7 +25,7 @@
 		extend: baseVariant,
 		base: 'inline-flex justify-center items-center ',
 		variants: {
-			size: SIZE_PRESET,
+			sizeVariant: SIZE_PRESET,
 			active: {
 				true: '',
 				false: ''
@@ -41,18 +42,19 @@
 			}
 		],
 		defaultVariants: {
-			colorVariant: 'secondary',
-			variant: 'outline',
-			size: 'md'
+			backgroundColor: 'secondary',
+			variant: 'filled',
+			sizeVariant: 'md'
 		}
 	});
 
 	const finalClasses = $derived(
 		buttonStyle({
-			size,
-			colorVariant,
+			sizeVariant,
+			backgroundColor,
 			variant,
-			rounded,
+			roundedVariant,
+			border,
 			active,
 			class: clsx(_class)
 		})
@@ -62,7 +64,7 @@
 
 <svelte:element this={as} {href} role={href ? 'link' : 'button'} class={finalClasses} {...props}>
 	{#if iconLeft}
-		<Icon {size} icon={iconLeft} />
+		<Icon {sizeVariant} icon={iconLeft} />
 	{/if}
 	{#if label}
 		{label}
@@ -71,6 +73,6 @@
 		{@render children?.()}
 	{/if}
 	{#if iconRight}
-		<Icon {size} icon={iconRight} />
+		<Icon {sizeVariant} icon={iconRight} />
 	{/if}
 </svelte:element>
