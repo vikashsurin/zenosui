@@ -23,7 +23,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]  p-4 bg-gray-100`,
+		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] gap-2 p-4 bg-gray-100`,
 		variants: {},
 		defaultVariants: {}
 	});
@@ -32,7 +32,7 @@
 
 {#if open}
 	{#if backdrop}
-		<div class="position absolute inset-0 bg-black/50"></div>
+		<div class="zu_dialog_backdrop position absolute inset-0 bg-black/50"></div>
 	{/if}
 	<dialog class={finalClass} {...props}>
 		{#if children}

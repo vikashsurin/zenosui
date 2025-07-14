@@ -1,6 +1,12 @@
 <script lang="ts">
 	import DialogHeader from '$lib/ui/dialog/DialogHeader.svelte';
-	import { Dialog, CloseDialogButton, DialogFooter, DialogContent } from '$lib/ui/index.js';
+	import {
+		Dialog,
+		CloseDialogButton,
+		DialogFooter,
+		DialogContent,
+		ActionDialogButton
+	} from '$lib/ui/index.js';
 	let open = $state(true);
 </script>
 
@@ -15,6 +21,7 @@
 		</DialogContent>
 		<DialogFooter>
 			<CloseDialogButton>cancel</CloseDialogButton>
+			<ActionDialogButton>Submit</ActionDialogButton>
 		</DialogFooter>
 	</Dialog>
 </div>

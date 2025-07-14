@@ -3,7 +3,6 @@
 	import clsx from 'clsx';
 	import { Button } from '../index.js';
 	import type { ButtonProps } from '$lib/types.js';
-	import { getContext } from 'svelte';
 
 	let {
 		children,
@@ -22,13 +21,9 @@
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 
-	const dialogCtx = getContext<{ close: () => void }>('dialogCtx');
-	function handleClick() {
-		dialogCtx.close();
-	}
 </script>
 
-<Button class={finalClass} {sizeVariant} {roundedVariant} onclick={handleClick} {...props}>
+<Button class={finalClass} {sizeVariant} {roundedVariant} {...props}>
 	{#if children}
 		{@render children?.()}
 	{/if}

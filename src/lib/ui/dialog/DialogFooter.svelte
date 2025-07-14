@@ -6,7 +6,7 @@
 	let { children, class: _class, ...props }: DialogFooterProps = $props();
 
 	let style = tv({
-		base: `flex `,
+		base: `flex items-center justify-end gap-2 `,
 		variants: {},
 		defaultVariants: {}
 	});
