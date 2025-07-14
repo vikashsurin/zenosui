@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, TEXT_SIZE } from '$lib/style/variant.js';
+	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE, type OutlineColor } from '$lib/style/variant.js';
 	import type { TextInputProps } from '$lib/types.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
@@ -11,10 +11,20 @@
 		variant,
 		sizeVariant,
 		iconLeft,
+		invalid,
 		iconRight,
+		placeholder = 'Input text',
+		value = $bindable(),
 		class: _class,
 		...props
 	}: TextInputProps = $props();
+
+	// if (invalid) {
+	// 	((contentColor = 'danger'), (outlineColor = 'danger'));
+	// }
+
+	contentColor = invalid ? 'danger' : contentColor;
+	let outlineColor: OutlineColor = invalid ? 'danger' : 'none';
 
 	let contStyle = tv({
 		extend: baseVariant,
@@ -34,21 +44,26 @@
 				'7xl': 'gap-3.5 px-7.5',
 				'8xl': 'gap-3.5 px-8'
 			},
-			contentColor: {
-				none: '',
-				primary: 'border border-blue-500 ',
-				secondary: 'border border-gray-800',
-				tertiary: 'border border-gray-800 ',
-				danger: 'border border-red-500 ',
-				warning: 'border border-yellow-500 ',
-				success: 'border border-green-500'
-			}
+			outlineColor: OUTLINE_COLOR
+			// contentColor: {
+			// 	none: '',
+			// 	primary: 'border border-blue-500 ',
+			// 	secondary: 'border border-gray-800',
+			// 	tertiary: 'border border-gray-800 ',
+			// 	danger: 'border border-red-500 ',
+			// 	warning: 'border border-yellow-500 ',
+			// 	success: 'border border-green-500'
+			// }
 		},
 
-		defaultVariants: {}
+		defaultVariants: {
+			border: 1,
+			roundedVariant: 'md',
+			sizeVariant: 'md'
+		}
 	});
 	const finalContClass = $derived(
-		contStyle({ sizeVariant, contentColor, variant, roundedVariant })
+		contStyle({ sizeVariant, contentColor, variant, roundedVariant, outlineColor: outlineColor })
 	);
 
 	let style = tv({
@@ -64,19 +79,25 @@
 		}
 	});
 	const finalClass = $derived(style({ contentColor, sizeVariant, class: clsx(_class) }));
-	let inputValue = $state();
 
-	function handleClear() {
-		inputValue = '';
+	function clearInput() {
+		value = '';
 	}
 </script>
 
 <div class={finalContClass}>
 	{#if iconLeft}
-		<Icon {sizeVariant} icon={iconLeft}/>
+		<Icon {sizeVariant} icon={iconLeft} class="opacity-50" />
 	{/if}
-	<input type="text" class={finalClass} {...props} bind:value={inputValue} />
-	<IconButton {sizeVariant} {contentColor} {roundedVariant} icon={X} onclick={handleClear} />
+	<input type="text"  class={finalClass} bind:value {placeholder} {...props} />
+	<IconButton
+		{sizeVariant}
+		{contentColor}
+		{roundedVariant}
+		icon={X}
+		onclick={clearInput}
+		class="bg-transparent"
+	/>
 	{#if iconRight}
 		<Icon {sizeVariant} {contentColor} icon={iconRight} />
 	{/if}

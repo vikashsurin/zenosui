@@ -14,6 +14,7 @@ import type {
 	HTMLAnchorAttributes,
 	HTMLAttributes,
 	HTMLButtonAttributes,
+	HTMLDialogAttributes,
 	HTMLInputAttributes,
 	HTMLLiAttributes
 } from 'svelte/elements';
@@ -91,4 +92,22 @@ export interface SidebarItemProps extends BaseProps, WithIcons, HTMLAnchorAttrib
 }
 export interface SideExtrasProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface TextInputProps extends BaseProps, WithIcons, HTMLInputAttributes {}
+export interface TextInputProps extends BaseProps, WithIcons, HTMLInputAttributes {
+	invalid?: boolean;
+}
+
+export interface AlertDialogProps extends BaseProps, HTMLDialogAttributes {
+	showModal?: boolean;
+}
+
+export interface AlertHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+export interface AlertFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+export interface AlertTitleProps extends BaseProps, HTMLAttributes<HTMLHeadingElement> {}
+export interface AlertContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface DialogProps extends BaseProps, HTMLDialogAttributes {
+	backdrop?: boolean;
+}
+export interface DialogContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface DialogFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+export interface DialogHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}

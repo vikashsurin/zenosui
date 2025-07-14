@@ -28,6 +28,16 @@ export const CONTENT_COLOR = {
 	success: 'text-green-500'
 };
 
+export const OUTLINE_COLOR = {
+	none: '',
+	primary: 'focus-within:outline-blue-500 focus:outline-blue-500 outline-blue-500',
+	secondary: 'focus-within:outline-gray-800 focus:outline-gray-800 outline-gray-800',
+	tertiary: 'focus-within:outline-gray-800 focus:outline-gray-800 outline-gray-800',
+	danger: ' focus-within:outline-red-500 focus:outline-red-500 outline-red-500',
+	warning: 'focus-within:outline-yellow-500 focus:outline-yellow-500 outline-yellow-500',
+	success: 'focus-within:outline-green-500 focus:outline-green-500 outline-green-500'
+};
+
 export const BORDER_COLOR = {
 	none: '',
 	primary: 'border-blue-500 ',
@@ -165,3 +175,4 @@ export type BackgroundColor = keyof typeof BACKGROUND_COLOR;
 export type ContentColor = keyof typeof CONTENT_COLOR;
 export type BorderColor = keyof typeof BORDER_COLOR;
 export type PaddingVariant = keyof typeof PADDING;
+export type OutlineColor = keyof typeof OUTLINE_COLOR;

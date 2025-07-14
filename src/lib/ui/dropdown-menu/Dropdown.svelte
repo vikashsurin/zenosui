@@ -4,7 +4,7 @@
 	import { innerHeight } from 'svelte/reactivity/window';
 	import { baseVariant, type RoundedVariant, type SizeVariant } from '$lib/style/variant.js';
 	import type { DropdownProps } from '$lib/types.js';
-	import { onMount, setContext } from 'svelte';
+	import { setContext } from 'svelte';
 
 	let { children, sizeVariant, roundedVariant, class: _class, ...props }: DropdownProps = $props();
 
@@ -24,19 +24,26 @@
 	});
 	const finalClass = $derived(style({ roundedVariant, class: clsx(_class) }));
 
-	let menu_cont: any = {};
+	let menu_cont: HTMLDivElement;
 
 	$effect(() => {
-		const dd = menu_cont.querySelector('.zu_menu');
-		const parent = menu_cont.parentNode;
-		const triggerRect = parent.getBoundingClientRect();
+		const screenHeight =
+			innerHeight.current !== undefined
+				? innerHeight.current
+				: typeof window !== 'undefined'
+					? window.innerHeight
+					: 0;
 
-		if (triggerRect.bottom + dd.clientHeight > innerHeight.current) {
-			dd.style.top = 'auto';
-			dd.style.bottom = '100%';
-		} else {
-			dd.style.top = '100%';
-			dd.style.bottom = 'auto';
+		const dd = menu_cont.querySelector('.zu_menu') as HTMLUListElement | null;
+		if (dd && dd.parentNode instanceof HTMLElement) {
+			const parentSize = dd.parentNode.getBoundingClientRect();
+			if (parentSize.bottom + dd.clientHeight > screenHeight) {
+				dd.style.top = 'auto';
+				dd.style.bottom = '100%';
+			} else {
+				dd.style.top = '100%';
+				dd.style.bottom = 'auto';
+			}
 		}
 	});
 </script>

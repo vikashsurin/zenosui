@@ -11,6 +11,19 @@ import Sidebar from './sidebar/Sidebar.svelte';
 import SidebarItem from './sidebar/SidebarItem.svelte';
 import Chip from '$lib/ui/chip/Chip.svelte';
 import TextInput from '$lib/ui/textInput/TextInput.svelte';
+
+import AlertDialog from '$lib/ui/alert/AlertDialog.svelte';
+import AlertActionButton from '$lib/ui/alert/AlertActionButton.svelte';
+import AlertContent from '$lib/ui/alert/AlertContent.svelte';
+import AlertTitle from '$lib/ui/alert/AlertTitle.svelte';
+import AlertFooter from '$lib/ui/alert/AlertFooter.svelte';
+import AlertHeader from '$lib/ui/alert/AlertHeader.svelte';
+
+import Dialog from '$lib/ui/dialog/Dialog.svelte';
+import CloseDialogButton from '$lib/ui/dialog/CloseDialogButton.svelte';
+import DialogHeader from '$lib/ui/dialog/DialogHeader.svelte';
+import DialogFooter from '$lib/ui/dialog/DialogFooter.svelte';
+import DialogContent from '$lib/ui/dialog/DialogContent.svelte';
 export {
 	Button,
 	Icon,
@@ -24,5 +37,16 @@ export {
 	Sidebar,
 	SidebarItem,
 	Chip,
-	TextInput
+	TextInput,
+	AlertDialog,
+	AlertContent,
+	AlertTitle,
+	AlertFooter,
+	AlertHeader,
+	AlertActionButton,
+	Dialog,
+	CloseDialogButton,
+	DialogContent,
+	DialogHeader,
+	DialogFooter
 };
