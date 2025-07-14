@@ -35,7 +35,7 @@ export const OUTLINE_COLOR = {
 	tertiary: 'focus-within:outline-gray-800 focus:outline-gray-800 outline-gray-800',
 	danger: ' focus-within:outline-red-500 focus:outline-red-500 outline-red-500',
 	warning: 'focus-within:outline-yellow-500 focus:outline-yellow-500 outline-yellow-500',
-	success: 'focus-within:outline-green-500 focus:outline-green-500 outline-green-500'
+	success: 'focus-within:outline-green-500 focus:outline-green-500'
 };
 
 export const BORDER_COLOR = {

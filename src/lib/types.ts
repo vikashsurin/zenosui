@@ -54,6 +54,15 @@ export interface WithIcons {
 	iconRight?: Component;
 }
 
+//=======================
+// ATOMS
+//=======================
+export interface DivProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+// =======================
+// MAIN COMPONENTS
+// =======================
+
 type ButtonAsButton = BaseProps &
 	StatefulProps &
 	WithIcons &
@@ -111,3 +120,28 @@ export interface DialogProps extends BaseProps, HTMLDialogAttributes {
 export interface DialogContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 export interface DialogFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
 export interface DialogHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+
+// export interface ToastProps extends BasePropsExtended {
+// 	timeout?: number;
+// 	position?: string;
+// }
+
+export interface ToastProps extends BasePropsExtended {
+	id?: string;
+	message: string;
+	type?: 'success' | 'error' | 'warning' | 'info';
+	duration?: number;
+	dismissible?: boolean;
+	position?:
+		| 'top-left'
+		| 'top-right'
+		| 'top-center'
+		| 'bottom-left'
+		| 'bottom-right'
+		| 'bottom-center';
+	action?: {
+		label: string;
+		handler: () => void;
+	};
+	onClose?: () => void;
+}

@@ -7,5 +7,7 @@
 		<li><a href="/docs/chip">chip</a></li>
 		<li><a href="/docs/alert">alert</a></li>
 		<li><a href="/docs/dialog">dialog</a></li>
+		<li><a href="/docs/toast">toast</a></li>
 	</ul>
 </div>
+
