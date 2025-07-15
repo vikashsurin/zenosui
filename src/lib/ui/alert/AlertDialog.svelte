@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { AlertDialogProps } from '$lib/types.js';
 	import { setContext } from 'svelte';
 
 	let {
 		children,
-		roundedVariant,
+		uiRounded,
 		open = $bindable(),
 		class: _class,
 		...props
@@ -18,10 +18,10 @@
 		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] trn p-4 bg-gray-100 `,
 		variants: {},
 		defaultVariants: {
-			roundedVariant: 'lg'
+			uiRounded: 'lg'
 		}
 	});
-	const finalClass = $derived(style({ roundedVariant, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
 
 	function closeAlertDialog() {
 		open = false;

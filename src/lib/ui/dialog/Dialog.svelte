@@ -3,12 +3,12 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { DialogProps } from '$lib/types.js';
 
 	let {
 		children,
-		roundedVariant,
+		uiRounded,
 		open = $bindable(),
 		backdrop,
 		class: _class,
@@ -27,7 +27,7 @@
 		variants: {},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ roundedVariant, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
 </script>
 
 {#if open}

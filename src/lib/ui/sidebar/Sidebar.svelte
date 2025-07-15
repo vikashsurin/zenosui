@@ -2,13 +2,13 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import type { SidebarProps } from '$lib/types.js';
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import { setContext } from 'svelte';
 
-	let { children, roundedVariant, sizeVariant, class: _class }: SidebarProps = $props();
+	let { children, uiRounded, uiSize, class: _class }: SidebarProps = $props();
 	const sideBarContext = $state({
-		sizeVariant: sizeVariant,
-		roundedVariant: roundedVariant
+		uiSize: uiSize,
+		uiRounded: uiRounded
 	});
 	setContext('sidebar', sideBarContext);
 

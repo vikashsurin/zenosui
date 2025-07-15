@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE, type OutlineColor } from '$lib/style/variant.js';
+	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE, type OutlineColor } from '$lib/style/index.js';
 	import type { TextInputProps } from '$lib/types.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
 	let {
-		contentColor,
-		roundedVariant,
+		uiColor,
+		uiRounded,
 		variant,
-		sizeVariant,
+		uiSize,
 		iconLeft,
 		invalid,
 		iconRight,
@@ -20,17 +20,17 @@
 	}: TextInputProps = $props();
 
 	// if (invalid) {
-	// 	((contentColor = 'danger'), (outlineColor = 'danger'));
+	// 	((uiColor = 'danger'), (outlineColor = 'danger'));
 	// }
 
-	contentColor = invalid ? 'danger' : contentColor;
+	uiColor = invalid ? 'danger' : uiColor;
 	let outlineColor: OutlineColor = invalid ? 'danger' : 'none';
 
 	let contStyle = tv({
 		extend: baseVariant,
 		base: 'inline-flex w-fit items-center focus-within:outline-2',
 		variants: {
-			sizeVariant: {
+			uiSize: {
 				xs: 'gap-1 px-1.5',
 				sm: 'gap-1 px-2',
 				md: 'gap-1.5 px-2.5',
@@ -45,7 +45,7 @@
 				'8xl': 'gap-3.5 px-8'
 			},
 			outlineColor: OUTLINE_COLOR
-			// contentColor: {
+			// uiColor: {
 			// 	none: '',
 			// 	primary: 'border border-blue-500 ',
 			// 	secondary: 'border border-gray-800',
@@ -58,27 +58,27 @@
 
 		defaultVariants: {
 			border: 1,
-			roundedVariant: 'md',
-			sizeVariant: 'md'
+			uiRounded: 'md',
+			uiSize: 'md'
 		}
 	});
 	const finalContClass = $derived(
-		contStyle({ sizeVariant, contentColor, variant, roundedVariant, outlineColor: outlineColor })
+		contStyle({ uiSize, uiColor, variant, uiRounded, outlineColor: outlineColor })
 	);
 
 	let style = tv({
 		extend: baseVariant,
 		base: `outline-none`,
 		variants: {
-			sizeVariant: TEXT_SIZE
+			uiSize: TEXT_SIZE
 		},
 		defaultVariants: {
-			sizeVariant: 'md',
+			uiSize: 'md',
 			border: 'none',
-			roundedVariant: 'sm'
+			uiRounded: 'sm'
 		}
 	});
-	const finalClass = $derived(style({ contentColor, sizeVariant, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiColor, uiSize, class: clsx(_class) }));
 
 	function clearInput() {
 		value = '';
@@ -87,18 +87,11 @@
 
 <div class={finalContClass}>
 	{#if iconLeft}
-		<Icon {sizeVariant} icon={iconLeft} class="opacity-50" />
+		<Icon {uiSize} icon={iconLeft} class="opacity-50" />
 	{/if}
-	<input type="text"  class={finalClass} bind:value {placeholder} {...props} />
-	<IconButton
-		{sizeVariant}
-		{contentColor}
-		{roundedVariant}
-		icon={X}
-		onclick={clearInput}
-		class="bg-transparent"
-	/>
+	<input type="text" class={finalClass} bind:value {placeholder} {...props} />
+	<IconButton {uiSize} {uiColor} {uiRounded} icon={X} onclick={clearInput} class="bg-transparent" />
 	{#if iconRight}
-		<Icon {sizeVariant} {contentColor} icon={iconRight} />
+		<Icon {uiSize} {uiColor} icon={iconRight} />
 	{/if}
 </div>

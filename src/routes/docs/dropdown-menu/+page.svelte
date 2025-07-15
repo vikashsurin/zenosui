@@ -13,7 +13,7 @@
 </script>
 
 <div>
-	<Dropdown roundedVariant="sm" sizeVariant="md">
+	<Dropdown uiRounded="sm" uiSize="md">
 		<DropdownTrigger iconRight={ChevronDown}>Open</DropdownTrigger>
 		<DropdownMenu class="">
 			<DropdownListItem iconRight={BadgeCheck}>Cut</DropdownListItem>

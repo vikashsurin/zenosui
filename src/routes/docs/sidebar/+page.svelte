@@ -4,7 +4,7 @@
 </script>
 
 <div>
-	<Sidebar sizeVariant="xs" roundedVariant="xs">
+	<Sidebar uiSize="xs" uiRounded="xs">
 		<SidebarItem iconLeft={ChevronDown} href="https://www.google.com">Item</SidebarItem>
 		<SidebarItem>Item</SidebarItem>
 		<SidebarItem>Colors</SidebarItem>

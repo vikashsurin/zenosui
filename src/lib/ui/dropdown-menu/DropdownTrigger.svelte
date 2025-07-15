@@ -4,24 +4,26 @@
 	import { Button } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 	import type { ButtonProps } from '$lib/types.js';
-	import type { RoundedVariant, SizeVariant } from '$lib/style/variant.js';
+	import type { RoundedVariant, SizeVariant } from '$lib/style/index.js';
 
 	let {
 		children,
-		roundedVariant,
-		sizeVariant,
+		uiRounded,
+		uiSize,
 		label,
 		iconLeft,
 		iconRight,
 		class: _class,
 		...props
 	}: ButtonProps = $props();
-	const ddmenucontext = getContext<{ open: boolean; sizeVariant: SizeVariant; roundedVariant: RoundedVariant }>(
-		'dropdown'
-	);
+	const ddmenucontext = getContext<{
+		open: boolean;
+		uiSize: SizeVariant;
+		uiRounded: RoundedVariant;
+	}>('dropdown');
 
-	roundedVariant = roundedVariant ? roundedVariant : ddmenucontext.roundedVariant;
-	sizeVariant = sizeVariant ? sizeVariant : ddmenucontext.sizeVariant;
+	uiRounded = uiRounded ? uiRounded : ddmenucontext.uiRounded;
+	uiSize = uiSize ? uiSize : ddmenucontext.uiSize;
 
 	function toggleMenu() {
 		ddmenucontext.open = !ddmenucontext.open;
@@ -30,8 +32,8 @@
 		base: ``,
 		variants: {},
 		defaultVariants: {
-			roundedVariant: 'sm',
-			sizeVariant: 'xs'
+			uiRounded: 'sm',
+			uiSize: 'xs'
 		}
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
@@ -43,8 +45,8 @@
 	{iconLeft}
 	{iconRight}
 	{...props}
-	{roundedVariant}
-	{sizeVariant}
+	{uiRounded}
+	{uiSize}
 	onclick={toggleMenu}
 >
 	{#if children}

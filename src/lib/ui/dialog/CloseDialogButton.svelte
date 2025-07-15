@@ -7,8 +7,8 @@
 
 	let {
 		children,
-		sizeVariant = 'md',
-		roundedVariant = 'xs',
+		uiSize = 'md',
+		uiRounded = 'xs',
 		class: _class,
 		...props
 	}: ButtonProps = $props();
@@ -17,7 +17,7 @@
 		base: `w-fit`,
 		variants: {},
 		defaultVariants: {
-			sizeVariant: 'sm'
+			uiSize: 'sm'
 		}
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
@@ -28,7 +28,7 @@
 	}
 </script>
 
-<Button class={finalClass} {sizeVariant} {roundedVariant} onclick={handleClick} {...props}>
+<Button class={finalClass} {uiSize} {uiRounded} onclick={handleClick} {...props}>
 	{#if children}
 		{@render children?.()}
 	{/if}

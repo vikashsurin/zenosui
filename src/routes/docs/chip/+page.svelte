@@ -6,8 +6,8 @@
 <div>
 	<Chip
 		label="Orange"
-		sizeVariant="xs"
-		roundedVariant="sm"
+		uiSize="xs"
+		uiRounded="sm"
 		iconRight={BadgeCheck}
 		class=" bg-amber-500 "
 		onclick={() => console.log('helo')}

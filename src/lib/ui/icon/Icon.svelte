@@ -2,16 +2,16 @@
 	import { tv } from 'tailwind-variants';
 	import { type Component } from 'svelte';
 	import clsx from 'clsx';
-	import { baseVariant, ICON_SIZE } from '$lib/style/variant.js';
+	import { baseVariant, ICON_SIZE } from '$lib/style/index.js';
 	import type { IconProps } from '$lib/types.js';
 
 	let {
 		icon,
 		padding,
-		sizeVariant,
-		backgroundColor,
-		contentColor,
-		roundedVariant,
+		uiSize,
+		uiBg,
+		uiColor,
+		uiRounded,
 		children,
 		class: _class
 	}: IconProps = $props();
@@ -28,10 +28,10 @@
 	const finalClass = $derived(
 		style({
 			padding,
-			backgroundColor,
-			roundedVariant,
-			contentColor,
-			iconSize: sizeVariant,
+			uiBg,
+			uiRounded,
+			uiColor,
+			iconSize: uiSize,
 			class: clsx(_class)
 		})
 	);

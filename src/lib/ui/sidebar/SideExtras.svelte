@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 
-	let { children, roundedVariant, colorVariant, padding, class: _class, ...props } = $props();
+	let { children, uiRounded, uiColorPreset, padding, class: _class, ...props } = $props();
 
 	let style = tv({ extend: baseVariant, base: ``, variants: {}, defaultVariants: {} });
-	const finalClass = $derived(style({ roundedVariant, colorVariant, padding, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, uiColorPreset, padding, class: clsx(_class) }));
 </script>
 
 <div class={finalClass} {...props}>

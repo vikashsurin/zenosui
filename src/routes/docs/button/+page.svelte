@@ -6,33 +6,33 @@
 </script>
 
 <div class="">
-	<Button roundedVariant="sm" label="Button" onclick={handleClick} disabled />
+	<Button uiRounded="sm" label="Button" onclick={handleClick} disabled />
 
 	<Button
 		href="https://www.google.com"
-		roundedVariant="sm"
+		uiRounded="sm"
 		onclick={() => console.log('Button clicked')}
 		label="Button"
 	/>
 	<Button
-		roundedVariant="sm"
-		sizeVariant="xs"
+		uiRounded="sm"
+		uiSize="xs"
 		onclick={() => console.log('Button clicked')}
 		label="Button"
 		iconRight={ChevronRight}
 	/>
 	<hr class="my-6" />
 	<Button
-		roundedVariant="xs"
-		sizeVariant="xs"
+		uiRounded="xs"
+		uiSize="xs"
 		onclick={() => console.log('Button clicked')}
 		label="Button"
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}
 	/>
 	<Button
-		roundedVariant="sm"
-		sizeVariant="sm"
+		uiRounded="sm"
+		uiSize="sm"
 		onclick={() => console.log('Button clicked')}
 		label="Button"
 		iconLeft={BadgeCheck}

@@ -4,12 +4,12 @@
 	import { Button } from '$lib/ui/index.js';
 	import type { ButtonProps } from '$lib/types.js';
 	let {
-		sizeVariant,
+		uiSize,
 		label,
-		roundedVariant,
+		uiRounded,
 		iconLeft,
 		iconRight,
-		colorVariant,
+		uiColorPreset,
 		border,
 		class: _class,
 		...props
@@ -24,13 +24,13 @@
 </script>
 
 <Button
-	{sizeVariant}
+	{uiSize}
 	{label}
 	{iconLeft}
 	{iconRight}
 	{border}
-	{roundedVariant}
-	{colorVariant}
+	{uiRounded}
+	{uiColorPreset}
 	class={finalClass}
 	{...props}
 />

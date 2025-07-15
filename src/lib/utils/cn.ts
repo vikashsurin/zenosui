@@ -23,24 +23,24 @@ export function cn(...inputs: string[]): string {
  *
  * @example
  * const button = createVariants({
- *   base: 'px-4 py-2 roundedVariant',
+ *   base: 'px-4 py-2 uiRounded',
  *   variants: {
  *     color: {
  *       primary: 'bg-blue-500 text-white',
  *       secondary: 'bg-gray-200 text-gray-900'
  *     },
- *     sizeVariant: {
+ *     uiSize: {
  *       sm: 'px-2 py-1 text-sm',
  *       lg: 'px-6 py-3 text-lg'
  *     }
  *   },
  *   defaultVariants: {
  *     color: 'primary',
- *     sizeVariant: 'sm'
+ *     uiSize: 'sm'
  *   }
  * });
  *
- * button({ color: 'secondary', sizeVariant: 'lg', class: 'extra-class' })
+ * button({ color: 'secondary', uiSize: 'lg', class: 'extra-class' })
  */
 export function createVariants<T extends Record<string, Record<string, string>>>(config: {
 	base?: string;
@@ -78,7 +78,7 @@ export function createVariants<T extends Record<string, Record<string, string>>>
  *
  * @example
  * const buttonVariants = variants(
- *   'px-4 py-2 roundedVariant transition-colors',
+ *   'px-4 py-2 uiRounded transition-colors',
  *   {
  *     primary: 'bg-blue-500 text-white hover:bg-blue-600',
  *     secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300'

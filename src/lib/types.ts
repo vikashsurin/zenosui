@@ -9,7 +9,8 @@ import type {
 	BackgroundColor,
 	ContentColor,
 	PaddingVariant
-} from './style/variant.js';
+} from './style/types.js';
+
 import type {
 	HTMLAnchorAttributes,
 	HTMLAttributes,
@@ -18,6 +19,28 @@ import type {
 	HTMLInputAttributes,
 	HTMLLiAttributes
 } from 'svelte/elements';
+
+export type UiPropTypes =
+	| 'uiSize' // Component size preset
+	| 'uiVariant' // Style variant (outline, filled, ghost)
+	| 'uiText' // Text size
+	| 'uiColor' // Text color
+	| 'uiBg' // Background color
+	| 'uiBorder' // Border width
+	| 'uiBorderColor' // Border color
+	| 'uiRounded' // Border radius
+	| 'uiPadding' // Padding
+	| 'uiMargin' // Margin
+	| 'uiGap' // Gap for flex/grid
+	| 'uiShadow' // Box shadow
+	| 'uiOpacity' // Opacity level
+	| 'uiIconSize' // Icon sizing
+	| 'uiDuration' // Animation duration
+	| 'uiDisplay' // Display type
+	| 'uiPosition' // Position type
+	| 'uiZIndex' // Z-index
+	| 'uiCursor' // Cursor type
+	| 'uiOverflow'; // Overflow behavior
 
 export interface BaseProps {
 	/**
@@ -29,26 +52,34 @@ export interface BaseProps {
 	/**
 	 * Below are the user defined props
 	 */
-	backgroundColor?: BackgroundColor;
-	contentColor?: ContentColor;
-	sizeVariant?: SizePresetVariant;
-	textSize?: TextSizeVariant;
-	roundedVariant?: RoundedVariant;
-	variant?: Variant;
+	uiBg?: BackgroundColor;
+	uiColor?: ContentColor;
+	uiSize?: SizePresetVariant;
+	uiText?: TextSizeVariant;
+	uiRounded?: RoundedVariant;
+	uiVariant?: Variant;
 	border?: BorderVariant;
 	padding?: PaddingVariant;
-	colorVariant?: ColorVariant;
+	uiColorPreset?: ColorVariant;
 }
 
 export interface BasePropsExtended extends BaseProps {
 	class?: string;
 }
 
-export interface StatefulProps {
+export interface WithStateProps {
 	active?: boolean;
+	loading?: boolean;
+	disabled?: boolean;
+	error?: boolean;
+	success?: boolean;
+	checked?: boolean;
+	invalid?: boolean;
+	readonly?: boolean;
+	autofocus?: boolean;
 }
 
-export interface WithIcons {
+export interface WithIconsProps {
 	icon?: Component;
 	iconLeft?: Component;
 	iconRight?: Component;
@@ -64,16 +95,16 @@ export interface DivProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 // =======================
 
 type ButtonAsButton = BaseProps &
-	StatefulProps &
-	WithIcons &
+	WithStateProps &
+	WithIconsProps &
 	HTMLButtonAttributes & {
 		href?: undefined | null;
 		label?: string;
 	};
 
 type ButtonAsAnchor = BaseProps &
-	StatefulProps &
-	WithIcons &
+	WithStateProps &
+	WithIconsProps &
 	HTMLAnchorAttributes & {
 		href?: string;
 		label?: string;
@@ -91,17 +122,17 @@ export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {
 
 export interface DropdownProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 export interface DropdownMenuProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
-export interface DropdownItemProps extends BaseProps, WithIcons, HTMLLiAttributes {
+export interface DropdownItemProps extends BaseProps, WithIconsProps, HTMLLiAttributes {
 	hasSubMenu?: boolean;
 }
 
 export interface SidebarProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
-export interface SidebarItemProps extends BaseProps, WithIcons, HTMLAnchorAttributes {
+export interface SidebarItemProps extends BaseProps, WithIconsProps, HTMLAnchorAttributes {
 	href?: string;
 }
 export interface SideExtrasProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface TextInputProps extends BaseProps, WithIcons, HTMLInputAttributes {
+export interface TextInputProps extends BaseProps, WithIconsProps, HTMLInputAttributes {
 	invalid?: boolean;
 }
 
@@ -120,11 +151,6 @@ export interface DialogProps extends BaseProps, HTMLDialogAttributes {
 export interface DialogContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 export interface DialogFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
 export interface DialogHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}
-
-// export interface ToastProps extends BasePropsExtended {
-// 	timeout?: number;
-// 	position?: string;
-// }
 
 export interface ToastProps extends BasePropsExtended {
 	id?: string;

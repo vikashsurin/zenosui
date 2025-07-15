@@ -2,14 +2,14 @@
 	import { tv } from 'tailwind-variants';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
-	import { baseVariant, type RoundedVariant } from '$lib/style/variant.js';
+	import { baseVariant, type RoundedVariant } from '$lib/style/index.js';
 	import type { DropdownMenuProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
 
-	let { children, roundedVariant, class: _class, ...props }: DropdownMenuProps = $props();
+	let { children, uiRounded, class: _class, ...props }: DropdownMenuProps = $props();
 
-	const ddmenucontext = getContext<{ open: boolean; roundedVariant: RoundedVariant }>('dropdown');
-	roundedVariant = roundedVariant ? roundedVariant : ddmenucontext.roundedVariant;
+	const ddmenucontext = getContext<{ open: boolean; uiRounded: RoundedVariant }>('dropdown');
+	uiRounded = uiRounded ? uiRounded : ddmenucontext.uiRounded;
 
 	let style = tv({
 		extend: baseVariant,
@@ -17,7 +17,7 @@
 		variants: {},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ roundedVariant, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
 </script>
 
 {#if ddmenucontext.open}

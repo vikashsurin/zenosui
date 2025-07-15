@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { DivProps } from '$lib/types.js';
 
 	let {
 		children,
-		roundedVariant,
-		backgroundColor,
-		contentColor,
-		textSize,
-		variant,
+		uiRounded,
+		uiBg,
+		uiColor,
+		uiText,
+		uiVariant,
 		border,
 		padding,
-		sizeVariant,
-		colorVariant,
+		uiSize,
+		uiColorPreset,
 		class: _class,
 		...props
 	}: DivProps = $props();
@@ -32,17 +32,17 @@
 			}
 		},
 		defaultVariants: {
-			roundedVariant: 'none'
+			uiRounded: 'none'
 		}
 	});
 
 	const finalClass = $derived(
 		style({
-			roundedVariant,
-			backgroundColor,
-			contentColor,
-			textSize,
-			variant,
+			uiRounded,
+			uiBg,
+			uiColor,
+			uiText,
+			uiVariant,
 			border,
 			padding,
 			class: clsx(_class)

@@ -6,7 +6,7 @@
 		SIZE_PRESET,
 		type RoundedVariant,
 		type SizeVariant
-	} from '$lib/style/variant.js';
+	} from '$lib/style/index.js';
 	import type { SidebarItemProps } from '$lib/types.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
@@ -14,43 +14,43 @@
 	let {
 		href,
 		children,
-		roundedVariant,
-		sizeVariant,
+		uiRounded,
+		uiSize,
 		iconLeft,
 		iconRight,
 		class: _class,
 		...props
 	}: SidebarItemProps = $props();
 
-	const sidebarContext = getContext<{ sizeVariant: SizeVariant; roundedVariant: RoundedVariant }>('sidebar');
-	sizeVariant = sizeVariant ? sizeVariant : sidebarContext.sizeVariant;
-	roundedVariant = roundedVariant ? roundedVariant : sidebarContext.roundedVariant;
+	const sidebarContext = getContext<{ uiSize: SizeVariant; uiRounded: RoundedVariant }>('sidebar');
+	uiSize = uiSize ? uiSize : sidebarContext.uiSize;
+	uiRounded = uiRounded ? uiRounded : sidebarContext.uiRounded;
 
 	let style = tv({
 		extend: baseVariant,
 		base: ` px-3 hover:bg-gray-300  w-full  items-center inline-flex  `,
 		variants: {
-			sizeVariant: SIZE_PRESET
+			uiSize: SIZE_PRESET
 		},
 		defaultVariants: {
-			roundedVariant: 'md',
-			sizeVariant: 'sm'
+			uiRounded: 'md',
+			uiSize: 'sm'
 		}
 	});
-	const finalClass = $derived(style({ sizeVariant, roundedVariant, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 </script>
 
 <li role="navigation">
 	<a {href} class={finalClass} {...props}>
 		{#if iconLeft}
-			<Icon icon={iconLeft} {sizeVariant} />
+			<Icon icon={iconLeft} {uiSize} />
 		{/if}
 		{#if children}
 			{@render children?.()}
 		{/if}
 		<span role="tab" class="px-2"></span>
 		{#if iconRight}
-			<Icon icon={iconRight} {sizeVariant} />
+			<Icon icon={iconRight} {uiSize} />
 		{/if}
 	</a>
 </li>

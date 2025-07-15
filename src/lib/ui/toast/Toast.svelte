@@ -111,7 +111,7 @@
 	{#if dismissible}
 		<IconButton
 			onclick={handleClose}
-			sizeVariant="sm"
+			uiSize="sm"
 			icon={X}
 			class="opacity-70 transition-opacity hover:opacity-100"
 			aria-label="Close notification"

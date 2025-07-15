@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
-	import { baseVariant, SIZE_PRESET } from '$lib/style/variant.js';
+	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
 	import type { ButtonProps } from '$lib/types.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
@@ -10,12 +10,12 @@
 		href,
 		iconLeft,
 		iconRight,
-		sizeVariant,
+		uiSize,
 		class: _class,
-		backgroundColor,
-		variant,
+		uiBg,
+		uiVariant,
 		border,
-		roundedVariant,
+		uiRounded,
 		active,
 		children,
 		...props
@@ -25,7 +25,7 @@
 		extend: baseVariant,
 		base: 'inline-flex justify-center items-center ',
 		variants: {
-			sizeVariant: SIZE_PRESET,
+			uiSize: SIZE_PRESET,
 			active: {
 				true: '',
 				false: ''
@@ -42,18 +42,18 @@
 			}
 		],
 		defaultVariants: {
-			backgroundColor: 'secondary',
-			variant: 'filled',
-			sizeVariant: 'md'
+			uiBg: 'secondary',
+			uiVariant: 'filled',
+			uiSize: 'md'
 		}
 	});
 
 	const finalClasses = $derived(
 		buttonStyle({
-			sizeVariant,
-			backgroundColor,
-			variant,
-			roundedVariant,
+			uiSize,
+			uiBg,
+			uiVariant,
+			uiRounded,
 			border,
 			active,
 			class: clsx(_class)
@@ -64,7 +64,7 @@
 
 <svelte:element this={as} {href} role={href ? 'link' : 'button'} class={finalClasses} {...props}>
 	{#if iconLeft}
-		<Icon {sizeVariant} icon={iconLeft} />
+		<Icon {uiSize} icon={iconLeft} />
 	{/if}
 	{#if label}
 		{label}
@@ -73,6 +73,6 @@
 		{@render children?.()}
 	{/if}
 	{#if iconRight}
-		<Icon {sizeVariant} icon={iconRight} />
+		<Icon {uiSize} icon={iconRight} />
 	{/if}
 </svelte:element>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/variant.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { AlertContentProps } from '$lib/types.js';
 
 	let { children, class: _class, ...props }: AlertContentProps = $props();

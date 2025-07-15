@@ -7,8 +7,8 @@
 
 	let {
 		children,
-		sizeVariant = 'sm',
-		roundedVariant = 'sm',
+		uiSize = 'sm',
+		uiRounded = 'sm',
 		class: _class,
 		...props
 	}: ButtonProps = $props();
@@ -25,7 +25,7 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<Button {sizeVariant} {roundedVariant} class={finalClass} {...props} onclick={handleClick}>
+<Button {uiSize} {uiRounded} class={finalClass} {...props} onclick={handleClick}>
 	{#if children}
 		{@render children?.()}
 	{/if}
