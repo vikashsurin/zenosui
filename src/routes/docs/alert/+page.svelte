@@ -2,16 +2,17 @@
 	import {
 		AlertActionButton,
 		AlertContent,
-		AlertDialog,
+		Alert,
 		AlertFooter,
 		AlertHeader,
 		AlertTitle
 	} from '$lib/ui/index.js';
+
 	let open = $state(true);
 </script>
 
 <div>
-	<AlertDialog bind:open>
+	<Alert bind:open>
 		<AlertHeader>
 			<AlertTitle>Title</AlertTitle>
 		</AlertHeader>
@@ -19,5 +20,5 @@
 		<AlertFooter>
 			<AlertActionButton>OK</AlertActionButton>
 		</AlertFooter>
-	</AlertDialog>
+	</Alert>
 </div>

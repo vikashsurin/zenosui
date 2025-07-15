@@ -17,30 +17,31 @@ import type {
 	HTMLButtonAttributes,
 	HTMLDialogAttributes,
 	HTMLInputAttributes,
+	HTMLLabelAttributes,
 	HTMLLiAttributes
 } from 'svelte/elements';
-
-export type UiPropTypes =
-	| 'uiSize' // Component size preset
-	| 'uiVariant' // Style variant (outline, filled, ghost)
-	| 'uiText' // Text size
-	| 'uiColor' // Text color
-	| 'uiBg' // Background color
-	| 'uiBorder' // Border width
-	| 'uiBorderColor' // Border color
-	| 'uiRounded' // Border radius
-	| 'uiPadding' // Padding
-	| 'uiMargin' // Margin
-	| 'uiGap' // Gap for flex/grid
-	| 'uiShadow' // Box shadow
-	| 'uiOpacity' // Opacity level
-	| 'uiIconSize' // Icon sizing
-	| 'uiDuration' // Animation duration
-	| 'uiDisplay' // Display type
-	| 'uiPosition' // Position type
-	| 'uiZIndex' // Z-index
-	| 'uiCursor' // Cursor type
-	| 'uiOverflow'; // Overflow behavior
+//
+// export type UiPropTypes =
+// 	| 'uiSize' // Component size preset
+// 	| 'uiVariant' // Style variant (outline, filled, ghost)
+// 	| 'uiText' // Text size
+// 	| 'uiColor' // Text color
+// 	| 'uiBg' // Background color
+// 	| 'uiBorder' // Border width
+// 	| 'uiBorderColor' // Border color
+// 	| 'uiRounded' // Border radius
+// 	| 'uiPadding' // Padding
+// 	| 'uiMargin' // Margin
+// 	| 'uiGap' // Gap for flex/grid
+// 	| 'uiShadow' // Box shadow
+// 	| 'uiOpacity' // Opacity level
+// 	| 'uiIconSize' // Icon sizing
+// 	| 'uiDuration' // Animation duration
+// 	| 'uiDisplay' // Display type
+// 	| 'uiPosition' // Position type
+// 	| 'uiZIndex' // Z-index
+// 	| 'uiCursor' // Cursor type
+// 	| 'uiOverflow'; // Overflow behavior
 
 export interface BaseProps {
 	/**
@@ -48,7 +49,7 @@ export interface BaseProps {
 	 * Children will be rendered inside the component.
 	 */
 
-	children?: Snippet<[]>;
+	children?: Snippet;
 	/**
 	 * Below are the user defined props
 	 */
@@ -90,6 +91,18 @@ export interface WithIconsProps {
 //=======================
 export interface DivProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
+export interface LabelProps extends BaseProps, HTMLLabelAttributes {}
+
+export interface ListItemProps extends BaseProps, HTMLLiAttributes {}
+
+export interface HrProps extends BaseProps, HTMLAttributes<HTMLHRElement> {}
+
+export interface HeadingProps extends BaseProps, HTMLAttributes<HTMLHeadingElement> {}
+
+export interface LinkProps extends BaseProps, HTMLAnchorAttributes {
+	href?: string;
+}
+
 // =======================
 // MAIN COMPONENTS
 // =======================
@@ -121,16 +134,20 @@ export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {
 }
 
 export interface DropdownProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
 export interface DropdownMenuProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
+
 export interface DropdownItemProps extends BaseProps, WithIconsProps, HTMLLiAttributes {
 	hasSubMenu?: boolean;
 }
 
 export interface SidebarProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
+
 export interface SidebarItemProps extends BaseProps, WithIconsProps, HTMLAnchorAttributes {
 	href?: string;
 }
-export interface SideExtrasProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+// export interface SideExtrasProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface TextInputProps extends BaseProps, WithIconsProps, HTMLInputAttributes {
 	invalid?: boolean;
@@ -141,15 +158,21 @@ export interface AlertDialogProps extends BaseProps, HTMLDialogAttributes {
 }
 
 export interface AlertHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+
 export interface AlertFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+
 export interface AlertTitleProps extends BaseProps, HTMLAttributes<HTMLHeadingElement> {}
+
 export interface AlertContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface DialogProps extends BaseProps, HTMLDialogAttributes {
 	backdrop?: boolean;
 }
+
 export interface DialogContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
 export interface DialogFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+
 export interface DialogHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {}
 
 export interface ToastProps extends BasePropsExtended {

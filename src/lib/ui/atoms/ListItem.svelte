@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { ListItemProps } from '$lib/types.js';
 
-	let { children, class: _class, ...props } = $props();
+	let { children, class: _class, ...props }: ListItemProps = $props();
 
 	let style = tv({
 		base: ``,

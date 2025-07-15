@@ -13,8 +13,6 @@
 		uiVariant,
 		border,
 		padding,
-		uiSize,
-		uiColorPreset,
 		class: _class,
 		...props
 	}: DivProps = $props();

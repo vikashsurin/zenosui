@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { toast } from '$lib/utils/utils.js';
+	import { toast } from '$lib/utils/toast.js';
 
 	function push() {
 		toast.warning('new toast');

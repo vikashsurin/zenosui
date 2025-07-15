@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
-	import { type Component } from 'svelte';
 	import clsx from 'clsx';
 	import { baseVariant, ICON_SIZE } from '$lib/style/index.js';
 	import type { IconProps } from '$lib/types.js';

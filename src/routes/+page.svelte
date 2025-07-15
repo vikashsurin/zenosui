@@ -1,3 +1,1 @@
-<script lang="ts">
 
-</script>

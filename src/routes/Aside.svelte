@@ -8,6 +8,8 @@
 		<li><a href="/docs/alert">alert</a></li>
 		<li><a href="/docs/dialog">dialog</a></li>
 		<li><a href="/docs/toast">toast</a></li>
+		<li><a href="/docs/link">link</a></li>
+		<li><a href="/docs/menu-bar">menu bar</a></li>
 	</ul>
 </div>
 

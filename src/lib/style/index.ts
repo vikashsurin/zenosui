@@ -8,4 +8,4 @@ export * from './presets.js';
 
 
 //style types 
-export * from './types.js';
+export * from './types.js'
