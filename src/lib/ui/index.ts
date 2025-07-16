@@ -37,11 +37,13 @@ import AlertDialogHeading from '$lib/ui/alert-dialog/AlertDialogHeading.svelte';
 import AlertDialogHeader from '$lib/ui/alert-dialog/AlertDialogHeader.svelte';
 import AlertDialogFooter from '$lib/ui/alert-dialog/AlertDialogFooter.svelte';
 //
+// Menu
+import Menu from '$lib/ui/menu/Menu.svelte';
+import MenuList from '$lib/ui/menu/MenuList.svelte';
+import MenuItem from '$lib/ui/menu/MenuItem.svelte';
+import MenuTrigger from '$lib/ui/menu/MenuTrigger.svelte';
+// Menubar
 import Menubar from '$lib/ui/menubar/Menubar.svelte';
-import MenubarItem from '$lib/ui/menubar/MenubarItem.svelte';
-import MenubarContent from '$lib/ui/menubar/MenubarContent.svelte';
-import MenubarTrigger from '$lib/ui/menubar/MenubarTrigger.svelte';
-import MenuItemGroup from '$lib/ui/menubar/MenuItemGroup.svelte';
 
 export {
 	Div,
@@ -78,8 +80,8 @@ export {
 	AlertDialog,
 	AlertDialogFooter,
 	Menubar,
-	MenubarContent,
-	MenubarTrigger,
-	MenubarItem,
-	MenuItemGroup
+	Menu,
+	MenuList,
+	MenuTrigger,
+	MenuItem
 };
