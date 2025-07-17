@@ -2,6 +2,8 @@
 	import { Menu, MenuList, MenuItem, MenuTrigger, MenuSeparator } from '$lib/ui/index.js';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Submenu from '$lib/ui/menu/Submenu.svelte';
+	import Trash2 from '@lucide/svelte/icons/trash-2';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 </script>
 
 <div>
@@ -9,14 +11,36 @@
 	<Menu uiSize="sm">
 		<MenuTrigger>open</MenuTrigger>
 		<MenuList>
-			<MenuItem uiRounded="none" onclick={() => console.log('aha')}>one1</MenuItem>
+			<MenuItem uiRounded="none" iconLeft={BadgeCheck}>one1</MenuItem>
 			<MenuItem>two</MenuItem>
 			<MenuItem hasSubMenu iconRight={ChevronRight}>
 				three
 				<Submenu>
-					<MenuItem>submenu</MenuItem>
-					<MenuItem>submenu</MenuItem>
-					<MenuItem>submenu</MenuItem>
+					<MenuItem onclick={() => console.log('from submenu')}>Edit</MenuItem>
+					<MenuItem>Draft it</MenuItem>
+					<MenuItem iconRight={ChevronRight} hasSubMenu>
+						More
+						<Submenu>
+							<MenuItem>Up</MenuItem>
+							<MenuItem iconRight={ChevronRight}>Down</MenuItem>
+							<MenuItem>Left</MenuItem>
+							<MenuItem>Right</MenuItem>
+							<MenuItem hasSubMenu iconRight={ChevronRight}
+								>Dinosaur Type
+								<Submenu>
+									<MenuItem>T-Rex</MenuItem>
+									<MenuItem>Brachisauraus</MenuItem>
+								</Submenu>
+							</MenuItem>
+							<MenuItem>Jurassic Park</MenuItem>
+						</Submenu>
+					</MenuItem>
+					<MenuSeparator />
+					<MenuItem
+						iconLeft={Trash2}
+						class="text-red-600"
+						onclick={() => console.log('delete was called')}>Delete</MenuItem
+					>
 				</Submenu>
 			</MenuItem>
 		</MenuList>

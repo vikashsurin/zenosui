@@ -3,6 +3,8 @@
 	import clsx from 'clsx';
 	import {
 		baseVariant,
+		ICON_PLACEHOLDER_SIZE,
+		ICON_SIZE,
 		type RoundedVariant,
 		SIZE_PRESET,
 		type SizeVariant
@@ -27,14 +29,14 @@
 		open: boolean;
 		uiSize: SizeVariant;
 		uiRounded: RoundedVariant;
-		toggleMenu: () => boolean;
+		toggleMenu: () => void;
 	}>('dropdown');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300 overflow-visible items-center justify-between inline-flex relative text-nowrap `,
+		base: `zu_menu_item px-3 hover:bg-gray-300 overflow-visible items-center  inline-flex relative text-nowrap `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},
@@ -63,10 +65,24 @@
 		}
 	}
 
-	function customFunc() {
-		console.log('i was called');
-		menuContext.toggleMenu();
+	function customFunc(e: MouseEvent) {
+		// console.log('i was called');
+		e.stopPropagation();
+		if (!hasSubMenu) menuContext.toggleMenu();
 	}
+
+	let iconPlaceholder = tv({
+		base: ``,
+		variants: {
+			size: ICON_PLACEHOLDER_SIZE
+		},
+
+		defaultVariants: {
+			size: uiSize
+		}
+	});
+
+	let finalIconPlaceholder = $derived(iconPlaceholder({ size: uiSize }));
 </script>
 
 <li
@@ -75,18 +91,23 @@
 	onmouseenter={handleOpenSubmenu}
 	onmouseleave={handleCloseSubmenu}
 	onclick={(e) => {
-		customFunc();
+		customFunc(e);
 		onclick?.(e);
 	}}
 	{...props}
 >
 	{#if iconLeft}
 		<Icon icon={iconLeft} {uiSize} />
+	{:else}
+		<div class={finalIconPlaceholder}></div>
 	{/if}
+
 	{#if children}
 		{@render children?.()}
 	{/if}
 	{#if iconRight}
-		<Icon icon={iconRight} {uiSize} />
+		<Icon icon={iconRight} {uiSize} class="ml-auto" />
+	{:else}
+		<div class={`${finalIconPlaceholder}` + ' ' + ' ml-auto'}></div>
 	{/if}
 </li>

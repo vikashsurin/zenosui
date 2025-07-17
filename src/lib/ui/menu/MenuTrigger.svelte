@@ -26,8 +26,8 @@
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
-	function toggleMenu(eventType: string) {
-		menuContext.toggleMenu(eventType);
+	function toggleMenu() {
+		menuContext.toggleMenu();
 	}
 
 	let style = tv({
@@ -49,8 +49,8 @@
 	{...props}
 	{uiRounded}
 	{uiSize}
-	onclick={() => toggleMenu('click')}
-	onmouseenter={() => toggleMenu('mouseenter')}
+	onclick={() => toggleMenu()}
+	onmouseenter={() => toggleMenu()}
 >
 	{#if children}
 		{@render children?.()}

@@ -13,27 +13,25 @@
 	const menuBarCtx = getContext<{ activeMenuId: string | null }>('menuBar');
 
 	let open = $state(false);
-	function toggleMenu(eventType: string) {
-		console.log('event type :: ', eventType);
 
+	function toggleMenu() {
 		if (!menuBarCtx) {
+			// Single menu mode
 			open = !open;
-			return;
-		}
-		if (menuBarCtx.activeMenuId === menuId) {
-			menuBarCtx.activeMenuId = null;
 		} else {
-			menuBarCtx.activeMenuId = menuId;
+			// MenuBar mode
+			menuBarCtx.activeMenuId = menuBarCtx.activeMenuId === menuId ? null : menuId;
 		}
 	}
 
-	const isOpen = () => {
-		console.log('x');
+	const isOpen = $derived(() => {
+		// console.log('x');
+		// For single Menu
 		if (!menuBarCtx) {
 			return open;
 		}
 		return menuBarCtx.activeMenuId === menuId;
-	};
+	});
 
 	let menuContext = $state({
 		open: () => isOpen(),
