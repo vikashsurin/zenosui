@@ -3,26 +3,50 @@
 	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
 	import { baseVariant, type RoundedVariant } from '$lib/style/index.js';
-	import type { DropdownMenuProps } from '$lib/types.js';
+	import type { MenuListProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
+	import { clickOutside } from '$lib/utils/utils.js';
 
-	let { children, uiRounded, class: _class, ...props }: DropdownMenuProps = $props();
+	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
-	const menuContext = getContext<{ open: () => boolean; uiRounded: RoundedVariant, menuId: string }>('dropdown');
+	const menuContext = getContext<{
+		open: () => boolean;
+		uiRounded: RoundedVariant;
+		menuId: string;
+		toggleMenu: () => void;
+	}>('dropdown');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
-
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu absolute max-h-[${innerHeight.current}] p-2 mt-1 mb-1 bg-gray-200 w-fit flex flex-col shadow-lg border border-gray-50/50 `,
-		variants: {},
-		defaultVariants: {}
+		base: `zu_menu absolute max-h-[${innerHeight.current}] p-2 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
+		variants: {
+			placement: {
+				bottom: 'top-[100%] mt-1.5 ',
+				top: 'bottom-[100%] mb-1.5 ',
+				right: 'left-[100%] top-0 ml-1',
+				left: 'right-[100%] top-0 mr-1',
+				'right-center': 'left-[100%] top-[50%] -translate-y-[50%] ml-1',
+				'left-center': 'right-[100%] top-[50%] -translate-y-[50%] mr-1',
+				'top-center': 'bottom-[100%] left-[50%] -translate-x-[50%] mb-1',
+				'bottom-center': 'top-[100%] left-[50%] -translate-x-[50%] mt-1'
+			}
+		},
+		defaultVariants: {
+			placement: 'bottom'
+		}
 	});
-	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
+
+	function onclickOutside() {
+		menuContext.toggleMenu();
+		console.log('clickOutside');
+	}
+	$inspect('menuonctext', menuContext.open());
 </script>
 
 {#if menuContext.open()}
-	<ul role="menu" class={finalClass} {...props}>
+	<ul role="menu" use:clickOutside={onclickOutside} class={finalClass} {...props}>
 		{#if children}
 			{@render children?.()}
 		{/if}

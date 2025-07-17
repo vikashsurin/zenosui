@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { Button } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
-	import type { ButtonProps } from '$lib/types.js';
+	import type { MenuTriggerProps } from '$lib/types.js';
 	import type { RoundedVariant, SizeVariant } from '$lib/style/index.js';
 
 	let {
@@ -15,19 +15,19 @@
 		iconRight,
 		class: _class,
 		...props
-	}: ButtonProps = $props();
+	}: MenuTriggerProps = $props();
 
 	const menuContext = getContext<{
 		uiSize: SizeVariant;
 		uiRounded: RoundedVariant;
-		toggleMenu: () => void
+		toggleMenu: () => void;
 	}>('dropdown');
 
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
-	function toggleMenu() {
-		menuContext.toggleMenu();
+	function toggleMenu(eventType: string) {
+		menuContext.toggleMenu(eventType);
 	}
 
 	let style = tv({
@@ -49,8 +49,8 @@
 	{...props}
 	{uiRounded}
 	{uiSize}
-	onclick={toggleMenu}
-	onmouseenter={toggleMenu}
+	onclick={() => toggleMenu('click')}
+	onmouseenter={() => toggleMenu('mouseenter')}
 >
 	{#if children}
 		{@render children?.()}

@@ -1,4 +1,5 @@
 import Div from '$lib/ui/atoms/Div.svelte';
+import ListItem from '$lib/ui/atoms/ListItem.svelte';
 import Button from './button/Button.svelte';
 import Icon from './icon/Icon.svelte';
 import IconButton from './button/IconButton.svelte';
@@ -42,11 +43,13 @@ import Menu from '$lib/ui/menu/Menu.svelte';
 import MenuList from '$lib/ui/menu/MenuList.svelte';
 import MenuItem from '$lib/ui/menu/MenuItem.svelte';
 import MenuTrigger from '$lib/ui/menu/MenuTrigger.svelte';
+import MenuSeparator from '$lib/ui/menu/MenuSeparator.svelte';
 // Menubar
 import Menubar from '$lib/ui/menubar/Menubar.svelte';
 
 export {
 	Div,
+	ListItem,
 	Button,
 	Icon,
 	IconButton,
@@ -83,5 +86,6 @@ export {
 	Menu,
 	MenuList,
 	MenuTrigger,
-	MenuItem
+	MenuItem,
+	MenuSeparator
 };

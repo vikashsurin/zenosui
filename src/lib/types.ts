@@ -80,7 +80,7 @@ export interface WithStateProps {
 	autofocus?: boolean;
 }
 
-export interface WithIconsProps {
+export interface WithIconProps {
 	icon?: Component;
 	iconLeft?: Component;
 	iconRight?: Component;
@@ -93,7 +93,7 @@ export interface DivProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface LabelProps extends BaseProps, HTMLLabelAttributes {}
 
-export interface ListItemProps extends BaseProps, HTMLLiAttributes {}
+export interface ListItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {}
 
 export interface HrProps extends BaseProps, HTMLAttributes<HTMLHRElement> {}
 
@@ -109,7 +109,7 @@ export interface LinkProps extends BaseProps, HTMLAnchorAttributes {
 
 type ButtonAsButton = BaseProps &
 	WithStateProps &
-	WithIconsProps &
+	WithIconProps &
 	HTMLButtonAttributes & {
 		href?: undefined | null;
 		label?: string;
@@ -117,7 +117,7 @@ type ButtonAsButton = BaseProps &
 
 type ButtonAsAnchor = BaseProps &
 	WithStateProps &
-	WithIconsProps &
+	WithIconProps &
 	HTMLAnchorAttributes & {
 		href?: string;
 		label?: string;
@@ -137,19 +137,19 @@ export interface DropdownProps extends BaseProps, HTMLAttributes<HTMLDivElement>
 
 export interface DropdownMenuProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
 
-export interface DropdownItemProps extends BaseProps, WithIconsProps, HTMLLiAttributes {
+export interface DropdownItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {
 	hasSubMenu?: boolean;
 }
 
 export interface SidebarProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
 
-export interface SidebarItemProps extends BaseProps, WithIconsProps, HTMLAnchorAttributes {
+export interface SidebarItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
 	href?: string;
 }
 
 // export interface SideExtrasProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface TextInputProps extends BaseProps, WithIconsProps, HTMLInputAttributes {
+export interface TextInputProps extends BaseProps, WithIconProps, HTMLInputAttributes {
 	invalid?: boolean;
 }
 
@@ -194,3 +194,26 @@ export interface ToastProps extends BasePropsExtended {
 	};
 	onClose?: () => void;
 }
+
+// Menu
+export type placement =
+	| 'top'
+	| 'bottom'
+	| 'right'
+	| 'left'
+	| 'top-center'
+	| 'bottom-center'
+	| 'right-center'
+	| 'left-center';
+
+export interface MenuProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface MenuListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+	placement?: placement;
+}
+
+export interface MenuItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {
+	hasSubMenu?: boolean;
+}
+
+export type MenuTriggerProps = ButtonProps;

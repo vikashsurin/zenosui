@@ -1,28 +1,47 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
+	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
 	import { baseVariant, type RoundedVariant } from '$lib/style/index.js';
-	import type { DropdownMenuProps } from '$lib/types.js';
+	import type { MenuListProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
 
-	let { children, uiRounded, class: _class, ...props }: DropdownMenuProps = $props();
+	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
-	const menuContext = getContext<{ open: boolean; uiRounded: RoundedVariant }>('dropdown');
+	const menuContext = getContext<{
+		open: () => boolean;
+		uiRounded: RoundedVariant;
+		menuId: string;
+		toggleMenu: () => void;
+	}>('dropdown');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 
-	const submenu = getContext<{ open: boolean }>('submenu');
+	const submenuContext = getContext<{ open: boolean }>('submenu');
 
 	let style = tv({
 		extend: baseVariant,
-		base: `absolute left-[100%] top-[-20%] p-2 bg-gray-200 w-fit flex flex-col shadow-lg border border-gray-50/50`,
-		variants: {},
-		defaultVariants: {}
+		base: `zu_menu absolute max-h-[${innerHeight.current}] p-2 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
+		variants: {
+			placement: {
+				bottom: 'top-[100%]  ',
+				top: 'bottom-[100%]  ',
+				right: 'left-[100%] top-0',
+				left: 'right-[100%] top-0',
+				'right-center': 'left-[100%] top-[50%] -translate-y-[50%]',
+				'left-center': 'right-[100%] top-[50%] -translate-y-[50%]',
+				'top-center': 'bottom-[100%] left-[50%] -translate-x-[50%]',
+				'bottom-center': 'top-[100%] left-[50%] -translate-x-[50%]'
+			}
+		},
+		defaultVariants: {
+			placement: 'right'
+		}
 	});
-	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
 </script>
 
-{#if submenu.open}
-	<ul class={finalClass} {...props}>
+{#if submenuContext.open && menuContext.open()}
+	<ul role="menu" class={finalClass} {...props}>
 		{#if children}
 			{@render children?.()}
 		{/if}

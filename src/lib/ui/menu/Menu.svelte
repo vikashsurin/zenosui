@@ -3,30 +3,32 @@
 	import clsx from 'clsx';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import { baseVariant, type RoundedVariant, type SizeVariant } from '$lib/style/index.js';
-	import type { DropdownProps } from '$lib/types.js';
+	import type { MenuProps } from '$lib/types.js';
 	import { getContext, setContext } from 'svelte';
 
-	let { children, uiSize, uiRounded, class: _class, ...props }: DropdownProps = $props();
+	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
 
 	const menuId = crypto.randomUUID();
 
 	const menuBarCtx = getContext<{ activeMenuId: string | null }>('menuBar');
 
 	let open = $state(false);
+	function toggleMenu(eventType: string) {
+		console.log('event type :: ', eventType);
 
-	function toggleMenu() {
 		if (!menuBarCtx) {
 			open = !open;
 			return;
 		}
 		if (menuBarCtx.activeMenuId === menuId) {
-			return menuBarCtx.activeMenuId = null;
+			menuBarCtx.activeMenuId = null;
+		} else {
+			menuBarCtx.activeMenuId = menuId;
 		}
-		open = menuBarCtx.activeMenuId === menuId;
-		menuBarCtx.activeMenuId = menuId;
 	}
 
-	const handleOpen = () => {
+	const isOpen = () => {
+		console.log('x');
 		if (!menuBarCtx) {
 			return open;
 		}
@@ -34,7 +36,7 @@
 	};
 
 	let menuContext = $state({
-		open: () => handleOpen(),
+		open: () => isOpen(),
 		uiSize: uiSize as SizeVariant,
 		uiRounded: uiRounded as RoundedVariant,
 		toggleMenu,
@@ -43,10 +45,9 @@
 
 	setContext('dropdown', menuContext);
 
-
 	let style = tv({
 		extend: baseVariant,
-		base: `relative`,
+		base: `relative  w-fit`,
 		variants: {},
 		defaultVariants: {}
 	});
@@ -54,26 +55,26 @@
 
 	let menu_cont: HTMLDivElement;
 
-	$effect(() => {
-		const screenHeight =
-			innerHeight.current !== undefined
-				? innerHeight.current
-				: typeof window !== 'undefined'
-					? window.innerHeight
-					: 0;
-
-		const dd = menu_cont.querySelector('.zu_menu') as HTMLUListElement | null;
-		if (dd && dd.parentNode instanceof HTMLElement) {
-			const parentSize = dd.parentNode.getBoundingClientRect();
-			if (parentSize.bottom + dd.clientHeight > screenHeight) {
-				dd.style.top = 'auto';
-				dd.style.bottom = '100%';
-			} else {
-				dd.style.top = '100%';
-				dd.style.bottom = 'auto';
-			}
-		}
-	});
+	// $effect(() => {
+	// 	const screenHeight =
+	// 		innerHeight.current !== undefined
+	// 			? innerHeight.current
+	// 			: typeof window !== 'undefined'
+	// 				? window.innerHeight
+	// 				: 0;
+	//
+	// 	const dd = menu_cont.querySelector('.zu_menu') as HTMLUListElement | null;
+	// 	if (dd && dd.parentNode instanceof HTMLElement) {
+	// 		const parentSize = dd.parentNode.getBoundingClientRect();
+	// 		if (parentSize.bottom + dd.clientHeight > screenHeight) {
+	// 			dd.style.top = 'auto';
+	// 			dd.style.bottom = '100%';
+	// 		} else {
+	// 			dd.style.top = '100%';
+	// 			dd.style.bottom = 'auto';
+	// 		}
+	// 	}
+	// });
 </script>
 
 <div id={menuId} class={finalClass} {...props} bind:this={menu_cont}>
