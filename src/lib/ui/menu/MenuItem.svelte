@@ -4,7 +4,6 @@
 	import {
 		baseVariant,
 		ICON_PLACEHOLDER_SIZE,
-		ICON_SIZE,
 		type RoundedVariant,
 		SIZE_PRESET,
 		type SizeVariant
@@ -29,8 +28,8 @@
 		open: boolean;
 		uiSize: SizeVariant;
 		uiRounded: RoundedVariant;
-		toggleMenu: () => void;
-	}>('dropdown');
+		// toggleMenu: () => void;
+	}>('menuContext');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
@@ -51,7 +50,7 @@
 		open: false
 	});
 
-	setContext('submenu', submenu);
+	setContext('subMenuContext', submenu);
 
 	function handleOpenSubmenu() {
 		if (hasSubMenu) {
@@ -68,7 +67,7 @@
 	function customFunc(e: MouseEvent) {
 		// console.log('i was called');
 		e.stopPropagation();
-		if (!hasSubMenu) menuContext.toggleMenu();
+		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
 
 	let iconPlaceholder = tv({
@@ -108,6 +107,6 @@
 	{#if iconRight}
 		<Icon icon={iconRight} {uiSize} class="ml-auto" />
 	{:else}
-		<div class={`${finalIconPlaceholder}` + ' ' + ' ml-auto'}></div>
+		<div class={`${finalIconPlaceholder} ml-auto`}></div>
 	{/if}
 </li>

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE, type OutlineColor } from '$lib/style/index.js';
+	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE_WITH_HEIGHT, type OutlineColor } from '$lib/style/index.js';
 	import type { TextInputProps } from '$lib/types.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
+
 	let {
 		uiColor,
 		uiRounded,
@@ -70,7 +71,7 @@
 		extend: baseVariant,
 		base: `outline-none`,
 		variants: {
-			uiSize: TEXT_SIZE
+			uiSize: TEXT_SIZE_WITH_HEIGHT
 		},
 		defaultVariants: {
 			uiSize: 'md',

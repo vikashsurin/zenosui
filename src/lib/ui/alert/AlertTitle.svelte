@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { TEXT_SIZE } from '$lib/style/index.js';
+	import { TEXT_SIZE_WITH_HEIGHT } from '$lib/style/index.js';
 	import type { AlertTitleProps } from '$lib/types.js';
 
 	let { children, class: _class, ...props }: AlertTitleProps = $props();
@@ -9,7 +9,7 @@
 	let style = tv({
 		base: `zu_alert_title inline-flex  items-center `,
 		variants: {
-			uiSize: TEXT_SIZE
+			uiSize: TEXT_SIZE_WITH_HEIGHT
 		},
 		defaultVariants: {
 			uiSize: 'xl'

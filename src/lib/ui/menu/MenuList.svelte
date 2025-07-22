@@ -10,11 +10,14 @@
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
 	const menuContext = getContext<{
-		open: () => boolean;
-		uiRounded: RoundedVariant;
-		menuId: string;
-		toggleMenu: () => void;
-	}>('dropdown');
+		menuState: {
+			menuId: string,
+			openMenuId: string | null
+		},
+		openMenuId: () => string | null,
+		uiRounded: RoundedVariant,
+		setActiveMenu: (id: string | null) => void
+	}>('menuContext');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 
 	let style = tv({
@@ -22,8 +25,8 @@
 		base: `zu_menu absolute max-h-[${innerHeight.current}] py-0.5 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
 		variants: {
 			placement: {
-				bottom: 'top-[100%] mt-1.5 ',
-				top: 'bottom-[100%] mb-1.5 ',
+				bottom: 'top-[100%] mt-1.5',
+				top: 'bottom-[100%] mb-1.5',
 				right: 'left-[100%] top-0 ml-1',
 				left: 'right-[100%] top-0 mr-1',
 				'right-center': 'left-[100%] top-[50%] -translate-y-[50%] ml-1',
@@ -39,13 +42,13 @@
 	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
 
 	function onclickOutside() {
-		menuContext.toggleMenu();
+		// clickOutside(menuContext, finalClass);
+		menuContext.setActiveMenu({ id: null, type: 'click' });
 		console.log('clickOutside');
 	}
-	$inspect('menuonctext', menuContext.open());
 </script>
 
-{#if menuContext.open()}
+{#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()}
 	<ul role="menu" use:clickOutside={onclickOutside} class={finalClass} {...props}>
 		{#if children}
 			{@render children?.()}

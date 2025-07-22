@@ -7,11 +7,20 @@
 
 	let { children, class: _class }: DivProps = $props();
 
-	const menuBar = $state({
-		activeMenuId: null
+	// const menuBar = $state({
+	// 	activeMenuId: null
+	// });
+	//
+	const activeMenu = $state({
+		id: <string | null>null
 	});
+	const setActiveMenu = (id: string | null) => {
+		activeMenu.id = id;
+	};
+	setContext('menuBarContext', { activeMenu, setActiveMenu });
 
-	setContext('menuBar', menuBar);
+
+	// setContext('menuBar', menuBar);
 	const style = tv({
 		extend: baseVariant,
 		base: 'inline flex gap-1 bg-gray-800 w-fit p-1 rounded-sm',

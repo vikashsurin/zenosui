@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { Menu, MenuList, MenuItem, MenuTrigger, MenuSeparator } from '$lib/ui/index.js';
+	import {
+		Menu,
+		MenuItemCustom,
+		MenuList,
+		MenuItem,
+		MenuTrigger,
+		MenuSeparator,
+		Menubar
+	} from '$lib/ui/index.js';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Submenu from '$lib/ui/menu/Submenu.svelte';
 	import Trash2 from '@lucide/svelte/icons/trash-2';
@@ -26,7 +34,7 @@
 							<MenuItem>Left</MenuItem>
 							<MenuItem>Right</MenuItem>
 							<MenuItem hasSubMenu iconRight={ChevronRight}
-								>Dinosaur Type
+							>Dinosaur Type
 								<Submenu>
 									<MenuItem>T-Rex</MenuItem>
 									<MenuItem>Brachisauraus</MenuItem>
@@ -39,10 +47,13 @@
 					<MenuItem
 						iconLeft={Trash2}
 						class="text-red-600"
-						onclick={() => console.log('delete was called')}>Delete</MenuItem
-					>
+						onclick={() => console.log('delete was called')}
+					>Delete
+					</MenuItem>
 				</Submenu>
 			</MenuItem>
 		</MenuList>
 	</Menu>
+
+
 </div>

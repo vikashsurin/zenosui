@@ -8,41 +8,48 @@
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
 
-	const menuId = crypto.randomUUID();
+	const id = crypto.randomUUID();
 
-	const menuBarCtx = getContext<{ activeMenuId: string | null }>('menuBar');
+	const menuBarContext = getContext<{
+		activeMenu: { id: string | null },
+		setActiveMenu: (id: string | null) => void
+	}>('menuBarContext');
 
-	let open = $state(false);
 
-	function toggleMenu() {
-		if (!menuBarCtx) {
-			// Single menu mode
-			open = !open;
+	const menuState = $state({
+		menuId: id,
+		openMenuId: <string | null>null
+	});
+
+	const openMenuId = $derived.by(() => {
+		if (menuBarContext) {
+			return menuBarContext.activeMenu.id;
 		} else {
-			// MenuBar mode
-			menuBarCtx.activeMenuId = menuBarCtx.activeMenuId === menuId ? null : menuId;
+			return menuState.openMenuId;
 		}
-	}
-
-	const isOpen = $derived(() => {
-		// console.log('x');
-		// For single Menu
-		if (!menuBarCtx) {
-			return open;
-		}
-		return menuBarCtx.activeMenuId === menuId;
 	});
 
-	let menuContext = $state({
-		open: () => isOpen(),
-		uiSize: uiSize as SizeVariant,
-		uiRounded: uiRounded as RoundedVariant,
-		toggleMenu,
-		menuId: menuId
+	$inspect('menu state', openMenuId);
+
+	const setActiveMenu = ({ _id, type }) => {
+		if (menuBarContext) {
+			if (menuBarContext.activeMenu.id === _id && type === 'click') {
+				menuBarContext.setActiveMenu(null);
+			} else {
+				menuBarContext.setActiveMenu(_id);
+			}
+		} else {
+			menuState.openMenuId = _id;
+		}
+	};
+
+	setContext('menuContext', {
+		menuState,
+		openMenuId: () => openMenuId,
+		setActiveMenu,
+		uiRounded,
+		uiSize
 	});
-
-	setContext('dropdown', menuContext);
-
 	let style = tv({
 		extend: baseVariant,
 		base: `relative  w-fit`,
@@ -75,7 +82,7 @@
 	// });
 </script>
 
-<div id={menuId} class={finalClass} {...props} bind:this={menu_cont}>
+<div id={id} class={finalClass} {...props} bind:this={menu_cont}>
 	{#if children}
 		{@render children?.()}
 	{/if}

@@ -7,7 +7,9 @@ import {
 	PADDING,
 	ROUNDED,
 	TEXT_SIZE,
-	VARIANT
+	TEXT_SIZE_WITH_HEIGHT,
+	VARIANT,
+	ICON_SIZE
 } from './index.js';
 
 export const baseVariant = tv({
@@ -15,7 +17,9 @@ export const baseVariant = tv({
 	variants: {
 		uiVariant: VARIANT,
 		uiText: TEXT_SIZE,
+		uiTextWithHeight: TEXT_SIZE_WITH_HEIGHT,
 		uiRounded: ROUNDED,
+		uiIconSize: ICON_SIZE,
 		padding: PADDING,
 		uiColor: CONTENT_COLOR,
 		uiBg: BACKGROUND_COLOR,

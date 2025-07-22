@@ -8,7 +8,8 @@ import type {
 	BorderVariant,
 	BackgroundColor,
 	ContentColor,
-	PaddingVariant
+	PaddingVariant,
+	SizeVariant
 } from './style/types.js';
 
 import type {
@@ -84,6 +85,7 @@ export interface WithIconProps {
 	icon?: Component;
 	iconLeft?: Component;
 	iconRight?: Component;
+	uiIconSize?: SizeVariant;
 }
 
 //=======================
@@ -217,3 +219,17 @@ export interface MenuItemProps extends BaseProps, WithIconProps, HTMLLiAttribute
 }
 
 export type MenuTriggerProps = ButtonProps;
+
+export interface NavigationMenuProps extends BaseProps, HTMLAttributes<HTMLElement> {}
+
+export interface NavigationMenuListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+	placement?: placement;
+}
+
+export interface NavigationMenuGroupProps extends BaseProps, HTMLLiAttributes {}
+
+export interface NavigationMenuItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {}
+
+export interface NavigationMenuBarProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export type NavigationMenuTriggerProps = ButtonProps;

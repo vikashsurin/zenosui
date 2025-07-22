@@ -11,6 +11,7 @@
 		<li><a href="/docs/link">link</a></li>
 		<li><a href="/docs/menu">menu </a></li>
 		<li><a href="/docs/menu-bar">menu bar</a></li>
+		<li><a href="/docs/navigation-menu">navigation-menu</a></li>
 	</ul>
 </div>
 

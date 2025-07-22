@@ -44,8 +44,17 @@ import MenuList from '$lib/ui/menu/MenuList.svelte';
 import MenuItem from '$lib/ui/menu/MenuItem.svelte';
 import MenuTrigger from '$lib/ui/menu/MenuTrigger.svelte';
 import MenuSeparator from '$lib/ui/menu/MenuSeparator.svelte';
+import MenuItemCustom from '$lib/ui/menu/MenuItemCustom.svelte';
 // Menubar
-import Menubar from '$lib/ui/menubar/Menubar.svelte';
+import Menubar from '$lib/ui/menu/Menubar.svelte';
+
+// Navigation menu
+import NavigationMenu from '$lib/ui/navigation-menu/NavigationMenu.svelte';
+import NavigationMenuList from '$lib/ui/navigation-menu/NavigationMenuList.svelte';
+import NavigationMenuGroup from '$lib/ui/navigation-menu/NavigationMenuGroup.svelte';
+import NavigationMenuItem from '$lib/ui/navigation-menu/NavigationMenuItem.svelte';
+import NavigationMenuBar from '$lib/ui/navigation-menu/NavigationMenuBar.svelte';
+import NavigationMenuTrigger from '$lib/ui/navigation-menu/NavigationMenuTrigger.svelte';
 
 export {
 	Div,
@@ -87,5 +96,12 @@ export {
 	MenuList,
 	MenuTrigger,
 	MenuItem,
-	MenuSeparator
+	MenuItemCustom,
+	MenuSeparator,
+	NavigationMenuItem,
+	NavigationMenu,
+	NavigationMenuList,
+	NavigationMenuGroup,
+	NavigationMenuBar,
+	NavigationMenuTrigger
 };

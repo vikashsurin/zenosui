@@ -13,7 +13,7 @@ export const SIZE = {
 	'8xl': 'w-36 h-36'
 };
 
-export const TEXT_SIZE = {
+export const TEXT_SIZE_WITH_HEIGHT = {
 	xs: 'text-xs h-6',
 	sm: 'text-sm h-8',
 	md: 'text-base h-10',
@@ -26,6 +26,20 @@ export const TEXT_SIZE = {
 	'6xl': 'text-6xl h-32',
 	'7xl': 'text-7xl h-36',
 	'8xl': 'text-8xl h-40'
+};
+export const TEXT_SIZE = {
+	xs: 'text-xs ',
+	sm: 'text-sm ',
+	md: 'text-base ',
+	lg: 'text-lg ',
+	xl: 'text-xl ',
+	'2xl': 'text-2xl ',
+	'3xl': ' text-3xl ',
+	'4xl': ' text-4xl ',
+	'5xl': 'text-5xl ',
+	'6xl': 'text-6xl ',
+	'7xl': 'text-7xl ',
+	'8xl': 'text-8xl '
 };
 export const ICON_SIZE = {
 	xs: '[&>svg]:w-3 [&>svg]:h-3',

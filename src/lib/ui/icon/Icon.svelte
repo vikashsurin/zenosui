@@ -8,6 +8,7 @@
 		icon,
 		padding,
 		uiSize,
+		uiIconSize,
 		uiBg,
 		uiColor,
 		uiRounded,
@@ -30,7 +31,7 @@
 			uiBg,
 			uiRounded,
 			uiColor,
-			iconSize: uiSize,
+			iconSize: uiSize || uiIconSize,
 			class: clsx(_class)
 		})
 	);
