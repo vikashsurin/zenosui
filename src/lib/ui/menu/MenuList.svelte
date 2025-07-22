@@ -6,18 +6,12 @@
 	import type { MenuListProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
+	import type { MenuContextType } from './types.js';
 
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
-	const menuContext = getContext<{
-		menuState: {
-			menuId: string,
-			openMenuId: string | null
-		},
-		openMenuId: () => string | null,
-		uiRounded: RoundedVariant,
-		setActiveMenu: (id: string | null) => void
-	}>('menuContext');
+	const menuContext = getContext<MenuContextType>('menuContext');
+
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 
 	let style = tv({
@@ -43,7 +37,7 @@
 
 	function onclickOutside() {
 		// clickOutside(menuContext, finalClass);
-		menuContext.setActiveMenu({ id: null, type: 'click' });
+		menuContext.setActiveMenu({ _id: null, type: 'click' });
 		console.log('clickOutside');
 	}
 </script>

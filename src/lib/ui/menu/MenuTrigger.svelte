@@ -4,7 +4,7 @@
 	import { Button } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 	import type { MenuTriggerProps } from '$lib/types.js';
-	import type { RoundedVariant, SizeVariant } from '$lib/style/index.js';
+	import type { MenuContextType } from './types.js';
 
 	let {
 		children,
@@ -17,26 +17,9 @@
 		...props
 	}: MenuTriggerProps = $props();
 
-	const menuContext = getContext<{
-		menuState: {
-			menuId: string,
-			openMenuId: string | null
-		},
-		openMenuId: string | null,
-		uiRounded: RoundedVariant,
-		uiSize: SizeVariant,
-		setActiveMenu: ({ _id, type }) => void
-	}>('menuContext');
-
+	const menuContext = getContext<MenuContextType>('menuContext');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
-
-	// const menuBarContext = getContext<{
-	// 	activeMenu: { id: string },
-	// 	setActiveMenu: (id: string | null) => void
-	// }>('menuBarContext');
-	//
-	$inspect('from trigger', menuContext.openMenuId);
 
 	function handleFunc(type: 'click' | 'hover') {
 		const id = menuContext.menuState.menuId;

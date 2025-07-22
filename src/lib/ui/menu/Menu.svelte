@@ -2,20 +2,16 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { innerHeight } from 'svelte/reactivity/window';
-	import { baseVariant, type RoundedVariant, type SizeVariant } from '$lib/style/index.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuProps } from '$lib/types.js';
 	import { getContext, setContext } from 'svelte';
+	import { type MenuBarContextType } from './types.js';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
 
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
+
 	const id = crypto.randomUUID();
-
-	const menuBarContext = getContext<{
-		activeMenu: { id: string | null },
-		setActiveMenu: (id: string | null) => void
-	}>('menuBarContext');
-
-
 	const menuState = $state({
 		menuId: id,
 		openMenuId: <string | null>null
@@ -29,27 +25,26 @@
 		}
 	});
 
-	$inspect('menu state', openMenuId);
-
-	const setActiveMenu = ({ _id, type }) => {
+	const setActiveMenu = (props: { _id: string | null; type: string }) => {
 		if (menuBarContext) {
-			if (menuBarContext.activeMenu.id === _id && type === 'click') {
+			if (menuBarContext.activeMenu.id === props._id && props.type === 'click') {
 				menuBarContext.setActiveMenu(null);
 			} else {
-				menuBarContext.setActiveMenu(_id);
+				menuBarContext.setActiveMenu(props._id);
 			}
 		} else {
-			menuState.openMenuId = _id;
+			menuState.openMenuId = props._id;
 		}
 	};
 
 	setContext('menuContext', {
-		menuState,
+		menuState: menuState,
 		openMenuId: () => openMenuId,
-		setActiveMenu,
-		uiRounded,
-		uiSize
+		setActiveMenu: setActiveMenu,
+		uiRounded: uiRounded,
+		uiSize: uiSize
 	});
+
 	let style = tv({
 		extend: baseVariant,
 		base: `relative  w-fit`,
@@ -82,7 +77,7 @@
 	// });
 </script>
 
-<div id={id} class={finalClass} {...props} bind:this={menu_cont}>
+<div {id} class={finalClass} {...props} bind:this={menu_cont}>
 	{#if children}
 		{@render children?.()}
 	{/if}

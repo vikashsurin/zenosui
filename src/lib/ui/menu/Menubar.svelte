@@ -4,23 +4,22 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { DivProps } from '$lib/types.js';
+	import type { MenuBarContextType } from './types.js';
 
 	let { children, class: _class }: DivProps = $props();
 
-	// const menuBar = $state({
-	// 	activeMenuId: null
-	// });
-	//
 	const activeMenu = $state({
 		id: <string | null>null
 	});
 	const setActiveMenu = (id: string | null) => {
 		activeMenu.id = id;
 	};
-	setContext('menuBarContext', { activeMenu, setActiveMenu });
 
+	setContext('menuBarContext', {
+		activeMenu,
+		setActiveMenu
+	} as MenuBarContextType);
 
-	// setContext('menuBar', menuBar);
 	const style = tv({
 		extend: baseVariant,
 		base: 'inline flex gap-1 bg-gray-800 w-fit p-1 rounded-sm',

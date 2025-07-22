@@ -11,6 +11,7 @@
 	import type { MenuItemProps } from '$lib/types.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext, setContext } from 'svelte';
+	import { type MenuContextType } from './types.js';
 
 	let {
 		hasSubMenu,
@@ -24,12 +25,7 @@
 		...props
 	}: MenuItemProps = $props();
 
-	const menuContext = getContext<{
-		open: boolean;
-		uiSize: SizeVariant;
-		uiRounded: RoundedVariant;
-		// toggleMenu: () => void;
-	}>('menuContext');
+	const menuContext = getContext<MenuContextType>('menuContext');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
