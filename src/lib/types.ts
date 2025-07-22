@@ -135,15 +135,6 @@ export interface IconProps extends BasePropsExtended {
 export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {
 	icon: Component;
 }
-
-export interface DropdownProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
-
-export interface DropdownMenuProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
-
-export interface DropdownItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {
-	hasSubMenu?: boolean;
-}
-
 export interface SidebarProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
 
 export interface SidebarItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
@@ -234,3 +225,9 @@ export interface NavigationMenuItemProps extends BaseProps, WithIconProps, HTMLA
 export interface NavigationMenuBarProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
 
 export type NavigationMenuTriggerProps = ButtonProps;
+
+export interface NavigationListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {}
+
+export interface NavigationListItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
+	href?: string;
+}
