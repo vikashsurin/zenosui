@@ -8,7 +8,7 @@
 	<TextInput
 		invalid={false}
 		bind:value={kal}
-		uiSize="md"
+		uiSize="sm"
 		uiRounded="full"
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}

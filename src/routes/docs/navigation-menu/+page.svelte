@@ -6,7 +6,6 @@
 		NavigationMenuList,
 		NavigationMenuTrigger
 	} from '$lib/ui/index.js';
-	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 </script>
 
 <div>

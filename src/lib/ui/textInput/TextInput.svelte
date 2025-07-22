@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE_WITH_HEIGHT, type OutlineColor } from '$lib/style/index.js';
+	import {
+		baseVariant,
+		OUTLINE_COLOR,
+		TEXT_SIZE_WITH_HEIGHT,
+		type OutlineColor
+	} from '$lib/style/index.js';
 	import type { TextInputProps } from '$lib/types.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
@@ -9,7 +14,7 @@
 	let {
 		uiColor,
 		uiRounded,
-		variant,
+		uiVariant,
 		uiSize,
 		iconLeft,
 		invalid,
@@ -64,7 +69,7 @@
 		}
 	});
 	const finalContClass = $derived(
-		contStyle({ uiSize, uiColor, variant, uiRounded, outlineColor: outlineColor })
+		contStyle({ uiSize, uiColor, uiVariant, uiRounded, outlineColor: outlineColor })
 	);
 
 	let style = tv({

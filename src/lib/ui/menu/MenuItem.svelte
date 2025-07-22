@@ -64,9 +64,9 @@
 		}
 	}
 
-	function customFunc(e: MouseEvent) {
-		// console.log('i was called');
+	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
+
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
 
@@ -90,7 +90,7 @@
 	onmouseenter={handleOpenSubmenu}
 	onmouseleave={handleCloseSubmenu}
 	onclick={(e) => {
-		customFunc(e);
+		handleClick(e);
 		onclick?.(e);
 	}}
 	{...props}

@@ -5,6 +5,7 @@
 	import type { NavigationMenuProps } from '$lib/types.js';
 	import { setContext } from 'svelte';
 	import { getContext } from 'svelte';
+
 	let { uiRounded, uiText, children, class: _class, ...props }: NavigationMenuProps = $props();
 
 	const id = crypto.randomUUID();

@@ -9,7 +9,8 @@ import {
 	TEXT_SIZE,
 	TEXT_SIZE_WITH_HEIGHT,
 	VARIANT,
-	ICON_SIZE
+	ICON_SIZE,
+	COLOR_PRESET
 } from './index.js';
 
 export const baseVariant = tv({
@@ -22,6 +23,7 @@ export const baseVariant = tv({
 		uiIconSize: ICON_SIZE,
 		padding: PADDING,
 		uiColor: CONTENT_COLOR,
+		uiColorPreset: COLOR_PRESET,
 		uiBg: BACKGROUND_COLOR,
 		borderColor: BORDER_COLOR,
 		border: BORDER

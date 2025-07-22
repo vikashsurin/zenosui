@@ -129,6 +129,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 export interface IconProps extends BasePropsExtended {
 	icon: Component;
+	uiIconSize?: SizeVariant;
 }
 
 export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {

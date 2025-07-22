@@ -8,7 +8,8 @@ import {
 	PADDING,
 	VARIANT,
 	ROUNDED,
-	SIZE_PRESET
+	SIZE_PRESET,
+	COLOR_PRESET
 } from './index.js';
 
 export type SizeVariant =
@@ -38,3 +39,4 @@ export type ContentColor = keyof typeof CONTENT_COLOR;
 export type BorderColor = keyof typeof BORDER_COLOR;
 export type PaddingVariant = keyof typeof PADDING;
 export type OutlineColor = keyof typeof OUTLINE_COLOR;
+export type colorPreset = keyof typeof COLOR_PRESET;

@@ -1,6 +1,7 @@
 <div class="h-dvh border-r-1 p-4">
 	<ul class="grid gap-2">
 		<li><a href="/docs/button">button</a></li>
+		<li><a href="/docs/icon-button">icon button</a></li>
 		<li><a href="/docs/text-input">text input</a></li>
 		<li><a href="/docs/dropdown-menu">dropdown menu</a></li>
 		<li><a href="/docs/sidebar">sidebar</a></li>
@@ -14,4 +15,3 @@
 		<li><a href="/docs/navigation-menu">navigation-menu</a></li>
 	</ul>
 </div>
-
