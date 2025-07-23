@@ -10,6 +10,7 @@
 		href,
 		iconLeft,
 		iconRight,
+		uiIconRotate,
 		uiSize,
 		class: _class,
 		uiBg,
@@ -64,7 +65,7 @@
 
 <svelte:element this={as} {href} role={href ? 'link' : 'button'} class={finalClasses} {...props}>
 	{#if iconLeft}
-		<Icon {uiSize} icon={iconLeft} />
+		<Icon {uiSize} icon={iconLeft} {uiIconRotate} />
 	{/if}
 	{#if label}
 		{label}
@@ -73,6 +74,6 @@
 		{@render children?.()}
 	{/if}
 	{#if iconRight}
-		<Icon {uiSize} icon={iconRight} />
+		<Icon {uiSize} icon={iconRight} {uiIconRotate} />
 	{/if}
 </svelte:element>

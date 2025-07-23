@@ -86,6 +86,7 @@ export interface WithIconProps {
 	iconLeft?: Component;
 	iconRight?: Component;
 	uiIconSize?: SizeVariant;
+	uiIconRotate?: string;
 }
 
 //=======================
@@ -130,6 +131,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 export interface IconProps extends BasePropsExtended {
 	icon: Component;
 	uiIconSize?: SizeVariant;
+	uiIconRotate?: string; // e.g., 'rotate-45'
 }
 
 export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {
@@ -231,3 +233,13 @@ export interface NavigationListProps extends BaseProps, HTMLAttributes<HTMLUList
 export interface NavigationListItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
 	href?: string;
 }
+export interface RadioProps extends BaseProps, HTMLInputAttributes {}
+export interface CheckboxProps extends BaseProps, HTMLInputAttributes {
+	checked?: boolean;
+}
+export interface AccordionProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface AccordionItemProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface AccordionTriggerProps extends BaseProps, WithIconProps, HTMLButtonAttributes {
+	label?: string;
+}
+export interface AccordionContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}

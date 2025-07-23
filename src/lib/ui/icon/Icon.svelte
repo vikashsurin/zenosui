@@ -9,6 +9,7 @@
 		padding,
 		uiSize,
 		uiIconSize,
+		uiIconRotate,
 		uiBg,
 		uiColor,
 		uiRounded,
@@ -18,13 +19,17 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: ``,
+		base: `inline-block p-2 w-fit`,
 		variants: {
 			iconSize: ICON_SIZE
 		},
-		defaultVariants: {}
+		defaultVariants: {
+			iconSize: 'md'
+		}
 	});
 
+	let iconRotate = $derived(`transform:rotate(${uiIconRotate}deg)`);
+	let finalStyle = $derived(iconRotate);
 	const finalClass = $derived(
 		style({
 			padding,
@@ -37,7 +42,7 @@
 	);
 </script>
 
-<span class={finalClass}>
+<span class={finalClass} style={finalStyle}>
 	{#if icon}
 		{@const IconComponent = icon as Component}
 		<IconComponent />
