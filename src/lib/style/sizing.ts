@@ -14,18 +14,18 @@ export const SIZE = {
 };
 
 export const TEXT_SIZE_WITH_PADDING = {
-	xs: 'text-xs p-1',
-	sm: 'text-sm p-2',
-	md: 'text-base p-3',
-	lg: 'text-lg p-4',
-	xl: 'text-xl p-5',
-	'2xl': 'text-2xl p-6',
-	'3xl': ' text-3xl p-7',
-	'4xl': ' text-4xl p-8',
-	'5xl': 'text-5xl p-9',
-	'6xl': 'text-6xl p-10',
-	'7xl': 'text-7xl p-11',
-	'8xl': 'text-8xl p-12'
+	xs: 'text-xs py-1 px-2',
+	sm: 'text-sm py-2 px-3 ',
+	md: 'text-base py-3 px-4',
+	lg: 'text-lg py-4 px-5',
+	xl: 'text-xl py-5 px-6',
+	'2xl': 'text-2xl py-6 px-7',
+	'3xl': ' text-3xl py-7 px-8',
+	'4xl': ' text-4xl py-8 px-9',
+	'5xl': 'text-5xl py-9 px-10',
+	'6xl': 'text-6xl py-10 px-11',
+	'7xl': 'text-7xl py-11 px-12',
+	'8xl': 'text-8xl py-12 px-13'
 };
 export const TEXT_SIZE_WITH_HEIGHT = {
 	xs: 'text-xs h-6',

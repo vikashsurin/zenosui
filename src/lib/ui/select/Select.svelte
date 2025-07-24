@@ -3,8 +3,9 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { SelectContextType } from './types.js';
+	import type { SelectProps } from '$lib/types.js';
 
-	let { children, uiSize, uiRounded, class: _class } = $props();
+	let { children, uiSize, uiRounded, class: _class }: SelectProps = $props();
 
 	let selectContext = $state({
 		uiSize: uiSize ?? 'md',
@@ -16,7 +17,7 @@
 	setContext('selectContext', selectContext as SelectContextType);
 
 	let style = tv({
-		base: `inline-block w-max relative bg-red-500`,
+		base: `inline-block w-max relative`,
 		variants: {},
 		defaultVariants: {}
 	});

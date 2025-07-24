@@ -244,3 +244,15 @@ export interface AccordionTriggerProps extends BaseProps, WithIconProps, HTMLBut
 	label?: string;
 }
 export interface AccordionContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface SelectProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface SelectTriggerProps extends BaseProps, WithIconProps, HTMLButtonAttributes {
+	label?: string;
+}
+
+export interface SelectListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+	placement?: placement;
+}
+export interface SelectOptionProps extends BaseProps, HTMLLiAttributes {
+	value: string;
+}

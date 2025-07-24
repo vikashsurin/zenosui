@@ -6,12 +6,21 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import { PADDING } from '$lib/style/spacing.js';
+	import type { SelectOptionProps } from '$lib/types.js';
 
-	let { children, uiSize, value, padding, uiRounded, class: _class, ...props } = $props();
+	let {
+		children,
+		uiSize,
+		value,
+		padding,
+		uiRounded,
+		class: _class,
+		...props
+	}: SelectOptionProps = $props();
 	const selectContext = getContext<SelectContextType>('selectContext');
 
 	uiSize = uiSize ?? selectContext.uiSize;
-	uiRounded = uiRounded ?? selectContext.uiRounded;
+	// uiRounded = uiRounded ?? selectContext.uiRounded;
 
 	let style = tv({
 		extend: baseVariant,

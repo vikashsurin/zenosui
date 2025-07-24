@@ -3,7 +3,7 @@
 </script>
 
 <div>
-	<Select uiSize="md" uiRounded="xs">
+	<Select uiSize="sm" uiRounded="xs">
 		<SelectTrigger label="Select" />
 		<SelectList>
 			<SelectOption value="option1">Option this is long</SelectOption>

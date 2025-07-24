@@ -5,7 +5,15 @@
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import { getContext } from 'svelte';
 	import type { SelectContextType } from './types.js';
-	let { children, uiSize, uiRounded, label, iconRight = ChevronsUpDown, class: _class } = $props();
+	import type { SelectTriggerProps } from '$lib/types.js';
+	let {
+		children,
+		uiSize,
+		label,
+		uiRounded,
+		iconRight = ChevronsUpDown,
+		class: _class
+	}: SelectTriggerProps = $props();
 
 	const selectContext = getContext<SelectContextType>('selectContext');
 
