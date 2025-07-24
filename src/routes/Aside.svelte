@@ -19,5 +19,6 @@
 		<li><a href="/docs/accordion">accordion</a></li>
 		<li><a href="/docs/select">select</a></li>
 		<li><a href="/docs/switch">switch</a></li>
+		<li><a href="/docs/tooltip">tooltip</a></li>
 	</ul>
 </div>

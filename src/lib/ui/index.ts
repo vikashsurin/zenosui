@@ -66,6 +66,7 @@ import SelectList from './select/SelectList.svelte';
 import SelectOption from './select/SelectOption.svelte';
 import SelectTrigger from './select/SelectTrigger.svelte';
 import Switch from './switch/Switch.svelte';
+import Tooltip from './tooltip/Tooltip.svelte';
 export {
 	Div,
 	ListItem,
@@ -120,5 +121,6 @@ export {
 	SelectOption,
 	SelectList,
 	SelectTrigger,
-	Switch
+	Switch,
+	Tooltip
 };

@@ -260,3 +260,10 @@ export interface SwitchProps extends BaseProps, HTMLButtonAttributes {
 	checked?: boolean;
 	withBorder?: boolean;
 }
+export interface TooltipProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+	content?: string;
+}
+
+export interface TooltipPopupProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+	content?: string;
+}
