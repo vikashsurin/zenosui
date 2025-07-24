@@ -8,6 +8,7 @@
 	let {
 		label,
 		href,
+		ref = $bindable(),
 		iconLeft,
 		iconRight,
 		uiIconRotate,
@@ -63,12 +64,21 @@
 	let as = href ? 'a' : 'button';
 </script>
 
-<svelte:element this={as} {href} role={href ? 'link' : 'button'} class={finalClasses} {...props}>
+<svelte:element
+	this={as}
+	{href}
+	bind:this={ref}
+	role={href ? 'link' : 'button'}
+	class={finalClasses}
+	{...props}
+>
 	{#if iconLeft}
 		<Icon {uiSize} icon={iconLeft} {uiIconRotate} />
 	{/if}
 	{#if label}
-		{label}
+		<span id="btn-label">
+			{label}
+		</span>
 	{/if}
 	{#if children}
 		{@render children?.()}

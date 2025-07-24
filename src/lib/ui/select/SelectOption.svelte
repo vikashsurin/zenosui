@@ -1,0 +1,37 @@
+<script lang="ts">
+	import { tv } from 'tailwind-variants';
+	import clsx from 'clsx';
+	import { getContext } from 'svelte';
+	import type { SelectContextType } from './types.js';
+	import { baseVariant } from '$lib/style/base.js';
+	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
+	import { PADDING } from '$lib/style/spacing.js';
+
+	let { children, uiSize, value, padding, uiRounded, class: _class, ...props } = $props();
+	const selectContext = getContext<SelectContextType>('selectContext');
+
+	uiSize = uiSize ?? selectContext.uiSize;
+	uiRounded = uiRounded ?? selectContext.uiRounded;
+
+	let style = tv({
+		extend: baseVariant,
+		base: `p-1 hover:bg-gray-200`,
+		variants: {
+			uiSize: TEXT_SIZE_WITH_PADDING,
+			padding: PADDING
+		},
+		defaultVariants: {}
+	});
+	const finalClass = $derived(style({ uiSize, uiRounded, padding, class: clsx(_class) }));
+
+	function handleClick() {
+		selectContext.value = value;
+		selectContext.open = false;
+	}
+</script>
+
+<li class={finalClass} {...props} {value} onclick={handleClick}>
+	{#if children}
+		{@render children?.()}
+	{/if}
+</li>

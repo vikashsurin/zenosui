@@ -54,6 +54,7 @@ export interface BaseProps {
 	/**
 	 * Below are the user defined props
 	 */
+	ref?: any;
 	uiBg?: BackgroundColor;
 	uiColor?: ContentColor;
 	uiSize?: SizePresetVariant;

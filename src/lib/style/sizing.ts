@@ -13,6 +13,20 @@ export const SIZE = {
 	'8xl': 'w-36 h-36'
 };
 
+export const TEXT_SIZE_WITH_PADDING = {
+	xs: 'text-xs p-1',
+	sm: 'text-sm p-2',
+	md: 'text-base p-3',
+	lg: 'text-lg p-4',
+	xl: 'text-xl p-5',
+	'2xl': 'text-2xl p-6',
+	'3xl': ' text-3xl p-7',
+	'4xl': ' text-4xl p-8',
+	'5xl': 'text-5xl p-9',
+	'6xl': 'text-6xl p-10',
+	'7xl': 'text-7xl p-11',
+	'8xl': 'text-8xl p-12'
+};
 export const TEXT_SIZE_WITH_HEIGHT = {
 	xs: 'text-xs h-6',
 	sm: 'text-sm h-8',

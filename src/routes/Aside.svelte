@@ -17,5 +17,6 @@
 		<li><a href="/docs/radio">radio</a></li>
 		<li><a href="/docs/checkbox">checkbox</a></li>
 		<li><a href="/docs/accordion">accordion</a></li>
+		<li><a href="/docs/select">select</a></li>
 	</ul>
 </div>

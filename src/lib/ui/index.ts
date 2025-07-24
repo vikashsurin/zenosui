@@ -61,6 +61,10 @@ import Accordion from './accordion/Accordion.svelte';
 import AccordionItem from './accordion/AccordionItem.svelte';
 import AccordionTrigger from './accordion/AccordionTrigger.svelte';
 import AccordionContent from './accordion/AccordionContent.svelte';
+import Select from './select/Select.svelte';
+import SelectList from './select/SelectList.svelte';
+import SelectOption from './select/SelectOption.svelte';
+import SelectTrigger from './select/SelectTrigger.svelte';
 export {
 	Div,
 	ListItem,
@@ -110,5 +114,9 @@ export {
 	Accordion,
 	AccordionItem,
 	AccordionTrigger,
-	AccordionContent
+	AccordionContent,
+	Select,
+	SelectOption,
+	SelectList,
+	SelectTrigger
 };

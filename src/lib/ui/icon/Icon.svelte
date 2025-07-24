@@ -19,7 +19,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `inline-block p-2 w-fit`,
+		base: `inline-block w-fit`,
 		variants: {
 			iconSize: ICON_SIZE
 		},
