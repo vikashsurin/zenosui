@@ -12,7 +12,20 @@ export const SIZE = {
 	'7xl': 'w-32 h-32',
 	'8xl': 'w-36 h-36'
 };
-
+export const SIZE_FOR_SWITCH = {
+	xs: 'w-8 h-4',
+	sm: 'w-12 h-6',
+	md: 'w-16 h-8',
+	lg: 'w-20 h-10',
+	xl: 'w-24 h-12',
+	'2xl': 'w-28 h-14',
+	'3xl': 'w-32 h-16',
+	'4xl': 'w-40 h-20',
+	'5xl': 'w-48 h-24',
+	'6xl': 'w-56 h-28',
+	'7xl': 'w-64 h-32',
+	'8xl': 'w-72 h-36'
+};
 export const TEXT_SIZE_WITH_PADDING = {
 	xs: 'text-xs py-1 px-2',
 	sm: 'text-sm py-2 px-3 ',

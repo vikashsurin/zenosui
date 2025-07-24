@@ -61,8 +61,8 @@ export interface BaseProps {
 	uiText?: TextSizeVariant;
 	uiRounded?: RoundedVariant;
 	uiVariant?: Variant;
-	border?: BorderVariant;
-	padding?: PaddingVariant;
+	uiBorder?: BorderVariant;
+	uiPadding?: PaddingVariant;
 	uiColorPreset?: ColorVariant;
 }
 
@@ -255,4 +255,8 @@ export interface SelectListProps extends BaseProps, HTMLAttributes<HTMLUListElem
 }
 export interface SelectOptionProps extends BaseProps, HTMLLiAttributes {
 	value: string;
+}
+export interface SwitchProps extends BaseProps, HTMLButtonAttributes {
+	checked?: boolean;
+	withBorder?: boolean;
 }

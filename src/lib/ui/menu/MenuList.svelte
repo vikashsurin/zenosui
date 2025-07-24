@@ -7,7 +7,7 @@
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
 	import type { MenuContextType } from './types.js';
-
+	import { blur, crossfade, fade, fly, scale, slide } from 'svelte/transition';
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
@@ -43,7 +43,14 @@
 </script>
 
 {#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()}
-	<ul role="menu" use:clickOutside={onclickOutside} class={finalClass} {...props}>
+	<ul
+		role="menu"
+		in:slide={{ duration: 300 }}
+		out:slide={{ duration: 300 }}
+		use:clickOutside={onclickOutside}
+		class={finalClass}
+		{...props}
+	>
 		{#if children}
 			{@render children?.()}
 		{/if}

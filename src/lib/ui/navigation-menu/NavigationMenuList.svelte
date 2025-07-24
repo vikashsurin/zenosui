@@ -5,6 +5,7 @@
 	import type { NavigationMenuListProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
+	import { slide } from 'svelte/transition';
 
 	let { placement, children, class: _class, ...props }: NavigationMenuListProps = $props();
 
@@ -57,6 +58,8 @@
 
 {#if navMenuBarCtx.activeNavMenu.id === navMenuCtx.menu.id}
 	<ul
+		in:slide={{ duration: 300 }}
+		out:slide={{ duration: 300 }}
 		use:clickOutside={onclickOutside}
 		class={finalClasses}
 		{...props}

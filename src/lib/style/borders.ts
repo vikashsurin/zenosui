@@ -1,8 +1,17 @@
 export const BORDER = {
 	none: '',
-	1: 'border',
-	2: 'border-2',
-	3: 'border-3'
+	xs: 'border-1',
+	sm: 'border-2',
+	md: 'border-2',
+	lg: 'border-4',
+	xl: 'border-4',
+	'2xl': 'border-4',
+	'3xl': 'border-6',
+	'4xl': 'border-6',
+	'5xl': 'border-8',
+	'6xl': 'border-8',
+	'7xl': 'border-8',
+	'8xl': 'border-8'
 };
 
 export const ROUNDED = {
