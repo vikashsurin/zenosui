@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import { base } from '$app/paths';
 	import { ROUNDED } from '$lib/style/borders.js';
 	import { fly } from 'svelte/transition';
 	import type { TooltipPopupProps } from '$lib/types.js';
@@ -13,8 +11,7 @@
 		uiRounded,
 		uiSize,
 		content = 'this is a tooltip and this is long',
-		class: _class,
-		...props
+		class: _class
 	}: TooltipPopupProps = $props();
 
 	let marginBottom = $derived(uiSize);
@@ -38,7 +35,9 @@
 				'8xl': 'mb-16'
 			}
 		},
-		defaultVariants: {}
+		defaultVariants: {
+			marginBottom: 'sm'
+		}
 	});
 	const finalClass = $derived(style({ uiRounded, marginBottom, class: clsx(_class) }));
 
@@ -47,6 +46,10 @@
 		variants: {
 			uiRounded: ROUNDED,
 			uiSize: TEXT_SIZE_WITH_PADDING
+		},
+		defaultVariants: {
+			uiSize: 'sm',
+			uiRounded: 'sm'
 		}
 	});
 
@@ -74,7 +77,7 @@
 	});
 </script>
 
-<div transition:fly class={`zu_tooltip ${finalClass}`}>
+<div role="tooltip" transition:fly class={`zu_tooltip ${finalClass}`}>
 	<span class={`zu_tooltip_cont ${tooltipCont({ uiRounded, uiSize })}`}>
 		{#if children}
 			{@render children?.()}
@@ -91,14 +94,13 @@
 		bottom: 100%;
 		left: 50%;
 		height: max-content;
-		/* margin-bottom: 0.5rem; */
 		transform: translateX(-50%);
 		text-wrap: nowrap;
 	}
 	.zu_tooltip_cont {
 		display: block;
 		position: relative;
-		z-index: 10000;
+		z-index: 9999;
 		height: 100%;
 		background-color: inherit;
 	}

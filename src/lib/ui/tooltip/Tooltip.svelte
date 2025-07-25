@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/base.js';
 	import TooltipPopup from './TooltipPopup.svelte';
 	import type { TooltipProps } from '$lib/types.js';
 
 	let { children, uiRounded, content, uiSize, class: _class, ...props }: TooltipProps = $props();
 
 	let style = tv({
-		extend: baseVariant,
-		base: `relative inline-block`,
+		base: `.zu_tooltip_maker relative inline-block`,
 		variants: {},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ class: clsx() }));
+
 	let showTooltip = $state(false);
+
 	function handleMouseEnter() {
 		showTooltip = true;
 	}
