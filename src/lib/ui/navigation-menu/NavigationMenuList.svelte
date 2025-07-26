@@ -3,9 +3,9 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
 	import type { NavigationMenuListProps } from '$lib/types.js';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
-	import { slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 
 	let { placement, children, class: _class, ...props }: NavigationMenuListProps = $props();
 
@@ -17,13 +17,13 @@
 		scheduleClose: () => void;
 	}>('navMenuBar');
 
-	const style = tv({
+	const list = tv({
 		extend: baseVariant,
-		base: 'grid gap-2 zu_navigation_menu absolute shadow-md',
+		base: `zu_navigation_menu p-2`,
 		variants: {
 			placement: {
-				bottom: 'top-[100%] mt-2 ',
-				top: 'bottom-[100%] mb-1.5 ',
+				bottom: 'top-[100%] mt-2',
+				top: 'bottom-[100%] mb-1.5',
 				right: 'left-[100%] top-0 ml-1',
 				left: 'right-[100%] top-0 mr-1',
 				'right-center': 'left-[100%] top-[50%] -translate-y-[50%] ml-1',
@@ -32,14 +32,13 @@
 				'bottom-center': 'top-[100%] left-[50%] -translate-x-[50%] mt-2.5'
 			}
 		},
-		compoundVariants: [],
 		defaultVariants: {
 			placement: 'bottom-center'
 		}
 	});
 
 	const finalClasses = $derived(
-		style({
+		list({
 			placement,
 			class: clsx(_class)
 		})
@@ -58,14 +57,15 @@
 
 {#if navMenuBarCtx.activeNavMenu.id === navMenuCtx.menu.id}
 	<ul
-		in:slide={{ duration: 300 }}
-		out:slide={{ duration: 300 }}
-		use:clickOutside={onclickOutside}
 		class={finalClasses}
+		in:fly={{ duration: 200, y: -10 }}
+		out:fly={{ duration: 200, y: -5 }}
+		use:clickOutside={onclickOutside}
 		{...props}
 		onmouseenter={handleMouseEnter}
 		onmouseleave={handleMouseLeave}
 	>
+		<div class="zu_navigation_menu_caret"></div>
 		{#if children}
 			{@render children()}
 		{/if}
@@ -73,17 +73,30 @@
 {/if}
 
 <style>
-	.zu_navigation_menu::before {
-		content: '';
-		display: block;
+	.zu_navigation_menu {
+		flex-direction: column;
 		position: absolute;
-		top: -10px; /* or bottom: -10px for a bottom arrow */
+		border: 1px solid black;
+	}
+	.zu_navigation_menu::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-color: inherit;
+		border-radius: inherit;
+		z-index: -1;
+	}
+	.zu_navigation_menu_caret {
+		display: inline-block;
+		position: absolute;
 		left: 50%;
-		transform: translate(-50%);
-		width: 0;
-		height: 0;
-		border-left: 8px solid transparent;
-		border-right: 8px solid transparent;
-		border-bottom: 10px solid gray;
+		top: 0;
+		transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		height: 10px;
+		width: 10px;
+		background-color: inherit;
+		border: inherit;
+		z-index: -2;
+		background-color: inherit;
 	}
 </style>

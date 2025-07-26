@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
-	import { baseVariant, type RoundedVariant, type SizeVariant, type TextSizeVariant } from '$lib/style/index.js';
+	import {
+		baseVariant,
+		type RoundedVariant,
+		type SizeVariant,
+		type TextSizeVariant
+	} from '$lib/style/index.js';
 	import clsx from 'clsx';
 	import type { NavigationMenuItemProps } from '$lib/types.js';
 	import { getContext } from 'svelte';
@@ -8,7 +13,8 @@
 
 	let {
 		uiRounded,
-		iconLeft, iconRight,
+		iconLeft,
+		iconRight,
 		uiIconSize,
 		uiText,
 		children,
@@ -16,11 +22,10 @@
 		...props
 	}: NavigationMenuItemProps = $props();
 
-
 	const context = getContext<{
-		uiRounded: RoundedVariant,
-		uiText: TextSizeVariant,
-		uiIconSize?: SizeVariant
+		uiRounded: RoundedVariant;
+		uiText: TextSizeVariant;
+		uiIconSize?: SizeVariant;
 	}>('navigationMenuContext');
 	uiRounded = uiRounded ?? context.uiRounded;
 	uiText = uiText ?? context.uiText;
@@ -28,7 +33,7 @@
 
 	const style = tv({
 		extend: baseVariant,
-		base: '',
+		base: 'inline-block p-1',
 		variants: {},
 		compoundVariants: [],
 		defaultVariants: {}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Carousel, CarouselItem, CarouselContent } from '$lib/ui/index.js';
+	import { Carousel } from '$lib/ui/index.js';
 
 	const data = [
 		{
