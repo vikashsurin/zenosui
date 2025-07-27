@@ -21,5 +21,6 @@
 		<li><a href="/docs/switch">switch</a></li>
 		<li><a href="/docs/tooltip">tooltip</a></li>
 		<li><a href="/docs/carousel">carousel</a></li>
+		<li><a href="/docs/tabs">tabs</a></li>
 	</ul>
 </div>
