@@ -5,14 +5,14 @@
 	let { children, class: _class, ...props } = $props();
 
 	let style = tv({
-		base: ``,
+		base: `flex`,
 		variants: {},
 		defaultVariants: {}
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<div>
+<div class={finalClass} {...props}>
 	{#if children}
 		{@render children?.()}
 	{/if}

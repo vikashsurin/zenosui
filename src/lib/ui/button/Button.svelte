@@ -19,9 +19,13 @@
 		border,
 		uiRounded,
 		active,
+		activeClass,
 		children,
 		...props
 	}: ButtonProps = $props();
+
+	$inspect({ activeClass });
+	activeClass = activeClass ?? 'bg-blue-500 text-white';
 
 	const buttonStyle = tv({
 		extend: baseVariant,
@@ -36,7 +40,7 @@
 		compoundVariants: [
 			{
 				active: true,
-				class: 'bg-blue-500 text-white'
+				class: activeClass
 			},
 			{
 				active: false,

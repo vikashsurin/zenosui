@@ -64,6 +64,7 @@ export interface BaseProps {
 	uiBorder?: BorderVariant;
 	uiPadding?: PaddingVariant;
 	uiColorPreset?: ColorVariant;
+	activeClass?: string;
 }
 
 export interface BasePropsExtended extends BaseProps {
