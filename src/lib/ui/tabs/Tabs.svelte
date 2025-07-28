@@ -2,13 +2,16 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
+	import type { TabContextType } from './types.js';
+	import type { TabsProps } from '$lib/types.js';
 
-	let { children, class: _class, ...props } = $props();
+	let { children, class: _class, ...props }: TabsProps = $props();
 
 	let tabState = $state({
 		openTabId: 'tab1'
 	});
-	setContext('tabState', tabState);
+
+	setContext('tabState', tabState as TabContextType);
 
 	$inspect({ tabState });
 	let style = tv({

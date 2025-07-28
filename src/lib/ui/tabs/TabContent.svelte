@@ -2,9 +2,11 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
+	import type { TabContextType } from './types.js';
+	import type { TabContentProps } from '$lib/types.js';
 
-	let { children, id, show, class: _class, ...props } = $props();
-	let tabState = getContext<{ openTabId: string }>('tabState');
+	let { children, id, class: _class, ...props }: TabContentProps = $props();
+	let tabState = getContext<TabContextType>('tabState');
 
 	$inspect('from TabContent', tabState.openTabId);
 

@@ -3,11 +3,13 @@
 	import clsx from 'clsx';
 	import Button from '../button/Button.svelte';
 	import { getContext } from 'svelte';
+	import type { TabTriggerProps } from '$lib/types.js';
+	import type { TabContextType } from './types.js';
 
-	let { children, active, id, class: _class, ...props } = $props();
+	let { children, active, id, activeClass, class: _class, ...props }: TabTriggerProps = $props();
 
-	let tabState = getContext<{ openTabId: string }>('tabState');
-
+	let tabState = getContext<TabContextType>('tabState');
+	activeClass = activeClass ?? 'bg-gray-100 hover:bg-gray-200 text-gray-800';
 	let style = tv({
 		base: `box-border`,
 
@@ -20,6 +22,7 @@
 <Button
 	active={tabState.openTabId === id}
 	class={finalClass}
+	{activeClass}
 	onclick={() => (tabState.openTabId = id)}
 	{...props}
 >

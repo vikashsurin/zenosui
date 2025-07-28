@@ -74,13 +74,11 @@ export interface BasePropsExtended extends BaseProps {
 export interface WithStateProps {
 	active?: boolean;
 	loading?: boolean;
-	disabled?: boolean;
 	error?: boolean;
 	success?: boolean;
 	checked?: boolean;
 	invalid?: boolean;
 	readonly?: boolean;
-	autofocus?: boolean;
 }
 
 export interface WithIconProps {
@@ -268,3 +266,9 @@ export interface TooltipProps extends BaseProps, HTMLAttributes<HTMLDivElement> 
 export interface TooltipPopupProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
 	content?: string;
 }
+
+export interface TabTriggerProps extends BaseProps, WithStateProps, HTMLButtonAttributes {}
+
+export interface TabsProps extends DivProps {}
+export interface TabBarProps extends DivProps {}
+export interface TabContentProps extends DivProps {}

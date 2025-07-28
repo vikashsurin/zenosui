@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tabs, Tab, TabBar, TabTrigger, TabContent } from '$lib/ui/index.js';
+	import { Tabs, TabBar, TabTrigger, TabContent } from '$lib/ui/index.js';
 </script>
 
 <div>
@@ -7,7 +7,7 @@
 
 	<Tabs>
 		<TabBar>
-			<TabTrigger activeClass="bg-gray-100 " id="tab1">Tab 1</TabTrigger>
+			<TabTrigger id="tab1">Tab 1</TabTrigger>
 			<TabTrigger id="tab2">Tab 2</TabTrigger>
 			<TabTrigger id="tab3">Tab 3</TabTrigger>
 		</TabBar>
