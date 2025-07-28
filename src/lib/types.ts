@@ -272,3 +272,11 @@ export interface TabTriggerProps extends BaseProps, WithStateProps, HTMLButtonAt
 export interface TabsProps extends DivProps {}
 export interface TabBarProps extends DivProps {}
 export interface TabContentProps extends DivProps {}
+
+export interface MeterProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface MeterTrackProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+export interface MeterIndicatorProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+	min?: number;
+	max?: number;
+	value?: number;
+}

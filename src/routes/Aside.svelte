@@ -22,5 +22,6 @@
 		<li><a href="/docs/tooltip">tooltip</a></li>
 		<li><a href="/docs/carousel">carousel</a></li>
 		<li><a href="/docs/tabs">tabs</a></li>
+		<li><a href="/docs/meter">meter</a></li>
 	</ul>
 </div>
