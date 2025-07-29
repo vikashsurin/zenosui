@@ -280,3 +280,14 @@ export interface MeterIndicatorProps extends BaseProps, HTMLAttributes<HTMLDivEl
 	max?: number;
 	value?: number;
 }
+export interface WindowSplitterProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+	initialSplitPosition?: number; // Initial split position in percentage
+	minLeftSplitPosition?: number; // Minimum left split position in percentage
+	maxRightSplitPosition?: number; // Maximum right split position in percentage
+}
+
+export interface WindowSeparatorHandleProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface WindowLeftPaneProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface WindowRightPaneProps extends BaseProps, HTMLAttributes<HTMLDivElement> {}

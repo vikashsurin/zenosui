@@ -23,5 +23,6 @@
 		<li><a href="/docs/carousel">carousel</a></li>
 		<li><a href="/docs/tabs">tabs</a></li>
 		<li><a href="/docs/meter">meter</a></li>
+		<li><a href="/docs/window-splitter">window-splitter</a></li>
 	</ul>
 </div>
