@@ -24,7 +24,6 @@
 		...props
 	}: ButtonProps = $props();
 
-	$inspect({ activeClass });
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 
 	const buttonStyle = tv({

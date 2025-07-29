@@ -13,7 +13,6 @@
 
 	setContext('tabState', tabState as TabContextType);
 
-	$inspect({ tabState });
 	let style = tv({
 		base: `zu_tabs`,
 		variants: {},

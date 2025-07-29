@@ -22,7 +22,6 @@
 		}
 	});
 
-	$inspect({ containerElement });
 	let minLeftSplitPosition = windowSplitterContext.minLeftSplitPosition;
 	let maxRightSplitPosition = windowSplitterContext.maxRightSplitPosition;
 

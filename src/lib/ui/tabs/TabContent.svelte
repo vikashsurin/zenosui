@@ -8,8 +8,6 @@
 	let { children, id, class: _class, ...props }: TabContentProps = $props();
 	let tabState = getContext<TabContextType>('tabState');
 
-	$inspect('from TabContent', tabState.openTabId);
-
 	let style = tv({
 		base: `inline-block p-2 bg-gray-100 w-full h-full`,
 		variants: {},

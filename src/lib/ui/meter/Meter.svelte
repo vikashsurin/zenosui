@@ -5,7 +5,6 @@
 
 	let { children, value, class: _class, ...props }: MeterProps = $props();
 
-	$inspect({ value });
 	let style = tv({
 		base: `flex-1`,
 		variants: {},

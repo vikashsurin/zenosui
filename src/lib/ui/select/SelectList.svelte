@@ -24,7 +24,6 @@
 	function onClickOutside() {
 		selectContext.open = false;
 	}
-	$inspect('selectContext', selectContext.open);
 </script>
 
 {#if selectContext.open}
