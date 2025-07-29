@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { HrProps } from '$lib/types.js';
+	import type { HrProps } from '$lib/types/index.js';
 
 	let { class: _class }: HrProps = $props();
 

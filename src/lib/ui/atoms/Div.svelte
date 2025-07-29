@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/index.js';
-	import type { DivProps } from '$lib/types.js';
+	import type { DivProps } from '$lib/types/index.js';
 
 	let {
 		children,

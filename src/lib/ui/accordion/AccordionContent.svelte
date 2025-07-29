@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { AccordionContentProps } from '$lib/types.js';
+	import type { AccordionContentProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { baseVariant } from '$lib/style/base.js';
 	import type { AccordionItemStateType } from './types.js';

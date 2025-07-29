@@ -4,7 +4,7 @@
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import { ROUNDED } from '$lib/style/borders.js';
 	import { fly } from 'svelte/transition';
-	import type { TooltipPopupProps } from '$lib/types.js';
+	import type { TooltipPopupProps } from '$lib/types/index.js';
 
 	let {
 		children,

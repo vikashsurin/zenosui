@@ -1,4 +1,4 @@
-import { addToast, type ToastMessage } from './store.svelte.js';
+import { addToast, type ToastMessage } from '../store/index.svelte.js';
 
 export interface ToastOptions {
 	duration?: number;

@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
 	import type { TabContextType } from './types.js';
-	import type { TabContentProps } from '$lib/types.js';
+	import type { TabContentProps } from '$lib/types/index.js';
 
 	let { children, id, class: _class, ...props }: TabContentProps = $props();
 	let tabState = getContext<TabContextType>('tabState');

@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { base } from '$app/paths';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { WindowRightPaneProps } from '$lib/types.js';
+	import type { WindowRightPaneProps } from '$lib/types/index.js';
 
 	let { uiRounded, children, class: _class, ...props }: WindowRightPaneProps = $props();
 

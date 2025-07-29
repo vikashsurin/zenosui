@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { Button } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
-	import type { MenuTriggerProps } from '$lib/types.js';
+	import type { MenuTriggerProps } from '$lib/types/index.js';
 	import type { MenuContextType } from './types.js';
 
 	let {

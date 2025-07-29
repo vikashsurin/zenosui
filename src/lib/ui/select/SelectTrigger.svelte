@@ -5,7 +5,7 @@
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import { getContext } from 'svelte';
 	import type { SelectContextType } from './types.js';
-	import type { SelectTriggerProps } from '$lib/types.js';
+	import type { SelectTriggerProps } from '$lib/types/index.js';
 	let {
 		children,
 		uiSize,

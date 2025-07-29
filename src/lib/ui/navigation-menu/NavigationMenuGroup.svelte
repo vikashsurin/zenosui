@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import type { NavigationMenuGroupProps } from '$lib/types.js';
+	import type { NavigationMenuGroupProps } from '$lib/types/index.js';
 
 	let {
 		children,

@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import type { NavigationMenuListProps } from '$lib/types.js';
+	import type { NavigationMenuListProps } from '$lib/types/index.js';
 	import { getContext, onMount } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
 	import { fade, fly, slide } from 'svelte/transition';

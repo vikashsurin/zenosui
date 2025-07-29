@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import Button from '../button/Button.svelte';
 	import { getContext } from 'svelte';
-	import type { TabTriggerProps } from '$lib/types.js';
+	import type { TabTriggerProps } from '$lib/types/index.js';
 	import type { TabContextType } from './types.js';
 
 	let { children, active, id, activeClass, class: _class, ...props }: TabTriggerProps = $props();

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { RadioProps } from '$lib/types.js';
+	import type { RadioProps } from '$lib/types/index.js';
 	import { baseVariant } from '$lib/style/base.js';
 
 	let { children, class: _class, ...props }: RadioProps = $props();

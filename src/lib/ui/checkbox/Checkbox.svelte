@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { CheckboxProps } from '$lib/types.js';
+	import type { CheckboxProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: CheckboxProps = $props();
 

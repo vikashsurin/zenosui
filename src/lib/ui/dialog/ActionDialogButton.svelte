@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { Button } from '../index.js';
-	import type { ButtonProps } from '$lib/types.js';
+	import type { ButtonProps } from '$lib/types/index.js';
 
 	let {
 		children,

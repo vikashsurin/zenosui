@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { WindowLeftPaneProps } from '$lib/types.js';
+	import type { WindowLeftPaneProps } from '$lib/types/index.js';
 
 	let { children, uiRounded, class: _class, ...props }: WindowLeftPaneProps = $props();
 

@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { SelectContextType } from './types.js';
-	import type { SelectProps } from '$lib/types.js';
+	import type { SelectProps } from '$lib/types/index.js';
 
 	let { children, uiSize, uiRounded, class: _class }: SelectProps = $props();
 

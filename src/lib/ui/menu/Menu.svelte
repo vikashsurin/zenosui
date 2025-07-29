@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import { baseVariant } from '$lib/style/index.js';
-	import type { MenuProps } from '$lib/types.js';
+	import type { MenuProps } from '$lib/types/index.js';
 	import { getContext, setContext } from 'svelte';
 	import { type MenuBarContextType } from './types.js';
 

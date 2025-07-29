@@ -6,7 +6,7 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import { PADDING } from '$lib/style/spacing.js';
-	import type { SelectOptionProps } from '$lib/types.js';
+	import type { SelectOptionProps } from '$lib/types/index.js';
 
 	let {
 		children,

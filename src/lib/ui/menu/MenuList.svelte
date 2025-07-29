@@ -3,7 +3,7 @@
 	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
 	import { baseVariant, type RoundedVariant } from '$lib/style/index.js';
-	import type { MenuListProps } from '$lib/types.js';
+	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
 	import type { MenuContextType } from './types.js';

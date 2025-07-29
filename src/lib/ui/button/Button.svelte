@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
-	import type { ButtonProps } from '$lib/types.js';
+	import type { ButtonProps } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
 

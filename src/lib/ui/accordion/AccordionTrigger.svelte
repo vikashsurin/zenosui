@@ -4,7 +4,7 @@
 	import { Button } from '../index.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import Plus from '@lucide/svelte/icons/plus';
-	import type { AccordionTriggerProps } from '$lib/types.js';
+	import type { AccordionTriggerProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import type { AccordionItemStateType } from './types.js';
 	let {

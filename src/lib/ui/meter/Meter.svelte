@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { MeterProps } from '$lib/types.js';
+	import type { MeterProps } from '$lib/types/index.js';
 
 	let { children, value, class: _class, ...props }: MeterProps = $props();
 

@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
 	import type { WindowSplitterContextType } from './types.js';
-	import type { WindowSeparatorHandleProps } from '$lib/types.js';
+	import type { WindowSeparatorHandleProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: WindowSeparatorHandleProps = $props();
 

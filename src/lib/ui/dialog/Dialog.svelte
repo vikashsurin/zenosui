@@ -4,7 +4,7 @@
 	import { setContext } from 'svelte';
 
 	import { baseVariant } from '$lib/style/index.js';
-	import type { DialogProps } from '$lib/types.js';
+	import type { DialogProps } from '$lib/types/index.js';
 
 	let {
 		children,

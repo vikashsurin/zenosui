@@ -4,7 +4,7 @@
 	import {
 		baseVariant
 	} from '$lib/style/index.js';
-	import type { MenuItemProps } from '$lib/types.js';
+	import type { MenuItemProps } from '$lib/types/index.js';
 
 	let {
 		children,

@@ -7,7 +7,7 @@
 		type TextSizeVariant
 	} from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import type { NavigationMenuItemProps } from '$lib/types.js';
+	import type { NavigationMenuItemProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { Icon } from '$lib/ui/index.js';
 

@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant, ICON_SIZE } from '$lib/style/index.js';
-	import type { IconProps } from '$lib/types.js';
+	import type { IconProps } from '$lib/types/index.js';
 
 	let {
 		icon,

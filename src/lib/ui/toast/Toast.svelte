@@ -6,8 +6,8 @@
 	import AlertCircle from '@lucide/svelte/icons/alert-circle';
 	import AlertTriangle from '@lucide/svelte/icons/alert-triangle';
 	import Info from '@lucide/svelte/icons/info';
-	import type { ToastProps } from '$lib/types.js';
-	import { removeToast } from '$lib/utils/store.svelte.js';
+	import type { ToastProps } from '$lib/types/index.js';
+	import { removeToast } from '$lib/store/index.svelte.js';
 
 	let {
 		id,

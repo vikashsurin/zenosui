@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { AlertFooterProps } from '$lib/types.js';
+	import type { AlertFooterProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: AlertFooterProps = $props();
 

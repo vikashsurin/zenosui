@@ -7,7 +7,7 @@
 		TEXT_SIZE_WITH_HEIGHT,
 		type OutlineColor
 	} from '$lib/style/index.js';
-	import type { TextInputProps } from '$lib/types.js';
+	import type { TextInputProps } from '$lib/types/index.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
 

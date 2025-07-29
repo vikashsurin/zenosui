@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { NavigationListProps } from '$lib/types.js';
+	import type { NavigationListProps } from '$lib/types/index.js';
 	import { baseVariant } from '$lib/style/index.js';
 	import { setContext } from 'svelte';
 

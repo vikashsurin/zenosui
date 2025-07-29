@@ -8,7 +8,7 @@
 		SIZE_PRESET,
 		type SizeVariant
 	} from '$lib/style/index.js';
-	import type { MenuItemProps } from '$lib/types.js';
+	import type { MenuItemProps } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext, setContext } from 'svelte';
 	import { type MenuContextType } from './types.js';

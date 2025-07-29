@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { TEXT_SIZE_WITH_HEIGHT } from '$lib/style/index.js';
-	import type { AlertTitleProps } from '$lib/types.js';
+	import type { AlertTitleProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: AlertTitleProps = $props();
 

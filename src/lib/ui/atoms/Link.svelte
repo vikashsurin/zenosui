@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import type { LinkProps } from '$lib/types.js';
+	import type { LinkProps } from '$lib/types/index.js';
 
 	let {
 		children,

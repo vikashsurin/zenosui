@@ -7,7 +7,7 @@
 		type RoundedVariant,
 		type SizeVariant
 	} from '$lib/style/index.js';
-	import type { SidebarItemProps } from '$lib/types.js';
+	import type { SidebarItemProps } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 

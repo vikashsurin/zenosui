@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import type { NavigationMenuProps } from '$lib/types.js';
+	import type { NavigationMenuProps } from '$lib/types/index.js';
 	import { setContext } from 'svelte';
 	import { getContext } from 'svelte';
 

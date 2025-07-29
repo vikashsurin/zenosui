@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
 	import { SIZE } from '$lib/style/sizing.js';
-	import type { MeterTrackProps } from '$lib/types.js';
+	import type { MeterTrackProps } from '$lib/types/index.js';
 
 	let { uiSize, uiRounded, children, class: _class, ...props }: MeterTrackProps = $props();
 

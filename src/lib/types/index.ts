@@ -10,7 +10,7 @@ import type {
 	ContentColor,
 	PaddingVariant,
 	SizeVariant
-} from './style/types.js';
+} from '../style/types.js';
 
 import type {
 	HTMLAnchorAttributes,

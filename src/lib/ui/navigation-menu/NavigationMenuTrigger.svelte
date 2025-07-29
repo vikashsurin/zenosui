@@ -4,7 +4,7 @@
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
 	import { Button } from '$lib/ui/index.js';
-	import type { NavigationMenuTriggerProps } from '$lib/types.js';
+	import type { NavigationMenuTriggerProps } from '$lib/types/index.js';
 
 	let {
 		uiSize,

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { ListItemProps } from '$lib/types.js';
+	import type { ListItemProps } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
 

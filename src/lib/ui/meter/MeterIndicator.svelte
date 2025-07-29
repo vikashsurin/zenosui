@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
 
-	import type { MeterIndicatorProps } from '$lib/types.js';
+	import type { MeterIndicatorProps } from '$lib/types/index.js';
 
 	let {
 		children,

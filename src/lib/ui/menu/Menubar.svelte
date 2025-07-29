@@ -3,7 +3,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
-	import type { DivProps } from '$lib/types.js';
+	import type { DivProps } from '$lib/types/index.js';
 	import type { MenuBarContextType } from './types.js';
 
 	let { children, class: _class }: DivProps = $props();

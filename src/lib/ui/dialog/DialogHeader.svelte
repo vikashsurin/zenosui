@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { DialogHeaderProps } from '$lib/types.js';
+	import type { DialogHeaderProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: DialogHeaderProps = $props();
 

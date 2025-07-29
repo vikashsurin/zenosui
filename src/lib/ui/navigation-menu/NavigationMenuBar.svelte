@@ -3,7 +3,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
 	import { onDestroy, setContext } from 'svelte';
-	import type { NavigationMenuBarProps } from '$lib/types.js';
+	import type { NavigationMenuBarProps } from '$lib/types/index.js';
 
 	let { children, class: _class, ...props }: NavigationMenuBarProps = $props();
 

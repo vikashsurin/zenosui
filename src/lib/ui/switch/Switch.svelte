@@ -4,7 +4,7 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { SIZE_FOR_SWITCH } from '$lib/style/sizing.js';
 	import { BORDER, ROUNDED } from '$lib/style/borders.js';
-	import type { SwitchProps } from '$lib/types.js';
+	import type { SwitchProps } from '$lib/types/index.js';
 
 	let {
 		checked = $bindable(false),
