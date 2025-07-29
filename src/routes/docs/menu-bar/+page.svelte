@@ -1,12 +1,10 @@
 <script lang="ts">
-
-
-	import { Menu, Menubar, MenuItem, MenuList, MenuTrigger } from '$lib/ui/index.js';
+	import { Menu, MenuBar, MenuItem, MenuList, MenuTrigger } from '$lib/ui/index.js';
 </script>
 
 <div>
 	<h1>Menu bar</h1>
-	<Menubar>
+	<MenuBar>
 		<Menu uiSize="sm" uiRounded="xs">
 			<MenuTrigger>Movies</MenuTrigger>
 			<MenuList>
@@ -34,5 +32,5 @@
 				<MenuItem>Superman</MenuItem>
 			</MenuList>
 		</Menu>
-	</Menubar>
+	</MenuBar>
 </div>
