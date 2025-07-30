@@ -8,5 +8,3 @@ export * from './presets.js';
 // Base depends on all above styles
 export * from './base.js';
 
-//style types
-export * from './types.ts';

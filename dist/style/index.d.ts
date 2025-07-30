@@ -5,4 +5,3 @@ export * from "./borders.js";
 export * from "./variants.js";
 export * from "./presets.js";
 export * from "./base.js";
-export * from "./types.ts";
