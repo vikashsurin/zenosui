@@ -1,12 +1,12 @@
-export * from './colors.js';
-export * from './sizing.js';
-export * from './spacing.js';
-export * from './borders.js';
-export * from './variants.js';
-export * from './presets.js';
+export * from './colors.ts';
+export * from './sizing.ts';
+export * from './spacing.ts';
+export * from './borders.ts';
+export * from './variants.ts';
+export * from './presets.ts';
 
 // Base depends on all above styles
-export * from './base.js';
+export * from './base.ts';
 
 //style types
-export * from './types.js';
+export * from './types.ts';
