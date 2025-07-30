@@ -1,4 +1,4 @@
-export declare const SIZE_PRESET: {
+export const SIZE_PRESET: {
     xs: string;
     sm: string;
     md: string;
@@ -12,13 +12,13 @@ export declare const SIZE_PRESET: {
     '7xl': string;
     '8xl': string;
 };
-export declare const COLOR_PRESET: {
-    none: string;
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    success: string;
-    warning: string;
-    danger: string;
-    custom: string;
-};
+export namespace COLOR_PRESET {
+    let none: string;
+    let primary: string;
+    let secondary: string;
+    let tertiary: string;
+    let success: string;
+    let warning: string;
+    let danger: string;
+    let custom: string;
+}

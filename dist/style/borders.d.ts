@@ -1,4 +1,4 @@
-export declare const BORDER: {
+export const BORDER: {
     none: string;
     xs: string;
     sm: string;
@@ -13,7 +13,7 @@ export declare const BORDER: {
     '7xl': string;
     '8xl': string;
 };
-export declare const ROUNDED: {
+export const ROUNDED: {
     none: string;
     xs: string;
     sm: string;

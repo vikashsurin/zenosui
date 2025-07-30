@@ -1,4 +1,4 @@
-export declare const PADDING: {
+export const PADDING: {
     none: string;
     xs: string;
     sm: string;

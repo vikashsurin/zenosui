@@ -1,4 +1,4 @@
-export declare const SIZE: {
+export const SIZE: {
     xs: string;
     sm: string;
     md: string;
@@ -12,7 +12,7 @@ export declare const SIZE: {
     '7xl': string;
     '8xl': string;
 };
-export declare const SIZE_FOR_SWITCH: {
+export const SIZE_FOR_SWITCH: {
     xs: string;
     sm: string;
     md: string;
@@ -26,7 +26,7 @@ export declare const SIZE_FOR_SWITCH: {
     '7xl': string;
     '8xl': string;
 };
-export declare const TEXT_SIZE_WITH_PADDING: {
+export const TEXT_SIZE_WITH_PADDING: {
     xs: string;
     sm: string;
     md: string;
@@ -40,7 +40,7 @@ export declare const TEXT_SIZE_WITH_PADDING: {
     '7xl': string;
     '8xl': string;
 };
-export declare const TEXT_SIZE_WITH_HEIGHT: {
+export const TEXT_SIZE_WITH_HEIGHT: {
     xs: string;
     sm: string;
     md: string;
@@ -54,7 +54,7 @@ export declare const TEXT_SIZE_WITH_HEIGHT: {
     '7xl': string;
     '8xl': string;
 };
-export declare const TEXT_SIZE: {
+export const TEXT_SIZE: {
     xs: string;
     sm: string;
     md: string;
@@ -68,7 +68,7 @@ export declare const TEXT_SIZE: {
     '7xl': string;
     '8xl': string;
 };
-export declare const ICON_SIZE: {
+export const ICON_SIZE: {
     xs: string;
     sm: string;
     md: string;
@@ -82,7 +82,7 @@ export declare const ICON_SIZE: {
     '7xl': string;
     '8xl': string;
 };
-export declare const ICON_PLACEHOLDER_SIZE: {
+export const ICON_PLACEHOLDER_SIZE: {
     xs: string;
     sm: string;
     md: string;

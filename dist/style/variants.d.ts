@@ -1,6 +1,6 @@
-export declare const VARIANT: {
-    none: string;
-    outline: string;
-    filled: string;
-    ghost: string;
-};
+export namespace VARIANT {
+    let none: string;
+    let outline: string;
+    let filled: string;
+    let ghost: string;
+}

@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import * as all from '../lib/style/index.ts';
+import * as all from '../lib/style/index.js';
 
 function extractClasses(obj) {
 	const classes = [];

@@ -1,4 +1,4 @@
-import { BACKGROUND_COLOR, BORDER, BORDER_COLOR, COLOR, CONTENT_COLOR, OUTLINE_COLOR, PADDING, VARIANT, ROUNDED, SIZE_PRESET, COLOR_PRESET } from './index.ts';
+import { BACKGROUND_COLOR, BORDER, BORDER_COLOR, COLOR, CONTENT_COLOR, OUTLINE_COLOR, PADDING, VARIANT, ROUNDED, SIZE_PRESET, COLOR_PRESET } from './index.js';
 export type SizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl';
 export type TextSizeVariant = SizeVariant;
 export type ColorVariant = keyof typeof COLOR;

@@ -6,7 +6,13 @@ export const COLOR = {
 	danger: 'bg-red-500 text-white outline-red-500',
 	warning: 'bg-yellow-500 text-white outline-yellow-500',
 	success: 'bg-green-500 text-white outline-green-500',
-	custom: (color: string) => {
+
+	/**
+	 * Custom color. Pass a tailwind color class as a string.
+	 * @example
+	 *  <Button uiColor="custom('bg-indigo-500')">Click Me</Button>
+	 */
+	custom: (color) => {
 		console.log('custom color:: ', color);
 	}
 };

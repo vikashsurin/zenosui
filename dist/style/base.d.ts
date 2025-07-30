@@ -1,4 +1,4 @@
-export declare const baseVariant: import("tailwind-variants").TVReturnType<{
+export const baseVariant: import("tailwind-variants").TVReturnType<{
     uiVariant: {
         none: string;
         outline: string;

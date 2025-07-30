@@ -10,7 +10,7 @@ import {
 	ROUNDED,
 	SIZE_PRESET,
 	COLOR_PRESET
-} from './index.ts';
+} from './index.js';
 
 export type SizeVariant =
 	| 'xs'
