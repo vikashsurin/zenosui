@@ -7,5 +7,3 @@ export * from './utils/index.js';
 export * from './store/index.svelte.js';
 
 export * from './types/index.js';
-
-export * from './tailwind-presets.js';
