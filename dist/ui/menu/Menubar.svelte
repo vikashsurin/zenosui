@@ -1,0 +1,42 @@
+<script lang="ts">
+	import { tv } from 'tailwind-variants';
+	import { baseVariant } from '../../style/index.js';
+	import clsx from 'clsx';
+	import { setContext } from 'svelte';
+	import type { DivProps } from '../../types/index.js';
+	import type { MenuBarContextType } from './types.js';
+
+	let { children, class: _class }: DivProps = $props();
+
+	const activeMenu = $state({
+		id: <string | null>null
+	});
+	const setActiveMenu = (id: string | null) => {
+		activeMenu.id = id;
+	};
+
+	setContext('menuBarContext', {
+		activeMenu,
+		setActiveMenu
+	} as MenuBarContextType);
+
+	const style = tv({
+		extend: baseVariant,
+		base: 'inline flex gap-1 bg-gray-800 w-fit p-1 rounded-sm',
+		variants: {},
+		compoundVariants: [],
+		defaultVariants: {}
+	});
+
+	const finalClasses = $derived(
+		style({
+			class: clsx(_class)
+		})
+	);
+</script>
+
+<div class={finalClasses}>
+	{#if children}
+		{@render children()}
+	{/if}
+</div>
