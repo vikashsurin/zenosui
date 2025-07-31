@@ -9,7 +9,7 @@
 		MenuBar
 	} from '$lib/ui/index.js';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import Submenu from '$lib/ui/menu/Submenu.svelte';
+	import Submenu from '$lib/ui/menu/SubMenu.svelte';
 	import Trash2 from '@lucide/svelte/icons/trash-2';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 </script>
