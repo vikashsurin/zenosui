@@ -6,7 +6,7 @@
 <div>
 	<Accordion>
 		<AccordionItem>
-			<AccordionTrigger iconLeft={BadgeCheck} iconRightRotation="180" class="flex justify-start"
+			<AccordionTrigger iconLeft={BadgeCheck} iconRightRotation="60deg" class="flex justify-start"
 				>Apples</AccordionTrigger
 			>
 			<AccordionContent>The apples are great.</AccordionContent>
