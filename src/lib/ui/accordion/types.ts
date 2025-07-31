@@ -5,5 +5,5 @@
 
 export type AccordionItemStateType = {
 	expanded: boolean;
-	iconRotate: string;
+	iconRightRotation: string;
 };

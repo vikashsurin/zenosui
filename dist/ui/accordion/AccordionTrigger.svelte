@@ -9,10 +9,12 @@
 	import type { AccordionItemStateType } from './types.js';
 	let {
 		children,
-		iconLeft,
-		iconRight = Plus,
 		uiSize,
 		uiRounded,
+		iconLeft,
+		iconRight = Plus,
+		iconLeftRotation,
+		iconRightRotation,
 		class: _class
 	}: AccordionTriggerProps = $props();
 
@@ -27,19 +29,23 @@
 
 	const finalClass = $derived(style({ class: clsx(_class) }));
 
-	let rotation = '0';
 	const setIconRotation = () => {
-		if (rotation === '0') {
+		let rotation = '0';
+		if (!accordionItemState.expanded) {
+			return rotation;
+		}
+
+		if (iconRightRotation === undefined || iconRightRotation === null) {
 			rotation = '45';
 		} else {
-			rotation = '0';
+			rotation = iconRightRotation;
 		}
-		console.log('rotation', rotation);
 		return rotation;
 	};
+
 	function handleClick() {
 		accordionItemState.expanded = !accordionItemState.expanded;
-		accordionItemState.iconRotate = setIconRotation();
+		accordionItemState.iconRightRotation = setIconRotation();
 	}
 </script>
 
@@ -47,9 +53,10 @@
 	class={finalClass}
 	{iconLeft}
 	{iconRight}
+	{iconLeftRotation}
 	{uiSize}
 	{uiRounded}
-	uiIconRotate={accordionItemState.iconRotate}
+	iconRightRotation={accordionItemState.iconRightRotation}
 	onclick={handleClick}
 >
 	{#if children}

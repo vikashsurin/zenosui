@@ -1,7 +1,14 @@
 import type { Snippet, Component } from 'svelte';
-import type { SizePresetVariant, RoundedVariant, Variant, TextSizeVariant, ColorVariant, BorderVariant, BackgroundColor, ContentColor, PaddingVariant, SizeVariant } from '../style/types.js';
 import type { HTMLAnchorAttributes, HTMLAttributes, HTMLButtonAttributes, HTMLDialogAttributes, HTMLInputAttributes, HTMLLabelAttributes, HTMLLiAttributes } from 'svelte/elements';
-export interface BaseProps {
+export type sizeTokens = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl';
+export type colorTokens = 'none' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+export type ColorVariant = colorTokens;
+export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';
+export type SizeVariant = sizeTokens;
+export type PaddingVariant = 'none' | sizeTokens;
+export type RoundedVariant = 'none' | sizeTokens | 'full';
+export type BorderVariant = 'none' | sizeTokens;
+export interface UiProps {
     /**
      * The class name to apply to the component.
      * Children will be rendered inside the component.
@@ -11,21 +18,20 @@ export interface BaseProps {
      * Below are the user defined props
      */
     ref?: any;
-    uiBg?: BackgroundColor;
-    uiColor?: ContentColor;
-    uiSize?: SizePresetVariant;
-    uiText?: TextSizeVariant;
+    uiBg?: ColorVariant;
+    uiColor?: ColorVariant;
+    uiSize?: SizeVariant;
+    uiText?: SizeVariant;
     uiRounded?: RoundedVariant;
-    uiVariant?: Variant;
+    uiVariant?: FillVariant;
     uiBorder?: BorderVariant;
     uiPadding?: PaddingVariant;
     uiColorPreset?: ColorVariant;
-    activeClass?: string;
 }
-export interface BasePropsExtended extends BaseProps {
+export interface ComponentProps extends UiProps {
     class?: string;
 }
-export interface WithStateProps {
+export interface StateProps {
     active?: boolean;
     loading?: boolean;
     error?: boolean;
@@ -33,73 +39,78 @@ export interface WithStateProps {
     checked?: boolean;
     invalid?: boolean;
     readonly?: boolean;
+    disabled?: boolean;
+    activeClass?: string;
 }
-export interface WithIconProps {
+export interface IconProps {
     icon?: Component;
     iconLeft?: Component;
     iconRight?: Component;
+    iconRotation?: string;
+    iconLeftRotation?: string;
+    iconRightRotation?: string;
     uiIconSize?: SizeVariant;
-    uiIconRotate?: string;
 }
-export interface DivProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface DivProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface LabelProps extends BaseProps, HTMLLabelAttributes {
+export interface LabelProps extends UiProps, HTMLLabelAttributes {
 }
-export interface ListItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {
+export interface ListItemProps extends UiProps, IconProps, HTMLLiAttributes {
 }
-export interface HrProps extends BaseProps, HTMLAttributes<HTMLHRElement> {
+export interface HrProps extends UiProps, HTMLAttributes<HTMLHRElement> {
 }
-export interface HeadingProps extends BaseProps, HTMLAttributes<HTMLHeadingElement> {
+export interface HeadingProps extends UiProps, HTMLAttributes<HTMLHeadingElement> {
 }
-export interface LinkProps extends BaseProps, HTMLAnchorAttributes {
+export interface LinkProps extends UiProps, HTMLAnchorAttributes {
     href?: string;
 }
-type ButtonAsButton = BaseProps & WithStateProps & WithIconProps & HTMLButtonAttributes & {
-    href?: undefined | null;
+type ButtonAsButton = UiProps & StateProps & IconProps & HTMLButtonAttributes & {
+    href?: never;
     label?: string;
 };
-type ButtonAsAnchor = BaseProps & WithStateProps & WithIconProps & HTMLAnchorAttributes & {
+type ButtonAsAnchor = UiProps & StateProps & IconProps & HTMLAnchorAttributes & {
     href?: string;
     label?: string;
 };
+/**  button accepts uiSize, uiRounded, uiVariant, uiColor **/
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
-export interface IconProps extends BasePropsExtended {
+export interface IconCompProps extends ComponentProps {
     icon: Component;
     uiIconSize?: SizeVariant;
-    uiIconRotate?: string;
+    iconRotation?: string;
 }
-export interface IconButtonProps extends BaseProps, HTMLButtonAttributes {
+export interface IconButtonProps extends UiProps, HTMLButtonAttributes {
     icon: Component;
 }
-export interface SidebarProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+export interface SidebarProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 }
-export interface SidebarItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
+export interface SidebarItemProps extends UiProps, IconProps, HTMLAnchorAttributes {
     href?: string;
 }
-export interface TextInputProps extends BaseProps, WithIconProps, HTMLInputAttributes {
+export interface TextInputProps extends UiProps, IconProps, HTMLInputAttributes {
     invalid?: boolean;
 }
-export interface AlertDialogProps extends BaseProps, HTMLDialogAttributes {
+export interface AlertDialogProps extends UiProps, HTMLDialogAttributes {
     showModal?: boolean;
 }
-export interface AlertHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {
+export interface AlertHeaderProps extends UiProps, HTMLAttributes<HTMLElement> {
 }
-export interface AlertFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {
+export interface AlertFooterProps extends UiProps, HTMLAttributes<HTMLElement> {
 }
-export interface AlertTitleProps extends BaseProps, HTMLAttributes<HTMLHeadingElement> {
+export interface AlertTitleProps extends UiProps, HTMLAttributes<HTMLHeadingElement> {
 }
-export interface AlertContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface AlertContentProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface DialogProps extends BaseProps, HTMLDialogAttributes {
+export interface DialogProps extends UiProps, HTMLDialogAttributes {
     backdrop?: boolean;
 }
-export interface DialogContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface DialogContentProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface DialogFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {
+export interface DialogFooterProps extends UiProps, HTMLAttributes<HTMLElement> {
 }
-export interface DialogHeaderProps extends BaseProps, HTMLAttributes<HTMLElement> {
+export interface DialogHeaderProps extends UiProps, HTMLAttributes<HTMLElement> {
 }
-export interface ToastProps extends BasePropsExtended {
+export interface ToastProps extends ComponentProps {
     id?: string;
     message: string;
     type?: 'success' | 'error' | 'warning' | 'info';
@@ -113,93 +124,92 @@ export interface ToastProps extends BasePropsExtended {
     onClose?: () => void;
 }
 export type placement = 'top' | 'bottom' | 'right' | 'left' | 'top-center' | 'bottom-center' | 'right-center' | 'left-center';
-export interface MenuProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface MenuProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface MenuListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+export interface MenuListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
     placement?: placement;
 }
-export interface MenuItemProps extends BaseProps, WithIconProps, HTMLLiAttributes {
+export interface MenuItemProps extends UiProps, IconProps, HTMLLiAttributes {
     hasSubMenu?: boolean;
 }
 export type MenuTriggerProps = ButtonProps;
-export interface NavigationMenuProps extends BaseProps, HTMLAttributes<HTMLElement> {
+export interface NavigationMenuProps extends UiProps, HTMLAttributes<HTMLElement> {
 }
-export interface NavigationMenuListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+export interface NavigationMenuListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
     placement?: placement;
 }
-export interface NavigationMenuGroupProps extends BaseProps, HTMLLiAttributes {
+export interface NavigationMenuGroupProps extends UiProps, HTMLLiAttributes {
 }
-export interface NavigationMenuItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
+export interface NavigationMenuItemProps extends UiProps, IconProps, HTMLAnchorAttributes {
 }
-export interface NavigationMenuBarProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface NavigationMenuBarProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
 export type NavigationMenuTriggerProps = ButtonProps;
-export interface NavigationListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+export interface NavigationListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 }
-export interface NavigationListItemProps extends BaseProps, WithIconProps, HTMLAnchorAttributes {
+export interface NavigationListItemProps extends UiProps, IconProps, HTMLAnchorAttributes {
     href?: string;
 }
-export interface RadioProps extends BaseProps, HTMLInputAttributes {
+export interface RadioProps extends UiProps, HTMLInputAttributes {
 }
-export interface CheckboxProps extends BaseProps, HTMLInputAttributes {
+export interface CheckboxProps extends UiProps, HTMLInputAttributes {
     checked?: boolean;
 }
-export interface AccordionProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface AccordionProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface AccordionItemProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface AccordionItemProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface AccordionTriggerProps extends BaseProps, WithIconProps, HTMLButtonAttributes {
+export interface AccordionTriggerProps extends UiProps, IconProps, HTMLButtonAttributes {
     label?: string;
 }
-export interface AccordionContentProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface AccordionContentProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface SelectProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface SelectProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface SelectTriggerProps extends BaseProps, WithIconProps, HTMLButtonAttributes {
+export interface SelectTriggerProps extends UiProps, IconProps, HTMLButtonAttributes {
     label?: string;
 }
-export interface SelectListProps extends BaseProps, HTMLAttributes<HTMLUListElement> {
+export interface SelectListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
     placement?: placement;
 }
-export interface SelectOptionProps extends BaseProps, HTMLLiAttributes {
+export interface SelectOptionProps extends UiProps, HTMLLiAttributes {
     value: string;
 }
-export interface SwitchProps extends BaseProps, HTMLButtonAttributes {
+export interface SwitchProps extends UiProps, HTMLButtonAttributes {
     checked?: boolean;
     withBorder?: boolean;
 }
-export interface TooltipProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends UiProps, HTMLAttributes<HTMLDivElement> {
     content?: string;
 }
-export interface TooltipPopupProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface TooltipPopupProps extends UiProps, HTMLAttributes<HTMLDivElement> {
     content?: string;
 }
-export interface TabTriggerProps extends BaseProps, WithStateProps, HTMLButtonAttributes {
-}
+export type TabTriggerProps = ButtonProps;
 export interface TabsProps extends DivProps {
 }
 export interface TabBarProps extends DivProps {
 }
 export interface TabContentProps extends DivProps {
 }
-export interface MeterProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface MeterProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface MeterTrackProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface MeterTrackProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface MeterIndicatorProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface MeterIndicatorProps extends UiProps, HTMLAttributes<HTMLDivElement> {
     min?: number;
     max?: number;
     value?: number;
 }
-export interface WindowSplitterProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface WindowSplitterProps extends UiProps, HTMLAttributes<HTMLDivElement> {
     initialSplitPosition?: number;
     minLeftSplitPosition?: number;
     maxRightSplitPosition?: number;
 }
-export interface WindowSeparatorHandleProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface WindowSeparatorHandleProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface WindowLeftPaneProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface WindowLeftPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
-export interface WindowRightPaneProps extends BaseProps, HTMLAttributes<HTMLDivElement> {
+export interface WindowRightPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
 export {};

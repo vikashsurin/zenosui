@@ -1,4 +1,5 @@
-import type { IconProps } from '../../types/index.js';
-declare const Icon: import("svelte").Component<IconProps, {}, "">;
+import type { IconCompProps } from '../../types/index.js';
+import type { Component } from 'svelte';
+declare const Icon: Component<IconCompProps, {}, "">;
 type Icon = ReturnType<typeof Icon>;
 export default Icon;

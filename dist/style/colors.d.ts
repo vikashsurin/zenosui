@@ -1,4 +1,4 @@
-export namespace COLOR {
+export namespace BACKGROUND_COLOR {
     let none: string;
     let primary: string;
     let secondary: string;
@@ -6,9 +6,8 @@ export namespace COLOR {
     let danger: string;
     let warning: string;
     let success: string;
-    function custom(color: any): void;
 }
-export namespace BACKGROUND_COLOR {
+export namespace CONTENT_COLOR {
     let none_1: string;
     export { none_1 as none };
     let primary_1: string;
@@ -24,7 +23,7 @@ export namespace BACKGROUND_COLOR {
     let success_1: string;
     export { success_1 as success };
 }
-export namespace CONTENT_COLOR {
+export namespace OUTLINE_COLOR {
     let none_2: string;
     export { none_2 as none };
     let primary_2: string;
@@ -40,7 +39,7 @@ export namespace CONTENT_COLOR {
     let success_2: string;
     export { success_2 as success };
 }
-export namespace OUTLINE_COLOR {
+export namespace BORDER_COLOR {
     let none_3: string;
     export { none_3 as none };
     let primary_3: string;
@@ -55,20 +54,4 @@ export namespace OUTLINE_COLOR {
     export { warning_3 as warning };
     let success_3: string;
     export { success_3 as success };
-}
-export namespace BORDER_COLOR {
-    let none_4: string;
-    export { none_4 as none };
-    let primary_4: string;
-    export { primary_4 as primary };
-    let secondary_4: string;
-    export { secondary_4 as secondary };
-    let tertiary_4: string;
-    export { tertiary_4 as tertiary };
-    let danger_4: string;
-    export { danger_4 as danger };
-    let warning_4: string;
-    export { warning_4 as warning };
-    let success_4: string;
-    export { success_4 as success };
 }

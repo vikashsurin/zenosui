@@ -6,7 +6,7 @@
 	import type { DivProps } from '../../types/index.js';
 	import type { MenuBarContextType } from './types.js';
 
-	let { children, class: _class }: DivProps = $props();
+	let { children, uiSize, uiRounded, class: _class }: DivProps = $props();
 
 	const activeMenu = $state({
 		id: <string | null>null
@@ -17,7 +17,9 @@
 
 	setContext('menuBarContext', {
 		activeMenu,
-		setActiveMenu
+		setActiveMenu,
+		uiRounded,
+		uiSize
 	} as MenuBarContextType);
 
 	const style = tv({

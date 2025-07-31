@@ -1,4 +1,4 @@
-import type { RoundedVariant, SizeVariant } from '../../style/index.js';
+import type { RoundedVariant, SizeVariant } from '../../types/index.ts';
 export type MenuContextType = {
     menuState: {
         menuId: string;
@@ -17,4 +17,6 @@ export type MenuBarContextType = {
         id: string | null;
     };
     setActiveMenu: (id: string | null) => void;
+    uiRounded?: RoundedVariant;
+    uiSize?: SizeVariant;
 };

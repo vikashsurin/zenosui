@@ -1,21 +1,4 @@
-export const COLOR = {
-	none: '',
-	primary: 'bg-blue-500 text-white outline-blue-500',
-	secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 outline-gray-200',
-	tertiary: 'bg-gray-300 text-gray-800 outline-gray-300',
-	danger: 'bg-red-500 text-white outline-red-500',
-	warning: 'bg-yellow-500 text-white outline-yellow-500',
-	success: 'bg-green-500 text-white outline-green-500',
 
-	/**
-	 * Custom color. Pass a tailwind color class as a string.
-	 * @example
-	 *  <Button uiColor="custom('bg-indigo-500')">Click Me</Button>
-	 */
-	custom: (color) => {
-		console.log('custom color:: ', color);
-	}
-};
 export const BACKGROUND_COLOR = {
 	none: '',
 	primary: 'bg-blue-500 hover:bg-blue-600',

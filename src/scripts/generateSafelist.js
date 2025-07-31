@@ -2,7 +2,13 @@ import fs from 'fs/promises';
 import path from 'path';
 import * as all from '../lib/style/index.js';
 
+/**
+ * @param {{ [s: string]: any; } | ArrayLike<any>} obj
+ */
 function extractClasses(obj) {
+	/**
+	 * @type {string[]}
+	 */
 	const classes = [];
 	Object.values(obj).forEach((value) => {
 		if (typeof value === 'string') {
@@ -17,7 +23,7 @@ const safelist = [
 	...extractClasses(all.TEXT_SIZE),
 	...extractClasses(all.SIZE_PRESET),
 	...extractClasses(all.COLOR_PRESET),
-	...extractClasses(all.VARIANT),
+	...extractClasses(all.FILL_VARIANT),
 	...extractClasses(all.ROUNDED),
 	...extractClasses(all.PADDING),
 	...extractClasses(all.BACKGROUND_COLOR),

@@ -3,12 +3,11 @@
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 
-	const handleClick = () => console.log('Button clicked');
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 </script>
 
 <div class="">
-	<Button uiRounded="sm" label="Button" onclick={handleClick} disabled />
+	<Button uiRounded="sm" label="Button" iconRight={ChevronRight} />
 
 	<Button
 		href="https://www.google.com"
@@ -40,7 +39,5 @@
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}
 	/>
-	<Button iconLeft={ChevronDown} uiRounded="full" uiSize="sm">
-		down
-	</Button>
+	<Button iconLeft={ChevronDown} uiRounded="full" uiSize="sm">down</Button>
 </div>

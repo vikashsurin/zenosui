@@ -2,20 +2,21 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant, ICON_SIZE } from '$lib/style/index.js';
-	import type { IconProps } from '$lib/types/index.js';
+	import type { IconCompProps } from '$lib/types/index.js';
+	import type { Component } from 'svelte';
 
 	let {
 		icon,
-		padding,
-		uiSize,
-		uiIconSize,
-		uiIconRotate,
 		uiBg,
+		uiSize,
 		uiColor,
 		uiRounded,
+		uiPadding,
+		uiIconSize,
+		iconRotation,
 		children,
 		class: _class
-	}: IconProps = $props();
+	}: IconCompProps = $props();
 
 	let style = tv({
 		extend: baseVariant,
@@ -28,11 +29,11 @@
 		}
 	});
 
-	let iconRotate = $derived(`transform:rotate(${uiIconRotate}deg)`);
+	let iconRotate = $derived(`transform:rotate(${iconRotation}deg)`);
 	let finalStyle = $derived(iconRotate);
 	const finalClass = $derived(
 		style({
-			padding,
+			uiPadding,
 			uiBg,
 			uiRounded,
 			uiColor,

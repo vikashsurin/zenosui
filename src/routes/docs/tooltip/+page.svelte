@@ -7,10 +7,10 @@
 	<h1>Tooltip</h1>
 	<Tooltip
 		content="How are you doing?"
-		uiSize="sm"
-		uiRounded="xs"
+		uiSize="xs"
+		uiRounded="md"
 		class="border border-amber-600/60 bg-amber-200 text-amber-600 shadow-amber-500/20"
 	>
-		<Button>DemoButton</Button>
+		<Button label="hover me">DemoButton</Button>
 	</Tooltip>
 </div>

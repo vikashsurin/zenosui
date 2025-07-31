@@ -23,5 +23,9 @@ export const ROUNDED: {
     '2xl': string;
     '3xl': string;
     '4xl': string;
+    '5xl': string;
+    '6xl': string;
+    '7xl': string;
+    '8xl': string;
     full: string;
 };

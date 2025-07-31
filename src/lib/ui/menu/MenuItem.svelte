@@ -62,7 +62,7 @@
 
 	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
-
+		menuContext.setActiveMenu({ _id: null, type: 'click' });
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
 

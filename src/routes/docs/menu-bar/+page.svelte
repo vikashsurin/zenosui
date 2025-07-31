@@ -4,8 +4,8 @@
 
 <div>
 	<h1>Menu bar</h1>
-	<MenuBar>
-		<Menu uiSize="sm" uiRounded="xs">
+	<MenuBar uiSize="xs">
+		<Menu uiRounded="xs">
 			<MenuTrigger>Movies</MenuTrigger>
 			<MenuList>
 				<MenuItem>Godzilla</MenuItem>
@@ -14,7 +14,7 @@
 				<MenuItem>Superman</MenuItem>
 			</MenuList>
 		</Menu>
-		<Menu uiSize="sm" uiRounded="xs">
+		<Menu uiRounded="xs">
 			<MenuTrigger>Movies</MenuTrigger>
 			<MenuList>
 				<MenuItem>Godzilla</MenuItem>
@@ -23,7 +23,7 @@
 				<MenuItem>Superman</MenuItem>
 			</MenuList>
 		</Menu>
-		<Menu uiSize="sm" uiRounded="xs">
+		<Menu uiRounded="xs">
 			<MenuTrigger>Movies</MenuTrigger>
 			<MenuList>
 				<MenuItem>Godzilla</MenuItem>

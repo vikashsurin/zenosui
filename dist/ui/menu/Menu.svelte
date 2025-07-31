@@ -10,6 +10,8 @@
 	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
 
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
+	uiRounded = uiRounded ? uiRounded : menuBarContext?.uiRounded;
+	uiSize = uiSize ? uiSize : menuBarContext?.uiSize;
 
 	const id = crypto.randomUUID();
 	const menuState = $state({

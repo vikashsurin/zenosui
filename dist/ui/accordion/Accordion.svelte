@@ -3,13 +3,13 @@
 	import clsx from 'clsx';
 	import type { AccordionProps } from '../../types/index.js';
 	import { setContext } from 'svelte';
-	import type { AccordionStateType } from './types.js';
+	import type { AccordionItemStateType } from './types.js';
 
 	let { children, class: _class, ...props }: AccordionProps = $props();
 
 	let accordionState = $state({
 		expanded: false
-	} as AccordionStateType);
+	} as AccordionItemStateType);
 
 	setContext('accordionState', accordionState);
 

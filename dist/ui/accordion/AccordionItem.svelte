@@ -10,7 +10,7 @@
 
 	let accordionItemState = $state({
 		expanded: false,
-		iconRotate: '0deg'
+		iconRightRotation: '0deg'
 	});
 	setContext('accordionItemState', accordionItemState);
 
