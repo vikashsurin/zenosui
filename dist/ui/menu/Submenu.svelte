@@ -11,11 +11,11 @@
 
 	const menuContext = getContext<{
 		menuState: {
-			menuId: string,
-			openMenuId: string | null
-		},
-		uiRounded: RoundedVariant,
-		setActiveMenu: (id: string | null) => void
+			menuId: string;
+			openMenuId: string | null;
+		};
+		uiRounded: RoundedVariant;
+		setActiveMenu: (id: string | null) => void;
 	}>('menuContext');
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 

@@ -19,7 +19,16 @@ const safelist = [
 	...extractClasses(all.COLOR_PRESET),
 	...extractClasses(all.VARIANT),
 	...extractClasses(all.ROUNDED),
-	...extractClasses(all.PADDING)
+	...extractClasses(all.PADDING),
+	...extractClasses(all.BACKGROUND_COLOR),
+	...extractClasses(all.CONTENT_COLOR),
+	...extractClasses(all.BORDER_COLOR), ,
+	...extractClasses(all.BORDER),
+	...extractClasses(all.OUTLINE_COLOR),
+	...extractClasses(all.TEXT_SIZE_WITH_HEIGHT),
+	...extractClasses(all.TEXT_SIZE_WITH_PADDING),
+	...extractClasses(all.ICON_PLACEHOLDER_SIZE),
+
 ];
 console.log('Extracted classes:', safelist);
 async function generateSafelist() {

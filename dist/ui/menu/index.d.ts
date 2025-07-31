@@ -5,3 +5,4 @@ export { default as MenuTrigger } from './MenuTrigger.svelte';
 export { default as MenuSeparator } from './MenuSeparator.svelte';
 export { default as MenuItemCustom } from './MenuItemCustom.svelte';
 export { default as MenuBar } from './MenuBar.svelte';
+export { default as SubMenu } from './SubMenu.svelte';
