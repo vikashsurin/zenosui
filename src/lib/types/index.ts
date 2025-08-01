@@ -43,13 +43,21 @@ export type colorTokens =
 	| 'success'
 	| 'warning'
 	| 'danger';
-
+export type positionTokens =
+	| 'top-left'
+	| 'top-center'
+	| 'top-right'
+	| 'bottom-left'
+	| 'bottom-center'
+	| 'bottom-right'
+	| 'center';
 export type ColorVariant = colorTokens;
 export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';
 export type SizeVariant = sizeTokens;
 export type PaddingVariant = 'none' | sizeTokens;
 export type RoundedVariant = 'none' | sizeTokens | 'full';
 export type BorderVariant = 'none' | sizeTokens;
+export type PositionVariant = positionTokens;
 
 export interface UiProps {
 	/**
@@ -303,3 +311,7 @@ export interface WindowSeparatorHandleProps extends UiProps, HTMLAttributes<HTML
 export interface WindowLeftPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface WindowRightPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface ToasterProps extends UiProps, HTMLAttributes<HTMLDivElement> {
+	position?: PositionVariant;
+}

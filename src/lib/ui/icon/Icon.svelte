@@ -20,7 +20,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `inline-block w-fit`,
+		base: ``,
 		variants: {
 			iconSize: ICON_SIZE
 		},
@@ -57,3 +57,11 @@
 		{@render children()}
 	{/if}
 </span>
+
+<style>
+	span {
+		display: inline-block;
+		width: auto;
+		flex-shrink: 0;
+	}
+</style>
