@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { toaster } from './toaster.svelte.ts';
+	import { toastManager } from './toastManager.svelte.ts';
 	import { IconButton } from '../index.js';
 	import X from '@lucide/svelte/icons/x';
 	import { fade, fly, slide } from 'svelte/transition';

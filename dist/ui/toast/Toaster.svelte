@@ -2,12 +2,12 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import NewToast from './Toast.svelte';
-	import { toastStore } from './toaster.svelte.ts';
+	import { toastStore } from './toastManager.svelte.ts';
 	import { POSITION } from '../../style/postition.js';
 	import type { ToasterProps } from '../../types/index.ts';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import { toaster } from './toaster.svelte.ts';
+	import { toastManager } from './toastManager.svelte.ts';
 
 	let { children, class: _class, ...props }: ToasterProps = $props();
 
@@ -23,7 +23,7 @@
 
 	if (import.meta.hot) {
 		import.meta.hot.dispose(() => {
-			toaster.removeToaster();
+			toastManager.removeToaster();
 		});
 	}
 	let animeStyle = $state({
