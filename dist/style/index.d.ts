@@ -3,5 +3,6 @@ export * from "./sizing.js";
 export * from "./spacing.js";
 export * from "./borders.js";
 export * from "./fill.js";
+export * from "./postition.js";
 export * from "./presets.js";
 export * from "./base.js";

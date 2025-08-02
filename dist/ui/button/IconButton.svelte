@@ -17,7 +17,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex items-center justify-center`,
+		base: ``,
 		variants: {
 			uiSize: SIZE
 		},
@@ -36,3 +36,12 @@
 		<Icon {icon} uiIconSize={uiSize} />
 	{/if}
 </button>
+
+<style>
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+</style>

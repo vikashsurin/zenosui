@@ -2,12 +2,14 @@ import type { Snippet, Component } from 'svelte';
 import type { HTMLAnchorAttributes, HTMLAttributes, HTMLButtonAttributes, HTMLDialogAttributes, HTMLInputAttributes, HTMLLabelAttributes, HTMLLiAttributes } from 'svelte/elements';
 export type sizeTokens = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl';
 export type colorTokens = 'none' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+export type positionTokens = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' | 'center';
 export type ColorVariant = colorTokens;
 export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';
 export type SizeVariant = sizeTokens;
 export type PaddingVariant = 'none' | sizeTokens;
 export type RoundedVariant = 'none' | sizeTokens | 'full';
 export type BorderVariant = 'none' | sizeTokens;
+export type PositionVariant = positionTokens;
 export interface UiProps {
     /**
      * The class name to apply to the component.
@@ -211,5 +213,8 @@ export interface WindowSeparatorHandleProps extends UiProps, HTMLAttributes<HTML
 export interface WindowLeftPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 }
 export interface WindowRightPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {
+}
+export interface ToasterProps extends UiProps, HTMLAttributes<HTMLUListElement> {
+    position?: PositionVariant;
 }
 export {};

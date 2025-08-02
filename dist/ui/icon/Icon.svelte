@@ -13,14 +13,14 @@
 		uiRounded,
 		uiPadding,
 		uiIconSize,
-		iconRotation,
+		iconRotation = '0deg',
 		children,
 		class: _class
 	}: IconCompProps = $props();
 
 	let style = tv({
 		extend: baseVariant,
-		base: `inline-block w-fit`,
+		base: ``,
 		variants: {
 			iconSize: ICON_SIZE
 		},
@@ -29,8 +29,14 @@
 		}
 	});
 
-	let iconRotate = $derived(`transform:rotate(${iconRotation}deg)`);
-	let finalStyle = $derived(iconRotate);
+	let rotation = $derived.by(() => {
+		if (iconRotation?.includes('deg')) {
+			return iconRotation;
+		} else {
+			return iconRotation + 'deg';
+		}
+	});
+
 	const finalClass = $derived(
 		style({
 			uiPadding,
@@ -43,7 +49,7 @@
 	);
 </script>
 
-<span class={finalClass} style={finalStyle}>
+<span class={finalClass} style={`transform:rotate(${rotation})`}>
 	{#if icon}
 		{@const IconComponent = icon as Component}
 		<IconComponent />
@@ -51,3 +57,11 @@
 		{@render children()}
 	{/if}
 </span>
+
+<style>
+	span {
+		display: inline-block;
+		width: auto;
+		flex-shrink: 0;
+	}
+</style>
