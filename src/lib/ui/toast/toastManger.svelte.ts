@@ -9,6 +9,7 @@ export interface Toast {
 	position?: PositionVariant;
 	duration?: number;
 	styleClass?: string;
+	xBtnStyleClass?: string;
 }
 
 export const toastStore = $state({
