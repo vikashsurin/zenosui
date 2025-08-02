@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { toaster } from '$lib/index.js';
+	import { toastManager } from '$lib/index.js';
 
-	import type { Toast } from '$lib/ui/toast/toaster.svelte.ts';
+	import type { Toast } from '$lib/ui/toast/toastManager.svelte.ts';
 	let count = 0;
 	function addToast() {
 		const toast: Toast = {
@@ -10,7 +10,7 @@
 			styleClass:
 				'bg-rose-100 text-rose-600  text-sm w-[200px] border border-rose-400/20 shadow-inherit shadow-lg'
 		};
-		toaster.createToast(toast).position('bottom-right').maxToasts(3);
+		toastManager.createToast(toast).position('bottom-right').maxToasts(3);
 		count++;
 	}
 </script>

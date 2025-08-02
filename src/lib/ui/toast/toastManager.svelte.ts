@@ -81,4 +81,4 @@ export function createToastManager() {
 	};
 }
 
-export const toaster = createToastManager();
+export const toastManager = createToastManager();
