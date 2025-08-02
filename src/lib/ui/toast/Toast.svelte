@@ -14,7 +14,7 @@
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 	function handleRemoveToast() {
-		toaster.removeToast(id);
+		toastManager.removeToast(id);
 	}
 
 	const xBtnStyleClass = $state(
