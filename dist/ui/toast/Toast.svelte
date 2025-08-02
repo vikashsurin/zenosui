@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { toastManager } from './toastManager.svelte.ts';
+	import { toastManager } from './toastManager.svelte.js';
 	import { IconButton } from '../index.js';
 	import X from '@lucide/svelte/icons/x';
 	import { fade, fly, slide } from 'svelte/transition';
@@ -14,6 +14,7 @@
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 	function handleRemoveToast() {
+		console.log('handleRemoveToast');
 		toastManager.removeToast(id);
 	}
 
