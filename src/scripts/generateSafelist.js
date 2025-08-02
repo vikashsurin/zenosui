@@ -34,6 +34,7 @@ const safelist = [
 	...extractClasses(all.TEXT_SIZE_WITH_HEIGHT),
 	...extractClasses(all.TEXT_SIZE_WITH_PADDING),
 	...extractClasses(all.ICON_PLACEHOLDER_SIZE),
+	...extractClasses(all.POSITION)
 
 ];
 console.log('Extracted classes:', safelist);
