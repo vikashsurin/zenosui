@@ -1,4 +1,4 @@
-import type { RoundedVariant, SizeVariant } from '../../types/index.ts';
+import type { RoundedVariant, SizeVariant } from '../../types/index.js';
 export type MenuContextType = {
     menuState: {
         menuId: string;

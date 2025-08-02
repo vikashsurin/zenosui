@@ -1,5 +1,5 @@
 import type { UUID } from 'crypto';
-import type { PositionVariant } from '../../types/index.ts';
+import type { PositionVariant } from '../../types/index.js';
 export interface Toast {
     message: string;
     id?: UUID;
