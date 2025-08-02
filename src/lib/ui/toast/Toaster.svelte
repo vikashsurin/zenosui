@@ -2,12 +2,12 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import NewToast from './Toast.svelte';
-	import { toastStore } from '$lib/ui/toast/toastManager.svelte.ts';
+	import { toastStore } from '$lib/ui/toast/toastManager.svelte.js';
 	import { POSITION } from '$lib/style/postition.js';
-	import type { ToasterProps } from '$lib/types/index.ts';
+	import type { ToasterProps } from '$lib/types/index.js';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import { toastManager } from './toastManager.svelte.ts';
+	import { toastManager } from './toastManager.svelte.js';
 
 	let { children, class: _class, ...props }: ToasterProps = $props();
 

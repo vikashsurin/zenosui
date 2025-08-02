@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { toastManager } from '$lib/index.js';
 
-	import type { Toast } from '$lib/ui/toast/toastManager.svelte.ts';
+	import type { Toast } from '$lib/ui/toast/toastManager.svelte.js';
 	let count = 0;
 	function addToast() {
 		const toast: Toast = {

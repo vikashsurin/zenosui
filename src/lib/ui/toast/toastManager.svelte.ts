@@ -1,7 +1,7 @@
 import type { UUID } from 'crypto';
 import Toaster from './Toaster.svelte';
 import { mount, unmount } from 'svelte';
-import type { PositionVariant } from '$lib/types/index.ts';
+import type { PositionVariant } from '$lib/types/index.js';
 import { browser } from '$app/environment';
 
 export interface Toast {
