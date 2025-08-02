@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { toaster } from '$lib/ui/toast/toaster.svelte.ts';
+	import { toaster } from '$lib/index.js';
 
 	import type { Toast } from '$lib/ui/toast/toaster.svelte.ts';
 	let count = 0;
