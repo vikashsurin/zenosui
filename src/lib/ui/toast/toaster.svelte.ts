@@ -1,8 +1,9 @@
 import type { UUID } from 'crypto';
-import NewToaster from './NewToaster.svelte';
+import Toaster from './Toaster.svelte';
 import { mount, unmount } from 'svelte';
 import type { PositionVariant } from '$lib/types/index.ts';
 import { browser } from '$app/environment';
+
 export interface Toast {
 	message: string;
 	id?: UUID;
@@ -10,6 +11,7 @@ export interface Toast {
 	duration?: number;
 	styleClass?: string;
 	xBtnStyleClass?: string;
+	fresh?: boolean;
 }
 
 export const toastStore = $state({
@@ -18,19 +20,18 @@ export const toastStore = $state({
 	maxToasts: <number>3
 });
 
-let toaster: any = null;
+let toastContainer: any = null;
 
 export function createToastManager() {
 	return {
 		createToast(toast: Toast) {
 			const id = crypto.randomUUID();
-			toastStore.toasts.push({ ...toast, id });
-			if (!toaster) {
+			toastStore.toasts.push({ ...toast, id, fresh: true });
+			if (!toastContainer) {
 				this.createToaster();
 			}
 			if (toast.duration && toast.duration > 0) {
 				setTimeout(() => {
-					console.log('i just rant');
 					this.removeToast(id);
 				}, toast.duration || 3000);
 			}
@@ -39,24 +40,32 @@ export function createToastManager() {
 
 		removeToast(id: UUID) {
 			toastStore.toasts = toastStore.toasts.filter((t) => t.id !== id);
+			this.removeToaster();
 			return this;
 		},
 		createToaster() {
 			if (browser) {
-				toaster = mount(NewToaster, {
+				if (toastContainer) {
+					toastContainer.$destroy();
+					toastContainer = null;
+				}
+				const existingToaster = document.querySelector('.zu_toaster');
+				if (existingToaster) {
+					existingToaster.remove();
+				}
+				toastContainer = mount(Toaster, {
 					target: document.body
 				});
 			}
-			return this;
 		},
 		removeToaster() {
-			if (toaster) {
+			if (toastStore.toasts.length === 0 && toastContainer) {
 				try {
-					unmount(toaster);
+					unmount(toastContainer);
 				} catch (error) {
-					console.error('Failed to remove toaster', error);
+					console.error('Failed to remove toastContainer', error);
 				} finally {
-					toaster = null;
+					toastContainer = null;
 				}
 			}
 			return this;
@@ -72,4 +81,4 @@ export function createToastManager() {
 	};
 }
 
-export const toastManager = createToastManager();
+export const toaster = createToastManager();

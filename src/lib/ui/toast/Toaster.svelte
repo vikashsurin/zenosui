@@ -1,87 +1,79 @@
 <script lang="ts">
-	import { toastStore } from '$lib/store/index.svelte.js';
-	import Toast from './Toast.svelte';
-	import { fly } from 'svelte/transition';
+	import { tv } from 'tailwind-variants';
+	import clsx from 'clsx';
+	import NewToast from './Toast.svelte';
+	import { toastStore } from '$lib/ui/toast/toaster.svelte.ts';
+	import { POSITION } from '$lib/style/postition.js';
+	import type { ToasterProps } from '$lib/types/index.ts';
+	import { fade, fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import { toaster } from './toaster.svelte.ts';
 
-	interface ToastsProps {
-		position?:
-			| 'top-left'
-			| 'top-right'
-			| 'top-center'
-			| 'bottom-left'
-			| 'bottom-right'
-			| 'bottom-center';
-		maxToasts?: number;
-		class?: string;
+	let { children, class: _class, ...props }: ToasterProps = $props();
+
+	let style = tv({
+		base: `zu_toaster m-2 flex flex-col gap-2 fixed `,
+		variants: {
+			position: POSITION
+		},
+		defaultVariants: {}
+	});
+
+	const finalClass = $derived(style({ position: toastStore.position, class: clsx(_class) }));
+
+	if (import.meta.hot) {
+		import.meta.hot.dispose(() => {
+			toaster.removeToaster();
+		});
+	}
+	let animeStyle = $state({
+		direction: 'column',
+		y: <number | null>100
+	});
+
+	if (toastStore.position.startsWith('bottom')) {
+		animeStyle.direction = 'column';
+		animeStyle.y = -100;
+	} else {
+		animeStyle.direction = 'column-reverse';
+		animeStyle.y = -100;
 	}
 
-	let { position = 'top-right', maxToasts = 5, class: _class }: ToastsProps = $props();
+	const flexDirection = $derived.by(() => {
+		return toastStore.position.startsWith('bottom') ? 'column' : 'column-reverse';
+	});
 
-	const getContainerClass = (position: string) => {
-		const baseClass = 'fixed z-50 flex flex-col gap-2 pointer-events-none';
-
-		switch (position) {
-			case 'top-left':
-				return `${baseClass} top-4 left-4`;
-			case 'top-right':
-				return `${baseClass} top-4 right-4`;
-			case 'top-center':
-				return `${baseClass} top-4 left-1/2 -translate-x-1/2`;
-			case 'bottom-left':
-				return `${baseClass} bottom-4 left-4`;
-			case 'bottom-right':
-				return `${baseClass} bottom-4 right-4`;
-			case 'bottom-center':
-				return `${baseClass} bottom-4 left-1/2 -translate-x-1/2`;
-			default:
-				return `${baseClass} top-4 right-4`;
-		}
-	};
-
-	const getTransitionDirection = (position: string) => {
-		if (position.includes('top')) {
-			return { y: -100 };
-		} else if (position.includes('bottom')) {
-			return { y: 100 };
-		}
-		return { y: -100 };
-	};
-
-	const containerClass = $derived(getContainerClass(position));
-	const transitionParams = $derived(getTransitionDirection(position));
-	const visibleToasts = $derived(toastStore.toasts.slice(-maxToasts));
+	const y = $derived.by(() => {
+		return toastStore.position.startsWith('bottom') ? 100 : -100;
+	});
 </script>
 
-<div class={`${containerClass} ${_class || ''}`}>
-	{#each visibleToasts as toast (toast.id)}
-		<div
-			class="pointer-events-auto max-w-md min-w-[20rem]"
-			in:fly={{ duration: 300, ...transitionParams }}
-			out:fly={{ duration: 200, ...transitionParams }}
+<!-- {#if mounted && toastStore.toasts.length > 0} -->
+<ul class={finalClass} {...props} style={`--flex-direction:${flexDirection}`}>
+	{#each toastStore.toasts as toast: Toast, i (toast.id)}
+		{@const id = toast.id}
+		{@const message = toast.message}
+		<li
+			animate:flip={{ duration: 300 }}
+			id={toast.id}
+			transition:fly|global={{ y: 100, duration: 300 }}
 		>
-			<Toast
-				id={toast.id}
-				message={toast.message}
-				type={toast.type}
-				dismissible={toast.dismissible}
-				action={toast.action}
-			/>
-		</div>
+			<NewToast {id} {message} class={toast.styleClass} xBtnStyleClass={toast.xBtnStyleClass} />
+		</li>
 	{/each}
-</div>
+</ul>
+
+<!-- {/if} -->
 
 <style>
-	/* Custom scrollbar for overflow scenarios */
-	.toast-container::-webkit-scrollbar {
-		width: 4px;
+	.zu_toaster {
+		position: fixed;
+		display: flex;
+		flex-direction: var(--flex-direction);
 	}
 
-	.toast-container::-webkit-scrollbar-track {
-		background: transparent;
-	}
-
-	.toast-container::-webkit-scrollbar-thumb {
-		background: rgba(0, 0, 0, 0.2);
-		border-radius: 2px;
+	.zu_toaster > *:not(:nth-last-child(-n + 3)) {
+		visibility: hidden;
+		opacity: 0;
 	}
 </style>

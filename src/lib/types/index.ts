@@ -312,6 +312,6 @@ export interface WindowLeftPaneProps extends UiProps, HTMLAttributes<HTMLDivElem
 
 export interface WindowRightPaneProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface ToasterProps extends UiProps, HTMLAttributes<HTMLDivElement> {
+export interface ToasterProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 	position?: PositionVariant;
 }

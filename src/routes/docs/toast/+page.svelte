@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { toastManager } from '$lib/ui/toast/toastManger.svelte.ts';
+	import { toaster } from '$lib/ui/toast/toaster.svelte.ts';
 
-	import type { Toast } from '$lib/ui/toast/toastManger.svelte.ts';
+	import type { Toast } from '$lib/ui/toast/toaster.svelte.ts';
 	let count = 0;
 	function addToast() {
 		const toast: Toast = {
 			message: 'newtoast this is a long text  and this is even longer..' + count,
-			duration: 6000,
+			duration: 5000,
 			styleClass:
 				'bg-rose-100 text-rose-600  text-sm w-[200px] border border-rose-400/20 shadow-inherit shadow-lg'
 		};
-		toastManager.createToast(toast).position('bottom-right').maxToasts(3);
+		toaster.createToast(toast).position('bottom-right').maxToasts(3);
 		count++;
 	}
 </script>
