@@ -3,7 +3,7 @@ import { mount, unmount } from 'svelte';
 import { browser } from '$app/environment';
 export const toastStore = $state({
     toasts: [],
-    position: 'bottom-center',
+    position: '',
     maxToasts: 3
 });
 let toastContainer = null;
