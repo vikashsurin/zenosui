@@ -5,7 +5,7 @@
 	import { toastStore } from './toastManager.svelte.js';
 	import { POSITION } from '../../style/postition.js';
 	import type { ToasterProps } from '../../types/index.js';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { toastManager } from './toastManager.svelte.js';
 
@@ -48,22 +48,19 @@
 	});
 </script>
 
-<!-- {#if mounted && toastStore.toasts.length > 0} -->
 <ul class={finalClass} {...props} style={`--flex-direction:${flexDirection}`}>
-	{#each toastStore.toasts as toast: Toast, i (toast.id)}
+	{#each toastStore.toasts as toast: Toast (toast.id)}
 		{@const id = toast.id}
 		{@const message = toast.message}
 		<li
-			animate:flip={{ duration: 300 }}
+			animate:flip={{ duration: 200 }}
 			id={toast.id}
-			transition:fly|global={{ y: 100, duration: 300 }}
+			transition:fly|global={{ y: y, duration: 300 }}
 		>
 			<NewToast {id} {message} class={toast.styleClass} xBtnStyleClass={toast.xBtnStyleClass} />
 		</li>
 	{/each}
 </ul>
-
-<!-- {/if} -->
 
 <style>
 	.zu_toaster {
