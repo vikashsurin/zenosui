@@ -10,7 +10,7 @@
 			styleClass:
 				'bg-rose-100 text-rose-600  text-sm w-[200px] border border-rose-400/20 shadow-inherit shadow-lg'
 		};
-		toastManager.createToast(toast).position('bottom-right').maxToasts(3);
+		toastManager.createToast(toast).position('top-right').maxToasts(3);
 		count++;
 	}
 </script>

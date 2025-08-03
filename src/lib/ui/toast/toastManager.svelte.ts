@@ -16,7 +16,7 @@ export interface Toast {
 
 export const toastStore = $state({
 	toasts: <Toast[]>[],
-	position: <PositionVariant>'bottom-center',
+	position: <PositionVariant>'',
 	maxToasts: <number>3
 });
 
