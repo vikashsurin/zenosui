@@ -5,7 +5,7 @@
 	import { toastStore } from '$lib/ui/toast/toastManager.svelte.js';
 	import { POSITION } from '$lib/style/postition.js';
 	import type { ToasterProps } from '$lib/types/index.js';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { toastManager } from './toastManager.svelte.js';
 
@@ -46,10 +46,8 @@
 	const y = $derived.by(() => {
 		return toastStore.position.startsWith('bottom') ? 100 : -100;
 	});
-	$inspect({ y });
 </script>
 
-<!-- {#if mounted && toastStore.toasts.length > 0} -->
 <ul class={finalClass} {...props} style={`--flex-direction:${flexDirection}`}>
 	{#each toastStore.toasts as toast: Toast (toast.id)}
 		{@const id = toast.id}
@@ -63,8 +61,6 @@
 		</li>
 	{/each}
 </ul>
-
-<!-- {/if} -->
 
 <style>
 	.zu_toaster {
