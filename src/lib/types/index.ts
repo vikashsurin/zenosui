@@ -254,6 +254,7 @@ export interface NavigationListItemProps extends UiProps, IconProps, HTMLAnchorA
 	href?: string;
 }
 export interface RadioProps extends UiProps, HTMLInputAttributes {}
+export interface RadioGroupProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 export interface CheckboxProps extends UiProps, HTMLInputAttributes {
 	checked?: boolean;
 }
