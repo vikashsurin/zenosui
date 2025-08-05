@@ -56,7 +56,7 @@
 	}
 </script>
 
-<span class={finalClass} style={`background-color: ${checked ? bbg : 'transparent'};}`}>
+<span class={finalClass} style={`background-color: ${checked ? '' : 'transparent'};}`}>
 	<span class={'absolute h-[40%] w-[40%] rounded-full bg-white'}></span>
 	<input
 		{name}
