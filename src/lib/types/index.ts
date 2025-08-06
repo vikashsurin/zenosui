@@ -79,8 +79,8 @@ export interface UiProps {
 	uiBorder?: BorderVariant;
 	uiPadding?: PaddingVariant;
 	uiColorPreset?: ColorVariant;
+	uiTheme?: string;
 }
-
 export interface ComponentProps extends UiProps {
 	class?: string;
 }

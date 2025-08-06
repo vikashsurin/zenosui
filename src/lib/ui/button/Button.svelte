@@ -20,8 +20,10 @@ Button
 	import type { ButtonProps } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
+	import { theme } from '$lib/store/theme.svelte.js';
 
 	let {
+		uiTheme = 'dark',
 		label = 'Button',
 		href,
 		ref = $bindable(),
@@ -44,7 +46,7 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: 'inline-flex justify-center items-center ',
+		base: 'zu_button inline-flex justify-center items-center ',
 		variants: {
 			uiSize: SIZE_PRESET,
 			active: {
@@ -80,6 +82,7 @@ Button
 
 <svelte:element
 	this={as}
+	data-theme={theme}
 	bind:this={ref}
 	{...hrefProp}
 	role={href ? 'link' : 'button'}
@@ -100,3 +103,10 @@ Button
 		<Icon {uiSize} icon={iconRight} iconRotation={iconRightRotation} />
 	{/if}
 </svelte:element>
+
+<style>
+	.zu_button {
+		background-color: var(--button-background);
+		color: var(--button-color);
+	}
+</style>

@@ -1,0 +1,33 @@
+.button {
+	/* Base */
+	--button-bg: var(--theme-surface-1);
+	--button-fg: var(--theme-on-surface);
+	--button-border: var(--theme-outline);
+
+	/* Primary variant */
+	--button-primary-bg: var(--theme-primary);
+	--button-primary-fg: var(--theme-on-primary);
+	--button-primary-hover: color-mix(in oklch, var(--theme-primary), var(--state-hover) 80%);
+
+	/* Disabled state */
+	--button-disabled-bg: var(--theme-surface-2);
+	--button-disabled-fg: var(--state-disabled);
+
+	/* Apply to component */
+	background: var(--button-bg);
+	color: var(--button-fg);
+	border: 1px solid var(--button-border);
+}
+
+.button--primary {
+	background: var(--button-primary-bg);
+	color: var(--button-primary-fg);
+}
+.button--primary:hover {
+	background: var(--button-primary-hover);
+}
+.button--disabled {
+	background: var(--button-disabled-bg);
+	color: var(--button-disabled-fg);
+	cursor: not-allowed;
+}

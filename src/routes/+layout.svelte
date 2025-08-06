@@ -3,6 +3,10 @@
 	import Aside from './Aside.svelte';
 	let { children } = $props();
 	import Toaster from '$lib/ui/toast/Toaster.svelte';
+
+	$effect(() => {
+		document.documentElement.setAttribute('data-theme', 'light');
+	});
 </script>
 
 <div class="grid grid-cols-12">
