@@ -1,19 +1,14 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import {
-		baseVariant,
-		ICON_PLACEHOLDER_SIZE,
-		type RoundedVariant,
-		SIZE_PRESET,
-		type SizeVariant
-	} from '$lib/style/index.js';
-	import type { MenuItemProps } from '$lib/types/index.js';
+	import { baseVariant, ICON_PLACEHOLDER_SIZE, SIZE_PRESET } from '$lib/style/index.js';
+	import type { MenuItemProps, SizeVariant } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext, setContext } from 'svelte';
 	import { type MenuContextType } from './types.js';
 
 	let {
+		themed = true,
 		hasSubMenu,
 		children,
 		uiRounded,
@@ -81,8 +76,10 @@
 </script>
 
 <li
+	data-themed={themed}
 	role="menuitem"
 	class={finalClass}
+	class:interactive_list={themed}
 	onmouseenter={handleOpenSubmenu}
 	onmouseleave={handleCloseSubmenu}
 	onclick={(e) => {

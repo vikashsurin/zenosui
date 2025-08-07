@@ -1,18 +1,14 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import {
-		baseVariant,
-		SIZE_PRESET,
-		type RoundedVariant,
-		type SizeVariant
-	} from '$lib/style/index.js';
-	import type { NavigationListItemProps } from '$lib/types/index.js';
+	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
+	import type { NavigationListItemProps, RoundedVariant, SizeVariant } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 
 	let {
 		href,
+		themed = true,
 		children,
 		uiRounded,
 		uiSize,
@@ -41,7 +37,7 @@
 </script>
 
 <li role="navigation">
-	<a {href} class={finalClass} {...props}>
+	<a data-themed={themed} class:interactive_list={themed} {href} class={finalClass} {...props}>
 		{#if iconLeft}
 			<Icon icon={iconLeft} {uiSize} />
 		{/if}

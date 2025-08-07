@@ -8,7 +8,7 @@
 	<form action="?/submit" method="POST">
 		<RadioGroup uiSize="xs">
 			<label>
-				<Radio name="fruit" value="apple" class="bg-green-500" />
+				<Radio uiSize="xs" name="fruit" value="apple" class="bg-green-500" />
 				Apples
 			</label>
 			<label>

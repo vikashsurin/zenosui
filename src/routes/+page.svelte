@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Button, Switch } from '$lib/index.js';
+	import { Button, IconButton, SidebarItem, Switch } from '$lib/index.js';
+	import Sidebar from '$lib/ui/sidebar/Sidebar.svelte';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 </script>
@@ -22,6 +23,22 @@
 			<span>Toggle</span>
 			<Switch uiRounded="full" uiSize="8xl" activeClass="bg-green-500" class="" />
 		</div>
+	</div>
+
+	<div>
+		<h1>Icon</h1>
+		<IconButton icon={BadgeCheck} uiSize="3xl" class="bg-red-400" />
+	</div>
+
+	<div class="bg-gray-100 p-4">
+		<h1>Sidebar</h1>
+
+		<Sidebar>
+			<SidebarItem>Accordion</SidebarItem>
+			<SidebarItem>Table</SidebarItem>
+			<SidebarItem>Slider</SidebarItem>
+			<SidebarItem>Wrapper</SidebarItem>
+		</Sidebar>
 	</div>
 </div>
 

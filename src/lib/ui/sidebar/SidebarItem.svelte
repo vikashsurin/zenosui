@@ -1,13 +1,8 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import {
-		baseVariant,
-		SIZE_PRESET,
-		type RoundedVariant,
-		type SizeVariant
-	} from '$lib/style/index.js';
-	import type { SidebarItemProps } from '$lib/types/index.js';
+	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
+	import type { RoundedVariant, SidebarItemProps, SizeVariant } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 
@@ -15,6 +10,7 @@
 		href,
 		children,
 		uiRounded,
+		themed = true,
 		uiSize,
 		iconLeft,
 		iconRight,
@@ -40,8 +36,8 @@
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 </script>
 
-<li role="navigation">
-	<a {href} class={finalClass} {...props}>
+<li role="navigation" class="zu_sidebar_item">
+	<a data-themed={themed} class:interactive_list={themed} {href} class={finalClass} {...props}>
 		{#if iconLeft}
 			<Icon icon={iconLeft} {uiSize} />
 		{/if}

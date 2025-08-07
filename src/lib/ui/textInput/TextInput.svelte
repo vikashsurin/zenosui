@@ -91,12 +91,20 @@
 	}
 </script>
 
-<div class={finalContClass}>
+<div class={finalContClass} class:interactive_list={true}>
 	{#if iconLeft}
 		<Icon {uiSize} icon={iconLeft} class="opacity-50" />
 	{/if}
 	<input type="text" class={finalClass} bind:value {placeholder} {...props} />
-	<IconButton {uiSize} {uiColor} {uiRounded} icon={X} onclick={clearInput} class="bg-transparent" />
+	<IconButton
+		themed={false}
+		{uiSize}
+		{uiColor}
+		{uiRounded}
+		icon={X}
+		onclick={clearInput}
+		class="bg-transparent"
+	/>
 	{#if iconRight}
 		<Icon {uiSize} {uiColor} icon={iconRight} />
 	{/if}

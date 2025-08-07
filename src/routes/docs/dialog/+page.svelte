@@ -11,7 +11,7 @@
 </script>
 
 <div>
-	<Dialog bind:open class="bg-red-600" backdrop>
+	<Dialog bind:open class="" backdrop>
 		<DialogHeader>
 			<h1>Title</h1>
 		</DialogHeader>
@@ -20,8 +20,8 @@
 			<p>Add any element that are needed, for ex- forms</p>
 		</DialogContent>
 		<DialogFooter>
-			<CloseDialogButton>cancel</CloseDialogButton>
-			<ActionDialogButton>Submit</ActionDialogButton>
+			<CloseDialogButton label="Cancel"></CloseDialogButton>
+			<ActionDialogButton label="Submit"></ActionDialogButton>
 		</DialogFooter>
 	</Dialog>
 </div>

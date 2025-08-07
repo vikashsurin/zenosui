@@ -46,12 +46,14 @@
 	--primary-surface-light: var(--color-200);
 
 	--primary-content: white;
+	--primary-content-dark: black;
 
 	--primary-surface-hover: oklch(from var(--primary-surface-base) calc(l + 0.1) calc(c + 0.2) h);
 	--primary-surface-active: oklch(from var(--primary-surface-base) calc(l - 0.1) c h);
 
 	/* ===== CORE THEME PRIMITIVES (ADJUST PER THEME) ===== */
 	/* Light Theme (default) */
+
 	--theme-surface: oklch(100% 0 0); /* Pure white base */
 	--theme-surface-1: var(--neutral-50); /* Card backgrounds */
 	--theme-surface-2: var(--neutral-100); /* Elevated surfaces */
@@ -68,7 +70,7 @@
 	--theme-on-error: white;
 
 	/* ===== DARK THEME OVERRIDES (via prefers-color-scheme) ===== */
-	@media (prefers-color-scheme: dark) {
+	/* @media (prefers-color-scheme: dark) {
 		--theme-surface: var(--neutral-950);
 		--theme-surface-1: var(--neutral-900);
 		--theme-surface-2: var(--neutral-800);
@@ -78,7 +80,7 @@
 
 		--theme-primary-container: var(--color-900);
 		--theme-on-primary-container: var(--color-200);
-	}
+	} */
 
 	/* ===== STATE LAYERS (CRITICAL FOR INTERACTIONS) ===== */
 	--state-hover: oklch(from var(--theme-primary) l c h calc(c * 0.7)); /* 30% less saturated */
@@ -91,3 +93,44 @@
 	--button-background: var(--color-100);
 	--button-color: var(--color-950) --card-background: rgba();
 }
+
+/* INTERACTIVE */
+.interactive[data-themed='true'] {
+	background-color: var(--primary-surface-base);
+	color: var(--primary-content);
+}
+
+.interactive[data-themed='true']:hover {
+	background-color: var(--primary-surface-hover);
+}
+
+.interactive[data-themed='true']:active {
+	background-color: var(--primary-surface-active);
+}
+
+/* INTERACTIVE LIST */
+.interactive_list[data-themed='true'] {
+	background-color: transparent;
+	color: var(--primary-content-dark);
+}
+.interactive_list[data-themed='true']:hover {
+	background-color: var(--primary-surface-light);
+	color: var(--primary-content-dark);
+}
+.interactive_list[data-themed='true']:active {
+	background-color: oklch(from var(--primary-surface-light) calc(l - 0.1) calc(c + 0.1) h);
+	/* background-color: var(--primary-surface-accent); */
+	color: var(--primary-content-dark);
+}
+
+/* INPUT ELEMENTS	 */
+
+.interactive_input[data-themed='true'] {
+	border: 1px solid var(--primary-surface-base);
+}
+/* .interactive_input[data-themed='true']:hover {
+	background-color: var(--primary-surface-hover);
+}
+.interactive_input[data-themed='true']:active {
+	background-color: var(--primary-surface-active);
+} */

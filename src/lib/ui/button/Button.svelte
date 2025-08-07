@@ -28,7 +28,8 @@ Button
 		href,
 		ref = $bindable(),
 		uiTheme = 'dark',
-		uiVariant,
+		themed = true,
+		uiVariant = 'primary',
 		uiSize = 'md',
 		uiRounded = 'none',
 		uiFill = 'filled',
@@ -86,8 +87,9 @@ Button
 
 <svelte:element
 	this={as}
-	data-theme={theme}
+	data-themed={themed}
 	bind:this={ref}
+	class:interactive={themed}
 	{...hrefProp}
 	role={href ? 'link' : 'button'}
 	class={finalClasses}
@@ -109,7 +111,7 @@ Button
 </svelte:element>
 
 <style>
-	.primary {
+	/* .primary {
 		background-color: var(--primary-surface-base);
 		color: var(--primary-content);
 	}
@@ -118,5 +120,5 @@ Button
 	}
 	.primary:active {
 		background-color: var(--primary-surface-active);
-	}
+	} */
 </style>

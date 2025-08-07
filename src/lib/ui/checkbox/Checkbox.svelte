@@ -4,7 +4,13 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import type { CheckboxProps } from '$lib/types/index.js';
 
-	let { children, class: _class, ...props }: CheckboxProps = $props();
+	let {
+		children,
+		checked = $bindable(),
+		themed,
+		class: _class,
+		...props
+	}: CheckboxProps = $props();
 
 	let style = tv({
 		extend: baseVariant,
@@ -15,4 +21,11 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<input type="checkbox" class={finalClass} {...props} />
+<input
+	data-themed={themed}
+	class:interactive={checked}
+	type="checkbox"
+	class={finalClass}
+	bind:checked
+	{...props}
+/>

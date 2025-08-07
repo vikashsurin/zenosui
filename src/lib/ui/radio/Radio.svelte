@@ -7,7 +7,7 @@
 	import type { RadioContextType } from './types.ts';
 	import { SIZE } from '$lib/style/sizing.js';
 
-	let { children, name, bbg, uiSize, class: _class, ...props }: RadioProps = $props();
+	let { children, themed = true, name, uiSize, class: _class, ...props }: RadioProps = $props();
 
 	const id = crypto.randomUUID();
 
@@ -56,7 +56,12 @@
 	}
 </script>
 
-<span class={finalClass} style={`background-color: ${checked ? '' : 'transparent'};}`}>
+<span
+	data-themed={themed}
+	class={finalClass}
+	class:interactive={checked}
+	style={`background-color: ${checked ? '' : 'transparent'};}`}
+>
 	<span class={'absolute h-[40%] w-[40%] rounded-full bg-white'}></span>
 	<input
 		{name}

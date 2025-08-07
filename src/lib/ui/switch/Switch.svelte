@@ -56,7 +56,7 @@
 	});
 </script>
 
-<label data-themed={themed} class={switchClass}>
+<label data-themed={themed} class={switchClass} class:interactive={checked}>
 	<input type="checkbox" role="switch" aria-checked={checked} class="sr" bind:checked />
 	<span class={thumbStyle({ uiRounded })} style="transform: translateX({checked ? '100%' : '0%'})"
 	></span>
@@ -74,9 +74,5 @@
 		/* clip: rect(0, 0, 0, 0); */
 		white-space: nowrap;
 		border-width: 0;
-	}
-
-	.zu_switch[data-themed='true']:has(input:checked) {
-		background-color: var(--primary-surface-base);
 	}
 </style>

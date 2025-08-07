@@ -5,7 +5,7 @@
 	import { IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
 	import { fade, fly, slide } from 'svelte/transition';
-	let { id, message, xBtnStyleClass: _xStyleClass, class: _class } = $props();
+	let { id, message, themed = false, xBtnStyleClass: _xStyleClass, class: _class } = $props();
 
 	let style = tv({
 		base: `zu_toast flex  justify-between gap-2 py-2 px-3 bg-amber-500 rounded-md`,
@@ -31,6 +31,7 @@
 	<p class="flex items-center">{message}</p>
 
 	<IconButton
+		data-themed={themed}
 		icon={X}
 		uiSize="sm"
 		uiRounded="full"

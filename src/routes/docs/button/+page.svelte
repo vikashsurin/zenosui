@@ -7,14 +7,9 @@
 </script>
 
 <div class="">
-	<Button uiRounded="sm" label="Button" iconRight={ChevronRight} />
+	<Button uiVariant="primary" uiRounded="sm" label="Button" iconRight={ChevronRight} />
 
-	<Button
-		href="https://www.google.com"
-		uiRounded="sm"
-		onclick={() => console.log('Button clicked')}
-		label="Button"
-	/>
+	<Button uiRounded="sm" onclick={() => console.log('Button clicked')} label="Button" />
 	<Button
 		uiRounded="sm"
 		uiSize="xs"

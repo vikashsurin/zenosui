@@ -50,6 +50,7 @@
 </script>
 
 <Button
+	themed={false}
 	class={finalClass}
 	{iconLeft}
 	{iconRight}

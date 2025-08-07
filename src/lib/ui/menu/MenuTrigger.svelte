@@ -43,6 +43,7 @@
 </script>
 
 <Button
+	data-themed={false}
 	class={finalClass}
 	{label}
 	{iconLeft}
