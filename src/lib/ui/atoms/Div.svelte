@@ -10,7 +10,7 @@
 		uiBg,
 		uiColor,
 		uiText,
-		uiVariant,
+		uiFill,
 		border,
 		padding,
 		class: _class,
@@ -40,7 +40,7 @@
 			uiBg,
 			uiColor,
 			uiText,
-			uiVariant,
+			uiFill,
 			border,
 			padding,
 			class: clsx(_class)

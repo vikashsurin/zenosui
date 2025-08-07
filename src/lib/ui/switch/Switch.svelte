@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
-	import { SIZE_FOR_SWITCH } from '$lib/style/sizing.js';
+	import { SIZE, SIZE_FOR_SWITCH } from '$lib/style/sizing.js';
 	import { BORDER, ROUNDED } from '$lib/style/borders.js';
 	import type { SwitchProps } from '$lib/types/index.js';
 
@@ -12,13 +12,16 @@
 		uiSize,
 		uiRounded,
 		class: _class,
+		themed = true,
+		activeClass,
 		...props
 	}: SwitchProps = $props();
 
 	let uiBorder = uiSize;
+
 	let style = tv({
 		extend: baseVariant,
-		base: `bg-gray-300 border-4 box-content relative w-12 h-6 flex justify-start  duration-500 `,
+		base: `zu_switch bg-gray-300 border-4 box-content relative w-12 h-6 flex justify-start  duration-500 `,
 		variants: {
 			uiSize: SIZE_FOR_SWITCH,
 			uiBorder: BORDER,
@@ -33,10 +36,12 @@
 		compoundVariants: [
 			{
 				checked: true,
-				class: 'bg-green-500'
+				class: activeClass
 			}
 		],
-		defaultVariants: {}
+		defaultVariants: {
+			uiSize: 'md'
+		}
 	});
 
 	const switchClass = $derived(
@@ -51,7 +56,27 @@
 	});
 </script>
 
-<button class={switchClass} {...props} onclick={() => (checked = !checked)} {...props}>
+<label data-themed={themed} class={switchClass}>
+	<input type="checkbox" role="switch" aria-checked={checked} class="sr" bind:checked />
 	<span class={thumbStyle({ uiRounded })} style="transform: translateX({checked ? '100%' : '0%'})"
 	></span>
-</button>
+</label>
+
+<style>
+	.sr {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		border: 1px solid black;
+		/* clip: rect(0, 0, 0, 0); */
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	.zu_switch[data-themed='true']:has(input:checked) {
+		background-color: var(--primary-surface-base);
+	}
+</style>

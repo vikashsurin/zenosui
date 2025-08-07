@@ -2,20 +2,26 @@
 @import './css/button.css';
 
 :root {
-	--hue: 140;
+	--hue: 20;
 	/* FOUNDATION COLORS */
 	--color-50: oklch(99% 0.015 var(--hue));
 	--color-100: oklch(96% 0.03 var(--hue));
 	--color-200: oklch(92% 0.06 var(--hue));
 	--color-300: oklch(86% 0.12 var(--hue));
-	--color-400: oklch(78% 0.18 var(--hue));
-	--color-500: oklch(68% 0.24 var(--hue));
-	--color-600: oklch(55% 0.23 var(--hue));
+	--color-400: oklch(78% 0.2 var(--hue));
+	--color-500: oklch(68% 0.3 var(--hue));
+	--color-600: oklch(55% 0.25 var(--hue));
 	--color-700: oklch(42% 0.18 var(--hue));
 	--color-800: oklch(30% 0.12 var(--hue));
 	--color-900: oklch(18% 0.06 var(--hue));
 	--color-950: oklch(8% 0.02 var(--hue));
 
+	/* NEUTRAL COLORS */
+	--text-1: var(--color-1);
+	--text-2: var(--color-2);
+	--surface-1: var(--color-10);
+	--surface-2: var(--color-9);
+	--surface-3: var(--color-8);
 	--neutral-50: oklch(99% 0.002 200);
 	--neutral-100: oklch(97% 0.004 200);
 	--neutral-200: oklch(93% 0.008 200);
@@ -27,6 +33,22 @@
 	--neutral-800: oklch(22% 0.025 200);
 	--neutral-900: oklch(14% 0.03 200);
 	--neutral-950: oklch(8% 0.035 200);
+
+	--surface: oklch(100% 0 0);
+	--surface-elevated: var(--neutral-100);
+
+	--content: var(--neutral-900);
+	--content-subtle: var(--neutral-700);
+
+	--primary-surface-base: var(--color-600);
+	--primary-surface-accent: var(--color-400);
+	--primary-surface-subtle: var(--color-100);
+	--primary-surface-light: var(--color-200);
+
+	--primary-content: white;
+
+	--primary-surface-hover: oklch(from var(--primary-surface-base) calc(l + 0.1) calc(c + 0.2) h);
+	--primary-surface-active: oklch(from var(--primary-surface-base) calc(l - 0.1) c h);
 
 	/* ===== CORE THEME PRIMITIVES (ADJUST PER THEME) ===== */
 	/* Light Theme (default) */

@@ -14,7 +14,7 @@
 	let {
 		uiColor,
 		uiRounded,
-		uiVariant,
+		uiFill,
 		uiSize,
 		iconLeft,
 		invalid,
@@ -69,7 +69,7 @@
 		}
 	});
 	const finalContClass = $derived(
-		contStyle({ uiSize, uiColor, uiVariant, uiRounded, outlineColor: outlineColor })
+		contStyle({ uiSize, uiColor, uiFill, uiRounded, outlineColor: outlineColor })
 	);
 
 	let style = tv({

@@ -16,7 +16,7 @@ import {
 export const baseVariant = tv({
 	base: 'transition-all ease-in-out duration-200ms disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-400',
 	variants: {
-		uiVariant: FILL_VARIANT,
+		uiFill: FILL_VARIANT,
 		uiText: TEXT_SIZE,
 		uiTextWithHeight: TEXT_SIZE_WITH_HEIGHT,
 		uiRounded: ROUNDED,

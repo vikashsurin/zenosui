@@ -10,7 +10,7 @@ Button
 - `href` (string): Renders as link if provided.
 - `activeClass` (string): Active state CSS class.
 - `active` (boolean): Active state.
-- `uiRounded, uiSize, class, ref, uiBg, uiVariant and so on`.
+- `uiRounded, uiSize, class, ref, uiBg, uiFill and so on`.
 
 -->
 
@@ -21,15 +21,17 @@ Button
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
 	import { theme } from '$lib/store/theme.svelte.js';
+	import { VARIANTS } from '$lib/style/variant.js';
 
 	let {
-		uiTheme = 'dark',
 		label = 'Button',
 		href,
 		ref = $bindable(),
+		uiTheme = 'dark',
+		uiVariant,
 		uiSize = 'md',
 		uiRounded = 'none',
-		uiVariant = 'filled',
+		uiFill = 'filled',
 		uiBg = 'secondary',
 		iconLeft,
 		iconRight,
@@ -49,6 +51,7 @@ Button
 		base: 'zu_button inline-flex justify-center items-center ',
 		variants: {
 			uiSize: SIZE_PRESET,
+			uiVariant: VARIANTS,
 			active: {
 				true: '',
 				false: ''
@@ -68,9 +71,10 @@ Button
 
 	const finalClasses = $derived(
 		buttonStyle({
+			uiVariant,
 			uiSize,
 			uiBg,
-			uiVariant,
+			uiFill,
 			uiRounded,
 			active,
 			class: clsx(_class)
@@ -105,8 +109,14 @@ Button
 </svelte:element>
 
 <style>
-	.zu_button {
-		background-color: var(--button-background);
-		color: var(--button-color);
+	.primary {
+		background-color: var(--primary-surface-base);
+		color: var(--primary-content);
+	}
+	.primary:hover {
+		background-color: var(--primary-surface-hover);
+	}
+	.primary:active {
+		background-color: var(--primary-surface-active);
 	}
 </style>

@@ -1,15 +1,4 @@
 import type { Snippet, Component } from 'svelte';
-// import type {
-// 	SizePresetVariant,
-// 	RoundedVariant,
-// 	Variant,
-// 	TextSizeVariant,
-// 	BorderVariant,
-// 	BackgroundColor,
-// 	ContentColor,
-// 	PaddingVariant,
-// 	SizeVariant
-// } from '../style/types.js';
 
 import type {
 	HTMLAnchorAttributes,
@@ -51,6 +40,16 @@ export type positionTokens =
 	| 'bottom-center'
 	| 'bottom-right'
 	| 'center';
+
+export type variants =
+	| 'default'
+	| 'primary'
+	| 'secondary'
+	| 'tertiary'
+	| 'success'
+	| 'warning'
+	| 'danger';
+
 export type ColorVariant = colorTokens;
 export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';
 export type SizeVariant = sizeTokens;
@@ -58,6 +57,7 @@ export type PaddingVariant = 'none' | sizeTokens;
 export type RoundedVariant = 'none' | sizeTokens | 'full';
 export type BorderVariant = 'none' | sizeTokens;
 export type PositionVariant = positionTokens;
+export type Variant = variants;
 
 export interface UiProps {
 	/**
@@ -75,11 +75,13 @@ export interface UiProps {
 	uiSize?: SizeVariant;
 	uiText?: SizeVariant;
 	uiRounded?: RoundedVariant;
-	uiVariant?: FillVariant;
+	uiFill?: FillVariant;
 	uiBorder?: BorderVariant;
 	uiPadding?: PaddingVariant;
 	uiColorPreset?: ColorVariant;
 	uiTheme?: string;
+	themed?: boolean;
+	uiVariant?: Variant;
 }
 export interface ComponentProps extends UiProps {
 	class?: string;
@@ -144,7 +146,7 @@ type ButtonAsAnchor = UiProps &
 		label?: string;
 	};
 
-/**  button accepts uiSize, uiRounded, uiVariant, uiColor **/
+/**  button accepts uiSize, uiRounded, uiFill, uiColor **/
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 // export type   ButtonProps = Component<ButtonAsButton | ButtonAsAnchor> {}
 
@@ -276,7 +278,7 @@ export interface SelectListProps extends UiProps, HTMLAttributes<HTMLUListElemen
 export interface SelectOptionProps extends UiProps, HTMLLiAttributes {
 	value: string;
 }
-export interface SwitchProps extends UiProps, HTMLButtonAttributes {
+export interface SwitchProps extends ComponentProps, StateProps {
 	checked?: boolean;
 	withBorder?: boolean;
 }

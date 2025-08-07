@@ -1,5 +1,7 @@
 <div class="h-dvh border-r-1 p-4">
 	<ul class="grid gap-2">
+		<li><a href="/">home</a></li>
+		<li><a href="/pallete">pallete</a></li>
 		<li><a href="/docs/button">button</a></li>
 		<li><a href="/docs/icon-button">icon button</a></li>
 		<li><a href="/docs/icon">icon</a></li>
