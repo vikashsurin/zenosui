@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { NavigationList, NavigationListItem, NavigationSubList } from '$lib/ui/index.js';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 </script>
 
-<div class="h-dvh border-r-1 p-4">
+<div class="h-dvh overflow-auto border-r-1 p-4">
 	<NavigationList uiSize="md" class="w-full">
 		<NavigationListItem href="/" activeClass="bg-red-400">home</NavigationListItem>
 		<NavigationListItem hasList={true} label="primitives">
@@ -20,7 +19,6 @@
 		<NavigationListItem href="/docs/alert">alert</NavigationListItem>
 		<NavigationListItem href="/docs/dialog">dialog</NavigationListItem>
 		<NavigationListItem href="/docs/toast">toast</NavigationListItem>
-		<NavigationListItem href="/docs/link">link</NavigationListItem>
 		<NavigationListItem href="/docs/menu">menu</NavigationListItem>
 		<NavigationListItem href="/docs/menu-bar">menu bar</NavigationListItem>
 		<NavigationListItem href="/docs/navigation-menu">navigation-menu</NavigationListItem>
@@ -37,3 +35,4 @@
 		<NavigationListItem href="/docs/window-splitter">window-splitter</NavigationListItem>
 	</NavigationList>
 </div>
+

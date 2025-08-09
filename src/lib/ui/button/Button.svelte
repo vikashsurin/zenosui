@@ -49,7 +49,7 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: 'zu_button inline-flex justify-center items-center ',
+		base: 'zu_button inline-flex justify-center items-center',
 		variants: {
 			uiSize: SIZE_PRESET,
 			uiVariant: VARIANTS,

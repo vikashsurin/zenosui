@@ -32,7 +32,7 @@
 	);
 </script>
 
-<button data-themed={themed} class={finalClass} {...props}>
+<button data-themed={themed} class:button={themed} class={finalClass} {...props}>
 	{#if icon !== null}
 		<Icon {icon} uiIconSize={uiSize} />
 	{/if}
@@ -45,17 +45,4 @@
 		justify-content: center;
 		flex-shrink: 0;
 	}
-
-	/* .zu_icon_button[data-themed='true'] {
-		background-color: var(--primary-surface-base);
-		color: var(--primary-content);
-	}
-	.zu_icon_button[data-themed='true']:hover {
-		background-color: var(--primary-surface-hover);
-		color: var(--primary-content);
-	}
-	.zu_icon_button[data-themed='true']:active {
-		background-color: var(--primary-surface-active);
-		color: var(--primary-content);
-	} */
 </style>

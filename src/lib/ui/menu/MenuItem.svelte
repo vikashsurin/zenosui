@@ -8,7 +8,7 @@
 	import { type MenuContextType } from './types.js';
 
 	let {
-		themed = true,
+		themed = false,
 		hasSubMenu,
 		children,
 		uiRounded,
@@ -27,7 +27,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300 overflow-visible items-center  inline-flex relative text-nowrap `,
+		base: `zu_menu_item px-3 hover:bg-gray-300  active:bg-gray-400 overflow-visible items-center active:text-white inline-flex relative text-nowrap `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},

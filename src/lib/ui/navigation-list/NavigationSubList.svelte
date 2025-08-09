@@ -33,19 +33,16 @@
 	}
 	.right {
 		position: absolute;
-		background-color: red;
 		left: 100%;
 		top: 0;
 	}
 	.left {
 		position: absolute;
-		background-color: red;
 		right: 100%;
 		top: 0;
 	}
 	.bottom {
 		position: absolute;
-		background-color: red;
 		top: 100%;
 		left: 0;
 	}

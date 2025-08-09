@@ -93,7 +93,9 @@
 
 /* RADIO */
 /* SWITCH */
-
+.switch[data-themed='true'] {
+	background-color: var(--primary-surface-500);
+}
 [data-theme='dark'] {
 	--background: oklch(0 0 0);
 	--button-background: var(--color-100);

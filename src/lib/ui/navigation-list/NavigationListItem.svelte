@@ -30,7 +30,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: ` px-3 hover:bg-gray-100  relative w-full  items-center inline-flex text-nowrap `,
+		base: ` px-3 hover:bg-gray-100  relative w-full  items-center inline-flex text-nowrap  bg-red-500`,
 		variants: {
 			uiSize: SIZE_PRESET,
 			hasList: {

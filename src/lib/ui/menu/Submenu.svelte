@@ -22,7 +22,7 @@
 	const subMenuContext = getContext<{ open: string | null }>('subMenuContext');
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu absolute max-h-[${innerHeight.current}] py-0.5 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
+		base: `zu_submenu absolute max-h-[${innerHeight.current}] py-0.5 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
 		variants: {
 			placement: {
 				bottom: 'top-[100%]',
@@ -53,3 +53,6 @@
 		{/if}
 	</ul>
 {/if}
+
+<style>
+</style>

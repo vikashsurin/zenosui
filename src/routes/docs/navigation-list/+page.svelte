@@ -7,13 +7,16 @@
 
 <div>
 	<NavigationList uiSize="md" class="bg-gray-300">
-		<NavigationListItem activeClass="bg-red-400" href="/"
-			>link is very long and lengthy</NavigationListItem
+		<NavigationListItem href="/">link is very long and lengthy</NavigationListItem>
+		<NavigationListItem>link</NavigationListItem>
+		<NavigationListItem>link</NavigationListItem>
+		<NavigationListItem
+			hasList={true}
+			iconRight={ChevronDown}
+			class=" active:bg-green-500"
+			label="more"
 		>
-		<NavigationListItem>link</NavigationListItem>
-		<NavigationListItem>link</NavigationListItem>
-		<NavigationListItem hasList={true} iconRight={ChevronDown} class="" label="more">
-			<NavigationSubList class="">
+			<NavigationSubList position='right' class="">
 				<NavigationListItem>new link</NavigationListItem>
 				<NavigationListItem>new link</NavigationListItem>
 			</NavigationSubList>
