@@ -252,7 +252,13 @@ export type NavigationMenuTriggerProps = ButtonProps;
 
 export interface NavigationListProps extends UiProps, HTMLAttributes<HTMLUListElement> {}
 
-export interface NavigationListItemProps extends UiProps, IconProps, HTMLAnchorAttributes {
+export interface NavigationListItemProps
+	extends UiProps,
+		StateProps,
+		IconProps,
+		HTMLAnchorAttributes {
+	label?: string;
+	hasList?: boolean;
 	href?: string;
 }
 export interface RadioProps extends UiProps, HTMLInputAttributes {}

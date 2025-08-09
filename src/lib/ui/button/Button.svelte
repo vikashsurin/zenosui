@@ -20,7 +20,7 @@ Button
 	import type { ButtonProps } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
-	import { theme } from '$lib/store/theme.svelte.js';
+	import { theme } from '$lib/stores/theme.svelte.js';
 	import { VARIANTS } from '$lib/style/variant.js';
 
 	let {
@@ -89,7 +89,7 @@ Button
 	this={as}
 	data-themed={themed}
 	bind:this={ref}
-	class:interactive={themed}
+	class:button={themed}
 	{...hrefProp}
 	role={href ? 'link' : 'button'}
 	class={finalClasses}
@@ -109,16 +109,3 @@ Button
 		<Icon {uiSize} icon={iconRight} iconRotation={iconRightRotation} />
 	{/if}
 </svelte:element>
-
-<style>
-	/* .primary {
-		background-color: var(--primary-surface-base);
-		color: var(--primary-content);
-	}
-	.primary:hover {
-		background-color: var(--primary-surface-hover);
-	}
-	.primary:active {
-		background-color: var(--primary-surface-active);
-	} */
-</style>

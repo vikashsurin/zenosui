@@ -4,12 +4,7 @@
 	import clsx from 'clsx';
 	import type { LinkProps } from '$lib/types/index.js';
 
-	let {
-		children,
-		class: _class,
-		href,
-		...props
-	}: LinkProps = $props();
+	let { children, class: _class, href, themed = true, ...props }: LinkProps = $props();
 
 	const style = tv({
 		extend: baseVariant,
@@ -26,7 +21,7 @@
 	);
 </script>
 
-<a class={finalClasses} {href} {...props}>
+<a class={finalClasses} data-themed={themed} class:link={themed} {href} {...props}>
 	{#if children}
 		{@render children()}
 	{/if}

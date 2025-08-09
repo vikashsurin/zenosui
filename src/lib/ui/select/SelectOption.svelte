@@ -10,9 +10,9 @@
 
 	let {
 		children,
+		themed = true,
 		uiSize,
 		value,
-		padding,
 		uiRounded,
 		class: _class,
 		...props
@@ -31,7 +31,7 @@
 		},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ uiSize, uiRounded, padding, class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 
 	function handleClick() {
 		selectContext.value = value;
@@ -39,7 +39,14 @@
 	}
 </script>
 
-<li class={finalClass} {...props} {value} onclick={handleClick}>
+<li
+	data-themed={themed}
+	class:interactive_list={themed}
+	class={finalClass}
+	{...props}
+	{value}
+	onclick={handleClick}
+>
 	{#if children}
 		{@render children?.()}
 	{/if}

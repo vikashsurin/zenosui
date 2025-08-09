@@ -1,17 +1,13 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import {
-		baseVariant,
-		OUTLINE_COLOR,
-		TEXT_SIZE_WITH_HEIGHT,
-		type OutlineColor
-	} from '$lib/style/index.js';
+	import { baseVariant, OUTLINE_COLOR, TEXT_SIZE_WITH_HEIGHT } from '$lib/style/index.js';
 	import type { TextInputProps } from '$lib/types/index.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
 
 	let {
+		themed = true,
 		uiColor,
 		uiRounded,
 		uiFill,
@@ -30,11 +26,11 @@
 	// }
 
 	uiColor = invalid ? 'danger' : uiColor;
-	let outlineColor: OutlineColor = invalid ? 'danger' : 'none';
+	let outlineColor = invalid ? 'danger' : 'none';
 
 	let contStyle = tv({
 		extend: baseVariant,
-		base: 'inline-flex w-fit items-center focus-within:outline-2',
+		base: 'zu_input inline-flex w-fit items-center focus-within:outline-2 border border-gray-200 ',
 		variants: {
 			uiSize: {
 				xs: 'gap-1 px-1.5',
@@ -91,9 +87,9 @@
 	}
 </script>
 
-<div class={finalContClass} class:interactive_list={true}>
+<label data-themed={themed} class={finalContClass} class:input={themed}>
 	{#if iconLeft}
-		<Icon {uiSize} icon={iconLeft} class="opacity-50" />
+		<Icon {uiSize} icon={iconLeft} class="input_icon_left opacity-50" />
 	{/if}
 	<input type="text" class={finalClass} bind:value {placeholder} {...props} />
 	<IconButton
@@ -106,6 +102,9 @@
 		class="bg-transparent"
 	/>
 	{#if iconRight}
-		<Icon {uiSize} {uiColor} icon={iconRight} />
+		<Icon {uiSize} {uiColor} icon={iconRight} class="input_icon_right" />
 	{/if}
-</div>
+</label>
+
+<style>
+</style>

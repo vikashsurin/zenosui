@@ -20,6 +20,7 @@
 </script>
 
 <Button
+	themed={false}
 	active={tabState.openTabId === id}
 	class={finalClass}
 	{activeClass}

@@ -1,30 +1,39 @@
+<script lang="ts">
+	import { NavigationList, NavigationListItem, NavigationSubList } from '$lib/ui/index.js';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+</script>
+
 <div class="h-dvh border-r-1 p-4">
-	<ul class="grid gap-2">
-		<li><a href="/">home</a></li>
-		<li><a href="/pallete">pallete</a></li>
-		<li><a href="/docs/button">button</a></li>
-		<li><a href="/docs/icon-button">icon button</a></li>
-		<li><a href="/docs/icon">icon</a></li>
-		<li><a href="/docs/text-input">text input</a></li>
-		<li><a href="/docs/sidebar">sidebar</a></li>
-		<li><a href="/docs/chip">chip</a></li>
-		<li><a href="/docs/alert">alert</a></li>
-		<li><a href="/docs/dialog">dialog</a></li>
-		<li><a href="/docs/toast">toast</a></li>
-		<li><a href="/docs/link">link</a></li>
-		<li><a href="/docs/menu">menu </a></li>
-		<li><a href="/docs/menu-bar">menu bar</a></li>
-		<li><a href="/docs/navigation-menu">navigation-menu</a></li>
-		<li><a href="/docs/navigation-list">navigation-list</a></li>
-		<li><a href="/docs/radio">radio</a></li>
-		<li><a href="/docs/checkbox">checkbox</a></li>
-		<li><a href="/docs/accordion">accordion</a></li>
-		<li><a href="/docs/select">select</a></li>
-		<li><a href="/docs/switch">switch</a></li>
-		<li><a href="/docs/tooltip">tooltip</a></li>
-		<li><a href="/docs/carousel">carousel</a></li>
-		<li><a href="/docs/tabs">tabs</a></li>
-		<li><a href="/docs/meter">meter</a></li>
-		<li><a href="/docs/window-splitter">window-splitter</a></li>
-	</ul>
+	<NavigationList uiSize="md" class="w-full">
+		<NavigationListItem href="/" activeClass="bg-red-400">home</NavigationListItem>
+		<NavigationListItem hasList={true} label="primitives">
+			<NavigationSubList class="">
+				<NavigationListItem href="/docs/primitives/link">link</NavigationListItem>
+			</NavigationSubList>
+		</NavigationListItem>
+		<NavigationListItem href="/pallete">pallete</NavigationListItem>
+		<NavigationListItem href="/docs/button">button</NavigationListItem>
+		<NavigationListItem href="/docs/icon-button">icon button</NavigationListItem>
+		<NavigationListItem href="/docs/icon">icon</NavigationListItem>
+		<NavigationListItem href="/docs/text-input">text input</NavigationListItem>
+		<NavigationListItem href="/docs/chip">chip</NavigationListItem>
+		<NavigationListItem href="/docs/alert">alert</NavigationListItem>
+		<NavigationListItem href="/docs/dialog">dialog</NavigationListItem>
+		<NavigationListItem href="/docs/toast">toast</NavigationListItem>
+		<NavigationListItem href="/docs/link">link</NavigationListItem>
+		<NavigationListItem href="/docs/menu">menu</NavigationListItem>
+		<NavigationListItem href="/docs/menu-bar">menu bar</NavigationListItem>
+		<NavigationListItem href="/docs/navigation-menu">navigation-menu</NavigationListItem>
+		<NavigationListItem href="/docs/navigation-list">navigation-list</NavigationListItem>
+		<NavigationListItem href="/docs/radio">radio</NavigationListItem>
+		<NavigationListItem href="/docs/checkbox">checkbox</NavigationListItem>
+		<NavigationListItem href="/docs/accordion">accordion</NavigationListItem>
+		<NavigationListItem href="/docs/select">select</NavigationListItem>
+		<NavigationListItem href="/docs/switch">switch</NavigationListItem>
+		<NavigationListItem href="/docs/tooltip">tooltip</NavigationListItem>
+		<NavigationListItem href="/docs/carousel">carousel</NavigationListItem>
+		<NavigationListItem href="/docs/tabs">tabs</NavigationListItem>
+		<NavigationListItem href="/docs/meter">meter</NavigationListItem>
+		<NavigationListItem href="/docs/window-splitter">window-splitter</NavigationListItem>
+	</NavigationList>
 </div>

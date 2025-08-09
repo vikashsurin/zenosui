@@ -14,6 +14,7 @@
 		uiRounded,
 		iconLeft,
 		iconRight,
+		label,
 		uiSize,
 		onclick,
 		class: _class,
@@ -79,7 +80,7 @@
 	data-themed={themed}
 	role="menuitem"
 	class={finalClass}
-	class:interactive_list={themed}
+	class:list={themed}
 	onmouseenter={handleOpenSubmenu}
 	onmouseleave={handleCloseSubmenu}
 	onclick={(e) => {
