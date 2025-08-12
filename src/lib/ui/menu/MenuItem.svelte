@@ -4,16 +4,21 @@
 	import { baseVariant, ICON_PLACEHOLDER_SIZE, SIZE_PRESET } from '$lib/style/index.js';
 	import type { MenuItemProps, SizeVariant } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
-	import { getContext, setContext } from 'svelte';
-	import { type MenuContextType } from './types.js';
+	import { getContext, setContext, type Component } from 'svelte';
+	import { type MenuContextType, type RadioMenuContextType } from './types.js';
+	import Check from '@lucide/svelte/icons/check';
+	import Dot from '@lucide/svelte/icons/dot';
 
 	let {
-		themed = false,
+		themed = true,
 		hasSubMenu,
+		type = 'default',
 		children,
 		uiRounded,
 		iconLeft,
+		checked = $bindable(),
 		iconRight,
+		value: radioValue,
 		label,
 		uiSize,
 		onclick,
@@ -22,12 +27,15 @@
 	}: MenuItemProps = $props();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
+
 	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
+	const radioMenuContext = getContext<RadioMenuContextType>('radioMenuContext');
+
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300  active:bg-gray-400 overflow-visible items-center active:text-white inline-flex relative text-nowrap `,
+		base: `zu_menu_item px-3 hover:bg-gray-300  overflow-visible items-center   inline-flex relative text-nowrap w-full `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},
@@ -36,6 +44,7 @@
 			uiSize: 'md'
 		}
 	});
+	$inspect({ radioMenuContext });
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 
 	let submenu = $state({
@@ -45,25 +54,35 @@
 	setContext('subMenuContext', submenu);
 
 	function handleOpenSubmenu() {
-		if (hasSubMenu) {
-			submenu.open = true;
-		}
+		// if (hasSubMenu) {
+		submenu.open = true;
+		// }
 	}
 
 	function handleCloseSubmenu() {
-		if (hasSubMenu) {
-			submenu.open = false;
-		}
+		// if (hasSubMenu) {
+		submenu.open = false;
+		// }
 	}
-
+	let active = $state(false);
 	function handleClick(e: MouseEvent) {
+		active = true;
 		e.stopPropagation();
 		menuContext.setActiveMenu({ _id: null, type: 'click' });
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
+	$effect(() => {
+		if (children !== null) {
+		}
+	});
+	function isChecked(e: MouseEvent) {
+		if (type !== 'default') {
+			checked = !checked;
+		}
+	}
 
 	let iconPlaceholder = tv({
-		base: ``,
+		base: `rounded-full`,
 		variants: {
 			size: ICON_PLACEHOLDER_SIZE
 		},
@@ -72,35 +91,76 @@
 			size: uiSize
 		}
 	});
+	function handlePointerDown(e: MouseEvent) {
+		e.stopPropagation();
+		active = true;
+	}
+	function handlePointerUp(e: MouseEvent) {
+		e.stopPropagation();
+		active = false;
+	}
+
+	function setRadioValue(e: MouseEvent) {
+		console.log('set radio called');
+		console.log('radioValue ', radioValue);
+		// console.log('radioValue ctx', radioMenuContext.value);
+		if (radioMenuContext) {
+			radioMenuContext.setRadioValue(radioValue);
+		}
+	}
+
+	const role: 'menuitem' | 'menuitemcheckbox' | 'menuitemradio' =
+		type === 'default' ? 'menuitem' : type === 'checkbox' ? 'menuitemcheckbox' : 'menuitemradio';
 
 	let finalIconPlaceholder = $derived(iconPlaceholder({ size: uiSize }));
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <li
+	{role}
 	data-themed={themed}
-	role="menuitem"
+	data-checked={checked}
+	data-value={radioValue}
 	class={finalClass}
 	class:list={themed}
+	aria-label={label}
+	onpointerdown={(e) => handlePointerDown(e)}
+	onpointerup={(e) => handlePointerUp(e)}
 	onmouseenter={handleOpenSubmenu}
 	onmouseleave={handleCloseSubmenu}
 	onclick={(e) => {
 		handleClick(e);
+		setRadioValue(e);
+		isChecked(e);
 		onclick?.(e);
 	}}
 	{...props}
 >
-	{#if iconLeft}
+	{#if iconLeft && type === 'default'}
 		<Icon icon={iconLeft} {uiSize} />
+	{:else if type === 'checkbox' && checked}
+		<Icon icon={Check} {uiSize} class="" />
+	{:else if type === 'radio' && radioMenuContext.value === radioValue}
+		<Icon icon={Dot} class="scale-130" {uiSize} />
 	{:else}
-		<div class={finalIconPlaceholder}></div>
+		<span class={`${finalIconPlaceholder} `}></span>
 	{/if}
 
-	{#if children}
-		{@render children?.()}
+	{#if label}
+		<span>
+			{label}
+		</span>
 	{/if}
 	{#if iconRight}
 		<Icon icon={iconRight} {uiSize} class="ml-auto" />
 	{:else}
 		<div class={`${finalIconPlaceholder} ml-auto`}></div>
 	{/if}
+
+	{#if children}
+		{@render children?.()}
+	{/if}
 </li>
+
+<style>
+</style>

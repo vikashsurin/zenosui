@@ -6,3 +6,4 @@ export { default as MenuSeparator } from './MenuSeparator.svelte';
 export { default as MenuItemCustom } from './MenuItemCustom.svelte';
 export { default as MenuBar } from './MenuBar.svelte';
 export { default as SubMenu } from './SubMenu.svelte';
+export { default as MenuRadioGroup } from './MenuRadioGroup.svelte';

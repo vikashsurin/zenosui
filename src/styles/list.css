@@ -1,0 +1,13 @@
+.list[data-themed='true'] {
+	background-color: transparent;
+	color: black;
+}
+.list[data-themed='true']:hover {
+	background-color: var(--primary-surface-300);
+	color: white;
+}
+
+.list[data-themed='true']:active {
+	background-color: var(--primary-surface-400);
+	/* color: white; */
+}

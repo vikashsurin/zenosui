@@ -101,7 +101,7 @@ export interface StateProps {
 
 export interface IconProps {
 	icon?: Component;
-	iconLeft?: Component;
+	iconLeft?: Component | Snippet | null;
 	iconRight?: Component;
 	iconRotation?: string;
 	iconLeftRotation?: string;
@@ -151,7 +151,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 // export type   ButtonProps = Component<ButtonAsButton | ButtonAsAnchor> {}
 
 export interface IconCompProps extends ComponentProps {
-	icon: Component;
+	icon: Component | Snippet | null;
 	uiIconSize?: SizeVariant;
 	iconRotation?: string; // e.g., 'rotate-45'
 }
@@ -232,6 +232,9 @@ export interface MenuListProps extends UiProps, HTMLAttributes<HTMLUListElement>
 
 export interface MenuItemProps extends UiProps, IconProps, HTMLLiAttributes {
 	hasSubMenu?: boolean;
+	label?: string;
+	checked?: boolean;
+	type?: 'checkbox' | 'radio' | 'default';
 }
 
 export type MenuTriggerProps = ButtonProps;

@@ -6,12 +6,13 @@
 		MenuItem,
 		MenuTrigger,
 		MenuSeparator,
-		MenuBar
+		MenuBar,
+		SubMenu
 	} from '$lib/ui/index.js';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import Submenu from '$lib/ui/menu/SubMenu.svelte';
 	import Trash2 from '@lucide/svelte/icons/trash-2';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	let checked = $state(true);
 </script>
 
 <div>
@@ -19,39 +20,24 @@
 	<Menu uiSize="sm">
 		<MenuTrigger>open</MenuTrigger>
 		<MenuList>
-			<MenuItem uiRounded="none" iconLeft={BadgeCheck}>one1</MenuItem>
-			<MenuItem>two</MenuItem>
-			<MenuItem hasSubMenu iconRight={ChevronRight}>
-				three
-				<Submenu>
-					<MenuItem onclick={() => console.log('from submenu')}>Edit</MenuItem>
-					<MenuItem>Draft it</MenuItem>
-					<MenuItem iconRight={ChevronRight} hasSubMenu>
-						More
-						<Submenu>
-							<MenuItem>Up</MenuItem>
-							<MenuItem iconRight={ChevronRight}>Down</MenuItem>
-							<MenuItem>Left</MenuItem>
-							<MenuItem>Right</MenuItem>
-							<MenuItem hasSubMenu iconRight={ChevronRight}
-								>Dinosaur Type
-								<Submenu>
-									<MenuItem>T-Rex</MenuItem>
-									<MenuItem>Brachisauraus</MenuItem>
-								</Submenu>
-							</MenuItem>
-							<MenuItem>Jurassic Park</MenuItem>
-						</Submenu>
+			<MenuItem type="radio" bind:checked label="checkbox" />
+			<MenuItem uiRounded="none" iconLeft={BadgeCheck} label="one" />
+			<MenuItem uiRounded="none" label="two" />
+			<MenuItem uiRounded="none" label="three" />
+			<MenuItem uiRounded="none" label="more" iconRight={ChevronRight}>
+				<SubMenu>
+					<MenuItem iconLeft={Trash2} label="Delete" />
+					<MenuItem label="Save" />
+					<MenuItem label="Apply" iconRight={ChevronRight}>
+						<SubMenu>
+							<MenuItem label="cancel" />
+							<MenuItem label="settings" />
+						</SubMenu>
 					</MenuItem>
-					<MenuSeparator />
-					<MenuItem
-						iconLeft={Trash2}
-						class="text-red-600"
-						onclick={() => console.log('delete was called')}
-						>Delete
-					</MenuItem>
-				</Submenu>
+				</SubMenu>
 			</MenuItem>
+			<MenuSeparator />
+			<MenuItem label="text" />
 		</MenuList>
 	</Menu>
 </div>

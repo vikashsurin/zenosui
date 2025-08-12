@@ -43,6 +43,11 @@
 </script>
 
 <Button
+	role="menuitem"
+	aria-haspopup="true"
+	aria-controls={menuContext.menuState.menuId}
+	aria-expanded="false"
+	id="zu_menu_trigger"
 	data-themed={false}
 	class={finalClass}
 	{label}

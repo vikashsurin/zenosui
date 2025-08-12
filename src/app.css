@@ -66,20 +66,18 @@
 /* LIST */
 .list[data-themed='true'] {
 	background-color: transparent;
-	color: var(--primary-content-dark);
+	color: black;
 }
 .list[data-themed='true']:hover {
 	background-color: var(--primary-surface-300);
-	color: black;
+	color: white;
 }
+
 .list[data-themed='true']:active {
-	color: white;
-	background-color: var(--primary-surface-500);
-}
-.list[data-active='true'] {
 	background-color: var(--primary-surface-500);
 	color: white;
 }
+
 /* LINK */
 .link[data-themed='true'] {
 	color: var(--primary-surface-500);

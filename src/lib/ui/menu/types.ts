@@ -19,3 +19,8 @@ export type MenuBarContextType = {
 	uiRounded?: RoundedVariant;
 	uiSize?: SizeVariant;
 };
+
+export type RadioMenuContextType = {
+	value: string | number | string[] | null | undefined;
+	setRadioValue: (v: string | number | string[] | null | undefined) => void;
+};

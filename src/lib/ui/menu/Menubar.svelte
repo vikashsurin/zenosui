@@ -4,7 +4,7 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { DivProps } from '$lib/types/index.js';
-	import type { MenuBarContextType } from './types.js';
+	import type { MenuBarContextType } from './types.ts';
 
 	let { children, uiSize, uiRounded, class: _class }: DivProps = $props();
 
@@ -14,7 +14,6 @@
 	const setActiveMenu = (id: string | null) => {
 		activeMenu.id = id;
 	};
-
 	setContext('menuBarContext', {
 		activeMenu,
 		setActiveMenu,
@@ -24,7 +23,7 @@
 
 	const style = tv({
 		extend: baseVariant,
-		base: 'inline flex gap-1 bg-gray-800 w-fit p-1 rounded-sm',
+		base: 'inline flex gap-1  w-fit p-1 rounded-sm',
 		variants: {},
 		compoundVariants: [],
 		defaultVariants: {}
@@ -37,7 +36,7 @@
 	);
 </script>
 
-<div class={finalClasses}>
+<div role="menubar" aria-label="Main navigation" class={finalClasses}>
 	{#if children}
 		{@render children()}
 	{/if}

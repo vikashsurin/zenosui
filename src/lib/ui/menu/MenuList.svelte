@@ -2,13 +2,20 @@
 	import { tv } from 'tailwind-variants';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
-	import { baseVariant, type RoundedVariant } from '$lib/style/index.js';
+	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
 	import type { MenuContextType } from './types.js';
-	import { blur, crossfade, fade, fly, scale, slide } from 'svelte/transition';
-	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
+	import { fade } from 'svelte/transition';
+	let {
+		children,
+		themed = true,
+		placement,
+		uiRounded,
+		class: _class,
+		...props
+	}: MenuListProps = $props();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 
@@ -45,8 +52,11 @@
 {#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()}
 	<ul
 		role="menu"
-		in:slide={{ duration: 300 }}
-		out:slide={{ duration: 300 }}
+		id="zu_menu_list"
+		aria-labelledby="zu_menu_trigger"
+		data-expanded={menuContext.menuState.menuId === menuContext.menuState.openMenuId}
+		in:fade={{ duration: 100 }}
+		out:fade={{ duration: 100 }}
 		use:clickOutside={onclickOutside}
 		class={finalClass}
 		{...props}

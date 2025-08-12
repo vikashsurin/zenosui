@@ -21,7 +21,6 @@
 		variants: {},
 		defaultVariants: {}
 	});
-	$inspect({ navListState });
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
