@@ -1,21 +1,20 @@
 import type { RoundedVariant, SizeVariant } from '$lib/types/index.js';
+import type { UUID } from 'crypto';
 
 export type MenuContextType = {
-	menuState: {
+	state: {
 		menuId: string;
-		openMenuId: string | null;
+		open: boolean;
 	};
-	openMenuId: () => string | null;
-	setActiveMenu: ({ _id, type }: { _id: string | null; type: string }) => void;
 	uiRounded?: RoundedVariant;
 	uiSize?: SizeVariant;
 };
 
 export type MenuBarContextType = {
-	activeMenu: {
-		id: string | null;
+	state: {
+		isMenuBarActive: boolean;
+		openMenuId: string | UUID | null;
 	};
-	setActiveMenu: (id: string | null) => void;
 	uiRounded?: RoundedVariant;
 	uiSize?: SizeVariant;
 };

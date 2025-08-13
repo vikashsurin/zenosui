@@ -4,7 +4,7 @@
 	import { Button } from '$lib/ui/index.js';
 	import { getContext } from 'svelte';
 	import type { MenuTriggerProps } from '$lib/types/index.js';
-	import type { MenuContextType } from './types.js';
+	import type { MenuBarContextType, MenuContextType } from './types.js';
 
 	let {
 		children,
@@ -17,17 +17,37 @@
 		...props
 	}: MenuTriggerProps = $props();
 
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const menuContext = getContext<MenuContextType>('menuContext');
-	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
-	uiSize = uiSize ? uiSize : menuContext.uiSize;
 
-	function handleFunc(type: 'click' | 'hover') {
-		const id = menuContext.menuState.menuId;
-		const activeId = menuContext.menuState.openMenuId;
-		if (id === activeId && type === 'click') {
-			menuContext.setActiveMenu({ _id: null, type });
+	const menuId = menuContext.state.menuId;
+	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
+	uiSize = uiSize ? uiSize : menuContext?.uiSize;
+
+	function handleClick() {
+		if (menuBarContext) {
+			if (menuBarContext.state.openMenuId === menuId) {
+				menuBarContext.state.openMenuId = null;
+				menuBarContext.state.isMenuBarActive = false;
+			} else {
+				menuBarContext.state.openMenuId = menuId;
+				menuBarContext.state.isMenuBarActive = true;
+			}
+		}
+		if (menuContext.state.open === false) {
+			menuContext.state.open = true;
 		} else {
-			menuContext.setActiveMenu({ _id: id, type });
+			menuContext.state.open = false;
+		}
+	}
+	function handleMouseOver() {
+		if (!menuBarContext) {
+			return;
+		}
+		if (menuBarContext.state.isMenuBarActive) {
+			menuBarContext.state.openMenuId = menuId;
+		} else {
+			// menuBarContext.state.openMenuId = null;
 		}
 	}
 
@@ -35,7 +55,7 @@
 		base: ``,
 		variants: {},
 		defaultVariants: {
-			uiRounded: 'sm',
+			uiRounded: 'none',
 			uiSize: 'xs'
 		}
 	});
@@ -45,7 +65,7 @@
 <Button
 	role="menuitem"
 	aria-haspopup="true"
-	aria-controls={menuContext.menuState.menuId}
+	aria-controls=""
 	aria-expanded="false"
 	id="zu_menu_trigger"
 	data-themed={false}
@@ -56,8 +76,8 @@
 	{...props}
 	{uiRounded}
 	{uiSize}
-	onclick={() => handleFunc('click')}
-	onmouseenter={() => handleFunc('hover')}
+	onclick={() => handleClick()}
+	onmouseover={() => handleMouseOver()}
 >
 	{#if children}
 		{@render children?.()}

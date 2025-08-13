@@ -19,17 +19,17 @@
 
 <div>
 	<h1>Menu bar</h1>
-	<MenuBar uiSize="sm" uiRounded="sm">
-		<Menu uiSize="sm">
+	<MenuBar uiSize="sm">
+		<Menu>
 			<MenuTrigger label="File" />
 			<MenuList>
-				<MenuItem uiRounded="none" label="New Tab" />
-				<MenuItem uiRounded="none" label="New Window" />
-				<MenuItem uiRounded="none" label="New Incognito Window" />
-				<MenuItem uiRounded="none" label="more" iconRight={ChevronRight}>
+				<MenuItem label="New Tab" />
+				<MenuItem label="New Window" />
+				<MenuItem label="New Incognito Window" />
+				<MenuItem label="more" iconRight={ChevronRight}>
 					<SubMenu>
-						<MenuItem label="Save" />
-						<MenuItem label="Apply" iconRight={ChevronRight}>
+						<MenuItem label="Save all people" />
+						<MenuItem label="Apply " iconRight={ChevronRight}>
 							<SubMenu>
 								<MenuItem label="cancel" />
 								<MenuItem label="settings" />
@@ -37,60 +37,59 @@
 						</MenuItem>
 					</SubMenu>
 				</MenuItem>
-				<MenuSeparator />
-				<MenuItem label="text" />
 			</MenuList>
 		</Menu>
-		<Menu uiSize="sm">
+		<Menu>
 			<MenuTrigger label="Edit" />
 			<MenuList>
-				<MenuItem uiRounded="none" label="Undo" />
-				<MenuItem uiRounded="none" label="Redo" />
+				<MenuItem label="Undo" />
+				<MenuItem label="Redo" />
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Find" />
+				<MenuItem label="Find" />
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Cut" />
-				<MenuItem uiRounded="none" label="Copy" />
-				<MenuItem uiRounded="none" label="Paste" />
+				<MenuItem label="Cut" />
+				<MenuItem label="Copy" />
+				<MenuItem label="Paste" />
 			</MenuList>
 		</Menu>
+		<!-- 
 		<Menu uiSize="sm">
 			<MenuTrigger label="View" />
 			<MenuList>
 				<MenuItem
 					type="checkbox"
 					bind:checked={bookmarks}
-					uiRounded="none"
+					
 					label="Always Show Bookmark Bar"
 				/>
 				<MenuItem
 					type="checkbox"
 					bind:checked={urls}
-					uiRounded="none"
+					
 					label="Always Show Full URLs"
 				/>
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Reload" />
-				<MenuItem uiRounded="none" label="Force Reload" />
+				<MenuItem  label="Reload" />
+				<MenuItem  label="Force Reload" />
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Toggle Fullscreen" />
-				<MenuItem uiRounded="none" label="Hide Sidebar" />
+				<MenuItem  label="Toggle Fullscreen" />
+				<MenuItem  label="Hide Sidebar" />
 			</MenuList>
 		</Menu>
 		<Menu uiSize="sm">
 			<MenuTrigger label="Profiles" />
 			<MenuList>
 				<MenuRadioGroup bind:value={profileRadioValue} class="">
-					<MenuItem type="radio" value="Andy" uiRounded="none" label="Andy" />
-					<MenuItem type="radio" value="Louis" uiRounded="none" label="Louis" />
+					<MenuItem type="radio" value="Andy"  label="Andy" />
+					<MenuItem type="radio" value="Louis"  label="Louis" />
 				</MenuRadioGroup>
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Reload" />
-				<MenuItem uiRounded="none" label="Force Reload" />
+				<MenuItem  label="Reload" />
+				<MenuItem  label="Force Reload" />
 				<MenuSeparator />
-				<MenuItem uiRounded="none" label="Toggle Fullscreen" />
-				<MenuItem uiRounded="none" label="Hide Sidebar" />
+				<MenuItem  label="Toggle Fullscreen" />
+				<MenuItem  label="Hide Sidebar" />
 			</MenuList>
-		</Menu>
+		</Menu> -->
 	</MenuBar>
 </div>

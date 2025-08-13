@@ -6,8 +6,9 @@
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { clickOutside } from '$lib/utils/utils.js';
-	import type { MenuContextType } from './types.js';
+	import type { MenuBarContextType, MenuContextType } from './types.js';
 	import { fade } from 'svelte/transition';
+
 	let {
 		children,
 		themed = true,
@@ -17,9 +18,10 @@
 		...props
 	}: MenuListProps = $props();
 
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const menuContext = getContext<MenuContextType>('menuContext');
-
-	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
+	const menuId = menuContext.state.menuId;
+	// uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 
 	let style = tv({
 		extend: baseVariant,
@@ -43,21 +45,37 @@
 	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
 
 	function onclickOutside() {
-		// clickOutside(menuContext, finalClass);
-		menuContext.setActiveMenu({ _id: null, type: 'click' });
+		if (menuContext) {
+			menuContext.state.open = false;
+		}
+		if (menuBarContext) {
+			menuBarContext.state.openMenuId = null;
+			menuBarContext.state.isMenuBarActive = false;
+		}
+
 		console.log('clickOutside');
+	}
+	$inspect({ menuContext });
+
+	function openMenuList() {
+		if (menuBarContext) {
+			return menuBarContext.state.openMenuId === menuId;
+		} else {
+			return menuContext.state.open;
+		}
 	}
 </script>
 
-{#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()}
+<!-- {#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()} -->
+{#if openMenuList()}
 	<ul
 		role="menu"
 		id="zu_menu_list"
 		aria-labelledby="zu_menu_trigger"
-		data-expanded={menuContext.menuState.menuId === menuContext.menuState.openMenuId}
+		data-expanded={''}
+		use:clickOutside={onclickOutside}
 		in:fade={{ duration: 100 }}
 		out:fade={{ duration: 100 }}
-		use:clickOutside={onclickOutside}
 		class={finalClass}
 		{...props}
 	>

@@ -5,21 +5,16 @@
 	import { setContext } from 'svelte';
 	import type { DivProps } from '$lib/types/index.js';
 	import type { MenuBarContextType } from './types.ts';
+	import type { UUID } from 'crypto';
 
 	let { children, uiSize, uiRounded, class: _class }: DivProps = $props();
 
-	const activeMenu = $state({
-		id: <string | null>null
+	const state = $state({
+		isMenuBarActive: <boolean>false,
+		openMenuId: <string | UUID | null>null
 	});
-	const setActiveMenu = (id: string | null) => {
-		activeMenu.id = id;
-	};
-	setContext('menuBarContext', {
-		activeMenu,
-		setActiveMenu,
-		uiRounded,
-		uiSize
-	} as MenuBarContextType);
+
+	setContext('menuBarContext', { state, uiRounded, uiSize } as MenuBarContextType);
 
 	const style = tv({
 		extend: baseVariant,

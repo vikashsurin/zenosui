@@ -5,7 +5,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuProps } from '$lib/types/index.js';
 	import { getContext, setContext } from 'svelte';
-	import { type MenuBarContextType } from './types.js';
+	import { type MenuBarContextType, type MenuContextType } from './types.js';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
 
@@ -14,38 +14,12 @@
 	uiSize = uiSize ? uiSize : menuBarContext?.uiSize;
 
 	const id = crypto.randomUUID();
-	const menuState = $state({
+	const state = $state({
 		menuId: id,
-		openMenuId: <string | null>null
+		open: false
 	});
 
-	const openMenuId = $derived.by(() => {
-		if (menuBarContext) {
-			return menuBarContext.activeMenu.id;
-		} else {
-			return menuState.openMenuId;
-		}
-	});
-
-	const setActiveMenu = (props: { _id: string | null; type: string }) => {
-		if (menuBarContext) {
-			if (menuBarContext.activeMenu.id === props._id && props.type === 'click') {
-				menuBarContext.setActiveMenu(null);
-			} else {
-				menuBarContext.setActiveMenu(props._id);
-			}
-		} else {
-			menuState.openMenuId = props._id;
-		}
-	};
-
-	setContext('menuContext', {
-		menuState: menuState,
-		openMenuId: () => openMenuId,
-		setActiveMenu: setActiveMenu,
-		uiRounded: uiRounded,
-		uiSize: uiSize
-	});
+	setContext('menuContext', { state, uiRounded, uiSize } as MenuContextType);
 
 	let style = tv({
 		extend: baseVariant,

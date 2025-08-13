@@ -47,7 +47,7 @@
 	}
 </script>
 
-{#if subMenuContext.open}
+<!-- {#if subMenuContext.open} -->
 	<ul
 		data-slot="submenu"
 		role="menu"
@@ -59,4 +59,4 @@
 			{@render children?.()}
 		{/if}
 	</ul>
-{/if}
+<!-- {/if} -->

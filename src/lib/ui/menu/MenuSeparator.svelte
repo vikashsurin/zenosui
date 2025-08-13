@@ -9,7 +9,7 @@
 	let { class: _class }: Props = $props();
 
 	let style = tv({
-		base: ` px-3 py-1`,
+		base: `py-1 opacity-10`,
 		variants: {},
 		defaultVariants: {}
 	});

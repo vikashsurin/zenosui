@@ -28,14 +28,14 @@
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 
-	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
+	uiRounded = uiRounded ? uiRounded : menuContext.uiRounded;
 
 	const radioMenuContext = getContext<RadioMenuContextType>('radioMenuContext');
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300  overflow-visible items-center   inline-flex relative text-nowrap w-full `,
+		base: `zu_menu_item px-3 hover:bg-gray-300  overflow-visible items-center inline-flex relative text-nowrap w-full `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},
@@ -44,7 +44,7 @@
 			uiSize: 'md'
 		}
 	});
-	$inspect({ radioMenuContext });
+
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 
 	let submenu = $state({
@@ -68,7 +68,7 @@
 	function handleClick(e: MouseEvent) {
 		active = true;
 		e.stopPropagation();
-		menuContext.setActiveMenu({ _id: null, type: 'click' });
+		// menuContext.setActiveMenu({ _id: null, type: 'click' });
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
 	$effect(() => {

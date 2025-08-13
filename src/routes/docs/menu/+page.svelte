@@ -20,11 +20,10 @@
 	<Menu uiSize="sm">
 		<MenuTrigger>open</MenuTrigger>
 		<MenuList>
-			<MenuItem type="radio" bind:checked label="checkbox" />
-			<MenuItem uiRounded="none" iconLeft={BadgeCheck} label="one" />
-			<MenuItem uiRounded="none" label="two" />
-			<MenuItem uiRounded="none" label="three" />
-			<MenuItem uiRounded="none" label="more" iconRight={ChevronRight}>
+			<MenuItem iconLeft={BadgeCheck} label="one" />
+			<MenuItem label="two" />
+			<MenuItem label="three" />
+			<MenuItem label="more" iconRight={ChevronRight}>
 				<SubMenu>
 					<MenuItem iconLeft={Trash2} label="Delete" />
 					<MenuItem label="Save" />
