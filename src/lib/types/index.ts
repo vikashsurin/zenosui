@@ -224,15 +224,19 @@ export type placement =
 	| 'right-center'
 	| 'left-center';
 
-export interface MenuProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
+export interface MenuProps extends UiProps, HTMLAttributes<HTMLElement> {}
 
 export interface MenuListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 	placement?: placement;
 }
 
-export interface MenuItemProps extends UiProps, IconProps, HTMLLiAttributes {
+export interface MenuItemProps extends UiProps, IconProps, HTMLAttributes<HTMLElement> {
+	shortcut?: string;
+	renderAsSubmenuTrigger?: boolean;
+	value?: string;
 	hasSubMenu?: boolean;
 	label?: string;
+	href?: string | null;
 	checked?: boolean;
 	type?: 'checkbox' | 'radio' | 'default';
 }

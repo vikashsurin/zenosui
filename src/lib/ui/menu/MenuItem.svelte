@@ -5,15 +5,20 @@
 	import type { MenuItemProps, SizeVariant } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import { getContext, setContext, type Component } from 'svelte';
-	import { type MenuContextType, type RadioMenuContextType } from './types.js';
+	import {
+		type MenuBarContextType,
+		type MenuContextType,
+		type RadioMenuContextType
+	} from './types.js';
 	import Check from '@lucide/svelte/icons/check';
 	import Dot from '@lucide/svelte/icons/dot';
 
 	let {
 		themed = true,
-		hasSubMenu,
+		renderAsSubmenuTrigger = false,
 		type = 'default',
 		children,
+		shortcut,
 		uiRounded,
 		iconLeft,
 		checked = $bindable(),
@@ -21,11 +26,11 @@
 		value: radioValue,
 		label,
 		uiSize,
-		onclick,
+		href,
 		class: _class,
 		...props
 	}: MenuItemProps = $props();
-
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const menuContext = getContext<MenuContextType>('menuContext');
 
 	uiSize = uiSize ? uiSize : menuContext.uiSize;
@@ -35,7 +40,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300  overflow-visible items-center inline-flex relative text-nowrap w-full `,
+		base: `zu_menu_item px-3 hover:bg-gray-300   overflow-visible items-center inline-flex  relative text-nowrap w-full `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},
@@ -67,7 +72,13 @@
 	let active = $state(false);
 	function handleClick(e: MouseEvent) {
 		active = true;
-		e.stopPropagation();
+		menuContext.closeMenu();
+		if (menuBarContext) {
+			menuBarContext.state.openMenuId = null;
+			menuBarContext.state.isMenuBarActive = false;
+		}
+		// e.stopPropagation();
+		// console.log('I was called');
 		// menuContext.setActiveMenu({ _id: null, type: 'click' });
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
@@ -91,18 +102,18 @@
 			size: uiSize
 		}
 	});
-	function handlePointerDown(e: MouseEvent) {
-		e.stopPropagation();
-		active = true;
-	}
-	function handlePointerUp(e: MouseEvent) {
-		e.stopPropagation();
-		active = false;
-	}
+	// function handlePointerDown(e: MouseEvent) {
+	// 	e.stopPropagation();
+	// 	active = true;
+	// }
+	// function handlePointerUp(e: MouseEvent) {
+	// 	e.stopPropagation();
+	// 	active = false;
+	// }
 
 	function setRadioValue(e: MouseEvent) {
-		console.log('set radio called');
-		console.log('radioValue ', radioValue);
+		// console.log('set radio called');
+		// console.log('radioValue ', radioValue);
 		// console.log('radioValue ctx', radioMenuContext.value);
 		if (radioMenuContext) {
 			radioMenuContext.setRadioValue(radioValue);
@@ -115,52 +126,54 @@
 	let finalIconPlaceholder = $derived(iconPlaceholder({ size: uiSize }));
 </script>
 
-<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-<li
-	{role}
-	data-themed={themed}
-	data-checked={checked}
-	data-value={radioValue}
-	class={finalClass}
-	class:list={themed}
-	aria-label={label}
-	onpointerdown={(e) => handlePointerDown(e)}
-	onpointerup={(e) => handlePointerUp(e)}
-	onmouseenter={handleOpenSubmenu}
-	onmouseleave={handleCloseSubmenu}
-	onclick={(e) => {
-		handleClick(e);
-		setRadioValue(e);
-		isChecked(e);
-		onclick?.(e);
-	}}
-	{...props}
->
-	{#if iconLeft && type === 'default'}
-		<Icon icon={iconLeft} {uiSize} />
-	{:else if type === 'checkbox' && checked}
-		<Icon icon={Check} {uiSize} class="" />
-	{:else if type === 'radio' && radioMenuContext.value === radioValue}
-		<Icon icon={Dot} class="scale-130" {uiSize} />
-	{:else}
-		<span class={`${finalIconPlaceholder} `}></span>
-	{/if}
+{#if renderAsSubmenuTrigger}
+	{@render menuitemSnippet({ href })}
+{:else}
+	<li role="none" class="flex">
+		{@render menuitemSnippet({ href })}
+	</li>
+{/if}
 
-	{#if label}
-		<span>
-			{label}
-		</span>
-	{/if}
-	{#if iconRight}
-		<Icon icon={iconRight} {uiSize} class="ml-auto" />
-	{:else}
-		<div class={`${finalIconPlaceholder} ml-auto`}></div>
-	{/if}
-
-	{#if children}
+{#snippet menuitemSnippet({ href }: { href?: string | null })}
+	{@const as = !href ? 'button' : 'a'}
+	<svelte:element
+		this={as}
+		{role}
+		{href}
+		data-themed={themed}
+		data-checked={checked}
+		data-value={radioValue}
+		class={finalClass}
+		class:list={themed}
+		onmouseenter={handleOpenSubmenu}
+		onmouseleave={handleCloseSubmenu}
+		onclick={(e: MouseEvent) => {
+			handleClick(e);
+			setRadioValue(e);
+			isChecked(e);
+		}}
+		{...props}
+	>
+		{#if iconLeft && type === 'default'}
+			<Icon icon={iconLeft} {uiSize} />
+		{:else if type === 'checkbox' && checked}
+			<Icon icon={Check} {uiSize} class="" />
+		{:else if type === 'radio' && radioMenuContext.value === radioValue}
+			<Icon icon={Dot} class="scale-130" {uiSize} />
+		{:else}
+			<span class={`${finalIconPlaceholder} `}></span>
+		{/if}
+		<!-- render children -->
 		{@render children?.()}
-	{/if}
-</li>
+		{#if shortcut}
+			<span class="ml-auto text-inherit opacity-50">{shortcut}</span>
+		{:else if iconRight}
+			<Icon icon={iconRight} {uiSize} class="ml-auto flex items-center" />
+		{:else}
+			<div class={`${finalIconPlaceholder} ml-auto`}></div>
+		{/if}
+	</svelte:element>
+{/snippet}
 
-<style>
-</style>
+<!-- onpointerdown={(e) => handlePointerDown(e)}
+onpointerup={(e) => handlePointerUp(e)} -->

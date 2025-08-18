@@ -31,8 +31,10 @@
 	);
 </script>
 
-<div role="menubar" aria-label="Main navigation" class={finalClasses}>
-	{#if children}
-		{@render children()}
-	{/if}
-</div>
+<nav aria-label="Main navigation">
+	<ul role="menubar" class={finalClasses}>
+		{#if children}
+			{@render children()}
+		{/if}
+	</ul>
+</nav>

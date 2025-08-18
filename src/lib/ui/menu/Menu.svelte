@@ -19,7 +19,31 @@
 		open: false
 	});
 
-	setContext('menuContext', { state, uiRounded, uiSize } as MenuContextType);
+	function openMenu() {
+		state.open = true;
+	}
+
+	function closeMenu() {
+		state.open = false;
+	}
+	function toggleMenu() {
+		state.open = !state.open;
+	}
+
+	setContext('menuContext', {
+		state,
+		toggleMenu,
+		openMenu,
+		closeMenu,
+		uiRounded,
+		uiSize
+	} as MenuContextType);
+
+	$effect(() => {
+		if (menuBarContext) {
+			menuBarContext.state.openMenuId !== id ? closeMenu() : openMenu();
+		}
+	});
 
 	let style = tv({
 		extend: baseVariant,
@@ -28,8 +52,6 @@
 		defaultVariants: {}
 	});
 	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
-
-	let menu_cont: HTMLDivElement;
 
 	// $effect(() => {
 	// 	const screenHeight =
@@ -53,8 +75,20 @@
 	// });
 </script>
 
-<div {id} class={finalClass} {...props} bind:this={menu_cont}>
-	{#if children}
-		{@render children?.()}
-	{/if}
-</div>
+{#if menuBarContext}
+	<li role="none" {id} class={finalClass} {...props}>
+		{#if children}
+			{@render children?.()}
+		{/if}
+	</li>
+{:else}
+	<nav>
+		<ul class={finalClass} {...props} role="menu">
+			<li>
+				{#if children}
+					{@render children?.()}
+				{/if}
+			</li>
+		</ul>
+	</nav>
+{/if}

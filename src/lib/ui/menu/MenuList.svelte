@@ -46,16 +46,15 @@
 
 	function onclickOutside() {
 		if (menuContext) {
-			menuContext.state.open = false;
+			menuContext.closeMenu();
 		}
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = null;
 			menuBarContext.state.isMenuBarActive = false;
 		}
 
-		console.log('clickOutside');
+		// console.log('clickOutside');
 	}
-	$inspect({ menuContext });
 
 	function openMenuList() {
 		if (menuBarContext) {
@@ -67,17 +66,16 @@
 </script>
 
 <!-- {#if menuContext.menuState.menuId === menuContext.menuState.openMenuId || menuContext.menuState.menuId === menuContext.openMenuId()} -->
-{#if openMenuList()}
+{#if menuContext.state.open}
 	<ul
 		role="menu"
-		id="zu_menu_list"
-		aria-labelledby="zu_menu_trigger"
+		id={'menu' + menuId}
+		aria-labelledby={'zu_menu_trigger' + menuId}
 		data-expanded={''}
-		use:clickOutside={onclickOutside}
 		in:fade={{ duration: 100 }}
 		out:fade={{ duration: 100 }}
 		class={finalClass}
-		{...props}
+		use:clickOutside={onclickOutside}
 	>
 		{#if children}
 			{@render children?.()}

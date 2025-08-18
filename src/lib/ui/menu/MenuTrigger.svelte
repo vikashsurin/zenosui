@@ -20,24 +20,16 @@
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const menuContext = getContext<MenuContextType>('menuContext');
 
-	const menuId = menuContext.state.menuId;
+	const menuId = menuContext && menuContext.state.menuId;
 	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext?.uiSize;
 
 	function handleClick() {
 		if (menuBarContext) {
-			if (menuBarContext.state.openMenuId === menuId) {
-				menuBarContext.state.openMenuId = null;
-				menuBarContext.state.isMenuBarActive = false;
-			} else {
-				menuBarContext.state.openMenuId = menuId;
-				menuBarContext.state.isMenuBarActive = true;
-			}
-		}
-		if (menuContext.state.open === false) {
-			menuContext.state.open = true;
+			menuBarContext.state.openMenuId = menuId;
+			menuBarContext.state.isMenuBarActive = true;
 		} else {
-			menuContext.state.open = false;
+			menuContext.toggleMenu();
 		}
 	}
 	function handleMouseOver() {
@@ -59,15 +51,16 @@
 			uiSize: 'xs'
 		}
 	});
+	$inspect({ menuContext });
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
 <Button
+	id={'zu_menu_trigger' + menuId}
 	role="menuitem"
 	aria-haspopup="true"
-	aria-controls=""
-	aria-expanded="false"
-	id="zu_menu_trigger"
+	aria-controls={'menu' + menuId}
+	aria-expanded={menuContext.state.open}
 	data-themed={false}
 	class={finalClass}
 	{label}

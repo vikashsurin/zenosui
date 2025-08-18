@@ -1,14 +1,17 @@
 <script lang="ts">
 	import {
 		Menu,
-		MenuBar,
+		Menubar,
 		MenuItem,
-		SubMenu,
+		Submenu,
 		MenuList,
 		MenuSeparator,
 		MenuTrigger,
 		MenuRadioGroup
 	} from '$lib/ui/index.js';
+	import SubmenuContent from '$lib/ui/menu/SubmenuContent.svelte';
+	import SubmenuTrigger from '$lib/ui/menu/SubmenuTrigger.svelte';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 
 	let bookmarks = $state(false);
@@ -19,77 +22,38 @@
 
 <div>
 	<h1>Menu bar</h1>
-	<MenuBar uiSize="sm">
+	<Menubar uiSize="xs">
 		<Menu>
 			<MenuTrigger label="File" />
 			<MenuList>
-				<MenuItem label="New Tab" />
-				<MenuItem label="New Window" />
-				<MenuItem label="New Incognito Window" />
-				<MenuItem label="more" iconRight={ChevronRight}>
-					<SubMenu>
-						<MenuItem label="Save all people" />
-						<MenuItem label="Apply " iconRight={ChevronRight}>
-							<SubMenu>
-								<MenuItem label="cancel" />
-								<MenuItem label="settings" />
-							</SubMenu>
-						</MenuItem>
-					</SubMenu>
-				</MenuItem>
+				<MenuItem shortcut="⌘N">one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>Settings</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
 			</MenuList>
 		</Menu>
 		<Menu>
-			<MenuTrigger label="Edit" />
+			<MenuTrigger label="Profile" />
 			<MenuList>
-				<MenuItem label="Undo" />
-				<MenuItem label="Redo" />
-				<MenuSeparator />
-				<MenuItem label="Find" />
-				<MenuSeparator />
-				<MenuItem label="Cut" />
-				<MenuItem label="Copy" />
-				<MenuItem label="Paste" />
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
 			</MenuList>
 		</Menu>
-		<!-- 
-		<Menu uiSize="sm">
-			<MenuTrigger label="View" />
-			<MenuList>
-				<MenuItem
-					type="checkbox"
-					bind:checked={bookmarks}
-					
-					label="Always Show Bookmark Bar"
-				/>
-				<MenuItem
-					type="checkbox"
-					bind:checked={urls}
-					
-					label="Always Show Full URLs"
-				/>
-				<MenuSeparator />
-				<MenuItem  label="Reload" />
-				<MenuItem  label="Force Reload" />
-				<MenuSeparator />
-				<MenuItem  label="Toggle Fullscreen" />
-				<MenuItem  label="Hide Sidebar" />
-			</MenuList>
-		</Menu>
-		<Menu uiSize="sm">
-			<MenuTrigger label="Profiles" />
-			<MenuList>
-				<MenuRadioGroup bind:value={profileRadioValue} class="">
-					<MenuItem type="radio" value="Andy"  label="Andy" />
-					<MenuItem type="radio" value="Louis"  label="Louis" />
-				</MenuRadioGroup>
-				<MenuSeparator />
-				<MenuItem  label="Reload" />
-				<MenuItem  label="Force Reload" />
-				<MenuSeparator />
-				<MenuItem  label="Toggle Fullscreen" />
-				<MenuItem  label="Hide Sidebar" />
-			</MenuList>
-		</Menu> -->
-	</MenuBar>
+	</Menubar>
 </div>
