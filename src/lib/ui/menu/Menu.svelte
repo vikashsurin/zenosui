@@ -15,7 +15,13 @@
 
 	const id = crypto.randomUUID();
 
-	const state = $state({
+	type MenuStateType = {
+		menuId: string;
+		open: boolean;
+		isSubmenuOpen: boolean;
+	};
+
+	const state: MenuStateType = $state({
 		menuId: id,
 		open: false,
 		isSubmenuOpen: false
@@ -77,56 +83,131 @@
 	// });
 
 	let menu: HTMLElement;
-	let menuElements: NodeListOf<HTMLElement>;
 	let menuTriggers: NodeListOf<HTMLElement> | undefined;
-	let trigger: HTMLElement | null;
+	let menuItems: NodeListOf<HTMLElement> | undefined;
+	let menuItemsArray: HTMLElement[];
 	$effect(() => {
-		trigger = document.getElementById('zu_menu_trigger' + state.menuId);
-		if (state.open && menuBarContext) {
-			menuElements = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
+		menuTriggers = menu.parentElement?.querySelectorAll('li >[role="menuitem"]');
+	});
+
+	$effect(() => {
+		if (state.open) {
+			focusFirstMenuItem();
 		}
 	});
 
+	async function focusFirstMenuItem() {
+		menuItems = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
+		menuItemsArray = Array.from(menuItems);
+		menuItemsArray[0].focus();
+	}
+
 	function handleKeyDown(e: KeyboardEvent) {
-		console.log('from menu');
-		if (!menuElements) return;
-		const items = Array.from(menuElements);
-		const idx = items.findIndex((item) => item === e.target);
+		e.preventDefault();
+
+		const target = e.target as HTMLElement;
+		const menuTriggerArray = Array.from(menuTriggers!);
+		const menuItemsCount = menuItemsArray?.length || 0;
+
+		// Early return if no menu triggers
+		if (!menuTriggerArray.length) return;
+
+		// Determine current element type and index
+		const triggerIndex = menuTriggerArray.findIndex((item) => item === target);
+		const isMenuTrigger = triggerIndex !== -1;
+
+		let itemIndex = -1;
+		let isMenuItem = false;
+		if (menuItemsArray) {
+			itemIndex = menuItemsArray.findIndex((item) => item === target);
+			isMenuItem = itemIndex !== -1;
+		}
+
+		// Helper functions
+		const focusNextTrigger = (currentIndex: number) => {
+			const nextIndex = (currentIndex + 1) % menuTriggerArray.length;
+			menuTriggerArray[nextIndex].focus();
+		};
+
+		const focusPrevTrigger = (currentIndex: number) => {
+			const prevIndex = (currentIndex - 1 + menuTriggerArray.length) % menuTriggerArray.length;
+			menuTriggerArray[prevIndex].focus();
+		};
+
+		const getTriggerIndexFromMenuItem = (): number => {
+			const menuId = target.getAttribute('data-menu-item');
+			const currentTrigger = menuTriggerArray.find(
+				(item) => item.getAttribute('data-menu-trigger') === menuId
+			);
+			return currentTrigger ? menuTriggerArray.indexOf(currentTrigger) : -1;
+		};
+
 		switch (e.key) {
-			case 'ArrowDown':
-				console.log(state.open);
-				e.preventDefault();
-				const nextIndex = (idx + 1) % items.length;
-				items[nextIndex].focus();
-				break;
-			case 'ArrowUp':
-				e.preventDefault();
-				const prevIndex = (idx - 1 + items.length) % items.length;
-				items[prevIndex].focus();
-				break;
-			case 'Escape':
-				trigger?.focus();
-				menu.blur();
-				break;
-			case 'ArrowRight':
-				e.preventDefault();
-				if (e.target instanceof Element && e.target.hasAttribute('aria-haspopup')) {
-					// Safe and type-checked
-					// e.target.click();
-				} else {
-					menuBarContext.handleFocusRightSibling(trigger);
+			case 'ArrowRight': {
+				if (isMenuItem) {
+					const currentTriggerIndex = getTriggerIndexFromMenuItem();
+					if (currentTriggerIndex !== -1) {
+						focusNextTrigger(currentTriggerIndex);
+					}
+				} else if (isMenuTrigger) {
+					focusNextTrigger(triggerIndex);
 				}
 				break;
-			case 'ArrowLeft':
-				e.preventDefault();
-				menuBarContext.handleFocusLeftSibling(trigger);
+			}
+
+			case 'ArrowLeft': {
+				if (isMenuItem) {
+					const currentTriggerIndex = getTriggerIndexFromMenuItem();
+					if (currentTriggerIndex !== -1) {
+						focusPrevTrigger(currentTriggerIndex);
+					}
+				} else if (isMenuTrigger) {
+					focusPrevTrigger(triggerIndex);
+				}
 				break;
-			case 'Enter':
-				console.log('enter');
-			case ' ':
-				console.log('space');
+			}
+
+			case 'Enter': {
+				target.click();
+				break;
+			}
+
+			case ' ': {
+				target.click();
+				break;
+			}
+
+			case 'ArrowDown': {
+				// Open menu if closed
+				if (!state.open && isMenuTrigger) {
+					target.click();
+					return;
+				}
+
+				// Navigate within menu items
+				if (isMenuItem && menuItemsCount > 0) {
+					const nextIndex = (itemIndex + 1) % menuItemsCount;
+					menuItemsArray[nextIndex].focus();
+				}
+				break;
+			}
+
+			case 'ArrowUp': {
+				// Navigate within menu items
+				if (isMenuItem && menuItemsCount > 0) {
+					const prevIndex = (itemIndex - 1 + menuItemsCount) % menuItemsCount;
+					menuItemsArray[prevIndex].focus();
+				}
+				break;
+			}
 		}
 	}
+	// async function openMenuAndFocusFirstItem() {
+	// 	await tick();
+	// 	menuItems = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
+	// 	menuItemsArray = Array.from(menuItems);
+	// 	menuItemsArray[0].focus();
+	// }
 </script>
 
 {#if menuBarContext}

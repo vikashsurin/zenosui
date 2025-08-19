@@ -138,6 +138,7 @@
 	{@const as = !href ? 'button' : 'a'}
 	<svelte:element
 		this={as}
+		data-menu-item={menuContext.state.menuId}
 		{role}
 		{href}
 		data-themed={themed}

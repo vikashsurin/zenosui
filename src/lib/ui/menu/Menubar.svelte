@@ -43,7 +43,7 @@
 	});
 
 	function handleFocusRightSibling(element: HTMLElement) {
-		console.log('hanldefocus right sibning');
+		// console.log('hanldefocus right sibning');
 		const items = Array.from(triggersElements);
 		const currentIndex = items.findIndex((item) => item === element);
 		const nextIndex = (currentIndex + 1) % items.length;
@@ -57,44 +57,42 @@
 		items[prevIndex].focus();
 	}
 	function handleKeyDown(e: KeyboardEvent) {
-		const items = Array.from(triggersElements);
-		const idx = items.findIndex((item) => item === e.target);
-
-		if (idx === -1) return;
-
-		if (e.key === 'ArrowRight') {
-			e.preventDefault();
-			const nextIndex = (idx + 1) % items.length;
-			items[nextIndex].focus();
-		} else if (e.key === 'ArrowLeft') {
-			e.preventDefault();
-			const prevIndex = (idx - 1 + items.length) % items.length;
-			items[prevIndex].focus();
-		} else if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
-			console.log('menubar');
-		} else if (e.key === 'Escape') {
-			state.isMenuBarActive = false;
-			menubar.blur();
-		}
+		// const items = Array.from(triggersElements);
+		// const idx = items.findIndex((item) => item === e.target);
+		// if (idx === -1) return;
+		// if (e.key === 'ArrowRight') {
+		// 	e.preventDefault();
+		// 	const nextIndex = (idx + 1) % items.length;
+		// 	items[nextIndex].focus();
+		// } else if (e.key === 'ArrowLeft') {
+		// 	e.preventDefault();
+		// 	const prevIndex = (idx - 1 + items.length) % items.length;
+		// 	items[prevIndex].focus();
+		// } else if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+		// 	// console.log('menubar');
+		// } else if (e.key === 'Escape') {
+		// 	state.isMenuBarActive = false;
+		// 	menubar.blur();
+		// }
 	}
-	$effect(() => {
-		if (state.isMenuBarActive) {
-			openMenuAndfocusFirst();
-		}
-	});
-	async function openMenuAndfocusFirst() {
-		await tick();
-		if (state.isMenuBarActive) {
-			console.log(state.openMenuId);
-		}
-		console.log(state.isMenuBarActive);
-		const el: NodeListOf<HTMLElement> = menubar.querySelectorAll(
-			'nav > ul > li > [role="menu"] > li > [role="menuitem"]'
-		);
-		const arr: HTMLElement[] = Array.from(el);
-		console.log(el);
-		arr[0].focus();
-	}
+	// $effect(() => {
+	// 	if (state.isMenuBarActive) {
+	// 		openMenuAndfocusFirst();
+	// 	}
+	// });
+	// async function openMenuAndfocusFirst() {
+	// 	await tick();
+	// 	if (state.isMenuBarActive) {
+	// 		// console.log(state.openMenuId);
+	// 	}
+	// 	// console.log(state.isMenuBarActive);
+	// 	const el: NodeListOf<HTMLElement> = menubar.querySelectorAll(
+	// 		'nav > ul > li > [role="menu"] > li > [role="menuitem"]'
+	// 	);
+	// 	const arr: HTMLElement[] = Array.from(el);
+	// 	// console.log(el);
+	// 	arr[0].focus();
+	// }
 </script>
 
 <nav aria-label="Main navigation">

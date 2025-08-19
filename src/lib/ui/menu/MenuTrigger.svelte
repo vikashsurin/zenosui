@@ -42,24 +42,24 @@
 
 		if (menuBarContext.state.isMenuBarActive) {
 			menuBarContext.state.openMenuId = menuId;
-			focusFirstMenuItem();
+			// focusFirstMenuItem();
 		} else {
 			menuBarContext.state.openMenuId = null;
 		}
 	}
 
-	async function focusFirstMenuItem() {
-		await tick();
-		if (!trigger.parentElement) return;
-		const items: NodeListOf<HTMLElement> = trigger.parentElement.querySelectorAll(
-			'[role="menu"] > li > [role="menuitem"]'
-		);
+	// async function focusFirstMenuItem() {
+	// 	await tick();
+	// 	if (!trigger.parentElement) return;
+	// 	const items: NodeListOf<HTMLElement> = trigger.parentElement.querySelectorAll(
+	// 		'[role="menu"] > li > [role="menuitem"]'
+	// 	);
 
-		const arr: HTMLElement[] = Array.from(items);
-		arr[0].focus();
-		// console.log(arr[0]);
-		console.log(items);
-	}
+	// 	const arr: HTMLElement[] = Array.from(items);
+	// 	arr[0].focus();
+	// 	// console.log(arr[0]);
+	// 	console.log(items);
+	// }
 	function handleClick(e: MouseEvent) {
 		openMenu();
 	}
@@ -71,7 +71,8 @@
 		await onlyOpenWhenMenubarActive();
 	}
 	function handleKeyDown(e: KeyboardEvent) {
-		console.log('hello');
+		// console.log(e.target.parentElement);
+		// console.log('hello');
 	}
 	let style = tv({
 		base: ``,
@@ -86,6 +87,7 @@
 
 <Button
 	bind:ref={trigger}
+	data-menu-trigger={menuId}
 	id={'zu_menu_trigger' + menuId}
 	role="menuitem"
 	aria-haspopup="true"
