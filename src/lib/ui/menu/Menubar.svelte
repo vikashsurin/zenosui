@@ -14,7 +14,13 @@
 		openMenuId: <string | UUID | null>null
 	});
 	// $effect(() => {});
-	setContext('menuBarContext', { state, uiRounded, uiSize } as MenuBarContextType);
+	setContext('menuBarContext', {
+		state,
+		handleFocusRightSibling,
+		handleFocusLeftSibling,
+		uiRounded,
+		uiSize
+	} as MenuBarContextType);
 
 	const style = tv({
 		extend: baseVariant,
@@ -35,6 +41,21 @@
 	$effect(() => {
 		triggersElements = menubar.querySelectorAll('nav > ul > li >[role="menuitem"]');
 	});
+
+	function handleFocusRightSibling(element: HTMLElement) {
+		console.log('hanldefocus right sibning');
+		const items = Array.from(triggersElements);
+		const currentIndex = items.findIndex((item) => item === element);
+		const nextIndex = (currentIndex + 1) % items.length;
+		items[nextIndex].focus();
+	}
+
+	function handleFocusLeftSibling(element: HTMLElement) {
+		const items = Array.from(triggersElements);
+		const currentIndex = items.findIndex((item) => item === element);
+		const prevIndex = (currentIndex - 1 + items.length) % items.length;
+		items[prevIndex].focus();
+	}
 	function handleKeyDown(e: KeyboardEvent) {
 		const items = Array.from(triggersElements);
 		const idx = items.findIndex((item) => item === e.target);

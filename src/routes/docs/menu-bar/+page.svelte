@@ -39,7 +39,39 @@
 			</MenuList>
 		</Menu>
 		<Menu>
-			<MenuTrigger label="Profile" />
+			<MenuTrigger label="Edit" />
+			<MenuList>
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+		<Menu>
+			<MenuTrigger label="View" />
+			<MenuList>
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+		<Menu>
+			<MenuTrigger label="Profiles" />
 			<MenuList>
 				<MenuItem>one</MenuItem>
 				<MenuItem>two</MenuItem>

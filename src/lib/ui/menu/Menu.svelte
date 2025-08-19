@@ -4,7 +4,7 @@
 	import { innerHeight } from 'svelte/reactivity/window';
 	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuProps } from '$lib/types/index.js';
-	import { getContext, setContext } from 'svelte';
+	import { getContext, setContext, tick } from 'svelte';
 	import { type MenuBarContextType, type MenuContextType } from './types.js';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: MenuProps = $props();
@@ -14,9 +14,11 @@
 	uiSize = uiSize ? uiSize : menuBarContext?.uiSize;
 
 	const id = crypto.randomUUID();
+
 	const state = $state({
 		menuId: id,
-		open: false
+		open: false,
+		isSubmenuOpen: false
 	});
 
 	function openMenu() {
@@ -73,17 +75,52 @@
 	// 		}
 	// 	}
 	// });
-	let menu: HTMLElement = $state(null);
-	let menuElements: NodeListOf<HTMLElement>;
 
+	let menu: HTMLElement;
+	let menuElements: NodeListOf<HTMLElement>;
+	let menuTriggers: NodeListOf<HTMLElement> | undefined;
+	let trigger: HTMLElement | null;
 	$effect(() => {
-		menuElements = menu.querySelectorAll('[role="menu"]');
+		trigger = document.getElementById('zu_menu_trigger' + state.menuId);
+		if (state.open) {
+			menuElements = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
+		}
 	});
+
 	function handleKeyDown(e: KeyboardEvent) {
-		menu = e.target as HTMLElement;
 		console.log('from menu');
-		// console.log(e.key);
-		// console.log(menu.nextElementSibling);
+		if (!menuElements) return;
+		const items = Array.from(menuElements);
+		const idx = items.findIndex((item) => item === e.target);
+		switch (e.key) {
+			case 'ArrowDown':
+				e.preventDefault();
+				const nextIndex = (idx + 1) % items.length;
+				items[nextIndex].focus();
+				break;
+			case 'ArrowUp':
+				e.preventDefault();
+				const prevIndex = (idx - 1 + items.length) % items.length;
+				items[prevIndex].focus();
+				break;
+			case 'Escape':
+				trigger?.focus();
+				menu.blur();
+				break;
+			case 'ArrowRight':
+				e.preventDefault();
+				if (e.target instanceof Element && e.target.hasAttribute('aria-haspopup')) {
+					// Safe and type-checked
+					// e.target.click();
+				} else {
+					menuBarContext.handleFocusRightSibling(trigger);
+				}
+				break;
+			case 'ArrowLeft':
+				e.preventDefault();
+				menuBarContext.handleFocusLeftSibling(trigger);
+				break;
+		}
 	}
 </script>
 

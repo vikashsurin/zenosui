@@ -10,7 +10,6 @@
 
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
-	
 	// const menuContext = getContext<{
 	// 	menuState: {
 	// 		menuId: string;
@@ -48,6 +47,15 @@
 		submenuContext.state.open = false;
 		console.log('clickOutside');
 	}
+	function handleKeyDown(e: KeyboardEvent) {
+		console.log('i was called');
+		switch (e.key) {
+			case 'ArrowDown':
+				console.log('do nothing');
+				// submenuContext.state.open = false;
+				break;
+		}
+	}
 </script>
 
 {#if submenuContext.state.open}
@@ -56,6 +64,7 @@
 		role="menu"
 		class={finalClass}
 		{...props}
+		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 		use:clickOutside={onclickOutside}
 	>
 		{#if children}

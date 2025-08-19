@@ -5,6 +5,7 @@ export type MenuContextType = {
 	state: {
 		menuId: string;
 		open: boolean;
+		isSubmenuOpen: boolean;
 	};
 	toggleMenu: () => void;
 	openMenu: () => void;
@@ -18,6 +19,8 @@ export type MenuBarContextType = {
 		isMenuBarActive: boolean;
 		openMenuId: string | UUID | null;
 	};
+	handleFocusRightSibling: (element: HTMLElement | null) => void;
+	handleFocusLeftSibling: (element: HTMLElement | null) => void;
 	uiRounded?: RoundedVariant;
 	uiSize?: SizeVariant;
 };
