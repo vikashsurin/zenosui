@@ -33,7 +33,15 @@
 
 	--primary-outline: var(--color-400);
 }
+/* *:focus {
+	outline: none;
+	background-color: var(--primary-surface-300);
+} */
 
+*:focus-visible {
+	outline: 3px solid #ff6600;
+	outline-offset: 1px;
+}
 /* BUTTON */
 .button[data-themed='true'] {
 	background-color: var(--primary-surface-500);
@@ -77,7 +85,11 @@
 	background-color: var(--primary-surface-500);
 	color: white;
 }
-
+/* .list[data-themed='true']:focus {
+	background-color: var(--primary-surface-300);
+	color: white;
+	outline: none;
+} */
 /* LINK */
 .link[data-themed='true'] {
 	color: var(--primary-surface-500);
