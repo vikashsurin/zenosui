@@ -73,10 +73,29 @@
 	// 		}
 	// 	}
 	// });
+	let menu: HTMLElement = $state(null);
+	let menuElements: NodeListOf<HTMLElement>;
+
+	$effect(() => {
+		menuElements = menu.querySelectorAll('[role="menu"]');
+	});
+	function handleKeyDown(e: KeyboardEvent) {
+		menu = e.target as HTMLElement;
+		console.log('from menu');
+		// console.log(e.key);
+		// console.log(menu.nextElementSibling);
+	}
 </script>
 
 {#if menuBarContext}
-	<li role="none" {id} class={finalClass} {...props}>
+	<li
+		role="none"
+		{id}
+		class={finalClass}
+		{...props}
+		bind:this={menu}
+		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
+	>
 		{#if children}
 			{@render children?.()}
 		{/if}

@@ -17,7 +17,6 @@
 	let bookmarks = $state(false);
 	let urls = $state(false);
 	let profileRadioValue = $state('benoit');
-	$inspect('from ', profileRadioValue);
 </script>
 
 <div>

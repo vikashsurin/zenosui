@@ -32,17 +32,22 @@
 			menuContext.toggleMenu();
 		}
 	}
-	function handleMouseOver() {
+	function onlyOpenWhenMenubarActive() {
 		if (!menuBarContext) {
 			return;
 		}
 		if (menuBarContext.state.isMenuBarActive) {
 			menuBarContext.state.openMenuId = menuId;
 		} else {
-			// menuBarContext.state.openMenuId = null;
+			menuBarContext.state.openMenuId = null;
 		}
 	}
-
+	function handleMouseOver() {
+		onlyOpenWhenMenubarActive();
+	}
+	function handleFocus() {
+		onlyOpenWhenMenubarActive();
+	}
 	let style = tv({
 		base: ``,
 		variants: {},
@@ -51,7 +56,6 @@
 			uiSize: 'xs'
 		}
 	});
-	$inspect({ menuContext });
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
@@ -71,6 +75,7 @@
 	{uiSize}
 	onclick={() => handleClick()}
 	onmouseover={() => handleMouseOver()}
+	onfocus={() => handleFocus()}
 >
 	{#if children}
 		{@render children?.()}
