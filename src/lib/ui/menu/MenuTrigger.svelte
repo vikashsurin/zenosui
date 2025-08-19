@@ -70,7 +70,9 @@
 		// console.log(trigger.parentElement);
 		await onlyOpenWhenMenubarActive();
 	}
-	function handleKeyDown(e: KeyboardEvent) {}
+	function handleKeyDown(e: KeyboardEvent) {
+		console.log('hello');
+	}
 	let style = tv({
 		base: ``,
 		variants: {},

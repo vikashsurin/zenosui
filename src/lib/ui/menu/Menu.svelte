@@ -88,6 +88,7 @@
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
+		console.log('from menu');
 		if (!menuElements) return;
 		const items = Array.from(menuElements);
 		const idx = items.findIndex((item) => item === e.target);

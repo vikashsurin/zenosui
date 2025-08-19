@@ -6,7 +6,9 @@
 		MenuItem,
 		MenuTrigger,
 		MenuSeparator,
-		Submenu
+		Submenu,
+		SubmenuTrigger,
+		SubmenuContent
 	} from '$lib/ui/index.js';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import Trash2 from '@lucide/svelte/icons/trash-2';
@@ -20,6 +22,17 @@
 		<MenuTrigger>open</MenuTrigger>
 		<MenuList>
 			<MenuItem iconLeft={BadgeCheck}>one</MenuItem>
+			<MenuItem>one</MenuItem>
+			<MenuItem>two</MenuItem>
+			<MenuItem>three</MenuItem>
+			<Submenu>
+				<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+				<SubmenuContent>
+					<MenuItem>Profile</MenuItem>
+					<MenuItem>Profile</MenuItem>
+					<MenuItem>Profile</MenuItem>
+				</SubmenuContent>
+			</Submenu>
 		</MenuList>
 	</Menu>
 </div>
