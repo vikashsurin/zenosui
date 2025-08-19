@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	import { setContext } from 'svelte';
+	import { setContext, tick } from 'svelte';
 	import type { DivProps } from '$lib/types/index.js';
 	import type { MenuBarContextType } from './types.ts';
 	import type { UUID } from 'crypto';
@@ -70,11 +70,30 @@
 			e.preventDefault();
 			const prevIndex = (idx - 1 + items.length) % items.length;
 			items[prevIndex].focus();
+		} else if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+			console.log('menubar');
 		} else if (e.key === 'Escape') {
 			state.isMenuBarActive = false;
 			menubar.blur();
 		}
-		// console.log(document.activeElement);
+	}
+	$effect(() => {
+		if (state.isMenuBarActive) {
+			openMenuAndfocusFirst();
+		}
+	});
+	async function openMenuAndfocusFirst() {
+		await tick();
+		if (state.isMenuBarActive) {
+			console.log(state.openMenuId);
+		}
+		console.log(state.isMenuBarActive);
+		const el: NodeListOf<HTMLElement> = menubar.querySelectorAll(
+			'nav > ul > li > [role="menu"] > li > [role="menuitem"]'
+		);
+		const arr: HTMLElement[] = Array.from(el);
+		console.log(el);
+		arr[0].focus();
 	}
 </script>
 

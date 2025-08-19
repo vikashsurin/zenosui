@@ -2,9 +2,10 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { Button } from '$lib/ui/index.js';
-	import { getContext } from 'svelte';
+	import { getContext, tick } from 'svelte';
 	import type { MenuTriggerProps } from '$lib/types/index.js';
 	import type { MenuBarContextType, MenuContextType } from './types.js';
+	import type { UUID } from 'crypto';
 
 	let {
 		children,
@@ -24,7 +25,8 @@
 	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext?.uiSize;
 
-	function handleClick() {
+	let trigger: HTMLElement;
+	function openMenu() {
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = menuId;
 			menuBarContext.state.isMenuBarActive = true;
@@ -32,22 +34,43 @@
 			menuContext.toggleMenu();
 		}
 	}
-	function onlyOpenWhenMenubarActive() {
+
+	async function onlyOpenWhenMenubarActive() {
 		if (!menuBarContext) {
 			return;
 		}
+
 		if (menuBarContext.state.isMenuBarActive) {
 			menuBarContext.state.openMenuId = menuId;
+			focusFirstMenuItem();
 		} else {
 			menuBarContext.state.openMenuId = null;
 		}
 	}
+
+	async function focusFirstMenuItem() {
+		await tick();
+		if (!trigger.parentElement) return;
+		const items: NodeListOf<HTMLElement> = trigger.parentElement.querySelectorAll(
+			'[role="menu"] > li > [role="menuitem"]'
+		);
+
+		const arr: HTMLElement[] = Array.from(items);
+		arr[0].focus();
+		// console.log(arr[0]);
+		console.log(items);
+	}
+	function handleClick(e: MouseEvent) {
+		openMenu();
+	}
 	function handleMouseOver() {
 		onlyOpenWhenMenubarActive();
 	}
-	function handleFocus() {
-		onlyOpenWhenMenubarActive();
+	async function handleFocus() {
+		// console.log(trigger.parentElement);
+		await onlyOpenWhenMenubarActive();
 	}
+	function handleKeyDown(e: KeyboardEvent) {}
 	let style = tv({
 		base: ``,
 		variants: {},
@@ -60,6 +83,7 @@
 </script>
 
 <Button
+	bind:ref={trigger}
 	id={'zu_menu_trigger' + menuId}
 	role="menuitem"
 	aria-haspopup="true"
@@ -73,9 +97,10 @@
 	{...props}
 	{uiRounded}
 	{uiSize}
-	onclick={() => handleClick()}
+	onclick={(e: MouseEvent) => handleClick(e)}
 	onmouseover={() => handleMouseOver()}
 	onfocus={() => handleFocus()}
+	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 >
 	{#if children}
 		{@render children?.()}
