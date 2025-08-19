@@ -82,18 +82,18 @@
 	let trigger: HTMLElement | null;
 	$effect(() => {
 		trigger = document.getElementById('zu_menu_trigger' + state.menuId);
-		if (state.open) {
+		if (state.open && menuBarContext) {
 			menuElements = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
 		}
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
-		console.log('from menu');
 		if (!menuElements) return;
 		const items = Array.from(menuElements);
 		const idx = items.findIndex((item) => item === e.target);
 		switch (e.key) {
 			case 'ArrowDown':
+				console.log(state.open);
 				e.preventDefault();
 				const nextIndex = (idx + 1) % items.length;
 				items[nextIndex].focus();
@@ -120,6 +120,10 @@
 				e.preventDefault();
 				menuBarContext.handleFocusLeftSibling(trigger);
 				break;
+			case 'Enter':
+				console.log('enter');
+			case ' ':
+				console.log('space');
 		}
 	}
 </script>
@@ -140,7 +144,7 @@
 {:else}
 	<nav>
 		<ul class={finalClass} {...props} role="menu">
-			<li>
+			<li bind:this={menu}>
 				{#if children}
 					{@render children?.()}
 				{/if}
