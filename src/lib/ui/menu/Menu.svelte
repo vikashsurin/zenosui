@@ -37,14 +37,15 @@
 	function toggleMenu() {
 		state.open = !state.open;
 	}
-
+	let menu: HTMLElement;
 	setContext('menuContext', {
 		state,
 		toggleMenu,
 		openMenu,
 		closeMenu,
 		uiRounded,
-		uiSize
+		uiSize,
+		menu
 	} as MenuContextType);
 
 	$effect(() => {
@@ -82,7 +83,6 @@
 	// 	}
 	// });
 
-	let menu: HTMLElement;
 	let menuTriggers: NodeListOf<HTMLElement> | undefined;
 	let menuItems: NodeListOf<HTMLElement> | undefined;
 	let menuItemsArray: HTMLElement[];
@@ -103,14 +103,15 @@
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
+		console.log(e);
 		e.preventDefault();
 
 		const target = e.target as HTMLElement;
 		const menuTriggerArray = Array.from(menuTriggers!);
 		const menuItemsCount = menuItemsArray?.length || 0;
-
+		console.log('ee');
 		// Early return if no menu triggers
-		if (!menuTriggerArray.length) return;
+		// if (!menuTriggerArray.length) return;
 
 		// Determine current element type and index
 		const triggerIndex = menuTriggerArray.findIndex((item) => item === target);
@@ -145,6 +146,7 @@
 		switch (e.key) {
 			case 'ArrowRight': {
 				if (isMenuItem) {
+					if (target.hasAttribute('aria-haspopup')) return;
 					const currentTriggerIndex = getTriggerIndexFromMenuItem();
 					if (currentTriggerIndex !== -1) {
 						focusNextTrigger(currentTriggerIndex);
@@ -169,6 +171,7 @@
 
 			case 'Enter': {
 				target.click();
+				console.log('clicked');
 				break;
 			}
 
@@ -178,6 +181,8 @@
 			}
 
 			case 'ArrowDown': {
+				console.log('arrow donw');
+
 				// Open menu if closed
 				if (!state.open && isMenuTrigger) {
 					target.click();
@@ -211,21 +216,14 @@
 </script>
 
 {#if menuBarContext}
-	<li
-		role="none"
-		{id}
-		class={finalClass}
-		{...props}
-		bind:this={menu}
-		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-	>
+	<li role="none" {id} class={finalClass} {...props} bind:this={menu}>
 		{#if children}
 			{@render children?.()}
 		{/if}
 	</li>
 {:else}
 	<nav>
-		<ul class={finalClass} {...props} role="menu">
+		<ul class={finalClass} {...props}>
 			<li bind:this={menu}>
 				{#if children}
 					{@render children?.()}
@@ -234,3 +232,5 @@
 		</ul>
 	</nav>
 {/if}
+
+<!-- onkeydown={(e: KeyboardEvent) => handleKeyDown(e)} -->

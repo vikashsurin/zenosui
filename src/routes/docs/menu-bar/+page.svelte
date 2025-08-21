@@ -34,6 +34,15 @@
 						<MenuItem>Profile</MenuItem>
 						<MenuItem>Profile</MenuItem>
 						<MenuItem>Profile</MenuItem>
+
+						<Submenu>
+							<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+							<SubmenuContent>
+								<MenuItem>Settings</MenuItem>
+								<MenuItem>Apps</MenuItem>
+								<MenuItem>Display</MenuItem>
+							</SubmenuContent>
+						</Submenu>
 					</SubmenuContent>
 				</Submenu>
 			</MenuList>

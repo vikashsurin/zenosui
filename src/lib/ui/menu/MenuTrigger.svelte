@@ -25,7 +25,6 @@
 	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext?.uiSize;
 
-	let trigger: HTMLElement;
 	function openMenu() {
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = menuId;
@@ -48,18 +47,6 @@
 		}
 	}
 
-	// async function focusFirstMenuItem() {
-	// 	await tick();
-	// 	if (!trigger.parentElement) return;
-	// 	const items: NodeListOf<HTMLElement> = trigger.parentElement.querySelectorAll(
-	// 		'[role="menu"] > li > [role="menuitem"]'
-	// 	);
-
-	// 	const arr: HTMLElement[] = Array.from(items);
-	// 	arr[0].focus();
-	// 	// console.log(arr[0]);
-	// 	console.log(items);
-	// }
 	function handleClick(e: MouseEvent) {
 		openMenu();
 	}
@@ -67,12 +54,55 @@
 		onlyOpenWhenMenubarActive();
 	}
 	async function handleFocus() {
-		// console.log(trigger.parentElement);
 		await onlyOpenWhenMenubarActive();
 	}
+
+	let trigger: HTMLElement;
+	let menuItems: NodeListOf<HTMLElement> | undefined;
+	async function openMenuAndFocusFirst() {
+		openMenu();
+		await tick();
+		const menu = trigger.closest('[role="menu"]');
+		menuItems = menu?.querySelectorAll('[role="menuitem"]');
+		if (menuItems) {
+			menuItems[0].focus();
+		}
+	}
+	// Cache the menu triggers to avoid repeated DOM queries
+	let cachedMenuTriggers: HTMLElement[] | null = null;
+
 	function handleKeyDown(e: KeyboardEvent) {
-		// console.log(e.target.parentElement);
-		// console.log('hello');
+		if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+			e.preventDefault();
+			openMenuAndFocusFirst();
+			return;
+		}
+
+		if (!['ArrowRight', 'ArrowLeft'].includes(e.key) || !menuBarContext) {
+			return;
+		}
+
+		e.preventDefault();
+
+		// Use cached triggers or query once
+		if (!cachedMenuTriggers) {
+			// const menubar = trigger.parentElement?.parentElement;
+			const menubar = trigger.closest('[role="menubar"]');
+			const menuTriggers = menubar?.querySelectorAll<HTMLElement>('li > [role="menuitem"]');
+			cachedMenuTriggers = menuTriggers ? Array.from(menuTriggers) : [];
+		}
+
+		if (!cachedMenuTriggers.length) return;
+
+		const currentIndex = cachedMenuTriggers.findIndex((item) => item === trigger);
+		if (currentIndex === -1) return;
+
+		const targetIndex =
+			e.key === 'ArrowRight'
+				? (currentIndex + 1) % cachedMenuTriggers.length
+				: (currentIndex - 1 + cachedMenuTriggers.length) % cachedMenuTriggers.length;
+
+		cachedMenuTriggers[targetIndex]?.focus();
 	}
 	let style = tv({
 		base: ``,
@@ -87,7 +117,7 @@
 
 <Button
 	bind:ref={trigger}
-	data-menu-trigger={menuId}
+	data-menu-trigger
 	id={'zu_menu_trigger' + menuId}
 	role="menuitem"
 	aria-haspopup="true"

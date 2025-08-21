@@ -61,14 +61,15 @@
 {#if submenuContext.state.open}
 	<ul
 		data-slot="submenu"
+		data-menu-type="sub"
 		role="menu"
 		class={finalClass}
 		{...props}
 		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-		use:clickOutside={onclickOutside}
 	>
 		{#if children}
 			{@render children?.()}
 		{/if}
 	</ul>
 {/if}
+<!-- use:clickOutside={onclickOutside} -->

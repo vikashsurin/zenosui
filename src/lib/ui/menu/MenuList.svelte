@@ -71,6 +71,7 @@
 		role="menu"
 		id={'menu' + menuId}
 		aria-labelledby={'zu_menu_trigger' + menuId}
+		data-menu-type="main"
 		data-expanded={''}
 		in:fade={{ duration: 100 }}
 		out:fade={{ duration: 100 }}

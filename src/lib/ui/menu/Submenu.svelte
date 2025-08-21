@@ -96,11 +96,11 @@
 	onmouseover={() => handleMouseOver()}
 	onmouseleave={() => closeSubmenu()}
 	onfocus={() => (state.open = true)}
-	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 	class="relative flex items-center"
 >
 	{#if children}
 		{@render children?.()}
 	{/if}
 </li>
+<!-- onkeydown={(e: KeyboardEvent) => handleKeyDown(e)} -->
 <!-- onfocusout={() => (state.open = false)} -->

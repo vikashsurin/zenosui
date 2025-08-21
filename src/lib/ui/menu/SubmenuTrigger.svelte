@@ -19,33 +19,16 @@
 	function handleMouseLeave() {
 		submenuContext.closeSubmenu();
 	}
-	function handleKeyDown(e: KeyboardEvent) {
-		// switch (e.key) {
-		// 	case 'ArrowRight':
-		// 		e.preventDefault();
-		// 		toggleSubmenu();
-		// 		break;
-		// 	case 'ArrowLeft':
-		// 		e.preventDefault();
-		// 		if (submenuContext.state.open) {
-		// 			// submenuContext.closeSubmenu();
-		// 			toggleSubmenu();
-		// 		}
-		// 		console.log('submenuContext.state.open', submenuContext.state.open);
-		// 		break;
-		// }
-		// toggleSubmenu();
-	}
 </script>
 
 <MenuItem
+	data-submenu-trigger
 	aria-haspopup="true"
 	aria-expanded={submenuContext.state.open}
 	renderAsSubmenuTrigger={true}
 	onclick={handleClick}
 	onmouseenter={handleMouseEnter}
 	onmouseleave={handleMouseLeave}
-	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 	{...props}
 >
 	{#if children}

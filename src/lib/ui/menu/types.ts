@@ -12,6 +12,7 @@ export type MenuContextType = {
 	closeMenu: () => void;
 	uiRounded?: RoundedVariant;
 	uiSize?: SizeVariant;
+	menu: HTMLElement;
 };
 
 export type MenuBarContextType = {
