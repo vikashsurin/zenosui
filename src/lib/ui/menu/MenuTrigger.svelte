@@ -15,6 +15,7 @@
 		iconLeft,
 		iconRight,
 		class: _class,
+		activeClass = 'bg-green-500',
 		...props
 	}: MenuTriggerProps = $props();
 
@@ -25,6 +26,9 @@
 	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext?.uiSize;
 
+	let isActive = $derived(menuBarContext.state.openMenuId === menuId);
+
+	$inspect({ isActive });
 	function openMenu() {
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = menuId;
@@ -112,7 +116,7 @@
 			uiSize: 'xs'
 		}
 	});
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ class: clsx(_class, isActive ? 'button-active' : '') }));
 </script>
 
 <Button
@@ -123,18 +127,20 @@
 	aria-haspopup="true"
 	aria-controls={'menu' + menuId}
 	aria-expanded={menuContext.state.open}
+	active={isActive}
 	data-themed={false}
 	class={finalClass}
+	{activeClass}
 	{label}
 	{iconLeft}
 	{iconRight}
-	{...props}
 	{uiRounded}
 	{uiSize}
 	onclick={(e: MouseEvent) => handleClick(e)}
 	onmouseover={() => handleMouseOver()}
 	onfocus={() => handleFocus()}
 	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
+	{...props}
 >
 	{#if children}
 		{@render children?.()}

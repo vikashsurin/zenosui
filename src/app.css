@@ -53,7 +53,16 @@
 .button[data-themed='true']:active {
 	background-color: var(--primary-surface-active);
 }
-
+.button_active[data-themed='true'] {
+	background-color: var(--primary-surface-500);
+	color: white;
+}
+.button_active[data-themed='true']:hover {
+	background-color: var(--primary-surface-hover);
+}
+.button-active[data-themed='true']:active {
+	background-color: red;
+}
 /* INPUT ELEMENTS	 */
 .input[data-themed='true']:focus-within {
 	outline: 2px solid var(--primary-outline);

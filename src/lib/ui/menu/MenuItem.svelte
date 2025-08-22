@@ -79,7 +79,6 @@
 			menuBarContext.state.isMenuBarActive = false;
 		}
 		// e.stopPropagation();
-		// console.log('I was called');
 		// menuContext.setActiveMenu({ _id: null, type: 'click' });
 		// if (!hasSubMenu) menuContext.toggleMenu();
 	}
@@ -120,7 +119,6 @@
 	let menuitem: HTMLElement | undefined;
 	let menu: HTMLElement | undefined | null;
 	async function handleKeyDown(e: KeyboardEvent) {
-		console.log(e.key);
 		e.preventDefault();
 
 		menu = menuitem?.closest('[role="menu"][data-menu-type="main"]');
@@ -167,6 +165,12 @@
 					(currentIdx - 1 + menuTriggerArray.length) % menuTriggerArray.length;
 				menuTriggerArray[prevTriggerIndex].focus();
 				break;
+			case 'Escape':
+				const currentTrigger: HTMLElement | null | undefined = getCurrentTrigger();
+				if (currentTrigger) {
+					currentTrigger.focus();
+					currentTrigger.click();
+				}
 		}
 	}
 	const handleArrowDown = async (menuitem: HTMLElement | undefined) => {
@@ -194,7 +198,6 @@
 		if (!menuitem) return;
 		const submenu = menuitem.closest('[role="menu"][data-menu-type="sub"]');
 		await tick();
-		// console.log(submenu);
 		if (submenu) {
 			const submenuTrigger: HTMLElement = submenu.previousElementSibling as HTMLElement;
 			if (submenuTrigger) {
@@ -227,11 +230,14 @@
 	};
 
 	const getCurrentIndex = (menuTriggerArray: HTMLElement[]) => {
-		const currentTrigger = menu?.parentElement?.querySelector(
-			'[role="menuitem"][data-menu-trigger]'
-		);
+		const currentTrigger = getCurrentTrigger();
 		const index = menuTriggerArray.findIndex((item) => item === currentTrigger);
 		return index;
+	};
+	const getCurrentTrigger = () => {
+		return menu?.parentElement?.querySelector(
+			'[role="menuitem"][data-menu-trigger]'
+		) as HTMLElement;
 	};
 
 	const role: 'menuitem' | 'menuitemcheckbox' | 'menuitemradio' =

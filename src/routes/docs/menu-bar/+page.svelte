@@ -21,7 +21,7 @@
 
 <div>
 	<h1>Menu bar</h1>
-	<Menubar uiSize="xs">
+	<Menubar uiSize="xs" class="border-1">
 		<Menu>
 			<MenuTrigger label="File" />
 			<MenuList>
