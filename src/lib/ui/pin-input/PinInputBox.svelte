@@ -68,16 +68,25 @@
 				break;
 			case 'Backspace':
 				e.preventDefault();
-				if (currentIndex === itemsArray!.length - 1 && value !== '') {
-					value = '';
-				} else if (currentIndex === 0) {
-					value = '';
-					return;
-				} else {
-					const prevIndex = (currentIndex - 1 + itemsArray!.length) % itemsArray!.length;
-					itemsArray[prevIndex].focus();
-					itemsArray[prevIndex].value = '';
+
+				const currentInput = itemsArray[currentIndex];
+				const hasValue = currentInput.value.length > 0;
+
+				if (hasValue) {
+					// Clear current input if it has a value
+					currentInput.value = '';
+				} else if (currentIndex > 0) {
+					// Move to previous input and clear it if current is empty
+					const prevIndex = currentIndex - 1;
+					const prevInput = itemsArray[prevIndex];
+
+					prevInput.focus();
+					prevInput.value = '';
+
+					// Optional: Update currentIndex to reflect focus change
+					// currentIndex = prevIndex;
 				}
+
 				break;
 		}
 	}
