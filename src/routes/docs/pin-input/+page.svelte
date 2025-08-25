@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { PinInputBox, PinInputControl } from '$lib/ui/index.js';
+	import { PinInputBox, PinInputControl, PinInputSeparator } from '$lib/ui/index.js';
 
-	let value = $state(['', '', '', '']);
+	let value = $state(['', '', '', '', '', '', '', '']);
 	const pin = $derived.by(() => value.join(''));
-	$inspect({ pin });
 </script>
 
 <div>
@@ -11,6 +10,10 @@
 	<form action="POST">
 		<PinInputControl class="gap-2" uiSize="md" uiRounded="sm">
 			{#each [0, 1, 2, 3] as i}
+				<PinInputBox bind:value={value[i]} />
+			{/each}
+			<PinInputSeparator />
+			{#each [4, 5, 6, 7] as i}
 				<PinInputBox bind:value={value[i]} />
 			{/each}
 		</PinInputControl>
