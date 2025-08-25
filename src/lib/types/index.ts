@@ -331,3 +331,12 @@ export interface WindowRightPaneProps extends UiProps, HTMLAttributes<HTMLDivEle
 export interface ToasterProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 	position?: PositionVariant;
 }
+
+// PIN INPUT
+export interface PinInputProps extends UiProps, HTMLAttributes<HTMLFormElement> {}
+
+export interface PinInputControlProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
+
+export interface PinInputBoxProps extends UiProps, HTMLAttributes<HTMLDivElement> {
+	value?: string | number;
+}

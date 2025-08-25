@@ -25,3 +25,4 @@ export * from './toast/index.js';
 export * from './textInput/index.js';
 export * from './meter/index.js';
 export * from './window-splitter/index.js';
+export * from './pin-input/index.js';

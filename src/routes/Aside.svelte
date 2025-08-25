@@ -33,6 +33,6 @@
 		<NavigationListItem href="/docs/tabs">tabs</NavigationListItem>
 		<NavigationListItem href="/docs/meter">meter</NavigationListItem>
 		<NavigationListItem href="/docs/window-splitter">window-splitter</NavigationListItem>
+		<NavigationListItem href="/docs/pin-input">pin-input</NavigationListItem>
 	</NavigationList>
 </div>
-

@@ -96,3 +96,19 @@ export const ICON_PLACEHOLDER_SIZE = {
 	'7xl': 'w-24 h-24',
 	'8xl': 'w-28 h-28'
 };
+
+export const TEXT_SIZE_WITH_DIMENSIONS = {
+	xs: 'text-xs h-6 w-6',
+	sm: 'text-sm h-8 w-8',
+	md: 'text-base h-10 w-10',
+	lg: 'text-lg h-12 w-12',
+	xl: 'text-xl h-14 w-14',
+	'2xl': 'text-2xl h-16 w-16',
+	'3xl': ' text-3xl h-20 w-20',
+	'4xl': ' text-4xl h-24 w-24',
+	'5xl': 'text-5xl h-28 w-28',
+	'6xl': 'text-6xl h-32 w-32',
+	'7xl': 'text-7xl h-36 w-36',
+	'8xl': 'text-8xl h-40 w-40'
+};
+
