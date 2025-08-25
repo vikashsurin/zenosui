@@ -26,7 +26,7 @@
 	uiRounded = uiRounded ? uiRounded : menuContext?.uiRounded;
 	uiSize = uiSize ? uiSize : menuContext?.uiSize;
 
-	let isActive = $derived(menuBarContext.state.openMenuId === menuId);
+	let isActive = $derived(menuBarContext && menuBarContext.state.openMenuId === menuId);
 
 	$inspect({ isActive });
 	function openMenu() {
