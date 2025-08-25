@@ -33,8 +33,8 @@
 	});
 	let inputEl: HTMLElement;
 	let groupEl: HTMLElement | undefined | null;
-	let itemsNodeList: NodeListOf<HTMLElement>;
-	let itemsArray: HTMLElement[];
+	let itemsNodeList: NodeListOf<HTMLInputElement>;
+	let itemsArray: HTMLInputElement[];
 
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 	const id = crypto.randomUUID();
@@ -68,13 +68,16 @@
 				break;
 			case 'Backspace':
 				e.preventDefault();
-				console.log({ currentIndex });
-				const prevIndex2 = (currentIndex - 1 + itemsArray!.length) % itemsArray!.length;
-				if (value === '') {
-					if (currentIndex === 0) return;
-					itemsArray[prevIndex2].focus();
+				if (currentIndex === itemsArray!.length - 1 && value !== '') {
+					value = '';
+				} else if (currentIndex === 0) {
+					value = '';
+					return;
+				} else {
+					const prevIndex = (currentIndex - 1 + itemsArray!.length) % itemsArray!.length;
+					itemsArray[prevIndex].focus();
+					itemsArray[prevIndex].value = '';
 				}
-				value = '';
 				break;
 		}
 	}
