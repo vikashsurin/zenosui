@@ -5,8 +5,8 @@
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import type { BreadcrumbItemProps } from '$lib/types/index.ts';
 	import { baseVariant } from '$lib/style/base.js';
-	import { TEXT_SIZE_WITH_HEIGHT, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import type { BreadcrumbContextType } from './types.ts';
+	import { TEXT_SIZE, TEXT_SIZE_WITH_HEIGHT, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
+	import type { BreadcrumbContextType, BreadcrumbListContextType } from './types.ts';
 	import { getContext } from 'svelte';
 	import { page } from '$app/state';
 
@@ -15,33 +15,43 @@
 		href,
 		uiSize,
 		uiRounded,
+		separator,
 		class: _class,
 		...props
 	}: BreadcrumbItemProps = $props();
 
-	const context = getContext<BreadcrumbContextType>('breadcrumbContext');
+	const context = getContext<BreadcrumbListContextType>('breadcrumbListContext');
 	uiSize = uiSize ?? context?.uiSize;
 	uiRounded = uiRounded ?? context?.uiRounded;
 
 	let style = tv({
 		extend: baseVariant,
-		base: `inline-flex items-center opacity-70 hover:opacity-100 transition-opacity`,
+		base: `inline-flex items-center opacity-70 hover:opacity-100  `,
 		variants: { uiSize: TEXT_SIZE_WITH_PADDING },
-		defaultVariants: {
-			uiSize: 'md',
-			uiRounded: 'none'
-		}
+		defaultVariants: {}
 	});
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 </script>
 
-<a
-	{href}
-	class={finalClass}
-	{...props}
-	style={`${page.url.pathname === href ? ' opacity: 1;' : ''}`}
+<li
+	aria-current={page.url.pathname === href ? 'page' : undefined}
+	style={' display: flex; align-items: center;'}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
-</a>
+	<a
+		{href}
+		class={finalClass}
+		{...props}
+		style={`${page.url.pathname === href ? ' opacity: 1;' : ''}; `}
+	>
+		{#if children}
+			{@render children?.()}
+		{/if}
+	</a>
+
+	<Icon
+		aria-hidden="true"
+		icon={separator ?? ChevronRight}
+		uiIconSize={uiSize}
+		class=" opacity-30 hover:opacity-100"
+	/>
+</li>

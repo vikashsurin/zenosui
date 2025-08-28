@@ -14,7 +14,7 @@ import {
 } from './index.js';
 
 export const baseVariant = tv({
-	base: 'transition-all ease-in-out duration-200ms disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-400',
+	base: 'zu_base zu_base_transition',
 	variants: {
 		uiFill: FILL_VARIANT,
 		uiText: TEXT_SIZE,

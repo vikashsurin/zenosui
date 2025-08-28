@@ -42,6 +42,13 @@
 	outline: 3px solid #ff6600;
 	outline-offset: 1px;
 }
+.zu_base {
+	box-sizing: border-box;
+}
+
+.zu_base_transition {
+	transition: all 0.2s ease-in-out;
+}
 /* BUTTON */
 .button[data-themed='true'] {
 	background-color: var(--primary-surface-500);

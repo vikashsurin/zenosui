@@ -14,9 +14,9 @@ export const PADDING = {
 	'8xl': 'p-12'
 };
 export const GAP = {
-	xs: 'gap-.25',
-	sm: 'gap-.5',
-	md: 'gap-.75',
+	xs: 'gap-0.25',
+	sm: 'gap-0.5',
+	md: 'gap-0.75',
 	lg: 'gap-1',
 	xl: 'gap-1.25',
 	'2xl': 'gap-1.5',

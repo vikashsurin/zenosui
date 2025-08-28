@@ -15,7 +15,8 @@
 		uiIconSize,
 		iconRotation = '0deg',
 		children,
-		class: _class
+		class: _class,
+		...props
 	}: IconCompProps = $props();
 
 	let style = tv({
@@ -49,7 +50,7 @@
 	);
 </script>
 
-<span class={finalClass} style={`transform:rotate(${rotation})`}>
+<span class={finalClass} style={`transform:rotate(${rotation})`} {...props}>
 	{#if icon}
 		{@const IconComponent = icon as Component}
 		<IconComponent />

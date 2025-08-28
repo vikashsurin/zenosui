@@ -85,9 +85,7 @@ export interface UiProps {
 	themed?: boolean;
 	uiVariant?: Variant;
 }
-export interface ComponentProps extends UiProps {
-	class?: ClassNameValue;
-}
+export interface ComponentProps extends UiProps, HTMLAttributes<HTMLElement> {}
 
 export interface StateProps {
 	active?: boolean;
@@ -344,13 +342,16 @@ export interface PinInputBoxProps extends UiProps, HTMLAttributes<HTMLDivElement
 }
 
 // BREADCRUMB
-export interface BreadcrumbProps extends UiProps, HTMLAttributes<HTMLElement> {
+export interface BreadcrumbProps extends UiProps, HTMLAttributes<HTMLElement> {}
+
+export interface BreadcrumbListProps extends UiProps, HTMLAttributes<HTMLOListElement> {
 	auto?: boolean;
 	icon?: Component | Snippet | null;
 	uiIconSize?: SizeVariant;
 }
 export interface BreadcrumbItemProps extends UiProps, HTMLAttributes<HTMLAnchorElement> {
 	href?: string;
+	separator?: Component | Snippet | null;
 }
 export interface BreadcrumbSeparatorProps extends ComponentProps {
 	icon?: Component | Snippet | null;

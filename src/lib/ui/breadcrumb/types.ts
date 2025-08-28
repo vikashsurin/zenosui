@@ -4,3 +4,7 @@ export type BreadcrumbContextType = {
 	uiSize: SizeVariant;
 	uiRounded: RoundedVariant;
 };
+export type BreadcrumbListContextType = {
+	uiSize: SizeVariant;
+	uiRounded: RoundedVariant;
+};
