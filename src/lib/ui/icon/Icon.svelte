@@ -43,7 +43,7 @@
 			uiBg,
 			uiRounded,
 			uiColor,
-			// iconSize: uiSize || uiIconSize,
+			iconSize: uiSize || uiIconSize,
 			class: clsx(_class)
 		})
 	);
@@ -52,7 +52,7 @@
 <span class={finalClass} style={`transform:rotate(${rotation})`}>
 	{#if icon}
 		{@const IconComponent = icon as Component}
-		<IconComponent class=" " style={`height:1em; width:1em;`} />
+		<IconComponent />
 	{:else if children}
 		{@render children()}
 	{/if}

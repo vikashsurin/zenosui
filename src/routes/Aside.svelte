@@ -34,5 +34,6 @@
 		<NavigationListItem href="/docs/meter">meter</NavigationListItem>
 		<NavigationListItem href="/docs/window-splitter">window-splitter</NavigationListItem>
 		<NavigationListItem href="/docs/pin-input">pin-input</NavigationListItem>
+		<NavigationListItem href="/docs/breadcrumb">breadcrumb</NavigationListItem>
 	</NavigationList>
 </div>

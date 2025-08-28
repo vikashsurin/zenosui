@@ -1,3 +1,4 @@
+import type { ClassValue } from 'clsx';
 import type { Snippet, Component } from 'svelte';
 
 import type {
@@ -9,6 +10,7 @@ import type {
 	HTMLLabelAttributes,
 	HTMLLiAttributes
 } from 'svelte/elements';
+import type { ClassNameValue } from 'tailwind-merge';
 
 export type sizeTokens =
 	| 'xs'
@@ -84,7 +86,7 @@ export interface UiProps {
 	uiVariant?: Variant;
 }
 export interface ComponentProps extends UiProps {
-	class?: string;
+	class?: ClassNameValue;
 }
 
 export interface StateProps {
@@ -339,4 +341,18 @@ export interface PinInputControlProps extends UiProps, HTMLAttributes<HTMLDivEle
 
 export interface PinInputBoxProps extends UiProps, HTMLAttributes<HTMLDivElement> {
 	value?: string | number;
+}
+
+// BREADCRUMB
+export interface BreadcrumbProps extends UiProps, HTMLAttributes<HTMLElement> {
+	auto?: boolean;
+	icon?: Component | Snippet | null;
+	uiIconSize?: SizeVariant;
+}
+export interface BreadcrumbItemProps extends UiProps, HTMLAttributes<HTMLAnchorElement> {
+	href?: string;
+}
+export interface BreadcrumbSeparatorProps extends ComponentProps {
+	icon?: Component | Snippet | null;
+	uiIconSize?: SizeVariant;
 }

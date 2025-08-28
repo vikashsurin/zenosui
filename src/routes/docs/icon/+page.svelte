@@ -4,5 +4,5 @@
 </script>
 
 <div>
-	<Icon icon={BadgeCheck} uiSize="3xl" iconRotation="" class="bg-red-400" />
+	<Icon icon={BadgeCheck} uiIconSize="2xl" iconRotation="" class="bg-red-400" />
 </div>
