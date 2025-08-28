@@ -50,14 +50,12 @@
 	);
 </script>
 
-<span class={finalClass} style={`transform:rotate(${rotation})`} {...props}>
-	{#if icon}
-		{@const IconComponent = icon as Component}
-		<IconComponent />
-	{:else if children}
-		{@render children()}
-	{/if}
-</span>
+{#if icon}
+	{@const IconComponent = icon as Component}
+	<IconComponent class={finalClass} style={`transform:rotate(${rotation})`} {...props} />
+{:else if children}
+	{@render children()}
+{/if}
 
 <style>
 	span {

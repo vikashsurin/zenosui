@@ -35,30 +35,34 @@
 		defaultVariants: {}
 	});
 
-	type crumb = { href: string; label: string };
+	type crumb = { href: string; label: string; showSeparator: boolean };
 	let crumbs = $state<crumb[]>([]);
 	$effect(() => {
 		if (auto) {
 			const url = page.url;
 			const origin = url.origin;
-			const paths = url.pathname.split('/').filter(Boolean);
+			const items = url.pathname.split('/').filter(Boolean);
 			let fullPath = '';
-			crumbs = paths.map((path) => {
+			crumbs = items.map((path, index) => {
 				fullPath += `/${path}`;
 				console.log({ fullPath });
 				return {
 					href: origin + fullPath,
-					label: path.charAt(0).toUpperCase() + path.slice(1)
+					label: path.charAt(0).toUpperCase() + path.slice(1),
+					showSeparator: index < items.length - 1
 				};
 			});
 		}
 	});
+
+	let element: HTMLOListElement;
 
 	setContext('breadcrumbListContext', { uiSize, uiRounded } as BreadcrumbListContextType);
 
 	const finalClass = $derived(style({ uiGap, class: clsx(_class) }));
 </script>
 
-<ol class={finalClass} {...props}>
+<ol bind:this={element} class={finalClass} {...props}>
 	{@render children?.()}
 </ol>
+

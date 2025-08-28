@@ -7,7 +7,7 @@
 <div>
 	<h1>Breadcrumb</h1>
 	<div>
-		<Breadcrumb uiSize="xs">
+		<Breadcrumb uiSize="sm">
 			<BreadcrumbList>
 				<BreadcrumbItem href="/">Home</BreadcrumbItem>
 				<BreadcrumbItem href="/docs">Docs</BreadcrumbItem>

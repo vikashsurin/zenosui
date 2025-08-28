@@ -23,19 +23,20 @@
 	const context = getContext<BreadcrumbListContextType>('breadcrumbListContext');
 	uiSize = uiSize ?? context?.uiSize;
 	uiRounded = uiRounded ?? context?.uiRounded;
-
 	let style = tv({
 		extend: baseVariant,
 		base: `inline-flex items-center opacity-70 hover:opacity-100  `,
 		variants: { uiSize: TEXT_SIZE_WITH_PADDING },
 		defaultVariants: {}
 	});
+
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 </script>
 
 <li
 	aria-current={page.url.pathname === href ? 'page' : undefined}
-	style={' display: flex; align-items: center;'}
+	class="zu_breadcrumb_item"
+	style={' display: flex; align-items: center; '}
 >
 	<a
 		{href}
@@ -48,10 +49,19 @@
 		{/if}
 	</a>
 
-	<Icon
-		aria-hidden="true"
-		icon={separator ?? ChevronRight}
-		uiIconSize={uiSize}
-		class=" opacity-30 hover:opacity-100"
-	/>
+	<span>
+		<Icon
+			aria-hidden="true"
+			icon={separator ?? ChevronRight}
+			uiIconSize={uiSize}
+			class="zu_breadcrumb_item_separator opacity-30 hover:opacity-100"
+		/>
+	</span>
 </li>
+
+<style>
+	.zu_breadcrumb_item:last-child > span {
+		display: none;
+		color: red;
+	}
+</style>
