@@ -3,5 +3,11 @@
 </script>
 
 <div>
-	<Switch uiSize="xs" withBorder={true} uiRounded="full" checked={true} />
+	<Switch
+		uiSize="2xl"
+		withBorder={false}
+		activeClass="bg-red-500"
+		uiRounded="none"
+		checked={true}
+	/>
 </div>

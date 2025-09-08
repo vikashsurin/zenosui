@@ -21,7 +21,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_switch  bg-gray-300 border-4 box-content relative w-12 h-6 flex justify-start  duration-500 `,
+		base: `zu_switch content-box  bg-gray-300 border-4 box-content relative w-12 h-6 flex justify-start  duration-500 `,
 		variants: {
 			uiSize: SIZE_FOR_SWITCH,
 			uiBorder: BORDER,
@@ -49,16 +49,30 @@
 	);
 
 	let thumbStyle = tv({
-		base: ' inline-block aspect-square h-full w-auto bg-white transition-all duration-200 ease-in-out shadow-sm',
+		base: ' inline-block aspect-square content-box bg-white transition-all duration-200 ease-in-out shadow-sm',
 		variants: {
 			uiRounded: ROUNDED
 		}
 	});
 </script>
 
-<label data-themed={themed} class={switchClass} class:switch={checked}>
-	<input type="checkbox" role="switch" aria-checked={checked} class="sr" bind:checked />
-	<span class={thumbStyle({ uiRounded })} style="transform: translateX({checked ? '100%' : '0%'})"
+<label
+	data-themed={themed}
+	class={switchClass}
+	class:switch={checked}
+	style="box-sizing: content-box;"
+>
+	<input
+		id="zu_switch_input"
+		type="checkbox"
+		role="switch"
+		aria-checked={checked}
+		class="sr"
+		bind:checked
+	/>
+	<span
+		class={thumbStyle({ uiRounded })}
+		style="transform: translateX({checked ? '100%' : '0%'}); box-sizing:content-box"
 	></span>
 </label>
 

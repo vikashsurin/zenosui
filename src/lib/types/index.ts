@@ -1,16 +1,6 @@
-import type { ClassValue } from 'clsx';
 import type { Snippet, Component } from 'svelte';
 
-import type {
-	HTMLAnchorAttributes,
-	HTMLAttributes,
-	HTMLButtonAttributes,
-	HTMLDialogAttributes,
-	HTMLInputAttributes,
-	HTMLLabelAttributes,
-	HTMLLiAttributes
-} from 'svelte/elements';
-import type { ClassNameValue } from 'tailwind-merge';
+import type { HTMLAttributes } from 'svelte/elements';
 
 export type sizeTokens =
 	| 'xs'
@@ -114,15 +104,15 @@ export interface IconProps {
 //=======================
 export interface DivProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface LabelProps extends UiProps, HTMLLabelAttributes {}
+export interface LabelProps extends UiProps, HTMLAttributes<HTMLLabelElement> {}
 
-export interface ListItemProps extends UiProps, IconProps, HTMLLiAttributes {}
+export interface ListItemProps extends UiProps, IconProps, HTMLAttributes<HTMLLIElement> {}
 
 export interface HrProps extends UiProps, HTMLAttributes<HTMLHRElement> {}
 
 export interface HeadingProps extends UiProps, HTMLAttributes<HTMLHeadingElement> {}
 
-export interface LinkProps extends UiProps, HTMLAnchorAttributes {
+export interface LinkProps extends UiProps, HTMLAttributes<HTMLAnchorElement> {
 	href?: string;
 }
 
@@ -133,7 +123,7 @@ export interface LinkProps extends UiProps, HTMLAnchorAttributes {
 type ButtonAsButton = UiProps &
 	StateProps &
 	IconProps &
-	HTMLButtonAttributes & {
+	HTMLAttributes<HTMLButtonElement> & {
 		href?: never;
 		label?: string;
 	};
@@ -141,7 +131,7 @@ type ButtonAsButton = UiProps &
 type ButtonAsAnchor = UiProps &
 	StateProps &
 	IconProps &
-	HTMLAnchorAttributes & {
+	HTMLAttributes<HTMLAnchorElement> & {
 		href?: string;
 		label?: string;
 	};
@@ -156,22 +146,22 @@ export interface IconCompProps extends ComponentProps {
 	iconRotation?: string; // e.g., 'rotate-45'
 }
 
-export interface IconButtonProps extends UiProps, HTMLButtonAttributes {
+export interface IconButtonProps extends UiProps, HTMLAttributes<HTMLButtonElement> {
 	icon: Component;
 }
 export interface SidebarProps extends UiProps, HTMLAttributes<HTMLUListElement> {}
 
-export interface SidebarItemProps extends UiProps, IconProps, HTMLAnchorAttributes {
+export interface SidebarItemProps extends UiProps, IconProps, HTMLAttributes<HTMLAnchorElement> {
 	href?: string;
 }
 
 // export interface SideExtrasProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface TextInputProps extends UiProps, IconProps, HTMLInputAttributes {
+export interface TextInputProps extends UiProps, IconProps, HTMLAttributes<HTMLInputElement> {
 	invalid?: boolean;
 }
 
-export interface AlertDialogProps extends UiProps, HTMLDialogAttributes {
+export interface AlertDialogProps extends UiProps, HTMLAttributes<HTMLDialogElement> {
 	showModal?: boolean;
 }
 
@@ -183,7 +173,7 @@ export interface AlertTitleProps extends UiProps, HTMLAttributes<HTMLHeadingElem
 
 export interface AlertContentProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface DialogProps extends UiProps, HTMLDialogAttributes {
+export interface DialogProps extends UiProps, HTMLAttributes<HTMLDialogElement> {
 	backdrop?: boolean;
 }
 
@@ -249,9 +239,12 @@ export interface NavigationMenuListProps extends UiProps, HTMLAttributes<HTMLULi
 	placement?: placement;
 }
 
-export interface NavigationMenuGroupProps extends UiProps, HTMLLiAttributes {}
+export interface NavigationMenuGroupProps extends UiProps, HTMLAttributes<HTMLLIElement> {}
 
-export interface NavigationMenuItemProps extends UiProps, IconProps, HTMLAnchorAttributes {}
+export interface NavigationMenuItemProps
+	extends UiProps,
+		IconProps,
+		HTMLAttributes<HTMLAnchorElement> {}
 
 export interface NavigationMenuBarProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
@@ -263,32 +256,35 @@ export interface NavigationListItemProps
 	extends UiProps,
 		StateProps,
 		IconProps,
-		HTMLAnchorAttributes {
+		HTMLAttributes<HTMLAnchorElement> {
 	label?: string;
 	hasList?: boolean;
 	href?: string;
 }
-export interface RadioProps extends UiProps, HTMLInputAttributes {}
+export interface RadioProps extends UiProps, HTMLAttributes<HTMLInputElement> {}
 export interface RadioGroupProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
-export interface CheckboxProps extends UiProps, HTMLInputAttributes {
+export interface CheckboxProps extends UiProps, HTMLAttributes<HTMLInputElement> {
 	checked?: boolean;
 }
 export interface AccordionProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 export interface AccordionItemProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
-export interface AccordionTriggerProps extends UiProps, IconProps, HTMLButtonAttributes {
+export interface AccordionTriggerProps
+	extends UiProps,
+		IconProps,
+		HTMLAttributes<HTMLButtonElement> {
 	label?: string;
 }
 export interface AccordionContentProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface SelectProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
-export interface SelectTriggerProps extends UiProps, IconProps, HTMLButtonAttributes {
+export interface SelectTriggerProps extends UiProps, IconProps, HTMLAttributes<HTMLButtonElement> {
 	label?: string;
 }
 
 export interface SelectListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 	placement?: placement;
 }
-export interface SelectOptionProps extends UiProps, HTMLLiAttributes {
+export interface SelectOptionProps extends UiProps, HTMLAttributes<HTMLLIElement> {
 	value: string;
 }
 export interface SwitchProps extends ComponentProps, StateProps {
@@ -356,4 +352,18 @@ export interface BreadcrumbItemProps extends UiProps, HTMLAttributes<HTMLAnchorE
 export interface BreadcrumbSeparatorProps extends ComponentProps {
 	icon?: Component | Snippet | null;
 	uiIconSize?: SizeVariant;
+}
+// COMBOBOX
+export interface ComboboxProps extends UiProps {
+	data: Array<{ value: string; label: string }>;
+}
+export interface ComboboxInputProps extends UiProps, HTMLAttributes<HTMLInputElement> {}
+export interface ComboboxPopoverProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
+export interface ComboboxListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
+	children: any;
+}
+
+export interface ComboboxItemProps extends UiProps, HTMLAttributes<HTMLLIElement> {
+	data: any;
+	hasFocus?: boolean;
 }

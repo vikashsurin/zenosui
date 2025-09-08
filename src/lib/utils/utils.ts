@@ -1,4 +1,4 @@
-export function clickOutside(node: HTMLUListElement, callback: () => void) {
+export function clickOutside(node: HTMLElement, callback: () => void) {
 	function handleClick(event: MouseEvent) {
 		const path = event.composedPath();
 		if (!path.includes(node)) {
