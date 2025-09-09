@@ -24,9 +24,8 @@
 
 	let element: HTMLElement;
 	function handleClick() {
-		context.state.value = (element as HTMLOptionElement)?.value;
-
-		context.state.showCombobox = false;
+		context.state.value = data.value;
+		context.state.isExpanded = false;
 	}
 	$effect(() => {
 		if (data.hasFocus) {
@@ -37,6 +36,7 @@
 </script>
 
 <li
+	id={`option-${data.index}`}
 	bind:this={element}
 	role="option"
 	class={finalClass}

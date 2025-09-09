@@ -2,7 +2,7 @@ import type { RoundedVariant, SizeVariant } from '$lib/types/index.ts';
 
 export type ComboboxContextType = {
 	state: {
-		showCombobox: boolean;
+		isExpanded: boolean;
 		value: string;
 		filterText: string;
 		focusIndex: number;

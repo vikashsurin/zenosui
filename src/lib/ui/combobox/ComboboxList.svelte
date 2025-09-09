@@ -23,6 +23,6 @@
 
 <ul id="combobox-options" class={finalClass} role="listbox" {...props}>
 	{#each filteredData() as data, index}
-		{@render children?.({ ...data, hasFocus: context.state.focusIndex === index })}
+		{@render children?.({ ...data, index, hasFocus: context.state.focusIndex === index })}
 	{/each}
 </ul>

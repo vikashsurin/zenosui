@@ -18,7 +18,7 @@
 	const finalClass = $derived(style({ uiRounded, class: clsx(_class) }));
 </script>
 
-{#if context.state.showCombobox}
+{#if context.state.isExpanded}
 	<div class={finalClass} {...props}>
 		{#if children}
 			{@render children?.()}

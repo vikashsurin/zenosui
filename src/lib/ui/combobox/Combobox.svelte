@@ -10,13 +10,15 @@
 	let state = $state({
 		value: '',
 		filterText: '',
-		showCombobox: false,
+		isExpanded: false,
 		focusIndex: -1,
 		highlightedElement: null
 	});
-
-	$inspect('s', state.highlightedElement);
-
+	// $effect(() => {
+	// 	if (!state.isExpanded) {
+	// 		state.highlightedElement = null;
+	// 	}
+	// });
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>
@@ -24,7 +26,7 @@
 				)
 			: data
 	);
-
+	$inspect('state value', state.value);
 	setContext('comboboxContext', {
 		state,
 		filteredData: () => filteredData,
@@ -33,7 +35,7 @@
 	} as ComboboxContextType);
 
 	function onclickOutside() {
-		state.showCombobox = false;
+		state.isExpanded = false;
 	}
 </script>
 

@@ -6,8 +6,8 @@
 	import { type ComboboxContextType } from './types.ts';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import { baseVariant } from '$lib/style/base.js';
-	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import { IconButton } from '$lib/index.js';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
+	import { Icon, PADDING_X } from '$lib/index.js';
 	import type { ComboboxInputProps } from '$lib/types/index.ts';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: ComboboxInputProps = $props();
@@ -19,7 +19,7 @@
 		extend: baseVariant,
 		base: ``,
 		variants: {
-			uiSize: TEXT_SIZE_WITH_PADDING
+			uiSize: TEXT_SIZE
 		},
 		defaultVariants: {}
 	});
@@ -32,22 +32,16 @@
 	}
 
 	function handleClick(event: MouseEvent) {
-		context.state.focusIndex = -1;
 		event.preventDefault();
-		const target = event.currentTarget as HTMLElement;
-		const parentElement = target.parentElement;
-		let input = parentElement?.querySelector('input');
-		input?.focus();
-
-		context.state.showCombobox = !context.state.showCombobox;
+		console.log('hello');
+		context.state.isExpanded = !context.state.isExpanded;
 	}
 	function handleKeyDown(event: KeyboardEvent) {
-		console.log('keydown');
 		switch (event.key) {
 			case 'ArrowDown':
 				event.preventDefault();
-				// if (context.state.showCombobox === false) {
-				// 	context.state.showCombobox = true;
+				// if (context.state.isExpanded === false) {
+				// 	context.state.isExpanded = true;
 				// 	context.state.focusIndex = 0;
 				// 	return;
 				// }
@@ -68,20 +62,28 @@
 				// Select the focused option
 
 				event.preventDefault();
-				context.state.showCombobox = !context.state.showCombobox;
+				context.state.isExpanded = !context.state.isExpanded;
 				break;
 		}
 	}
-	const contStyle = tv({
+	const labelStyle = tv({
 		extend: baseVariant,
-		base: `combobox-input-container flex items-center  border border-gray-300`
+		base: `combobox-input-container flex items-center  border border-gray-300`,
+		variants: {
+			uiPadding: PADDING_X
+		}
 	});
 </script>
 
-<div class={contStyle({ uiRounded })}>
+<label class={labelStyle({ uiRounded, uiPadding: uiSize })}>
 	<input
+		role="combobox"
+		aria-activedescendant={context.state.highlightedElement?.getAttribute('id')}
+		aria-expanded={context.state.isExpanded}
+		aria-haspopup="listbox"
+		aria-controls="combobox-options"
+		autocomplete="off"
 		class={finalClass}
-		list="combobox-options"
 		type="text"
 		value={context.state.value}
 		oninput={(event) => handleInput(event)}
@@ -89,16 +91,11 @@
 		onkeydown={(event) => handleKeyDown(event)}
 		{...props}
 	/>
-	<span class="pr-2">
-		<IconButton
-			{uiSize}
-			tabIndex={-1}
-			{uiRounded}
-			icon={ChevronsUpDown}
-			onclick={(event) => handleClick(event)}
-		></IconButton>
-	</span>
-</div>
+
+	<button class="text-xl" tabindex="-1" onclick={(event) => handleClick(event)}>
+		<Icon icon={ChevronsUpDown} {uiSize} />
+	</button>
+</label>
 
 <style>
 	.combobox-input-container:focus-within {

@@ -358,6 +358,7 @@ export interface ComboboxProps extends UiProps {
 	data: Array<{ value: string; label: string }>;
 }
 export interface ComboboxInputProps extends UiProps, HTMLAttributes<HTMLInputElement> {}
+
 export interface ComboboxPopoverProps extends UiProps, HTMLAttributes<HTMLDivElement> {}
 export interface ComboboxListProps extends UiProps, HTMLAttributes<HTMLUListElement> {
 	children: any;

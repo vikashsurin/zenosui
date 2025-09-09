@@ -34,7 +34,7 @@
 	<h1>Combobox</h1>
 	<form action="?/combobox" method="POST">
 		<Combobox data={options} uiSize="sm" uiRounded="sm">
-			<ComboboxInput name="fruit" />
+			<ComboboxInput name="kal" placeholder="hello" />
 			<ComboboxPopover>
 				<ComboboxList class="  max-h-100 bg-amber-500">
 					{#snippet children(data)}
