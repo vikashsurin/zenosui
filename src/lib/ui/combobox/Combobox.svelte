@@ -7,34 +7,78 @@
 	import type { ComboboxProps } from '$lib/types/index.ts';
 
 	let { children, data, uiSize, uiRounded }: ComboboxProps = $props();
-	let state = $state({
-		value: '',
-		checked: {
-			value: null,
-			label: null
-		},
-		filterText: '',
+	let state = $state<{
+		inputValue: string | null;
+		inputLabel: string | null;
+		selectedValue: string | number | null;
+		selectedLabel: string | null;
+		filterText: string | null;
+		isExpanded: boolean;
+		focusIndex: number;
+		highlightedElement: HTMLElement | null | undefined;
+	}>({
+		inputValue: null,
+		inputLabel: null,
+		selectedValue: null,
+		selectedLabel: null,
+		filterText: null,
 		isExpanded: false,
 		focusIndex: -1,
 		highlightedElement: null
 	});
-	// $effect(() => {
-	// 	if (!state.isExpanded) {
-	// 		state.highlightedElement = null;
-	// 	}
-	// });
+
 	$inspect({ state });
+
+	function clearFilter() {
+		state.filterText = null;
+	}
+	function setFilter(text: string) {
+		state.focusIndex = 0;
+		state.filterText = text;
+	}
+	function clearInput() {
+		console.log('clear input called');
+		state.inputValue = null;
+		state.inputLabel = null;
+	}
+	function open() {
+		state.isExpanded = true;
+	}
+	function close() {
+		state.isExpanded = false;
+	}
+	function toggleExpand() {
+		state.isExpanded = !state.isExpanded;
+	}
+	function setSelected({ value, label }: { value: string | number | null; label: string | null }) {
+		state.selectedValue = value;
+		state.selectedLabel = label;
+	}
+
+	function setInput({ value, label }: { value: string | null; label: string | null }) {
+		state.inputValue = value;
+		state.inputLabel = label;
+	}
+	// $inspect({ state });
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>
-					option.label.toLowerCase().includes(state.filterText.toLowerCase())
+					option.label.toLowerCase().includes(state.filterText ?? ''.toLowerCase())
 				)
 			: data
 	);
-	$inspect('state value', state.value);
+
 	setContext('comboboxContext', {
 		state,
 		filteredData: () => filteredData,
+		clearFilter,
+		setFilter,
+		clearInput,
+		toggleExpand,
+		open,
+		close,
+		setSelected,
+		setInput,
 		uiSize,
 		uiRounded
 	} as ComboboxContextType);

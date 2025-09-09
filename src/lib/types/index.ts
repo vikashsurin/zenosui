@@ -364,7 +364,9 @@ export interface ComboboxProps extends UiProps {
 	data: Array<{ value: string; label: string }>;
 }
 // export interface ComboboxInputProps extends UiProps, Type.HTMLAttributes<HTMLInputElement> {}
-export interface ComboboxInputProps extends UiProps, Type.HTMLInputAttributes {}
+export interface ComboboxInputProps extends UiProps, Type.HTMLInputAttributes {
+	editable?: boolean;
+}
 
 export interface ComboboxPopoverProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface ComboboxListProps extends UiProps, Type.HTMLAttributes<HTMLUListElement> {
@@ -373,5 +375,5 @@ export interface ComboboxListProps extends UiProps, Type.HTMLAttributes<HTMLULis
 
 export interface ComboboxItemProps extends UiProps, StateProps, Type.HTMLAttributes<HTMLLIElement> {
 	data: any;
-	hasFocus?: boolean;
+	checkMark?: Snippet | Component;
 }

@@ -35,16 +35,15 @@
 	<h1>Combobox</h1>
 	<form action="?/combobox" method="POST">
 		<Combobox data={options} uiSize="sm" uiRounded="sm">
-			<ComboboxInput name="fruit" />
+			<ComboboxInput editable={true} name="fruit" />
 			<ComboboxPopover>
 				<ComboboxList class="  max-h-100">
 					{#snippet children(data)}
 						<ComboboxItem
 							uiSize="sm"
 							{data}
-							checkIcon={ChevronRight}
 							class="hover:bg-gray-500"
-							activeClass="bg-red-500"
+							activeClass="bg-red-500 text-white"
 						/>
 					{/snippet}
 				</ComboboxList>

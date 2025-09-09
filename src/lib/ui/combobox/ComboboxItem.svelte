@@ -7,13 +7,13 @@
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import type { ComboboxItemProps } from '$lib/types/index.ts';
 	import { Icon } from '../icon/index.ts';
-
+	import Check from '@lucide/svelte/icons/check';
 	let {
 		children,
 		uiSize,
 		activeClass,
 		data,
-		checkIcon,
+		checkMark,
 		class: _class,
 		...props
 	}: ComboboxItemProps = $props();
@@ -34,9 +34,12 @@
 
 	let element: HTMLElement;
 	function handleClick() {
-		context.state.value = null;
-		context.state.checkedValue = data.value;
-		context.state.isExpanded = false;
+		// context.state.inputValue = null;
+		context.clearInput();
+		context.setSelected({ value: data.value, label: data.label });
+
+		context.close();
+		context.state.focusIndex = data.index;
 	}
 	$effect(() => {
 		if (data.hasFocus) {
@@ -66,8 +69,10 @@
 	{...props}
 >
 	{data.label}
-	{#if checkIcon && context.state.value === data.value}
-		<Icon icon={checkIcon} class="float-right inline" />
+	{#if checkMark && context.state.selectedValue === data.value}
+		<Icon icon={checkMark} class="float-right inline" />
+	{:else if !checkMark && context.state.selectedValue === data.value}
+		<Icon icon={Check} class="float-right inline" />
 	{/if}
 </li>
 
