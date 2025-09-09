@@ -6,12 +6,14 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import type { ComboboxItemProps } from '$lib/types/index.ts';
+	import { Icon } from '../icon/index.ts';
 
 	let {
 		children,
 		uiSize,
 		activeClass,
 		data,
+		checkIcon,
 		class: _class,
 		...props
 	}: ComboboxItemProps = $props();
@@ -32,7 +34,8 @@
 
 	let element: HTMLElement;
 	function handleClick() {
-		context.state.value = data.value;
+		context.state.value = null;
+		context.state.checkedValue = data.value;
 		context.state.isExpanded = false;
 	}
 	$effect(() => {
@@ -63,6 +66,9 @@
 	{...props}
 >
 	{data.label}
+	{#if checkIcon && context.state.value === data.value}
+		<Icon icon={checkIcon} class="float-right inline" />
+	{/if}
 </li>
 
 <style>

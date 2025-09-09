@@ -6,6 +6,7 @@
 		ComboboxPopover,
 		ComboboxInput
 	} from '$lib/ui/index.js';
+	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	let options = [
 		{ value: 'apple', label: 'Apple' },
 		{ value: 'banana', label: 'Banana' },
@@ -38,7 +39,13 @@
 			<ComboboxPopover>
 				<ComboboxList class="  max-h-100">
 					{#snippet children(data)}
-						<ComboboxItem uiSize="sm" {data} class="hover:bg-gray-500" activeClass="bg-red-500" />
+						<ComboboxItem
+							uiSize="sm"
+							{data}
+							checkIcon={ChevronRight}
+							class="hover:bg-gray-500"
+							activeClass="bg-red-500"
+						/>
 					{/snippet}
 				</ComboboxList>
 			</ComboboxPopover>

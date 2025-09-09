@@ -9,6 +9,10 @@
 	let { children, data, uiSize, uiRounded }: ComboboxProps = $props();
 	let state = $state({
 		value: '',
+		checked: {
+			value: null,
+			label: null
+		},
 		filterText: '',
 		isExpanded: false,
 		focusIndex: -1,
@@ -19,6 +23,7 @@
 	// 		state.highlightedElement = null;
 	// 	}
 	// });
+	$inspect({ state });
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>

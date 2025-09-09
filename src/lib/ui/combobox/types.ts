@@ -3,8 +3,9 @@ import type { RoundedVariant, SizeVariant } from '$lib/types/index.ts';
 export type ComboboxContextType = {
 	state: {
 		isExpanded: boolean;
-		value: string;
-		filterText: string;
+		value: string | null;
+		checkedValue: string | null;
+		filterText: string | null;
 		focusIndex: number;
 		highlightedElement: HTMLElement | null | undefined;
 	};

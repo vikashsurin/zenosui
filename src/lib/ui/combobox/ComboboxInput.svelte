@@ -63,6 +63,10 @@
 				// Select the focused option
 
 				event.preventDefault();
+				if (context.state.isExpanded) {
+					context.state.checkedValue = context.filteredData()[context.state.focusIndex].value;
+					context.state.value = null;
+				}
 				context.state.isExpanded = !context.state.isExpanded;
 				break;
 		}
@@ -86,7 +90,7 @@
 		autocomplete="off"
 		class={finalClass}
 		type="text"
-		value={context.state.value}
+		value={context.state.value ?? context.state.checkedValue}
 		oninput={(event) => handleInput(event)}
 		onclick={(event) => handleClick(event)}
 		onkeydown={(event) => handleKeyDown(event)}
