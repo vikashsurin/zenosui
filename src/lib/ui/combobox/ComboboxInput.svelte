@@ -27,6 +27,7 @@
 	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 	function handleInput(event: Event) {
 		event.preventDefault();
+		context.state.isExpanded = true;
 		const target = event.target as HTMLInputElement;
 		context.state.filterText = target.value;
 	}
@@ -40,11 +41,11 @@
 		switch (event.key) {
 			case 'ArrowDown':
 				event.preventDefault();
-				// if (context.state.isExpanded === false) {
-				// 	context.state.isExpanded = true;
-				// 	context.state.focusIndex = 0;
-				// 	return;
-				// }
+				if (context.state.isExpanded === false) {
+					context.state.isExpanded = true;
+					context.state.focusIndex = 0;
+					return;
+				}
 				if (context.state.focusIndex >= context.filteredData().length - 1) return;
 				context.state.focusIndex += 1;
 				context.state.value = context.filteredData()[context.state.focusIndex].label;

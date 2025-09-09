@@ -34,16 +34,15 @@
 	<h1>Combobox</h1>
 	<form action="?/combobox" method="POST">
 		<Combobox data={options} uiSize="sm" uiRounded="sm">
-			<ComboboxInput name="kal" placeholder="hello" />
+			<ComboboxInput name="fruit" />
 			<ComboboxPopover>
-				<ComboboxList class="  max-h-100 bg-amber-500">
+				<ComboboxList class="  max-h-100">
 					{#snippet children(data)}
-						<ComboboxItem uiSize="sm" {data} />
+						<ComboboxItem uiSize="sm" {data} class="hover:bg-gray-500" activeClass="bg-red-500" />
 					{/snippet}
 				</ComboboxList>
 			</ComboboxPopover>
 		</Combobox>
-		<!-- <input type="text" name="fruit" /> -->
 		<button type="submit">Submit</button>
 	</form>
 </div>

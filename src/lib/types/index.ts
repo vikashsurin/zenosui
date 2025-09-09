@@ -371,7 +371,7 @@ export interface ComboboxListProps extends UiProps, Type.HTMLAttributes<HTMLULis
 	children: any;
 }
 
-export interface ComboboxItemProps extends UiProps, Type.HTMLAttributes<HTMLLIElement> {
+export interface ComboboxItemProps extends UiProps, StateProps, Type.HTMLAttributes<HTMLLIElement> {
 	data: any;
 	hasFocus?: boolean;
 }

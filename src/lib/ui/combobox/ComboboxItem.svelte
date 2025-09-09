@@ -7,7 +7,14 @@
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import type { ComboboxItemProps } from '$lib/types/index.ts';
 
-	let { children, uiSize, hasFocus, data, class: _class, ...props }: ComboboxItemProps = $props();
+	let {
+		children,
+		uiSize,
+		activeClass,
+		data,
+		class: _class,
+		...props
+	}: ComboboxItemProps = $props();
 
 	const context = getContext<ComboboxContextType>('comboboxContext');
 	uiSize = context.uiSize;
@@ -17,6 +24,7 @@
 		variants: {
 			uiSize: TEXT_SIZE_WITH_PADDING
 		},
+
 		defaultVariants: {
 			uiSize: 'sm'
 		}
@@ -32,7 +40,9 @@
 			context.state.highlightedElement = element;
 		}
 	});
-	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
+	const finalClass = $derived(
+		style({ uiSize, class: clsx(_class, data.hasFocus ? activeClass : '') })
+	);
 </script>
 
 <li
@@ -56,8 +66,8 @@
 </li>
 
 <style>
-	.combobox_item_focus {
+	/* .combobox_item_focus {
 		background-color: green;
 		color: white;
-	}
+	} */
 </style>
