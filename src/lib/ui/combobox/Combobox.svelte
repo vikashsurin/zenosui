@@ -63,7 +63,7 @@
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>
-					option.label.toLowerCase().includes(state.filterText ?? ''.toLowerCase())
+					option.label.toLowerCase().includes(state.filterText?.toLowerCase() ?? '')
 				)
 			: data
 	);
