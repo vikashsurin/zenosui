@@ -28,3 +28,4 @@ export * from './window-splitter/index.js';
 export * from './pin-input/index.js';
 export * from './breadcrumb/index.js';
 export * from './combobox/index.js';
+export * from './rangeInput/index.js';

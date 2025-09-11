@@ -126,3 +126,19 @@ export const TEXT_SIZE_WITH_DIMENSIONS = {
 	'8xl': 'text-8xl h-40 w-40'
 };
 
+
+
+export const TRACK_SIZE = {
+	xs: '3px',
+	sm: '4px',
+	md: '5px',
+	lg: '6px',
+	xl: '7px',
+	'2xl': '8px',
+	'3xl': '9px',
+	'4xl': '10px',
+	'5xl': '11px',
+	'6xl': '12px',
+	'7xl': '13px',
+	'8xl': '14px'
+}

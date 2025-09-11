@@ -377,3 +377,9 @@ export interface ComboboxItemProps extends UiProps, StateProps, Type.HTMLAttribu
 	data: any;
 	checkMark?: Snippet | Component;
 }
+
+// Input Range
+export interface RangeInputProps extends UiProps, Type.HTMLInputAttributes {
+	uiTrackBg?: string;
+	uiThumbBg?: string;
+}
