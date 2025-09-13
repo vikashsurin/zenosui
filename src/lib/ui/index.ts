@@ -3,6 +3,7 @@ export { default as ListItem } from '$lib/ui/atoms/ListItem.svelte';
 export { default as TextInput } from '$lib/ui/textInput/TextInput.svelte';
 export { default as Link } from '$lib/ui/atoms/Link.svelte';
 export { default as Heading } from '$lib/ui/atoms/Heading.svelte';
+export { default as Input } from '$lib/ui/atoms/Input.svelte';
 
 export * from './alert/index.js';
 export * from './dialog/index.js';
@@ -29,3 +30,4 @@ export * from './pin-input/index.js';
 export * from './breadcrumb/index.js';
 export * from './combobox/index.js';
 export * from './rangeInput/index.js';
+export * from './dateInput/index.js';

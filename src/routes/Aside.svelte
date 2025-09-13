@@ -37,5 +37,6 @@
 		<NavigationListItem href="/docs/breadcrumb">breadcrumb</NavigationListItem>
 		<NavigationListItem href="/docs/combobox">combobox</NavigationListItem>
 		<NavigationListItem href="/docs/range-input">range input</NavigationListItem>
+		<NavigationListItem href="/docs/date-input">date input</NavigationListItem>
 	</NavigationList>
 </div>

@@ -2,18 +2,20 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import type { HeadingProps } from '$lib/types/index.js';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
 
-	let { children, class: _class }: HeadingProps = $props();
+	let { children, uiSize, class: _class }: HeadingProps = $props();
 
 	let style = tv({
 		base: ``,
-		variants: {},
+		variants: { uiSize: TEXT_SIZE },
 		defaultVariants: {}
 	});
 	let as = $state('h1');
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
-<svelte:element this={as} class={finalClass }>
+
+<svelte:element this={as} class={finalClass}>
 	{#if children}
 		{@render children()}
 	{/if}

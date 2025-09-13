@@ -115,7 +115,7 @@ export interface HeadingProps extends UiProps, Type.HTMLAttributes<HTMLHeadingEl
 export interface LinkProps extends UiProps, Type.HTMLAttributes<HTMLAnchorElement> {
 	href?: string;
 }
-
+export interface InputProps extends UiProps, Type.HTMLInputAttributes {}
 // =======================
 // MAIN COMPONENTS
 // =======================
