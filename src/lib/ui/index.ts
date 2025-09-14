@@ -31,3 +31,4 @@ export * from './breadcrumb/index.js';
 export * from './combobox/index.js';
 export * from './rangeInput/index.js';
 export * from './dateInput/index.js';
+export * from './snackbar/index.js';
