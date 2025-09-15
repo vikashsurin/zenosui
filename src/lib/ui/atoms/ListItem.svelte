@@ -18,7 +18,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `list-none kala hover:bg-gray-300 inline-flex items-center bg-gray-200`,
+		base: `  bg-gray-200`,
 		variants: {
 			uiSize: SIZE_PRESET
 		},

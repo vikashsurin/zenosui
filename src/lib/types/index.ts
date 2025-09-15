@@ -106,7 +106,9 @@ export interface DivProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
 
 export interface LabelProps extends UiProps, Type.HTMLAttributes<HTMLLabelElement> {}
 
-export interface ListItemProps extends UiProps, IconProps, Type.HTMLAttributes<HTMLLIElement> {}
+export interface ListItemProps extends UiProps, IconProps, Type.HTMLAttributes<HTMLLIElement> {
+	label?: string;
+}
 
 export interface HrProps extends UiProps, Type.HTMLAttributes<HTMLHRElement> {}
 
@@ -382,4 +384,15 @@ export interface ComboboxItemProps extends UiProps, StateProps, Type.HTMLAttribu
 export interface RangeInputProps extends UiProps, Type.HTMLInputAttributes {
 	uiTrackBg?: string;
 	uiThumbBg?: string;
+}
+
+// Tree view
+export interface TreeViewProps extends UiProps, Type.HTMLAttributes<HTMLUListElement> {
+	uiIndent?: SizeVariant;
+}
+export interface TreeviewItemProps extends UiProps, Type.HTMLLiAttributes {
+	label?: string;
+	iconLeftOpen?: Snippet | Component;
+	iconLeftClose?: Snippet | Component;
+	iconRight?: Snippet | Component;
 }

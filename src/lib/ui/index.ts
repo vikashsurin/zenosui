@@ -32,3 +32,4 @@ export * from './combobox/index.js';
 export * from './rangeInput/index.js';
 export * from './dateInput/index.js';
 export * from './snackbar/index.js';
+export * from './treeview/index.ts';
