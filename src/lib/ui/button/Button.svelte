@@ -16,7 +16,7 @@ Button
 
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
-	import { baseVariant, SIZE_PRESET } from '$lib/style/index.js';
+	import { baseVariant, SIZE_PRESET, TEXT_SIZE } from '$lib/style/index.js';
 	import type { ButtonProps } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
@@ -30,7 +30,7 @@ Button
 		uiTheme = 'dark',
 		themed = true,
 		uiVariant = 'primary',
-		uiSize = 'md',
+		uiSize = 'xl',
 		uiRounded = 'none',
 		uiFill = 'filled',
 		uiBg = 'secondary',
@@ -49,9 +49,9 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: 'zu_button inline-flex justify-center items-center',
+		base: 'zu_button  inline-flex justify-center items-center',
 		variants: {
-			uiSize: SIZE_PRESET,
+			uiSize: TEXT_SIZE,
 			uiVariant: VARIANTS,
 			active: {
 				true: '',
@@ -109,3 +109,11 @@ Button
 		<Icon {uiSize} icon={iconRight} iconRotation={iconRightRotation} />
 	{/if}
 </svelte:element>
+
+<style>
+	button {
+		padding: 0.5em 0.75em;
+		gap: 0.5em;
+		outline-width: 0.1em;
+	}
+</style>

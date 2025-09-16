@@ -33,3 +33,4 @@ export * from './rangeInput/index.js';
 export * from './dateInput/index.js';
 export * from './snackbar/index.js';
 export * from './treeview/index.ts';
+export * from './table/index.ts';

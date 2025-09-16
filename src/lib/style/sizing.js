@@ -26,19 +26,36 @@ export const SIZE_FOR_SWITCH = {
 	'7xl': 'w-64 h-32',
 	'8xl': 'w-72 h-36'
 };
+// export const TEXT_SIZE_WITH_PADDING = {
+// 	xs: 'text-xs py-1 px-2',
+// 	sm: 'text-sm py-2 px-3 ',
+// 	md: 'text-base py-3 px-4',
+// 	lg: 'text-lg py-4 px-5',
+// 	xl: 'text-xl py-5 px-6',
+// 	'2xl': 'text-2xl py-6 px-7',
+// 	'3xl': ' text-3xl py-7 px-8',
+// 	'4xl': ' text-4xl py-8 px-9',
+// 	'5xl': 'text-5xl py-9 px-10',
+// 	'6xl': 'text-6xl py-10 px-11',
+// 	'7xl': 'text-7xl py-11 px-12',
+// 	'8xl': 'text-8xl py-12 px-13'
+// };
+
+const paddingY = 'py-[0.5em]';
+const paddingX = 'px-[1em]';
 export const TEXT_SIZE_WITH_PADDING = {
-	xs: 'text-xs py-1 px-2',
-	sm: 'text-sm py-2 px-3 ',
-	md: 'text-base py-3 px-4',
-	lg: 'text-lg py-4 px-5',
-	xl: 'text-xl py-5 px-6',
-	'2xl': 'text-2xl py-6 px-7',
-	'3xl': ' text-3xl py-7 px-8',
-	'4xl': ' text-4xl py-8 px-9',
-	'5xl': 'text-5xl py-9 px-10',
-	'6xl': 'text-6xl py-10 px-11',
-	'7xl': 'text-7xl py-11 px-12',
-	'8xl': 'text-8xl py-12 px-13'
+	xs: `text-xs ${paddingY} ${paddingX}`,
+	sm: `text-sm ${paddingY} ${paddingX}`,
+	md: `text-base ${paddingY} ${paddingX}`,
+	lg: `text-lg ${paddingY} ${paddingX}`,
+	xl: `text-xl ${paddingY} ${paddingX}`,
+	'2xl': `text-2xl ${paddingY} ${paddingX}`,
+	'3xl': `text-3xl ${paddingY} ${paddingX}`,
+	'4xl': `text-4xl ${paddingY} ${paddingX}`,
+	'5xl': `text-5xl ${paddingY} ${paddingX}`,
+	'6xl': `text-6xl ${paddingY} ${paddingX}`,
+	'7xl': `text-7xl ${paddingY} ${paddingX}`,
+	'8xl': `text-8xl ${paddingY} ${paddingX}`,
 };
 export const TEXT_SIZE_WITH_HEIGHT = {
 	xs: 'text-xs h-6',

@@ -7,6 +7,16 @@
 </script>
 
 <div class="">
+	<h1>Sizes</h1>
+	<div class="my-4">
+		<Button uiRounded="sm" uiSize="xs" label="Button" />
+		<Button uiRounded="sm" uiSize="sm" label="Button" />
+		<Button uiRounded="sm" uiSize="md" label="Button" />
+		<Button uiRounded="sm" uiSize="lg" label="Button" />
+		<Button uiRounded="sm" uiSize="xl" label="Button" />
+		<Button uiRounded="sm" uiSize="2xl" label="Button" />
+		<Button uiRounded="sm" uiSize="3xl" label="Button" />
+	</div>
 	<Button uiVariant="primary" uiRounded="sm" label="Button" iconRight={ChevronRight} />
 
 	<Button uiRounded="sm" onclick={() => console.log('Button clicked')} label="Button" />

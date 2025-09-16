@@ -40,5 +40,6 @@
 		<NavigationListItem href="/docs/date-input">date input</NavigationListItem>
 		<NavigationListItem href="/docs/snackbar">snackbar</NavigationListItem>
 		<NavigationListItem href="/docs/treeview">treeview</NavigationListItem>
+		<NavigationListItem href="/docs/table">table</NavigationListItem>
 	</NavigationList>
 </div>
