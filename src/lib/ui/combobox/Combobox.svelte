@@ -89,7 +89,5 @@
 </script>
 
 <div use:clickOutside={onclickOutside} class="w-fit">
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </div>

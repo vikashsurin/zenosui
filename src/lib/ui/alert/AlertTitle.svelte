@@ -19,7 +19,5 @@
 </script>
 
 <h2 class={finalClass} {...props}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </h2>

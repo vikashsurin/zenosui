@@ -22,7 +22,5 @@
 </script>
 
 <a class={finalClasses} data-themed={themed} class:link={themed} {href} {...props}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children()}
 </a>

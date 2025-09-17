@@ -39,9 +39,7 @@
 	style={`width: ${percent}%;`}
 	{...props}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </div>
 
 <style>

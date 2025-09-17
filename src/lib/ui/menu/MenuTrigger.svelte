@@ -142,7 +142,5 @@
 	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 	{...props}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </Button>

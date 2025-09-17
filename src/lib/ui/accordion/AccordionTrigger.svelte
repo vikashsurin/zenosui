@@ -60,7 +60,5 @@
 	iconRightRotation={accordionItemState.iconRightRotation}
 	onclick={handleClick}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </Button>

@@ -22,8 +22,6 @@
 
 {#if accordionItemState.expanded}
 	<div class={finalClass} {...props} in:slide={{ duration: 300 }} out:slide={{ duration: 300 }}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</div>
 {/if}

@@ -31,7 +31,5 @@
 	onmouseleave={handleMouseLeave}
 	{...props}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </MenuItem>

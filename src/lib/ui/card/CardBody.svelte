@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { DialogHeaderProps } from '$lib/types/index.js';
+	import type { CardBodyProps } from '$lib/types/index.ts';
 
-	let { children, class: _class, ...props }: DialogHeaderProps = $props();
+	let { children, class: _class, ...props }:CardBodyProps = $props();
 
 	let style = tv({
 		base: ``,
@@ -13,6 +13,4 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<header class={finalClass} {...props}>
-	{@render children?.()}
-</header>
+<div class={finalClass} {...props}>{@render children?.()}</div>

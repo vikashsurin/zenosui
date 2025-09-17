@@ -98,9 +98,7 @@
 	onfocus={() => (state.open = true)}
 	class="relative flex items-center"
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </li>
 <!-- onkeydown={(e: KeyboardEvent) => handleKeyDown(e)} -->
 <!-- onfocusout={() => (state.open = false)} -->

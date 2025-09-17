@@ -24,7 +24,5 @@
 </script>
 
 <Button class={finalClass} {uiSize} {uiRounded} {...props}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </Button>

@@ -56,9 +56,7 @@
 			<Icon icon={iconLeft} uiSize={uiIconSize} />
 		{/if}
 
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 		{#if iconRight}
 			<Icon icon={iconRight} uiSize={uiIconSize} class="ml-auto" />
 		{/if}

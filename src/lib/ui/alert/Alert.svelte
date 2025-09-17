@@ -33,8 +33,6 @@
 {#if open}
 	<div class="position absolute inset-0 bg-black/50"></div>
 	<dialog role="alertdialog" open={true} class={finalClass} {...props}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</dialog>
 {/if}

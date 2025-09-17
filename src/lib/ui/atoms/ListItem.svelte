@@ -37,9 +37,7 @@
 	{#if label}
 		{label}
 	{/if}
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 	{#if iconRight}
 		<Icon {uiSize} icon={iconRight} />
 	{/if}

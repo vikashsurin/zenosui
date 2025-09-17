@@ -14,7 +14,5 @@
 </script>
 
 <header class={finalClass} {...props}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </header>

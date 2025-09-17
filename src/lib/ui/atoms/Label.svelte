@@ -4,10 +4,7 @@
 	import clsx from 'clsx';
 	import type { LabelProps } from '$lib/types/index.js';
 
-	let {
-		children,
-		...props
-	}: LabelProps = $props();
+	let { children, ...props }: LabelProps = $props();
 
 	const style = tv({
 		extend: baseVariant,
@@ -23,8 +20,7 @@
 		})
 	);
 </script>
+
 <label class={finalClasses} {...props}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children()}
 </label>

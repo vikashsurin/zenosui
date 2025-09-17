@@ -35,8 +35,6 @@
 		<div class="zu_dialog_backdrop position absolute inset-0 bg-black/50"></div>
 	{/if}
 	<dialog class={finalClass} {...props}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</dialog>
 {/if}

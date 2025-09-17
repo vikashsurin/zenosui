@@ -26,8 +26,6 @@
 
 <nav class="nav">
 	<ul class={finalClass}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</ul>
 </nav>

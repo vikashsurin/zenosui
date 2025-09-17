@@ -26,7 +26,5 @@
 </script>
 
 <Button {uiSize} {uiRounded} class={finalClass} {...props} onclick={handleClick}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </Button>

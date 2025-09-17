@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant } from '$lib/style/index.js';
-	import type { AlertContentProps } from '$lib/types/index.js';
+	import type { CardProps } from '$lib/types/index.ts';
 
-	let { children, class: _class, ...props }: AlertContentProps = $props();
+	let { children, class: _class, ...props }: CardProps = $props();
 
 	let style = tv({
-		extend: baseVariant,
-		base: ``,
+		base: `bg-gray-50 border flex flex-col justify-between items-center border-gray-300 w-[400px] p-2 rounded-lg shadow-md aspect-square`,
 		variants: {},
 		defaultVariants: {}
 	});

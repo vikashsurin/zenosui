@@ -95,9 +95,7 @@
 		{/if}
 	</span>
 	{#if state.isExpanded}
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	{/if}
 </li>
 

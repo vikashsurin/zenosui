@@ -18,8 +18,6 @@
 
 {#if tabState.openTabId === id}
 	<div class={finalClass} {...props}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</div>
 {/if}

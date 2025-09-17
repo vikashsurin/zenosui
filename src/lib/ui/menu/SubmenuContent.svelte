@@ -67,9 +67,7 @@
 		{...props}
 		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 	>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</ul>
 {/if}
 <!-- use:clickOutside={onclickOutside} -->

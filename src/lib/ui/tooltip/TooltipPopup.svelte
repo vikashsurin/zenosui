@@ -79,9 +79,7 @@
 
 <div role="tooltip" transition:fly class={`zu_tooltip ${finalClass}`}>
 	<span class={`zu_tooltip_cont ${tooltipCont({ uiRounded, uiSize })}`}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 		{content}
 	</span>
 	<div class={`zu_tooltip_tip ${tooltipTipStyle({ uiSize })}`}></div>

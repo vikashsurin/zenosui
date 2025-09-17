@@ -62,7 +62,5 @@
 </script>
 
 <div class={finalClasses} {...props}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children()}
 </div>

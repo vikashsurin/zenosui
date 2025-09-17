@@ -4,10 +4,7 @@
 	import clsx from 'clsx';
 	import { Heading } from '$lib/ui/index.js';
 
-	let {
-		children,
-		class: _class
-	} = $props();
+	let { children, class: _class } = $props();
 
 	const style = tv({
 		extend: baseVariant,
@@ -23,9 +20,7 @@
 		})
 	);
 </script>
-<Heading class={finalClasses}>
-	{#if children}
-		{@render children()}
-	{/if}
-</Heading>
 
+<Heading class={finalClasses}>
+	{@render children()}
+</Heading>

@@ -47,7 +47,5 @@
 	{value}
 	onclick={handleClick}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </li>

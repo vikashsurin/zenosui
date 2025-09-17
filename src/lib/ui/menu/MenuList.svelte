@@ -78,8 +78,6 @@
 		class={finalClass}
 		use:clickOutside={onclickOutside}
 	>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</ul>
 {/if}

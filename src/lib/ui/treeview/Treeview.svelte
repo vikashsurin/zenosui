@@ -63,7 +63,5 @@
 </script>
 
 <ul bind:this={ultree} class={finalClass} {...props} role={defineRole()}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </ul>

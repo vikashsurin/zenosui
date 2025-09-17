@@ -44,9 +44,7 @@
 		{...props}
 		style={`${page.url.pathname === href ? ' opacity: 1;' : ''}; `}
 	>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</a>
 
 	<span>

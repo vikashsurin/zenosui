@@ -27,7 +27,5 @@
 	{#if showTooltip}
 		<TooltipPopup {uiRounded} {content} {uiSize} class={_class} />
 	{/if}
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </div>

@@ -217,9 +217,7 @@
 
 {#if menuBarContext}
 	<li role="none" {id} class={finalClass} {...props} bind:this={menu}>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</li>
 {:else}
 	<nav>

@@ -3,11 +3,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
 
-	let {
-		children,
-		class: _class,
-		...props
-	} = $props();
+	let { children, class: _class, ...props } = $props();
 
 	const style = tv({
 		extend: baseVariant,
@@ -25,7 +21,5 @@
 </script>
 
 <div class={finalClasses} {...props}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children()}
 </div>

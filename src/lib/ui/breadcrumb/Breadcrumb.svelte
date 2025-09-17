@@ -27,7 +27,5 @@
 </script>
 
 <nav aria-label="Breadcrumb" class={finalClass} {...props}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </nav>

@@ -20,8 +20,6 @@
 
 <li class={finalClass} {...props} role="radiogroup" data-radio-value={value}>
 	<ul>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</ul>
 </li>

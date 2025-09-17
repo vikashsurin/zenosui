@@ -51,7 +51,5 @@
 </script>
 
 <nav class={finalClasses} {...props} onmouseenter={triggerShowMenu}>
-	{#if children}
-		{@render children()}
-	{/if}
+	{@render children()}
 </nav>

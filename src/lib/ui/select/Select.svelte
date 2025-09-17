@@ -25,7 +25,5 @@
 </script>
 
 <div class={finalClass}>
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </div>

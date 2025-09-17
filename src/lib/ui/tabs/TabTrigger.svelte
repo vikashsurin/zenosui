@@ -27,7 +27,5 @@
 	onclick={() => (tabState.openTabId = id)}
 	{...props}
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </Button>

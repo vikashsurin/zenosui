@@ -396,3 +396,9 @@ export interface TreeviewItemProps extends UiProps, Type.HTMLLiAttributes {
 	iconLeftClose?: Snippet | Component;
 	iconRight?: Snippet | Component;
 }
+
+//CARD
+export interface CardProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+export interface CardHeaderProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+export interface CardBodyProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+export interface CardFooterProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}

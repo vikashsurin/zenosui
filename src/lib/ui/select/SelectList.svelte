@@ -34,8 +34,6 @@
 		in:slide={{ duration: 300 }}
 		out:slide={{ duration: 200 }}
 	>
-		{#if children}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</ul>
 {/if}

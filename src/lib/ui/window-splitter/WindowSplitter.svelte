@@ -42,7 +42,5 @@
 	{...props}
 	style="grid-template-columns: {windwSplitState.splitPosition}% 4px 1fr;"
 >
-	{#if children}
-		{@render children?.()}
-	{/if}
+	{@render children?.()}
 </div>
