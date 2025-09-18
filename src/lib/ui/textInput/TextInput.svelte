@@ -99,7 +99,7 @@
 		{uiRounded}
 		icon={X}
 		onclick={clearInput}
-		class="bg-transparent"
+		class="bg-transparent text-black hover:bg-gray-200 active:bg-gray-300"
 	/>
 	{#if iconRight}
 		<Icon {uiSize} {uiColor} icon={iconRight} class="input_icon_right" />
@@ -107,4 +107,7 @@
 </label>
 
 <style>
+	input:focus {
+		outline: none;
+	}
 </style>

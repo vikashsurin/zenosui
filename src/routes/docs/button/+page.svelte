@@ -45,11 +45,11 @@
 
 	<h2>Variants</h2>
 	<div class="flex gap-2">
-		<Button uiColor="primary" uiVariant="solid" label="Solid" />
-		<Button uiColor="primary" uiVariant="outlined" label="Outline" />
-		<Button uiColor="primary" uiVariant="dashed" label="Dashed" />
+		<Button uiColor="red" uiVariant="solid" label="Solid" class="text-white	" />
+		<Button uiColor="red" uiVariant="outlined" label="Outline" />
+		<Button uiColor="green" uiVariant="dashed" iconRight={ChevronRight} label="Dashed" />
 		<Button uiColor="primary" uiVariant="filled" label="Filled" />
-		<Button uiColor="primary" uiVariant="ghost" label="Ghost" />
-		<Button uiColor="primary" uiVariant="link" label="Link" />
+		<Button uiColor="brown" uiVariant="ghost" label="Ghost" />
+		<Button href="#" uiColor="primary" uiVariant="link" label="Link" />
 	</div>
 </div>

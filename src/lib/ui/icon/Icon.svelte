@@ -43,24 +43,15 @@
 			uiPadding,
 			uiBg,
 			uiRounded,
-			uiColor,
-			iconSize: uiSize || uiIconSize,
-			class: clsx(_class)
+			iconSize: uiIconSize || uiSize,
+			class: clsx(_class, 'icon')
 		})
 	);
 </script>
 
 {#if icon}
-	{@const IconComponent = icon as Component}
-	<IconComponent class={finalClass} style={`transform:rotate(${rotation})`} {...props} />
+	{@const Icon = icon as Component}
+	<Icon class={finalClass} style={`transform:rotate(${rotation}); `} {...props} />
 {:else if children}
 	{@render children()}
 {/if}
-
-<style>
-	span {
-		display: inline-block;
-		width: auto;
-		flex-shrink: 0;
-	}
-</style>

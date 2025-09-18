@@ -24,7 +24,6 @@
 /* variants */
 .btn.solid {
 	background-color: var(--button-color);
-	color: white;
 }
 .btn.solid:hover {
 	background-color: oklch(from var(--button-color) calc(l + 0.1) c h);

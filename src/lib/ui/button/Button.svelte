@@ -67,15 +67,7 @@ Button
 		]
 	});
 
-	function buttonColor() {
-		return uiColor;
-	}
 
-	function buttonVariant() {
-		return uiVariant;
-	}
-
-	function customColor() {}
 	const finalClasses = $derived(
 		buttonStyle({
 			uiSize,
@@ -93,10 +85,10 @@ Button
 	bind:this={ref}
 	data-themed={themed}
 	class:btn={uiColor !== undefined}
-	{...hrefProp}
 	role={href ? 'link' : 'button'}
 	class={finalClasses}
 	style={`--custom-color: ${uiColor}`}
+	{...hrefProp}
 	{...props}
 >
 	{#if iconLeft}
@@ -115,7 +107,8 @@ Button
 </svelte:element>
 
 <style>
-	button {
+	button,
+	a {
 		padding: 0.5em 0.75em;
 		gap: 0.5em;
 	}
