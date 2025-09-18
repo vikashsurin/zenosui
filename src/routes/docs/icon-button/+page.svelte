@@ -4,5 +4,5 @@
 </script>
 
 <div>
-	<IconButton icon={BadgeCheck} uiSize="sm" />
+	<IconButton icon={BadgeCheck} uiSize="sm" class="" />
 </div>

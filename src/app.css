@@ -37,6 +37,7 @@
 
 	--primary-surface-dark: var(--color-neutral-900);
 	--primary-content-dark: var(--color-neutral-100);
+	--button-color: red;
 }
 *:focus {
 	outline: none;

@@ -56,7 +56,7 @@ export interface UiProps {
 	 */
 	ref?: any;
 	uiBg?: ColorVariant;
-	uiColor?: ColorVariant;
+	uiColor?: ColorVariant | string;
 	uiSize?: SizeVariant;
 	uiText?: SizeVariant;
 	uiRounded?: RoundedVariant;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './button.css';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { Icon } from '$lib/ui/index.js';
@@ -8,9 +9,10 @@
 	let {
 		icon,
 		uiSize,
-		themed = true,
+		themed = false,
+		uiTheme = 'dark',
 		uiColor,
-		uiColorPreset,
+		uiVariant = 'solid',
 		uiRounded,
 		class: _class,
 		...props
@@ -18,21 +20,26 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_icon_button interactive`,
+		base: `zu_icon_button  bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700`,
 		variants: {
 			uiSize: SIZE
 		},
 		defaultVariants: {
-			uiSize: 'md',
-			uiColorPreset: 'secondary'
+			uiSize: 'md'
 		}
 	});
 	const finalClass = $derived(
-		style({ uiSize, uiColor, uiRounded, uiColorPreset, class: clsx(_class) })
+		style({ uiSize, uiRounded, class: clsx(_class, uiColor, uiVariant) })
 	);
 </script>
 
-<button data-themed={themed} class:button={themed} class={finalClass} {...props}>
+<button
+	data-themed={themed}
+	style={`--custom-color: ${uiColor}`}
+	class:btn={uiColor !== undefined}
+	class={finalClass}
+	{...props}
+>
 	{#if icon !== null}
 		<Icon {icon} uiIconSize={uiSize} />
 	{/if}

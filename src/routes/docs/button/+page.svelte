@@ -10,7 +10,7 @@
 <div class="">
 	<h2>Size</h2>
 	<div class="flex items-end gap-2">
-		<Button uiSize="xs" label="Button xs"></Button>
+		<Button uiSize="xs" label="Button xs" class=""></Button>
 		<Button uiSize="sm" label="Button sm"></Button>
 		<Button uiSize="md" label="Button md"></Button>
 		<Button uiSize="lg" label="Button lg"></Button>
@@ -37,7 +37,7 @@
 
 	<h2>Colors</h2>
 	<div class="flex gap-2">
-		<Button uiColor="primary" label="Primary" />
+		<Button uiColor="deeppink" label="Primary" />
 		<Button uiColor="success" label="Success" />
 		<Button uiColor="danger" label="Danger" />
 		<Button uiColor="warning" label="Warning" />
@@ -45,11 +45,11 @@
 
 	<h2>Variants</h2>
 	<div class="flex gap-2">
-		<Button uiVariant="solid" label="Solid" />
-		<Button uiVariant="outlined" label="Outline" />
-		<Button uiVariant="dashed" label="Dashed" />
-		<Button uiVariant="filled" label="Filled" />
-		<Button uiVariant="ghost" label="Ghost" />
-		<Button uiVariant="link" label="Link" />
+		<Button uiColor="primary" uiVariant="solid" label="Solid" />
+		<Button uiColor="primary" uiVariant="outlined" label="Outline" />
+		<Button uiColor="primary" uiVariant="dashed" label="Dashed" />
+		<Button uiColor="primary" uiVariant="filled" label="Filled" />
+		<Button uiColor="primary" uiVariant="ghost" label="Ghost" />
+		<Button uiColor="primary" uiVariant="link" label="Link" />
 	</div>
 </div>
