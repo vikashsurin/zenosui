@@ -1,8 +1,12 @@
 @import 'tailwindcss';
 @import './styles/foundation.css';
+@import './styles/components.css';
 
 :root {
+	/* --primary-hue:xyz; */
+	/* --secondary-hue:xyz */
 	--hue: 240;
+	--theme-variant: 'dark';
 
 	/* DEFAULT	 */
 	--surface: oklch(100% 0 0);
@@ -30,14 +34,17 @@
 	--primary-surface-active: oklch(from var(--primary-surface-500) calc(l - 0.1) c h);
 
 	--primary-outline: var(--color-400);
+
+	--primary-surface-dark: var(--color-neutral-900);
+	--primary-content-dark: var(--color-neutral-100);
 }
-/* *:focus {
+*:focus {
 	outline: none;
-	background-color: var(--primary-surface-300);
-} */
+	/* background-color: var(--primary-surface-300); */
+}
 
 *:focus-visible {
-	outline: 3px solid #ff6600;
+	outline: 3px solid var(--primary-outline);
 	outline-offset: 1px;
 }
 .zu_base {
@@ -45,29 +52,9 @@
 }
 
 .zu_base_transition {
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
-/* BUTTON */
-.button[data-themed='true'] {
-	background-color: var(--primary-surface-500);
-	color: white;
-}
-.button[data-themed='true']:hover {
-	background-color: var(--primary-surface-hover);
-}
-.button[data-themed='true']:active {
-	background-color: var(--primary-surface-active);
-}
-.button_active[data-themed='true'] {
-	background-color: var(--primary-surface-500);
-	color: white;
-}
-.button_active[data-themed='true']:hover {
-	background-color: var(--primary-surface-hover);
-}
-.button-active[data-themed='true']:active {
-	background-color: red;
-}
+
 /* INPUT ELEMENTS	 */
 .input[data-themed='true']:focus-within {
 	outline: 2px solid var(--primary-outline);

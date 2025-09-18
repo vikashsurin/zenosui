@@ -4,45 +4,52 @@
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
+	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 </script>
 
 <div class="">
-	<h1>Sizes</h1>
-	<div class="my-4">
-		<Button uiRounded="sm" uiSize="xs" label="Button" />
-		<Button uiRounded="sm" uiSize="sm" label="Button" />
-		<Button uiRounded="sm" uiSize="md" label="Button" />
-		<Button uiRounded="sm" uiSize="lg" label="Button" />
-		<Button uiRounded="sm" uiSize="xl" label="Button" />
-		<Button uiRounded="sm" uiSize="2xl" label="Button" />
-		<Button uiRounded="sm" uiSize="3xl" label="Button" />
+	<h2>Size</h2>
+	<div class="flex items-end gap-2">
+		<Button uiSize="xs" label="Button xs"></Button>
+		<Button uiSize="sm" label="Button sm"></Button>
+		<Button uiSize="md" label="Button md"></Button>
+		<Button uiSize="lg" label="Button lg"></Button>
+		<Button uiSize="xl" label="Button xl"></Button>
+		<Button uiSize="2xl" label="Button 2xl"></Button>
 	</div>
-	<Button uiVariant="primary" uiRounded="sm" label="Button" iconRight={ChevronRight} />
+	<h2>Rounded</h2>
+	<div class="flex items-end gap-2">
+		<Button uiSize="md" uiRounded="none" label="Rounded none"></Button>
+		<Button uiSize="md" uiRounded="xs" label="Rounded xs"></Button>
+		<Button uiSize="md" uiRounded="sm" label="Rounded sm"></Button>
+		<Button uiSize="md" uiRounded="md" label="Rounded md"></Button>
+		<Button uiSize="md" uiRounded="lg" label="Rounded lg"></Button>
+		<Button uiSize="md" uiRounded="xl" label="Rounded xl"></Button>
+		<Button uiSize="md" uiRounded="2xl" label="Rounded 2xl"></Button>
+		<Button uiSize="md" uiRounded="full" label="Rounded full"></Button>
+	</div>
+	<h2>With Icons</h2>
+	<div class="flex items-end gap-2">
+		<Button iconLeft={BadgeCheck} label="Icon left" />
+		<Button iconRight={ChevronRight} label="Icon right" />
+		<Button iconLeft={BadgeCheck} iconRight={ChevronRight} label="Icon left and right" />
+	</div>
 
-	<Button uiRounded="sm" onclick={() => console.log('Button clicked')} label="Button" />
-	<Button
-		uiRounded="sm"
-		uiSize="xs"
-		onclick={() => console.log('Button clicked')}
-		label="Button"
-		iconRight={ChevronRight}
-	/>
-	<hr class="my-6" />
-	<Button
-		uiRounded="xs"
-		uiSize="xs"
-		onclick={() => console.log('Button clicked')}
-		label="Button"
-		iconLeft={BadgeCheck}
-		iconRight={BadgeCheck}
-	/>
-	<Button
-		uiRounded="sm"
-		uiSize="sm"
-		onclick={() => console.log('Button clicked')}
-		label="Button"
-		iconLeft={BadgeCheck}
-		iconRight={BadgeCheck}
-	/>
-	<Button iconLeft={ChevronDown} uiRounded="full" uiSize="sm">down</Button>
+	<h2>Colors</h2>
+	<div class="flex gap-2">
+		<Button uiColor="primary" label="Primary" />
+		<Button uiColor="success" label="Success" />
+		<Button uiColor="danger" label="Danger" />
+		<Button uiColor="warning" label="Warning" />
+	</div>
+
+	<h2>Variants</h2>
+	<div class="flex gap-2">
+		<Button uiVariant="solid" label="Solid" />
+		<Button uiVariant="outlined" label="Outline" />
+		<Button uiVariant="dashed" label="Dashed" />
+		<Button uiVariant="filled" label="Filled" />
+		<Button uiVariant="ghost" label="Ghost" />
+		<Button uiVariant="link" label="Link" />
+	</div>
 </div>

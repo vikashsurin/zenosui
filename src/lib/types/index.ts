@@ -33,14 +33,7 @@ export type positionTokens =
 	| 'bottom-right'
 	| 'center';
 
-export type variants =
-	| 'default'
-	| 'primary'
-	| 'secondary'
-	| 'tertiary'
-	| 'success'
-	| 'warning'
-	| 'danger';
+export type variants = 'solid' | 'filled' | 'outlined' | 'ghost' | 'link' | 'dashed';
 
 export type ColorVariant = colorTokens;
 export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';

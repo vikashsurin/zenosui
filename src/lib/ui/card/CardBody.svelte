@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import type { CardBodyProps } from '$lib/types/index.ts';
 
-	let { children, class: _class, ...props }:CardBodyProps = $props();
+	let { children, themed, class: _class, ...props }: CardBodyProps = $props();
 
 	let style = tv({
 		base: ``,
@@ -13,4 +13,12 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<div class={finalClass} {...props}>{@render children?.()}</div>
+<div
+	data-themed={themed}
+	data-theme="custom"
+	class:card-body--themed={themed}
+	class={finalClass}
+	{...props}
+>
+	{@render children?.()}
+</div>

@@ -24,4 +24,43 @@
 	--color-800: oklch(26% 0.18 var(--hue));
 	--color-900: oklch(18% 0.09 var(--hue));
 	--color-950: oklch(6% 0.02 var(--hue));
+
+	/* DANGER COLORS */
+	--danger-50: oklch(98% 0.025 30);
+	--danger-100: oklch(94% 0.05 30);
+	--danger-200: oklch(88% 0.1 30);
+	--danger-300: oklch(80% 0.15 30);
+	--danger-400: oklch(70% 0.2 30);
+	--danger-500: oklch(52% 0.25 30);
+	--danger-600: oklch(43% 0.23 30);
+	--danger-700: oklch(36% 0.2 30);
+	--danger-800: oklch(26% 0.18 30);
+	--danger-900: oklch(18% 0.09 30);
+	--danger-950: oklch(6% 0.02 30);
+
+	/* SUCCESS COLORS */
+	--success-50: oklch(98% 0.025 140);
+	--success-100: oklch(94% 0.05 140);
+	--success-200: oklch(88% 0.1 140);
+	--success-1400: oklch(80% 0.15 140);
+	--success-400: oklch(70% 0.2 140);
+	--success-500: oklch(52% 0.25 140);
+	--success-600: oklch(43% 0.23 140);
+	--success-700: oklch(36% 0.2 140);
+	--success-800: oklch(26% 0.18 140);
+	--success-900: oklch(18% 0.09 140);
+	--success-950: oklch(6% 0.02 140);
+
+	/* WARNING COLORS */
+	--warning-50: oklch(98% 0.025 100);
+	--warning-100: oklch(94% 0.05 100);
+	--warning-200: oklch(88% 0.1 100);
+	--warning-300: oklch(80% 0.15 100);
+	--warning-400: oklch(70% 0.2 100);
+	--warning-500: oklch(52% 0.25 100);
+	--warning-600: oklch(43% 0.23 100);
+	--warning-700: oklch(36% 0.2 100);
+	--warning-800: oklch(26% 0.18 100);
+	--warning-900: oklch(18% 0.09 100);
+	--warning-950: oklch(6% 0.02 100);
 }

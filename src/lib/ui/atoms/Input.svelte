@@ -9,7 +9,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `w-max`,
+		base: `w-max border rounded-xs border-gray-500`,
 		variants: {
 			uiSize: TEXT_SIZE_WITH_PADDING
 		},
@@ -19,3 +19,9 @@
 </script>
 
 <input {...props} class={finalClass} />
+
+<style>
+	input {
+		padding: 0.5em 0.75em;
+	}
+</style>

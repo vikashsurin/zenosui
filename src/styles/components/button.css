@@ -1,0 +1,21 @@
+/* BUTTON */
+/* .button[data-themed='true'] {
+	background-color: var(--primary-surface-500);
+	color: white;
+}
+.button[data-themed='true']:hover {
+	background-color: var(--primary-surface-hover);
+}
+.button[data-themed='true']:active {
+	background-color: var(--primary-surface-active);
+}
+.button_active[data-themed='true'] {
+	background-color: var(--primary-surface-500);
+	color: white;
+}
+.button_active[data-themed='true']:hover {
+	background-color: var(--primary-surface-hover);
+}
+.button-active[data-themed='true']:active {
+	background-color: red;
+} */
