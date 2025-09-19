@@ -19,6 +19,7 @@
 		...props
 	}: IconCompProps = $props();
 
+	let iconSize = uiSize || uiIconSize;
 	let style = tv({
 		extend: baseVariant,
 		base: ``,
@@ -51,7 +52,11 @@
 
 {#if icon}
 	{@const Icon = icon as Component}
-	<Icon class={finalClass} style={`transform:rotate(${rotation}); `} {...props} />
+	<Icon
+		class={finalClass}
+		style={`transform:rotate(${rotation}); height:1em;width:1em`}
+		{...props}
+	/>
 {:else if children}
 	{@render children()}
 {/if}

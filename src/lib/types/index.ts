@@ -155,11 +155,11 @@ export interface SidebarItemProps
 
 // export interface SideExtrasProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 
-export interface TextInputProps extends UiProps, IconProps, Type.HTMLAttributes<HTMLInputElement> {
+export interface TextInputProps extends UiProps, IconProps, Type.HTMLInputAttributes {
 	invalid?: boolean;
 }
 
-export interface AlertDialogProps extends UiProps, Type.HTMLAttributes<HTMLDialogElement> {
+export interface AlertDialogProps extends UiProps, Type.HTMLInputAttributes {
 	showModal?: boolean;
 }
 
@@ -259,9 +259,9 @@ export interface NavigationListItemProps
 	hasList?: boolean;
 	href?: string;
 }
-export interface RadioProps extends UiProps, Type.HTMLAttributes<HTMLInputElement> {}
+export interface RadioProps extends UiProps, Type.HTMLInputAttributes {}
 export interface RadioGroupProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
-export interface CheckboxProps extends UiProps, Type.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends UiProps, Type.HTMLInputAttributes {
 	checked?: boolean;
 }
 export interface AccordionProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
@@ -358,7 +358,7 @@ export interface BreadcrumbSeparatorProps extends ComponentProps {
 export interface ComboboxProps extends UiProps {
 	data: Array<{ value: string; label: string }>;
 }
-// export interface ComboboxInputProps extends UiProps, Type.HTMLAttributes<HTMLInputElement> {}
+// export interface ComboboxInputProps extends UiProps, Type.HTMLInputAttributes {}
 export interface ComboboxInputProps extends UiProps, Type.HTMLInputAttributes {
 	editable?: boolean;
 }
@@ -395,3 +395,8 @@ export interface CardProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> 
 export interface CardHeaderProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface CardBodyProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface CardFooterProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+
+//  CHIP
+export interface ChipProps extends UiProps, IconProps, Type.HTMLAttributes<HTMLDivElement> {
+	label?: string;
+}

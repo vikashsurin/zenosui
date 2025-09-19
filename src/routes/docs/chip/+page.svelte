@@ -6,10 +6,10 @@
 <div>
 	<Chip
 		label="Orange"
-		uiSize="xs"
-		uiRounded="sm"
+		uiRounded="full"
+		uiSize="3xl"
 		iconRight={BadgeCheck}
-		class=" bg-amber-500 back"
+		class=" "
 		onclick={() => console.log('helo')}
 	/>
 </div>

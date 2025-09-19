@@ -9,8 +9,9 @@
 		invalid={false}
 		bind:value={kal}
 		uiSize="sm"
-		uiRounded="full"
+		uiRounded="sm"
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}
+		class="focus:outline-2 focus:outline-red-500"
 	/>
 </div>
