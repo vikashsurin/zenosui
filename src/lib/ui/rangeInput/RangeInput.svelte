@@ -21,7 +21,6 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 	console.log(TRACK_SIZE['xs']);
 
-	$inspect({ value: props });
 	let min = $state(Number(props.min) ?? 0);
 	let max = $state(Number(props.max) ?? 100);
 	let value = $state(Number(props.value) ?? 0);
@@ -31,7 +30,6 @@
 		return `${percent}%`;
 	}
 
-	$inspect(value);
 	function handleInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		value = Number(target.value);

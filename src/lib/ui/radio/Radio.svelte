@@ -14,7 +14,6 @@
 	const radioContext = getContext<RadioContextType>('radioContext');
 
 	uiSize = uiSize ?? radioContext.uiSize;
-	$inspect({ uiSize });
 	let radio = $state({
 		activeRadioId: <string | null>null,
 		activeRadioValue: <string | number | null>null

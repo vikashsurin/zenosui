@@ -27,7 +27,7 @@
 		highlightedElement: null
 	});
 
-	$inspect({ state });
+;
 
 	function clearFilter() {
 		state.filterText = null;
@@ -59,7 +59,7 @@
 		state.inputValue = value;
 		state.inputLabel = label;
 	}
-	// $inspect({ state });
+;
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>

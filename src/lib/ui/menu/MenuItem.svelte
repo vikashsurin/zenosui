@@ -289,7 +289,7 @@
 		{:else if type === 'radio' && radioMenuContext.value === radioValue}
 			<Icon icon={Dot} class="scale-130" {uiSize} />
 		{:else}
-			<span class={`${finalIconPlaceholder} `}></span>
+			<span style={`width:1em; height:1em;`}></span>
 		{/if}
 		<!-- render children -->
 		{@render children?.()}

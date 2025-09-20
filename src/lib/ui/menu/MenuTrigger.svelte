@@ -28,7 +28,7 @@
 
 	let isActive = $derived(menuBarContext && menuBarContext.state.openMenuId === menuId);
 
-	$inspect({ isActive });
+;
 	function openMenu() {
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = menuId;

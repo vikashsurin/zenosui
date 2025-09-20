@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { Button } from '../index.js';
+	import { Button, Icon } from '../index.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import Plus from '@lucide/svelte/icons/plus';
 	import type { AccordionTriggerProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import type { AccordionItemStateType } from './types.js';
+	import type { AccordionItemContextType } from './types.js';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	let {
 		children,
 		uiSize,
@@ -18,20 +19,23 @@
 		class: _class
 	}: AccordionTriggerProps = $props();
 
-	const accordionItemState = getContext<AccordionItemStateType>('accordionItemState');
-
+	const context = getContext<AccordionItemContextType>('accordionItemContext');
+	uiSize = uiSize ?? context.uiSize;
+	uiRounded = uiRounded ?? context.uiRounded;
 	let style = tv({
 		extend: baseVariant,
-		base: `w-full flex items-center justify-between gap-2`,
-		variants: {},
+		base: `w-full flex items-center justify-between gap-2 bg-gray-200 hover:bg-gray-200 active:bg-gray-300 active:text-gray-600 py-[0.5em] px-[0.75em]`,
+		variants: {
+			uiSize: TEXT_SIZE
+		},
 		defaultVariants: {}
 	});
 
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 
 	const setIconRotation = () => {
 		let rotation = '0';
-		if (!accordionItemState.expanded) {
+		if (!context.state.expanded) {
 			return rotation;
 		}
 
@@ -44,11 +48,23 @@
 	};
 
 	function handleClick() {
-		accordionItemState.expanded = !accordionItemState.expanded;
-		accordionItemState.iconRightRotation = setIconRotation();
+
+		context.state.expanded = !context.state.expanded;
+		context.state.iconRightRotation = setIconRotation();
 	}
 </script>
 
+<button class={finalClass} onclick={handleClick}>
+	{#if iconLeft}
+		<Icon icon={iconLeft} iconRotation={iconLeftRotation} />
+	{/if}
+	{@render children?.()}
+
+	{#if iconRight}
+		<Icon icon={iconRight} class="ml-auto" />
+	{/if}
+</button>
+<!-- 
 <Button
 	themed={false}
 	class={finalClass}
@@ -61,4 +77,4 @@
 	onclick={handleClick}
 >
 	{@render children?.()}
-</Button>
+</Button> -->

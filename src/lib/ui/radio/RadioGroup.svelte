@@ -16,7 +16,6 @@
 	} as RadioContextType);
 
 	setContext('radioContext', radioState);
-	$inspect({ radioState });
 	let style = tv({
 		base: ``,
 		variants: {},

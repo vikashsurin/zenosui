@@ -55,7 +55,6 @@
 		return treeViewState.selectedId === 'treeitem-' + id;
 	});
 
-	$inspect({ isSelected });
 	// const finalSubtreeStyle = $derived(subtreeStyle({ uiIndent: uiSize }));
 	let iconLeft = $derived.by(() => {
 		return state.isSelected ? (iconLeftOpen ?? FolderOpen) : (iconLeftClose ?? Folder);
@@ -72,7 +71,6 @@
 			state.isExpanded = !state.isExpanded;
 		}
 	}
-	// $inspect({ treeViewState });
 	function handleKeyDown() {}
 </script>
 

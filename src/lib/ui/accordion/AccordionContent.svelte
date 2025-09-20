@@ -4,23 +4,26 @@
 	import type { AccordionContentProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { AccordionItemStateType } from './types.js';
+	import type { AccordionItemContextType } from './types.js';
 	import { fade, slide } from 'svelte/transition';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
 
-	let { children, class: _class, ...props }: AccordionContentProps = $props();
+	let { children, uiSize, class: _class, ...props }: AccordionContentProps = $props();
 
-	const accordionItemState = getContext<AccordionItemStateType>('accordionItemState');
-
+	const context = getContext<AccordionItemContextType>('accordionItemContext');
+	uiSize = uiSize ?? context.uiSize;
 	let style = tv({
 		extend: baseVariant,
 		base: `p-4 bg-gray-100`,
-		variants: {},
+		variants: {
+			uiSize: TEXT_SIZE
+		},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
-{#if accordionItemState.expanded}
+{#if context.state.expanded}
 	<div class={finalClass} {...props} in:slide={{ duration: 300 }} out:slide={{ duration: 300 }}>
 		{@render children?.()}
 	</div>

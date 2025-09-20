@@ -3,7 +3,17 @@
 // 	expanded: boolean;
 // };
 
-export type AccordionItemStateType = {
-	expanded: boolean;
-	iconRightRotation: string;
+import type { RoundedVariant, SizeVariant } from '$lib/types/index.ts';
+export type AccordionContextType = {
+	uiSize: SizeVariant;
+	uiRounded: RoundedVariant;
+};
+
+export type AccordionItemContextType = {
+	state: {
+		expanded: boolean;
+		iconRightRotation: string;
+	};
+	uiSize: SizeVariant;
+	uiRounded: RoundedVariant;
 };

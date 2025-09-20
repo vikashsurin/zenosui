@@ -7,7 +7,7 @@
 	<Chip
 		label="Orange"
 		uiRounded="full"
-		uiSize="3xl"
+		uiSize="xs"
 		iconRight={BadgeCheck}
 		class=" "
 		onclick={() => console.log('helo')}

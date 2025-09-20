@@ -3,15 +3,17 @@
 	import clsx from 'clsx';
 	import type { AccordionProps } from '$lib/types/index.js';
 	import { setContext } from 'svelte';
-	import type { AccordionItemStateType } from './types.js';
+	import type { AccordionContextType } from './types.js';
 
-	let { children, class: _class, ...props }: AccordionProps = $props();
+	let {
+		children,
+		uiSize = 'md',
+		uiRounded = 'none',
+		class: _class,
+		...props
+	}: AccordionProps = $props();
 
-	let accordionState = $state({
-		expanded: false
-	} as AccordionItemStateType);
-
-	setContext('accordionState', accordionState);
+	setContext('accordionContext', { uiSize, uiRounded } as AccordionContextType);
 
 	let style = tv({
 		base: ``,

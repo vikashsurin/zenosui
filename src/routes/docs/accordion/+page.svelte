@@ -4,9 +4,9 @@
 </script>
 
 <div>
-	<Accordion>
+	<Accordion uiSize="md">
 		<AccordionItem>
-			<AccordionTrigger iconLeft={BadgeCheck} iconRightRotation="60deg" class="flex justify-start"
+			<AccordionTrigger iconRightRotation="45deg" class="flex justify-start"
 				>Apples</AccordionTrigger
 			>
 			<AccordionContent>The apples are great.</AccordionContent>
