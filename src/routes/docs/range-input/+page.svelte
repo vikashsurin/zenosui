@@ -4,5 +4,5 @@
 
 <div>
 	<h1>Range</h1>
-	<RangeInput uiSize="sm" min="0" max="120" value="20" />
+	<RangeInput uiSize="sm" min="0" max="120" value="20" uiThumbBg='red' />
 </div>

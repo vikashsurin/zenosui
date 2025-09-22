@@ -75,10 +75,3 @@
 		<Icon icon={Check} class="float-right inline" />
 	{/if}
 </li>
-
-<style>
-	/* .combobox_item_focus {
-		background-color: green;
-		color: white;
-	} */
-</style>

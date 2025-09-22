@@ -8,10 +8,9 @@
 	<TextInput
 		invalid={false}
 		bind:value={kal}
-		uiSize="sm"
-		uiRounded="sm"
+		uiSize="2xl"
+		uiRounded="xs"
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}
-		class="focus:outline-2 focus:outline-red-500"
 	/>
 </div>

@@ -9,7 +9,6 @@
 		uiRounded="full"
 		uiSize="xs"
 		iconRight={BadgeCheck}
-		class=" "
 		onclick={() => console.log('helo')}
 	/>
 </div>

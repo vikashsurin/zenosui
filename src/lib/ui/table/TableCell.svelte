@@ -4,8 +4,10 @@
 	import type { HTMLTdAttributes } from 'svelte/elements';
 	let { children, class: _class, ...props }: HTMLTdAttributes = $props();
 
+	const paddingY = 'py-[0.5em]';
+	const paddingX = 'px-[0.755em]';
 	let style = tv({
-		base: ``,
+		base: `text-inherit text-left  ${paddingY} ${paddingX}`,
 		variants: {},
 		defaultVariants: {}
 	});
@@ -15,11 +17,3 @@
 <td class={finalClass} {...props}>
 	{@render children?.()}
 </td>
-
-<style>
-	td {
-		font-size: inherit;
-		text-align: left;
-		padding: 0.5em 0.75em;
-	}
-</style>

@@ -72,5 +72,3 @@
 	/>
 </span>
 
-<style>
-</style>

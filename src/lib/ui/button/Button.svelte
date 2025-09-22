@@ -104,6 +104,3 @@ Button
 		<Icon {uiSize} icon={iconRight} iconRotation={iconRightRotation} />
 	{/if}
 </svelte:element>
-
-<style>
-</style>

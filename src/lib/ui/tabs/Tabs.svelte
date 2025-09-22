@@ -24,9 +24,3 @@
 <div class={finalClass} {...props}>
 	{@render children?.()}
 </div>
-
-<style>
-	.zu_tabs {
-		/* display: flex; */
-	}
-</style>

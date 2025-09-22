@@ -16,9 +16,12 @@
 		...props
 	}: ChipProps = $props();
 
+	const paddingY = 'py-[0.5em]';
+	const paddingX = 'px-[0.75em]';
+
 	let style = tv({
 		extend: baseVariant,
-		base: ` flex bg-gray-200 text-gray-800 hover:text-gray-600 active:bg-gray-900 active:text-gray-100 `,
+		base: ` flex bg-gray-200 text-gray-800 hover:text-gray-600 active:bg-gray-900 active:text-gray-100 ${paddingY} ${paddingX}`,
 		variants: { uiSize: TEXT_SIZE },
 		defaultVariants: {}
 	});
@@ -43,6 +46,5 @@
 		align-items: center;
 		justify-content: center;
 		width: fit-content;
-		padding: 0.25em 0.45em;
 	}
 </style>

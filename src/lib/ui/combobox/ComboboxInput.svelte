@@ -119,7 +119,7 @@
 	}
 	const labelStyle = tv({
 		extend: baseVariant,
-		base: `combobox-input-container flex items-center  border border-gray-300`,
+		base: `combobox-input-container focus-within:ring-2 flex items-center  border border-gray-300`,
 		variants: {
 			uiPadding: PADDING_X
 		}
@@ -188,9 +188,6 @@
 {/if}
 
 <style>
-	.combobox-input-container:focus-within {
-		outline: 2px solid blue;
-	}
 	input:focus {
 		outline: none;
 	}
