@@ -8,8 +8,8 @@
 	<TextInput
 		invalid={false}
 		bind:value={kal}
-		uiSize="2xl"
-		uiRounded="xs"
+		uiSize="md"
+		uiRounded="full"
 		iconLeft={BadgeCheck}
 		iconRight={BadgeCheck}
 	/>

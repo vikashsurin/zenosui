@@ -26,7 +26,7 @@
 
 	const id = crypto.randomUUID();
 	const paddingY = 'py-0';
-	const paddingX = 'px-[0.6em]';
+	const paddingX = 'px-[0.75em]';
 	const gap = 'gap-[0.25em]';
 
 	let style = tv({
