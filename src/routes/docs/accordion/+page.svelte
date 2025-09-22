@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '$lib/ui/index.js';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 </script>
 
 <div>

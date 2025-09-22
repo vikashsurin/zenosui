@@ -1,21 +1,23 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { onMount, setContext } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
 	import type { TreeViewProps } from '$lib/types/index.ts';
+	import type { TreeviewContextType } from './types.ts';
 
-	let { children, uiIndent, class: _class, ...props }: TreeViewProps = $props();
+	let { children, uiIndent, uiSize, class: _class, ...props }: TreeViewProps = $props();
 
 	let state = $state({
 		level: 0,
 		currentTarget: null
 	});
+	const context = getContext<TreeviewContextType>('treeviewContext');
 
-	// setContext('treeState', state);
+	uiSize = uiSize ?? context.uiSize;
+
 	let ultree: HTMLUListElement;
-
+	setContext('treeviewContext', { uiSize } as TreeviewContextType);
 	onMount(() => {
-		// console.log('onmount');
 		if (ultree) {
 			const parent = ultree.parentElement?.getAttribute('role');
 			state.level = parent === 'treeitem' ? state.level + 1 : 0;

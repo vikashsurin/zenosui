@@ -1,52 +1,45 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import ListItem from '../atoms/ListItem.svelte';
-	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import { Icon } from '../icon/index.ts';
-	import { TEXT_SIZE_WITH_HEIGHT, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import Folder from '@lucide/svelte/icons/folder';
 	import FolderOpen from '@lucide/svelte/icons/folder-open';
 	import { getContext } from 'svelte';
 	import { treeViewState } from './stateManager.svelte.ts';
 	import type { TreeviewItemProps } from '$lib/types/index.ts';
+	import type { TreeviewContextType } from './types.ts';
 	let {
 		children,
 		label,
 		iconLeftOpen,
 		iconLeftClose,
-		iconRight,
+		iconRightOpen,
+		iconRightClose,
 		uiSize,
 		class: _class,
 		...props
 	}: TreeviewItemProps = $props();
+
+	const context = getContext<TreeviewContextType>('treeviewContext');
+	uiSize = uiSize ?? context.uiSize;
 
 	let state = $state({
 		isSelected: false,
 		isExpanded: false
 	});
 	const id = crypto.randomUUID();
+
+	// The padding values can be configured
+	const paddingY = 'py-[0.5em]';
+	const paddingX = 'px-[1em]';
+
 	let style = tv({
 		extend: baseVariant,
-		base: `flex gap-2 bg-gray-100 p-2 w-full hover:bg-gray-200`,
+		base: `flex gap-2 bg-gray-100 p-2 w-full items-center hover:bg-gray-200 ${paddingY} ${paddingX} `,
 		variants: {
-			uiSize: TEXT_SIZE_WITH_PADDING
-		},
-		defaultVariants: {}
-	});
-
-	let subtreeStyle = tv({
-		base: ``,
-		variants: {
-			uiIndent: {
-				xs: 'ml-2',
-				sm: 'ml-4',
-				md: 'ml-6',
-				lg: 'ml-8',
-				xl: 'ml-10',
-				'2xl': 'ml-12'
-			}
+			uiSize: TEXT_SIZE
 		},
 		defaultVariants: {}
 	});
@@ -55,12 +48,15 @@
 		return treeViewState.selectedId === 'treeitem-' + id;
 	});
 
-	// const finalSubtreeStyle = $derived(subtreeStyle({ uiIndent: uiSize }));
 	let iconLeft = $derived.by(() => {
-		return state.isSelected ? (iconLeftOpen ?? FolderOpen) : (iconLeftClose ?? Folder);
+		return state.isExpanded ? (iconLeftOpen ?? FolderOpen) : (iconLeftClose ?? Folder);
 	});
 
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	let iconRight = $derived.by(() => {
+		return state.isExpanded ? iconRightOpen : iconRightClose;
+	});
+
+	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 
 	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
@@ -82,6 +78,7 @@
 	aria-expanded={state.isExpanded}
 	onkeydown={handleKeyDown}
 	onclick={(e) => handleClick(e)}
+	{...props}
 >
 	<span class={finalClass}>
 		{#if iconLeft}

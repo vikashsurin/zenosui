@@ -47,7 +47,7 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: 'zu_button  inline-flex justify-center items-center bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700',
+		base: 'zu_button  inline-flex justify-center items-center bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700 py-[0.5em] px-[0.75em] gap-[0.5em]',
 		variants: {
 			uiSize: TEXT_SIZE,
 			active: {
@@ -66,7 +66,6 @@ Button
 			}
 		]
 	});
-
 
 	const finalClasses = $derived(
 		buttonStyle({
@@ -107,9 +106,4 @@ Button
 </svelte:element>
 
 <style>
-	button,
-	a {
-		padding: 0.5em 0.75em;
-		gap: 0.5em;
-	}
 </style>

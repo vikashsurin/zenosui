@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { Button, Icon } from '../index.js';
+	import { Icon } from '../index.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import Plus from '@lucide/svelte/icons/plus';
 	import type { AccordionTriggerProps } from '$lib/types/index.js';
@@ -48,7 +48,6 @@
 	};
 
 	function handleClick() {
-
 		context.state.expanded = !context.state.expanded;
 		context.state.iconRightRotation = setIconRotation();
 	}
@@ -56,25 +55,11 @@
 
 <button class={finalClass} onclick={handleClick}>
 	{#if iconLeft}
-		<Icon icon={iconLeft} iconRotation={iconLeftRotation} />
+		<Icon {uiSize} icon={iconLeft} iconRotation={iconLeftRotation} />
 	{/if}
 	{@render children?.()}
 
 	{#if iconRight}
-		<Icon icon={iconRight} class="ml-auto" />
+		<Icon {uiSize} icon={iconRight} class="ml-auto" />
 	{/if}
 </button>
-<!-- 
-<Button
-	themed={false}
-	class={finalClass}
-	{iconLeft}
-	{iconRight}
-	{iconLeftRotation}
-	{uiSize}
-	{uiRounded}
-	iconRightRotation={accordionItemState.iconRightRotation}
-	onclick={handleClick}
->
-	{@render children?.()}
-</Button> -->

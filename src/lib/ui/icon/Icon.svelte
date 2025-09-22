@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, ICON_SIZE } from '$lib/style/index.js';
+	import { baseVariant, ICON_SIZE, TEXT_SIZE } from '$lib/style/index.js';
 	import type { IconCompProps } from '$lib/types/index.js';
 	import type { Component } from 'svelte';
 
@@ -24,7 +24,7 @@
 		extend: baseVariant,
 		base: ``,
 		variants: {
-			iconSize: ICON_SIZE
+			iconSize: TEXT_SIZE
 		},
 		defaultVariants: {
 			iconSize: 'md'
@@ -44,7 +44,7 @@
 			uiPadding,
 			uiBg,
 			uiRounded,
-			iconSize: uiIconSize || uiSize,
+			iconSize,
 			class: clsx(_class, 'icon')
 		})
 	);

@@ -22,7 +22,6 @@
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 	function handleRemoveSnackbar() {
-		console.log('handleRemoveSnackbar');
 		snackbarManager.removeSnackbar(id);
 	}
 
@@ -41,7 +40,7 @@
 
 <div {id} class={finalClass}>
 	<p class="flex items-center">{message}</p>
-	<span class="flex ml-auto gap-1">
+	<span class="ml-auto flex gap-1">
 		<Button
 			data-themed={false}
 			class={finalXClass}

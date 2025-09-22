@@ -10,7 +10,7 @@
 <div class="">
 	<h2>Size</h2>
 	<div class="flex items-end gap-2">
-		<Button uiSize="xs" label="Button xs" class=""></Button>
+		<Button uiSize="xs" label="Button xs" class="px-20"></Button>
 		<Button uiSize="sm" label="Button sm"></Button>
 		<Button uiSize="md" label="Button md"></Button>
 		<Button uiSize="lg" label="Button lg"></Button>

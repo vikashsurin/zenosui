@@ -20,7 +20,7 @@
 	}
 
 	function undo() {
-		console.log('undo undo');
+		console.log('Action triggered');
 	}
 </script>
 

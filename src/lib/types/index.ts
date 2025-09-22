@@ -387,7 +387,8 @@ export interface TreeviewItemProps extends UiProps, Type.HTMLLiAttributes {
 	label?: string;
 	iconLeftOpen?: Snippet | Component;
 	iconLeftClose?: Snippet | Component;
-	iconRight?: Snippet | Component;
+	iconRightOpen?: Snippet | Component;
+	iconRightClose?: Snippet | Component;
 }
 
 //CARD
