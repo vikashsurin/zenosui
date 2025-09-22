@@ -14,7 +14,7 @@
 <div>
 	<h1>Table</h1>
 	<div class="w-max border border-gray-200 bg-gray-100 p-4">
-		<Table class="text-xs">
+		<Table uiSize="md">
 			<TableHeader>
 				<TableRow>
 					<TableHead>First Name</TableHead>

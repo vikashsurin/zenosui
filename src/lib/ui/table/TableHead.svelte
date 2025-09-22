@@ -5,8 +5,11 @@
 
 	let { children, class: _class, ...props }: HTMLThAttributes = $props();
 
+	const paddingX = 'px-[0.5em]';
+	const paddingY = 'px-[0.75em]';
+
 	let style = tv({
-		base: ``,
+		base: ` font-inherit text-left ${paddingY} ${paddingX}`,
 		variants: {},
 		defaultVariants: {}
 	});
@@ -16,11 +19,3 @@
 <th class={finalClass} {...props}>
 	{@render children?.()}
 </th>
-
-<style>
-	th {
-		font-size: inherit;
-		text-align: left;
-		padding: 0.5em 0.75em;
-	}
-</style>

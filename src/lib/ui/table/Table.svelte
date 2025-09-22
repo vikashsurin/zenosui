@@ -1,19 +1,24 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { TEXT_SIZE_WITH_HEIGHT, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import { setContext } from 'svelte';
-	import type { TableContextType } from './types.ts';
 	import type { HTMLTableAttributes } from 'svelte/elements';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
+	import type { SizeVariant } from '$lib/types/index.ts';
 
-	let { children, class: _class, ...props }: HTMLTableAttributes = $props();
+	type TableProps = HTMLTableAttributes & {
+		uiSize?: SizeVariant;
+	};
+
+	let { children, uiSize, class: _class, ...props }: TableProps = $props();
 
 	let style = tv({
-		base: ` w-200 `,
-		variants: {},
+		base: `w-full`,
+		variants: {
+			uiSize: TEXT_SIZE
+		},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize,class: clsx(_class) }));
 </script>
 
 <table class={finalClass} {...props}>
