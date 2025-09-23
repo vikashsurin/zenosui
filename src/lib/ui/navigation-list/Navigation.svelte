@@ -15,6 +15,6 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<nav class={finalClass} {...props}>
+<nav aria-label="Main" class={finalClass} {...props}>
 	{@render children?.()}
 </nav>

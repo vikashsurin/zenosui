@@ -70,14 +70,15 @@
 	function handleKeyDown() {}
 </script>
 
-<li class=" border-gray-300 aria-[expanded=true]:border-l" role="navigation">
+<li role={children ? undefined : 'listitem'}>
 	<a
-		tabindex="0"
+		id={'navlistitem-' + id}
+		href={href || undefined}
 		aria-current={page.url.pathname === href ? 'page' : undefined}
 		data-active={page.url.pathname === href}
+		aria-expanded={state.isExpanded}
 		onkeydown={handleKeyDown}
 		onclick={(e) => handleClick(e)}
-		{href}
 		class={finalClass}
 		{...props}
 	>
@@ -89,7 +90,7 @@
 			<Icon {uiSize} icon={iconRight} class="ml-auto" />
 		{/if}
 	</a>
-	{#if state.isExpanded}
+	{#if children && state.isExpanded}
 		{@render children?.()}
 	{/if}
 </li>

@@ -73,7 +73,7 @@
 <li
 	id="treeitem-{id}"
 	class=" border-gray-300 aria-[expanded=true]:border-l"
-	role="treeitem"
+	role={children ? 'group' : 'treeitem'}
 	aria-selected={isSelected}
 	aria-expanded={state.isExpanded}
 	onkeydown={handleKeyDown}
@@ -93,10 +93,3 @@
 		{@render children?.()}
 	{/if}
 </li>
-<!-- 
-<style>
-	li[aria-expanded='true'] {
-		border-left: 1px solid gray;
-		/* -- custom css variable */
-	}
-</style> -->

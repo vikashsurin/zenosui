@@ -53,17 +53,9 @@
 		}
 	}
 
-	function defineRole() {
-		if (state.level > 0) {
-			return 'group';
-		} else {
-			return 'tree';
-		}
-	}
-
 	const finalClass = $derived(style({ uiIndent: uiIndent ?? indent(), class: clsx(_class) }));
 </script>
 
-<ul bind:this={ultree} class={finalClass} {...props} role={defineRole()}>
+<ul bind:this={ultree} class={finalClass} {...props} role={'tree'}>
 	{@render children?.()}
 </ul>

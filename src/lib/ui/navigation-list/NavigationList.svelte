@@ -15,12 +15,12 @@
 
 	uiSize = uiSize ?? context?.uiSize;
 
-	let list: HTMLUListElement;
+	let ultree: HTMLUListElement;
 	setContext('navigationListContext', { uiSize } as NavigationListContextType);
 	onMount(() => {
-		if (list) {
-			const parent = list.parentElement?.getAttribute('role');
-			state.level = parent === 'treeitem' ? state.level + 1 : 0;
+		if (ultree) {
+			const parent = ultree.parentElement?.getAttribute('role');
+			state.level = parent === 'listitem' ? state.level + 1 : 0;
 		}
 	});
 
@@ -30,25 +30,9 @@
 		defaultVariants: {}
 	});
 
-	function indent() {
-		if (state.level > 0) {
-			return 'sm';
-		} else {
-			return '';
-		}
-	}
-
-	function defineRole() {
-		if (state.level > 0) {
-			return 'group';
-		} else {
-			return 'tree';
-		}
-	}
-
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<ul bind:this={list} class={finalClass} {...props} role={defineRole()}>
+<ul bind:this={ultree} class={finalClass} {...props} role={'list'}>
 	{@render children?.()}
 </ul>
