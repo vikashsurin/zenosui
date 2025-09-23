@@ -35,4 +35,3 @@ export * from './snackbar/index.js';
 export * from './treeview/index.ts';
 export * from './table/index.ts';
 export * from './card/index.ts';
-export * from './navigation-list/index.ts';
