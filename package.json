@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && npm run prepack && npm run generate:safelist",
+		"build": "vite build",
 		"postbuild": "node src/scripts/fixfileExtension.js",
 		"generate:safelist": "node  src/scripts/generateSafelist.js",
 		"preview": "vite preview",
