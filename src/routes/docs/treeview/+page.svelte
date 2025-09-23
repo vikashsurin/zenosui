@@ -9,7 +9,7 @@
 <div>
 	<h1>Treeview</h1>
 
-	<Treeview class="w-[200px] bg-amber-300" uiSize="xs">
+	<Treeview class="w-[200px] " uiSize="xs">
 		<TreeviewItem label="Item 1" />
 		<TreeviewItem label="Item 2" iconLeftClose={ChevronRight} iconLeftOpen={ChevronDown}>
 			<Treeview>

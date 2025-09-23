@@ -72,7 +72,7 @@
 
 <li
 	id="treeitem-{id}"
-	class="border-left border-gray-500"
+	class=" border-gray-300 aria-[expanded=true]:border-l"
 	role="treeitem"
 	aria-selected={isSelected}
 	aria-expanded={state.isExpanded}
@@ -93,10 +93,10 @@
 		{@render children?.()}
 	{/if}
 </li>
-
+<!-- 
 <style>
 	li[aria-expanded='true'] {
 		border-left: 1px solid gray;
 		/* -- custom css variable */
 	}
-</style>
+</style> -->
