@@ -4,7 +4,7 @@
 	import clsx from 'clsx';
 	import type { NavigationMenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import { clickOutside } from '$lib/utils/index.ts';
+	import { clickOutside } from '$lib/utils/index.js';
 	import { fly } from 'svelte/transition';
 
 	let { placement, children, class: _class, ...props }: NavigationMenuListProps = $props();

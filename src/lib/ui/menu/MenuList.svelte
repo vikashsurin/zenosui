@@ -5,7 +5,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import { clickOutside } from '$lib/utils/index.ts';
+	import { clickOutside } from '$lib/utils/index.js';
 	import type { MenuBarContextType, MenuContextType } from './types.js';
 	import { fade } from 'svelte/transition';
 

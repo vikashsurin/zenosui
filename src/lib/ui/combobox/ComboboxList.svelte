@@ -5,7 +5,7 @@
 	import { type ComboboxContextType } from './types.ts';
 	import type { ComboboxListProps, ComboboxPopoverProps } from '$lib/types/index.ts';
 	import { PADDING } from '$lib/style/spacing.js';
-	import { clickOutside } from '$lib/utils/index.ts';
+	import { clickOutside } from '$lib/utils/index.js';
 	let { children, class: _class, ...props }: ComboboxListProps = $props();
 	const context = getContext<ComboboxContextType>('comboboxContext');
 	let style = tv({
