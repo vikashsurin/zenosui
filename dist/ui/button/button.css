@@ -1,0 +1,113 @@
+.btn {
+	--button-color: var(--custom-color);
+	outline-width: 0.1em;
+	flex-shrink: 0;
+}
+
+.btn.primary {
+	--button-color: var(--color-500);
+}
+
+.btn.secondary {
+	--button-color: var(--neutral-500);
+}
+
+.btn.danger {
+	--button-color: var(--danger-500);
+}
+.btn.success {
+	--button-color: var(--success-500);
+}
+.btn.warning {
+	--button-color: var(--warning-500);
+}
+/* variants */
+.btn.solid {
+	background-color: var(--button-color);
+}
+.btn.solid:hover {
+	background-color: oklch(from var(--button-color) calc(l + 0.1) c h);
+}
+
+.btn.solid:active {
+	background-color: oklch(from var(--button-color) calc(l - 0.1) c h);
+}
+
+/* variant filled */
+.btn.filled {
+	background-color: oklch(from var(--button-color) l c h/ 0.1);
+	color: var(--button-color);
+}
+.btn.filled:hover {
+	background-color: oklch(from var(--button-color) l c h / 0.2);
+	color: oklch(from var(--button-color) l calc(c + 0.05) h);
+}
+
+.btn.filled:active {
+	background-color: oklch(from var(--button-color) l c h / 0.4);
+	color: oklch(from var(--button-color) calc(l - 0.1) c h);
+}
+
+/* variant outlined */
+.btn.outlined {
+	background-color: transparent;
+	color: var(--button-color);
+	border: 0.1em solid var(--button-color);
+}
+.btn.outlined:hover {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l + 0.1) c h);
+	border: 0.1em solid oklch(from var(--button-color) calc(l + 0.1) c h);
+}
+.btn.outlined:active {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l - 0.1) c h);
+	border: 0.1em solid oklch(from var(--button-color) calc(l - 0.1) c h);
+}
+
+/* variant dashed */
+.btn.dashed {
+	background-color: transparent;
+	color: var(--button-color);
+	border: 0.1em dashed var(--button-color);
+}
+.btn.dashed:hover {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l + 0.1) c h);
+	border: 0.1em dashed oklch(from var(--button-color) calc(l + 0.1) c h);
+}
+.btn.dashed:active {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l - 0.1) c h);
+	border: 0.1em dashed oklch(from var(--button-color) calc(l - 0.1) c h);
+}
+
+/* variant ghost */
+.btn.ghost {
+	background-color: transparent;
+	color: var(--button-color);
+}
+
+.btn.ghost:hover {
+	background-color: oklch(from var(--button-color) l c h / 0.1);
+}
+
+.btn.ghost:active {
+	background-color: oklch(from var(--button-color) l c h / 0.27);
+	color: oklch(from var(--button-color) calc(l - 0.1) c h);
+}
+
+/* variant link */
+.btn.link {
+	background-color: transparent;
+	color: var(--button-color);
+}
+
+.btn.link:hover {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l + 0.1) c h);
+}
+.btn.link:active {
+	background-color: transparent;
+	color: oklch(from var(--button-color) calc(l - 0.1) c h);
+}
