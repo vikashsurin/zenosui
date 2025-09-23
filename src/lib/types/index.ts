@@ -248,17 +248,17 @@ export interface NavigationMenuBarProps extends UiProps, Type.HTMLAttributes<HTM
 
 export type NavigationMenuTriggerProps = ButtonProps;
 
-export interface NavigationListProps extends UiProps, Type.HTMLAttributes<HTMLUListElement> {}
+// export interface NavigationListProps extends UiProps, Type.HTMLAttributes<HTMLUListElement> {}
 
-export interface NavigationListItemProps
-	extends UiProps,
-		StateProps,
-		IconProps,
-		Type.HTMLAttributes<HTMLAnchorElement> {
-	label?: string;
-	hasList?: boolean;
-	href?: string;
-}
+// export interface NavigationListItemProps
+// 	extends UiProps,
+// 		StateProps,
+// 		IconProps,
+// 		Type.HTMLAttributes<HTMLAnchorElement> {
+// 	label?: string;
+// 	hasList?: boolean;
+// 	href?: string;
+// }
 export interface RadioProps extends UiProps, Type.HTMLInputAttributes {}
 export interface RadioGroupProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface CheckboxProps extends UiProps, Type.HTMLInputAttributes {
@@ -400,4 +400,20 @@ export interface CardFooterProps extends UiProps, Type.HTMLAttributes<HTMLDivEle
 //  CHIP
 export interface ChipProps extends UiProps, IconProps, Type.HTMLAttributes<HTMLDivElement> {
 	label?: string;
+}
+
+// NAVIGATION LIST
+export interface NavigationListProps extends UiProps, Type.HTMLAttributes<HTMLUListElement> {}
+
+export interface NavigationListItemProps
+	extends UiProps,
+		StateProps,
+		IconProps,
+		Type.HTMLAnchorAttributes {
+	iconLeftOpen?: Snippet | Component;
+	iconLeftClose?: Snippet | Component;
+	iconRightOpen?: Snippet | Component;
+	iconRightClose?: Snippet | Component;
+	label?: string;
+	href?: string;
 }

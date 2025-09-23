@@ -1,130 +1,95 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { baseVariant, ICON_SIZE, SIZE_PRESET } from '$lib/style/index.js';
-	import type { NavigationListItemProps } from '$lib/types/index.js';
-	import { Icon } from '$lib/ui/index.js';
+	import { Icon } from '../icon/index.ts';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
+	import { baseVariant } from '$lib/style/base.js';
 	import { getContext } from 'svelte';
+	import { navigationListState } from './stateManager.svelte.ts';
+	import type { NavigationListItemProps } from '$lib/types/index.ts';
 	import type { NavigationListContextType } from './types.ts';
 	import { page } from '$app/state';
-	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	let {
-		href,
-		themed = true,
 		children,
-		uiRounded,
 		label,
+		iconLeftOpen,
+		iconLeftClose,
+		iconRightOpen,
+		iconRightClose,
 		uiSize,
-		iconLeft,
-		iconRight,
+		href,
 		class: _class,
-		hasList = false,
-		activeClass,
 		...props
 	}: NavigationListItemProps = $props();
 
-	const navListState = getContext<NavigationListContextType>('navListState');
+	const context = getContext<NavigationListContextType>('navigationListContext');
+	uiSize = uiSize ?? context.uiSize;
+
+	let state = $state({
+		isSelected: false,
+		isExpanded: false
+	});
 	const id = crypto.randomUUID();
-	uiSize = uiSize ? uiSize : navListState.uiSize;
-	uiRounded = uiRounded ? uiRounded : navListState.uiRounded;
+
+	// The padding values can be configured
+	const paddingY = 'py-[0.5em]';
+	const paddingX = 'px-[1em]';
 
 	let style = tv({
 		extend: baseVariant,
-		base: ` px-3 hover:bg-gray-100  relative w-full  items-center inline-flex text-nowrap  bg-red-500`,
+		base: `flex gap-2 bg-gray-100 p-2 w-full items-center hover:bg-gray-200 ${paddingY} ${paddingX} `,
 		variants: {
-			uiSize: SIZE_PRESET,
-			hasList: {
-				true: '',
-				false: ''
-			}
+			uiSize: TEXT_SIZE
 		},
-		compoundVariants: [
-			{
-				hasList: true,
-				class: ''
-			}
-		],
-		defaultVariants: {
-			uiRounded: 'none',
-			uiSize: 'md'
-		}
+		defaultVariants: {}
 	});
 
-	let subList = $state({
-		open: false
+	const isSelected = $derived.by(() => {
+		return navigationListState.selectedId === 'treeitem-' + id;
 	});
 
-	let dummyIcon = tv({
-		base: ``,
-		variants: {
-			uiSize: ICON_SIZE
-		},
-		defaultVariants: {
-			uiSize: 'md'
-		}
+	let iconLeft = $derived.by(() => {
+		return state.isExpanded ? iconLeftOpen : iconLeftClose;
 	});
 
-	function toggleOpen(e: MouseEvent) {
-		navListState.openId = id;
-		if (hasList) {
-			subList.open = !subList.open;
+	let iconRight = $derived.by(() => {
+		return state.isExpanded ? iconRightOpen : iconRightClose;
+	});
+
+	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
+
+	function handleClick(e: MouseEvent) {
+		e.stopPropagation();
+		let currentTarget = e.currentTarget as HTMLElement;
+		navigationListState.selectedId = currentTarget.id;
+
+		if (children) {
+			state.isExpanded = !state.isExpanded;
 		}
 	}
-
-	$effect(() => {
-		if (iconLeft) {
-			navListState.childHasLeftIcon = true;
-		}
-	});
-
-	const finalClass = $derived(style({ hasList, uiSize, uiRounded, class: clsx(_class) }));
+	function handleKeyDown() {}
 </script>
 
-<li role="navigation" class="relative">
+<li class=" border-gray-300 aria-[expanded=true]:border-l" role="navigation">
 	<a
-		{id}
 		tabindex="0"
 		aria-current={page.url.pathname === href ? 'page' : undefined}
 		data-active={page.url.pathname === href}
-		data-themed={themed}
-		class:list={themed}
+		onkeydown={handleKeyDown}
+		onclick={(e) => handleClick(e)}
 		{href}
 		class={finalClass}
-		onclick={(e) => toggleOpen(e)}
-		onkeydown={(e) => toggleOpen(e)}
 		{...props}
 	>
 		{#if iconLeft}
-			<Icon icon={iconLeft} {uiSize} />
-		{:else if navListState.childHasLeftIcon}
-			<span class={dummyIcon({ uiSize })} aria-hidden="true">
-				<svg />
-			</span>
+			<Icon {uiSize} icon={iconLeft} />
 		{/if}
-		{#if hasList === false && children}
-			{@render children?.()}
-		{/if}
-		{#if label}
-			{label}
-		{/if}
-		<span role="tab" class="px-2"></span>
-		{#if hasList && iconRight}
-			<Icon
-				class="ml-auto"
-				icon={iconRight}
-				iconRotation={subList.open ? '-180deg' : '0deg'}
-				{uiSize}
-			/>
-		{:else if hasList && !iconRight}
-			<Icon
-				class="ml-auto"
-				icon={ChevronDown}
-				iconRotation={subList.open ? '-180deg' : '0deg'}
-				{uiSize}
-			/>
+		<span>{label ?? 'Item'}</span>
+		{#if iconRight}
+			<Icon {uiSize} icon={iconRight} class="ml-auto" />
 		{/if}
 	</a>
-	{#if hasList && subList.open === true && children}
+	{#if state.isExpanded}
 		{@render children?.()}
 	{/if}
 </li>

@@ -1,46 +1,52 @@
 <script lang="ts">
-	import { NavigationList, NavigationListItem, NavigationSubList } from '$lib/ui/index.js';
+	import { NavigationList, NavigationListItem } from '$lib/ui/index.js';
+	import ChevronDown from '@lucide/svelte/icons/chevron-down';
+	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 </script>
 
 <div class="h-dvh overflow-auto border-r-1 p-4">
 	<NavigationList uiSize="md" class="w-full">
-		<NavigationListItem href="/" activeClass="bg-red-400">home</NavigationListItem>
-		<NavigationListItem hasList={true} label="primitives">
-			<NavigationSubList class="">
-				<NavigationListItem href="/docs/primitives/link">link</NavigationListItem>
-			</NavigationSubList>
+		<NavigationListItem href="/" label="home" activeClass="bg-red-400" />
+		<NavigationListItem
+			label="primitives"
+			iconRightOpen={ChevronDown}
+			iconRightClose={ChevronRight}
+		>
+			<NavigationList class="ml-4">
+				<NavigationListItem href="/docs/primitives/link" label="link" />
+			</NavigationList>
 		</NavigationListItem>
-		<NavigationListItem href="/pallete">pallete</NavigationListItem>
-		<NavigationListItem href="/docs/button">button</NavigationListItem>
-		<NavigationListItem href="/docs/icon-button">icon button</NavigationListItem>
-		<NavigationListItem href="/docs/icon">icon</NavigationListItem>
-		<NavigationListItem href="/docs/text-input">text input</NavigationListItem>
-		<NavigationListItem href="/docs/chip">chip</NavigationListItem>
-		<NavigationListItem href="/docs/alert">alert</NavigationListItem>
-		<NavigationListItem href="/docs/dialog">dialog</NavigationListItem>
-		<NavigationListItem href="/docs/toast">toast</NavigationListItem>
-		<NavigationListItem href="/docs/menu">menu</NavigationListItem>
-		<NavigationListItem href="/docs/menu-bar">menu bar</NavigationListItem>
-		<NavigationListItem href="/docs/navigation-menu">navigation-menu</NavigationListItem>
-		<NavigationListItem href="/docs/navigation-list">navigation-list</NavigationListItem>
-		<NavigationListItem href="/docs/radio">radio</NavigationListItem>
-		<NavigationListItem href="/docs/checkbox">checkbox</NavigationListItem>
-		<NavigationListItem href="/docs/accordion">accordion</NavigationListItem>
-		<NavigationListItem href="/docs/select">select</NavigationListItem>
-		<NavigationListItem href="/docs/switch">switch</NavigationListItem>
-		<NavigationListItem href="/docs/tooltip">tooltip</NavigationListItem>
-		<NavigationListItem href="/docs/carousel">carousel</NavigationListItem>
-		<NavigationListItem href="/docs/tabs">tabs</NavigationListItem>
-		<NavigationListItem href="/docs/meter">meter</NavigationListItem>
-		<NavigationListItem href="/docs/window-splitter">window-splitter</NavigationListItem>
-		<NavigationListItem href="/docs/pin-input">pin-input</NavigationListItem>
-		<NavigationListItem href="/docs/breadcrumb">breadcrumb</NavigationListItem>
-		<NavigationListItem href="/docs/combobox">combobox</NavigationListItem>
-		<NavigationListItem href="/docs/range-input">range input</NavigationListItem>
-		<NavigationListItem href="/docs/date-input">date input</NavigationListItem>
-		<NavigationListItem href="/docs/snackbar">snackbar</NavigationListItem>
-		<NavigationListItem href="/docs/treeview">treeview</NavigationListItem>
-		<NavigationListItem href="/docs/table">table</NavigationListItem>
-		<NavigationListItem href="/docs/card">card</NavigationListItem>
+		<NavigationListItem href="/pallete" label="pallete" />
+		<NavigationListItem href="/docs/button" label="button" />
+		<NavigationListItem href="/docs/icon-button" label="icon button" />
+		<NavigationListItem href="/docs/icon" label="icon" />
+		<NavigationListItem href="/docs/text-input" label="text input" />
+		<NavigationListItem href="/docs/chip" label="chip" />
+		<NavigationListItem href="/docs/alert" label="alert" />
+		<NavigationListItem href="/docs/dialog" label="dialog" />
+		<NavigationListItem href="/docs/toast" label="toast" />
+		<NavigationListItem href="/docs/menu" label="menu" />
+		<NavigationListItem href="/docs/menu-bar" label="menu bar" />
+		<NavigationListItem href="/docs/navigation-menu" label="navigation-menu" />
+		<NavigationListItem href="/docs/navigation-list" label="navigation-list" />
+		<NavigationListItem href="/docs/radio" label="radio" />
+		<NavigationListItem href="/docs/checkbox" label="checkbox" />
+		<NavigationListItem href="/docs/accordion" label="accordion" />
+		<NavigationListItem href="/docs/select" label="select" />
+		<NavigationListItem href="/docs/switch" label="switch" />
+		<NavigationListItem href="/docs/tooltip" label="tooltip" />
+		<NavigationListItem href="/docs/carousel" label="carousel" />
+		<NavigationListItem href="/docs/tabs" label="tabs" />
+		<NavigationListItem href="/docs/meter" label="meter" />
+		<NavigationListItem href="/docs/window-splitter" label="window-splitter" />
+		<NavigationListItem href="/docs/pin-input" label="pin-input" />
+		<NavigationListItem href="/docs/breadcrumb" label="breadcrumb" />
+		<NavigationListItem href="/docs/combobox" label="combobox" />
+		<NavigationListItem href="/docs/range-input" label="range input" />
+		<NavigationListItem href="/docs/date-input" label="date input" />
+		<NavigationListItem href="/docs/snackbar" label="snackbar" />
+		<NavigationListItem href="/docs/treeview" label="treeview" />
+		<NavigationListItem href="/docs/table" label="table" />
+		<NavigationListItem href="/docs/card" label="card" />
 	</NavigationList>
 </div>

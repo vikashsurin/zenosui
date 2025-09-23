@@ -1,31 +1,54 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { NavigationListProps } from '$lib/types/index.js';
-	import { baseVariant } from '$lib/style/index.js';
-	import { setContext } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
+	import type { NavigationListProps } from '$lib/types/index.ts';
 	import type { NavigationListContextType } from './types.ts';
 
-	let { children, uiRounded, uiSize, class: _class }: NavigationListProps = $props();
-	let navListState = $state({
-		childHasLeftIcon: false,
-		uiSize: uiSize,
-		uiRounded: uiRounded,
-		openId: <string | null>null
-	} as NavigationListContextType);
+	let { children, uiSize, class: _class, ...props }: NavigationListProps = $props();
 
-	setContext('navListState', navListState);
+	let state = $state({
+		level: 0,
+		currentTarget: null
+	});
+	const context = getContext<NavigationListContextType>('navigationListContext');
+
+	uiSize = uiSize ?? context?.uiSize;
+
+	let list: HTMLUListElement;
+	setContext('navigationListContext', { uiSize } as NavigationListContextType);
+	onMount(() => {
+		if (list) {
+			const parent = list.parentElement?.getAttribute('role');
+			state.level = parent === 'treeitem' ? state.level + 1 : 0;
+		}
+	});
+
 	let style = tv({
-		extend: baseVariant,
-		base: `flex flex-col w-fit`,
+		base: ``,
 		variants: {},
 		defaultVariants: {}
 	});
+
+	function indent() {
+		if (state.level > 0) {
+			return 'sm';
+		} else {
+			return '';
+		}
+	}
+
+	function defineRole() {
+		if (state.level > 0) {
+			return 'group';
+		} else {
+			return 'tree';
+		}
+	}
+
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<nav class="nav">
-	<ul class={finalClass}>
-		{@render children?.()}
-	</ul>
-</nav>
+<ul bind:this={list} class={finalClass} {...props} role={defineRole()}>
+	{@render children?.()}
+</ul>
