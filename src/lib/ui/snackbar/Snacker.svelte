@@ -2,12 +2,12 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import NewSnackbar from './Snackbar.svelte';
-	import { snackbarStore } from '$lib/ui/snackbar/snackbarManager.svelte.js';
+	import { snackbarStore } from '$lib/ui/snackbar/snackbarManager.svelte';
 	import { POSITION } from '$lib/style/postition.js';
 	import type { ToasterProps } from '$lib/types/index.js';
 	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import { snackbarManager } from './snackbarManager.svelte.ts';
+	import { snackbarManager } from './snackbarManager.svelte';
 
 	let { children, class: _class, ...props }: ToasterProps = $props();
 

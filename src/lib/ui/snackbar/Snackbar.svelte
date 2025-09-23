@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { snackbarManager } from './snackbarManager.svelte.ts';
+	import { snackbarManager } from './snackbarManager.svelte';
 	import { IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
-	import { fade, fly, slide } from 'svelte/transition';
 	import Button from '../button/Button.svelte';
 	let {
 		id,
