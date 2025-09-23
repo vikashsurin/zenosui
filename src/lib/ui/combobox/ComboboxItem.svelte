@@ -6,7 +6,7 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import type { ComboboxItemProps } from '$lib/types/index.ts';
-	import { Icon } from '../icon/index.ts';
+	import { Icon } from '$lib/ui/index.js';
 	import Check from '@lucide/svelte/icons/check';
 	let {
 		children,
