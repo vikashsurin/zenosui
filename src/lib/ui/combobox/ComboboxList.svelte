@@ -4,10 +4,8 @@
 	import { getContext } from 'svelte';
 	import { type ComboboxContextType } from './types.ts';
 	import type { ComboboxListProps, ComboboxPopoverProps } from '$lib/types/index.ts';
-	import Search from '@lucide/svelte/icons/search';
-	import { Icon } from '../icon/index.ts';
 	import { PADDING } from '$lib/style/spacing.js';
-
+	import { clickOutside } from '$lib/utils/index.ts';
 	let { children, class: _class, ...props }: ComboboxListProps = $props();
 	const context = getContext<ComboboxContextType>('comboboxContext');
 	let style = tv({

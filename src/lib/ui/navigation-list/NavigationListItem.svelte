@@ -9,6 +9,7 @@
 	import type { NavigationListItemProps } from '$lib/types/index.ts';
 	import type { NavigationListContextType } from './types.ts';
 	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
 	let {
 		children,
 		label,
@@ -58,9 +59,24 @@
 
 	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 
+	function isExternalLink(href: string) {
+		return href.startsWith('http://') || href.startsWith('https://');
+	}
+
 	function handleClick(e: MouseEvent) {
-		e.stopPropagation();
 		let currentTarget = e.currentTarget as HTMLElement;
+		e.preventDefault();
+		let href =
+			currentTarget.getAttribute('href') !== null ? currentTarget.getAttribute('href') : null;
+		if (href !== null && href !== undefined) {
+			if (isExternalLink(href)) {
+				window.open(href, '_blank');
+			} else {
+				goto(href);
+			}
+		}
+		e.stopPropagation();
+
 		navigationListState.selectedId = currentTarget.id;
 
 		if (children) {

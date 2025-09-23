@@ -5,7 +5,7 @@
 	import { getContext } from 'svelte';
 	import { baseVariant } from '$lib/style/base.js';
 	import { slide } from 'svelte/transition';
-	import { clickOutside } from '$lib/utils/utils.js';
+	import { clickOutside } from '$lib/utils/index.ts';
 	import type { SelectListProps } from '$lib/types/index.js';
 
 	let { children, uiRounded, class: _class, ...props }: SelectListProps = $props();

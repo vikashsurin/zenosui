@@ -4,8 +4,16 @@
 
 <div>
 	<Navigation>
-		<NavigationList>
-			<NavigationListItem href="/docs/navigation-list" label="navigation-list" />
+		<NavigationList class="w-[200px]">
+			<NavigationListItem href="/docs/navigation-list" label="Item 1" />
+			<NavigationListItem href="/docs/navigation-list" label="Item 1" />
+			<NavigationListItem label="Item 1">
+				<NavigationList>
+					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
+					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
+					<NavigationListItem href="https://google.com" label="Item 1" />
+				</NavigationList></NavigationListItem
+			>
 		</NavigationList>
 	</Navigation>
 </div>

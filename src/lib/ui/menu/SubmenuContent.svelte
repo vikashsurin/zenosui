@@ -3,9 +3,8 @@
 	import { innerHeight } from 'svelte/reactivity/window';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/index.js';
-	import type { MenuListProps, RoundedVariant } from '$lib/types/index.js';
+	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import { clickOutside } from '$lib/utils/utils.js';
 	import type { SubmenuContextType } from './types.ts';
 
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
@@ -43,7 +42,7 @@
 	});
 	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
 
-	function onclickOutside() {
+	function onClickOutside() {
 		submenuContext.state.open = false;
 		console.log('clickOutside');
 	}
@@ -70,4 +69,4 @@
 		{@render children?.()}
 	</ul>
 {/if}
-<!-- use:clickOutside={onclickOutside} -->
+<!-- use:clickOutside={onClickOutside} -->

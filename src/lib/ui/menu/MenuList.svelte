@@ -5,7 +5,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import { clickOutside } from '$lib/utils/utils.js';
+	import { clickOutside } from '$lib/utils/index.ts';
 	import type { MenuBarContextType, MenuContextType } from './types.js';
 	import { fade } from 'svelte/transition';
 
@@ -44,7 +44,7 @@
 	});
 	const finalClass = $derived(style({ uiRounded, placement, class: clsx(_class) }));
 
-	function onclickOutside() {
+	function onClickOutside() {
 		if (menuContext) {
 			menuContext.closeMenu();
 		}
@@ -76,7 +76,7 @@
 		in:fade={{ duration: 100 }}
 		out:fade={{ duration: 100 }}
 		class={finalClass}
-		use:clickOutside={onclickOutside}
+		use:clickOutside={onClickOutside}
 	>
 		{@render children?.()}
 	</ul>

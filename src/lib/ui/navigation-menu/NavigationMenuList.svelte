@@ -3,9 +3,9 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
 	import type { NavigationMenuListProps } from '$lib/types/index.js';
-	import { getContext, onMount } from 'svelte';
-	import { clickOutside } from '$lib/utils/utils.js';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { getContext } from 'svelte';
+	import { clickOutside } from '$lib/utils/index.ts';
+	import { fly } from 'svelte/transition';
 
 	let { placement, children, class: _class, ...props }: NavigationMenuListProps = $props();
 
@@ -44,7 +44,7 @@
 		})
 	);
 
-	function onclickOutside() {
+	function onClickOutside() {
 		navMenuBarCtx.setActiveNavMenu(null);
 	}
 	function handleMouseEnter() {
@@ -60,7 +60,7 @@
 		class={finalClasses}
 		in:fly={{ duration: 200, y: -10 }}
 		out:fly={{ duration: 200, y: -5 }}
-		use:clickOutside={onclickOutside}
+		use:clickOutside={onClickOutside}
 		{...props}
 		onmouseenter={handleMouseEnter}
 		onmouseleave={handleMouseLeave}

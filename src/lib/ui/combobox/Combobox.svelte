@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { ComboboxContextType } from './types.ts';
-	import { clickOutside } from '$lib/utils/utils.ts';
+
 	import type { ComboboxProps } from '$lib/types/index.ts';
 
 	let { children, data, uiSize, uiRounded }: ComboboxProps = $props();
@@ -26,8 +26,6 @@
 		focusIndex: -1,
 		highlightedElement: null
 	});
-
-;
 
 	function clearFilter() {
 		state.filterText = null;
@@ -59,7 +57,6 @@
 		state.inputValue = value;
 		state.inputLabel = label;
 	}
-;
 	let filteredData = $derived.by(() =>
 		state.filterText
 			? data.filter((option: { value: string; label: string }) =>
@@ -83,11 +80,11 @@
 		uiRounded
 	} as ComboboxContextType);
 
-	function onclickOutside() {
+	function onClickOutside() {
 		state.isExpanded = false;
 	}
 </script>
 
-<div use:clickOutside={onclickOutside} class="w-fit">
+<div use:clickOutside={onClickOutside} class="w-fit">
 	{@render children?.()}
 </div>
