@@ -4,8 +4,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"postbuild": "node src/scripts/fixfileExtension.js",
-		"generate:safelist": "node  src/scripts/generateSafelist.js",
+		"postbuild": "node scripts/fixfileExtension.js",
+		"generate:safelist": "node scripts/generateSafelist.js",
 		"preview": "vite preview",
 		"prepack": "svelte-kit sync && svelte-package && publint",
 		"prepare": "npm run build && npm run prepack",
