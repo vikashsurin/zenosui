@@ -4,7 +4,7 @@
 	import clsx from 'clsx';
 	import { setContext, tick } from 'svelte';
 	import type { DivProps } from '$lib/types/index.js';
-	import type { MenuBarContextType } from './types.ts';
+	import type { MenuBarContextType } from './types.js';
 	import type { UUID } from 'crypto';
 
 	let { children, uiSize, uiRounded, class: _class }: DivProps = $props();

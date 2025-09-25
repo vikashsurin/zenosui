@@ -2,10 +2,10 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { PinInputControlContextType } from './types.ts';
+	import type { PinInputControlContextType } from './types.js';
 	import { getContext } from 'svelte';
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
-	import type { PinInputBoxProps } from '$lib/types/index.ts';
+	import type { PinInputBoxProps } from '$lib/types/index.js';
 
 	let {
 		children,

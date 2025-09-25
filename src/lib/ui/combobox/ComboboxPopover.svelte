@@ -2,9 +2,9 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
-	import type { ComboboxContextType } from './types.ts';
+	import type { ComboboxContextType } from './types.js';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { ComboboxPopoverProps } from '$lib/types/index.ts';
+	import type { ComboboxPopoverProps } from '$lib/types/index.js';
 
 	let { children, uiRounded, class: _class, ...props }: ComboboxPopoverProps = $props();
 

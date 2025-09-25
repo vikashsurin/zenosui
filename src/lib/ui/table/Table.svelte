@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import type { HTMLTableAttributes } from 'svelte/elements';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
-	import type { SizeVariant } from '$lib/types/index.ts';
+	import type { SizeVariant } from '$lib/types/index.js';
 
 	type TableProps = HTMLTableAttributes & {
 		uiSize?: SizeVariant;
@@ -18,7 +18,7 @@
 		},
 		defaultVariants: {}
 	});
-	const finalClass = $derived(style({ uiSize,class: clsx(_class) }));
+	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
 <table class={finalClass} {...props}>

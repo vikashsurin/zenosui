@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { Icon } from '../icon/index.ts';
+	import { Icon } from '../icon/index.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { getContext } from 'svelte';
-	import { navigationListState } from './stateManager.svelte.ts';
-	import type { NavigationListItemProps } from '$lib/types/index.ts';
-	import type { NavigationListContextType } from './types.ts';
+	import { navigationListState } from './stateManager.svelte.js';
+	import type { NavigationListItemProps } from '$lib/types/index.js';
+	import type { NavigationListContextType } from './types.js';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	let {

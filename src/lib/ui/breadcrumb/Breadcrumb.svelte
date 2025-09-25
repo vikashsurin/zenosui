@@ -2,9 +2,9 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { BreadcrumbProps } from '$lib/types/index.ts';
+	import type { BreadcrumbProps } from '$lib/types/index.js';
 	import { setContext } from 'svelte';
-	import type { BreadcrumbContextType } from './types.ts';
+	import type { BreadcrumbContextType } from './types.js';
 
 	let {
 		children,

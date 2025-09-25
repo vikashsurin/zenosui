@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import MenuItem from './MenuItem.svelte';
-	import type { SubmenuContextType } from './types.ts';
-	import type { MenuItemProps } from '$lib/types/index.ts';
+	import type { SubmenuContextType } from './types.js';
+	import type { MenuItemProps } from '$lib/types/index.js';
 	let { children, ...props }: MenuItemProps = $props();
 
 	const submenuContext = getContext<SubmenuContextType>('submenuContext');

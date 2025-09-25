@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { InputProps } from '$lib/types/index.ts';
+	import type { InputProps } from '$lib/types/index.js';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: InputProps = $props();
 

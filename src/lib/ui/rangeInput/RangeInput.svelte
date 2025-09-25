@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { TRACK_SIZE } from '$lib/style/sizing.js';
-	import type { RangeInputProps } from '$lib/types/index.ts';
+	import type { RangeInputProps } from '$lib/types/index.js';
 
 	let {
 		children,

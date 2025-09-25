@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext, setContext, tick } from 'svelte';
-	import type { MenuContextType, SubmenuContextType } from './types.ts';
+	import type { MenuContextType, SubmenuContextType } from './types.js';
 
 	let { children } = $props();
 	const id = crypto.randomUUID();

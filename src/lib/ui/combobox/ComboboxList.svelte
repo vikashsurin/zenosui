@@ -2,8 +2,8 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
-	import { type ComboboxContextType } from './types.ts';
-	import type { ComboboxListProps, ComboboxPopoverProps } from '$lib/types/index.ts';
+	import { type ComboboxContextType } from './types.js';
+	import type { ComboboxListProps, ComboboxPopoverProps } from '$lib/types/index.js';
 	import { PADDING } from '$lib/style/spacing.js';
 	import { clickOutside } from '$lib/utils/index.js';
 	let { children, class: _class, ...props }: ComboboxListProps = $props();

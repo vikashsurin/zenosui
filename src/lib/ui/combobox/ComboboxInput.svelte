@@ -3,12 +3,12 @@
 	import clsx from 'clsx';
 
 	import { getContext } from 'svelte';
-	import { type ComboboxContextType } from './types.ts';
+	import { type ComboboxContextType } from './types.js';
 	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { Icon, PADDING_X } from '$lib/index.js';
-	import type { ComboboxInputProps } from '$lib/types/index.ts';
+	import type { ComboboxInputProps } from '$lib/types/index.js';
 	import Search from '@lucide/svelte/icons/search';
 
 	let {

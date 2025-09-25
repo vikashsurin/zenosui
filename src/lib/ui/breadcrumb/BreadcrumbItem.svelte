@@ -3,10 +3,10 @@
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import type { BreadcrumbItemProps } from '$lib/types/index.ts';
+	import type { BreadcrumbItemProps } from '$lib/types/index.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE, TEXT_SIZE_WITH_HEIGHT, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import type { BreadcrumbContextType, BreadcrumbListContextType } from './types.ts';
+	import type { BreadcrumbContextType, BreadcrumbListContextType } from './types.js';
 	import { getContext } from 'svelte';
 	import { page } from '$app/state';
 

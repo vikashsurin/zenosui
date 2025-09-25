@@ -4,7 +4,7 @@
 	import { mount, unmount } from 'svelte';
 	import type { PositionVariant } from '$lib/types/index.js';
 	import { browser } from '$app/environment';
-	import { type Snackbar } from './types.ts';
+	import { type Snackbar } from './types.js';
 
 	export const snackbarStore = $state({
 		snackbars: <Snackbar[]>[],

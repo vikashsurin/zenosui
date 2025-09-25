@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { Icon } from '../icon/index.ts';
+	import { Icon } from '../icon/index.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import Folder from '@lucide/svelte/icons/folder';
 	import FolderOpen from '@lucide/svelte/icons/folder-open';
 	import { getContext } from 'svelte';
-	import { treeViewState } from './stateManager.svelte.ts';
-	import type { TreeviewItemProps } from '$lib/types/index.ts';
-	import type { TreeviewContextType } from './types.ts';
+	import { treeViewState } from './stateManager.svelte.js';
+	import type { TreeviewItemProps } from '$lib/types/index.js';
+	import type { TreeviewContextType } from './types.js';
 	let {
 		children,
 		label,

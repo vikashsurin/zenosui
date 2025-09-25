@@ -2,9 +2,9 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
-	import type { ComboboxContextType } from './types.ts';
+	import type { ComboboxContextType } from './types.js';
 
-	import type { ComboboxProps } from '$lib/types/index.ts';
+	import type { ComboboxProps } from '$lib/types/index.js';
 
 	let { children, data, uiSize, uiRounded }: ComboboxProps = $props();
 	let state = $state<{

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { RoundedVariant, SizeVariant } from '$lib/types/index.ts';
+	import type { RoundedVariant, SizeVariant } from '$lib/types/index.js';
 	import { clickOutside } from '$lib/utils/index.js';
 	import Input from '../atoms/Input.svelte';
 	import Calender from './Calender.svelte';

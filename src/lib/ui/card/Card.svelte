@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { CardProps } from '$lib/types/index.ts';
+	import type { CardProps } from '$lib/types/index.js';
 
 	let { children, themed, theme = 'light', class: _class, ...props }: CardProps = $props();
 

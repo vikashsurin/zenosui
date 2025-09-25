@@ -2,8 +2,8 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext, onMount, setContext } from 'svelte';
-	import type { NavigationListProps } from '$lib/types/index.ts';
-	import type { NavigationListContextType } from './types.ts';
+	import type { NavigationListProps } from '$lib/types/index.js';
+	import type { NavigationListContextType } from './types.js';
 
 	let { children, uiSize, class: _class, ...props }: NavigationListProps = $props();
 

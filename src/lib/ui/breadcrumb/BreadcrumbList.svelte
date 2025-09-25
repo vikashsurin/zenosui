@@ -4,10 +4,10 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { page } from '$app/state';
 	import BreadcrumbItem from './BreadcrumbItem.svelte';
-	import type { BreadcrumbListProps, BreadcrumbProps } from '$lib/types/index.ts';
+	import type { BreadcrumbListProps, BreadcrumbProps } from '$lib/types/index.js';
 	import { GAP } from '$lib/style/spacing.js';
 	import { getContext, setContext } from 'svelte';
-	import type { BreadcrumbContextType, BreadcrumbListContextType } from './types.ts';
+	import type { BreadcrumbContextType, BreadcrumbListContextType } from './types.js';
 
 	let {
 		children,
@@ -65,4 +65,3 @@
 <ol bind:this={element} class={finalClass} {...props}>
 	{@render children?.()}
 </ol>
-

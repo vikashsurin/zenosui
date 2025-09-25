@@ -5,7 +5,7 @@
 	import { baseVariant } from '$lib/style/index.js';
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
-	import type { SubmenuContextType } from './types.ts';
+	import type { SubmenuContextType } from './types.js';
 
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 

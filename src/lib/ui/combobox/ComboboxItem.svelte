@@ -2,10 +2,10 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext } from 'svelte';
-	import { type ComboboxContextType } from './types.ts';
+	import { type ComboboxContextType } from './types.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
-	import type { ComboboxItemProps } from '$lib/types/index.ts';
+	import type { ComboboxItemProps } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import Check from '@lucide/svelte/icons/check';
 	let {

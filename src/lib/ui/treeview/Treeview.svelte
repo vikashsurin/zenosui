@@ -2,8 +2,8 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { getContext, onMount, setContext } from 'svelte';
-	import type { TreeViewProps } from '$lib/types/index.ts';
-	import type { TreeviewContextType } from './types.ts';
+	import type { TreeViewProps } from '$lib/types/index.js';
+	import type { TreeviewContextType } from './types.js';
 
 	let { children, uiIndent, uiSize, class: _class, ...props }: TreeViewProps = $props();
 

@@ -4,7 +4,7 @@
 	import type { RadioProps } from '$lib/types/index.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { getContext } from 'svelte';
-	import type { RadioContextType } from './types.ts';
+	import type { RadioContextType } from './types.js';
 	import { SIZE } from '$lib/style/sizing.js';
 
 	let { children, themed = true, name, uiSize, class: _class, ...props }: RadioProps = $props();
@@ -71,4 +71,3 @@
 		onchange={(e) => handleChange(e)}
 	/>
 </span>
-

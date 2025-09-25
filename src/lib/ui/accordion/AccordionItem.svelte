@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import type { AccordionItemProps } from '$lib/types/index.js';
 	import { getContext, setContext } from 'svelte';
-	import type { AccordionContextType, AccordionItemContextType } from './types.ts';
+	import type { AccordionContextType, AccordionItemContextType } from './types.js';
 
 	let { children, uiSize, uiRounded, class: _class, ...props }: AccordionItemProps = $props();
 
