@@ -15,7 +15,9 @@
 		iconLeft,
 		iconRight = Plus,
 		iconLeftRotation,
-		iconRightRotation,
+		iconRightRotation = '45deg',
+		iconRightOpen,
+		iconRightClose,
 		class: _class
 	}: AccordionTriggerProps = $props();
 
@@ -33,23 +35,8 @@
 
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
 
-	const setIconRotation = () => {
-		let rotation = '0';
-		if (!context.state.expanded) {
-			return rotation;
-		}
-
-		if (iconRightRotation === undefined || iconRightRotation === null) {
-			rotation = '45';
-		} else {
-			rotation = iconRightRotation;
-		}
-		return rotation;
-	};
-
 	function handleClick() {
 		context.state.expanded = !context.state.expanded;
-		context.state.iconRightRotation = setIconRotation();
 	}
 </script>
 
@@ -59,7 +46,16 @@
 	{/if}
 	{@render children?.()}
 
-	{#if iconRight}
-		<Icon {uiSize} icon={iconRight} class="ml-auto" />
+	{#if iconRight && iconRightOpen === undefined && iconRightClose === undefined}
+		{@const icon = iconRight}
+		<Icon
+			{uiSize}
+			{icon}
+			iconRotation={context.state.expanded ? iconRightRotation : '0deg'}
+			class="ml-auto"
+		/>
+	{:else if iconRightOpen || iconRightClose}
+		{@const icon = context.state.expanded ? iconRightOpen : iconRightClose}
+		<Icon {uiSize} {icon} class="ml-auto" />
 	{/if}
 </button>

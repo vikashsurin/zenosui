@@ -136,7 +136,7 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 // export type   ButtonProps = Component<ButtonAsButton | ButtonAsAnchor> {}
 
 export interface IconCompProps extends ComponentProps {
-	icon: Component | Snippet | null;
+	icon: Component | Snippet | null | undefined;
 	uiIconSize?: SizeVariant;
 	iconRotation?: string; // e.g., 'rotate-45'
 }
@@ -271,6 +271,8 @@ export interface AccordionTriggerProps
 		IconProps,
 		Type.HTMLAttributes<HTMLButtonElement> {
 	label?: string;
+	iconRightOpen?: Snippet | Component | undefined;
+	iconRightClose?: Snippet | Component | undefined;
 }
 export interface AccordionContentProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 

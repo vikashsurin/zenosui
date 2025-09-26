@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '$lib/ui/index.js';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import Plus from '@lucide/svelte/icons/plus';
+	import X from '@lucide/svelte/icons/x';
 </script>
 
 <div>
 	<Accordion uiSize="md">
 		<AccordionItem>
-			<AccordionTrigger iconRightRotation="45deg" class="flex justify-start"
+			<AccordionTrigger iconRightOpen={X} iconRightClose={Plus} class="flex justify-start"
 				>Apples</AccordionTrigger
 			>
 			<AccordionContent>The apples are great.</AccordionContent>
