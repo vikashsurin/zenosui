@@ -220,15 +220,13 @@
 		{@render children?.()}
 	</li>
 {:else}
-	<nav>
-		<ul class={finalClass} {...props}>
-			<li bind:this={menu}>
-				{#if children}
-					{@render children?.()}
-				{/if}
-			</li>
-		</ul>
-	</nav>
+	<ul class={finalClass} {...props}>
+		<li bind:this={menu}>
+			{#if children}
+				{@render children?.()}
+			{/if}
+		</li>
+	</ul>
 {/if}
 
 <!-- onkeydown={(e: KeyboardEvent) => handleKeyDown(e)} -->
