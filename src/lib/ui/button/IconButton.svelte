@@ -10,7 +10,7 @@
 		icon,
 		uiSize,
 		themed = false,
-		uiTheme = 'dark',
+		uiTheme = 'light',
 		uiColor,
 		uiVariant = 'solid',
 		uiRounded,

@@ -17,7 +17,8 @@ Button
 <script lang="ts">
 	import './button.css';
 	import { tv } from 'tailwind-variants';
-	import { baseVariant, SIZE_PRESET, TEXT_SIZE } from '$lib/style/index.js';
+	import { baseVariant, TEXT_SIZE } from '$lib/style/index.js';
+	import { btn_themes, base, btn_variants } from './button.style.js';
 	import type { ButtonProps } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
@@ -26,12 +27,12 @@ Button
 		label = 'Button',
 		href,
 		ref = $bindable(),
-		uiTheme = 'dark',
+		uiTheme = 'light',
 		themed = false,
 		uiVariant = 'solid',
 		uiSize = 'md',
 		uiRounded = 'none',
-		uiColor,
+		uiColor = 'gray',
 		iconLeft,
 		iconRight,
 		iconRotation,
@@ -47,9 +48,10 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: 'zu_button  inline-flex justify-center items-center bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700 py-[0.5em] px-[0.75em] gap-[0.5em]',
+		base: `button ${base} ${btn_themes[uiTheme]}`,
 		variants: {
 			uiSize: TEXT_SIZE,
+			uiVariant: btn_variants,
 			active: {
 				true: '',
 				false: ''
@@ -71,8 +73,9 @@ Button
 		buttonStyle({
 			uiSize,
 			uiRounded,
+			uiVariant,
 			active,
-			class: clsx(_class, uiColor, uiVariant)
+			class: clsx(_class, uiColor)
 		})
 	);
 	let as = href ? 'a' : 'button';
@@ -83,7 +86,6 @@ Button
 	this={as}
 	bind:this={ref}
 	data-themed={themed}
-	class:btn={uiColor !== undefined}
 	role={href ? 'link' : 'button'}
 	class={finalClasses}
 	style={`--custom-color: ${uiColor}`}

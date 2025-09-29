@@ -3,10 +3,11 @@
 // 	expanded: boolean;
 // };
 
-import type { RoundedVariant, SizeVariant } from '$lib/types/index.ts';
+import type { RoundedVariant, SizeVariant, ThemeVariant } from '$lib/types/index.ts';
 export type AccordionContextType = {
 	uiSize: SizeVariant;
 	uiRounded: RoundedVariant;
+	uiTheme: ThemeVariant;
 };
 
 export type AccordionItemContextType = {
@@ -16,4 +17,5 @@ export type AccordionItemContextType = {
 	};
 	uiSize: SizeVariant;
 	uiRounded: RoundedVariant;
+	uiTheme: ThemeVariant;
 };

@@ -6,10 +6,12 @@
 	import Plus from '@lucide/svelte/icons/plus';
 	import type { AccordionTriggerProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
+	import { accordion_trigger_themes } from './style.js';
 	import type { AccordionItemContextType } from './types.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	let {
 		children,
+		uiTheme,
 		uiSize,
 		uiRounded,
 		iconLeft,
@@ -24,9 +26,10 @@
 	const context = getContext<AccordionItemContextType>('accordionItemContext');
 	uiSize = uiSize ?? context.uiSize;
 	uiRounded = uiRounded ?? context.uiRounded;
+	uiTheme = context.uiTheme;
 	let style = tv({
 		extend: baseVariant,
-		base: `w-full flex items-center justify-between gap-2 bg-gray-200 hover:bg-gray-200 active:bg-gray-300 active:text-gray-600 py-[0.5em] px-[0.75em]`,
+		base: `w-full flex items-center justify-between gap-2 py-[0.5em] px-[0.75em] ${accordion_trigger_themes[uiTheme]}`,
 		variants: {
 			uiSize: TEXT_SIZE
 		},

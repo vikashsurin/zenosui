@@ -43,7 +43,7 @@ export type RoundedVariant = 'none' | sizeTokens | 'full';
 export type BorderVariant = 'none' | sizeTokens;
 export type PositionVariant = positionTokens;
 export type Variant = variants;
-
+export type ThemeVariant = 'light' | 'dark';
 export interface UiProps {
 	/**
 	 * The class name to apply to the component.
@@ -64,7 +64,7 @@ export interface UiProps {
 	uiBorder?: BorderVariant;
 	uiPadding?: PaddingVariant;
 	uiColorPreset?: ColorVariant;
-	uiTheme?: string;
+	uiTheme?: ThemeVariant;
 	themed?: boolean;
 	uiVariant?: Variant;
 }

@@ -5,19 +5,33 @@
 	import { getContext, setContext } from 'svelte';
 	import type { AccordionContextType, AccordionItemContextType } from './types.js';
 
-	let { children, uiSize, uiRounded, class: _class, ...props }: AccordionItemProps = $props();
+	let {
+		children,
+		uiSize,
+		uiTheme,
+		uiRounded,
+		class: _class,
+		...props
+	}: AccordionItemProps = $props();
 
 	const context = getContext<AccordionContextType>('accordionContext');
 
 	uiSize = uiSize ?? context.uiSize;
 	uiRounded = uiRounded ?? context.uiRounded;
+	uiTheme = uiTheme ?? context.uiTheme;
+
 	const id = crypto.randomUUID();
 
 	let state = $state({
 		expanded: false,
 		iconRightRotation: '0deg'
 	});
-	setContext('accordionItemContext', { state, uiSize, uiRounded } as AccordionItemContextType);
+	setContext('accordionItemContext', {
+		state,
+		uiSize,
+		uiRounded,
+		uiTheme
+	} as AccordionItemContextType);
 
 	let style = tv({
 		base: ``,

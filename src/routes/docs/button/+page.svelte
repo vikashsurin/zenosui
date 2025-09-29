@@ -10,9 +10,9 @@
 <div class="">
 	<h2>Size</h2>
 	<div class="flex items-end gap-2">
-		<Button uiSize="xs" label="Button xs" class="px-20"></Button>
-		<Button uiSize="sm" label="Button sm"></Button>
-		<Button uiSize="md" label="Button md"></Button>
+		<Button uiSize="xs" label="Button xs" uiColor="green" class="bg-green-600"></Button>
+		<Button uiSize="sm" label="Button sm" class="bg-purple-600"></Button>
+		<Button uiSize="md" uiColor="purple" label="Button md"></Button>
 		<Button uiSize="lg" label="Button lg"></Button>
 		<Button uiSize="xl" label="Button xl"></Button>
 		<Button uiSize="2xl" label="Button 2xl"></Button>
@@ -45,7 +45,7 @@
 
 	<h2>Variants</h2>
 	<div class="flex gap-2">
-		<Button uiColor="red" uiVariant="solid" label="Solid" class="text-white	" />
+		<Button uiColor="red" uiVariant="solid" label="Solid" class="  text-white	" />
 		<Button uiColor="red" uiVariant="outlined" label="Outline" />
 		<Button uiColor="green" uiVariant="dashed" iconRight={ChevronRight} label="Dashed" />
 		<Button uiColor="primary" uiVariant="filled" label="Filled" />

@@ -8,12 +8,13 @@
 	let {
 		children,
 		uiSize = 'md',
+		uiTheme = 'dark',
 		uiRounded = 'none',
 		class: _class,
 		...props
 	}: AccordionProps = $props();
 
-	setContext('accordionContext', { uiSize, uiRounded } as AccordionContextType);
+	setContext('accordionContext', { uiSize, uiRounded, uiTheme } as AccordionContextType);
 
 	let style = tv({
 		base: ``,

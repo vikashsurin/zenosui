@@ -6,15 +6,18 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import type { AccordionItemContextType } from './types.js';
 	import { fade, slide } from 'svelte/transition';
+	import { accordion_content_themes } from './style.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 
-	let { children, uiSize, class: _class, ...props }: AccordionContentProps = $props();
+	let { children, uiTheme, uiSize, class: _class, ...props }: AccordionContentProps = $props();
 
 	const context = getContext<AccordionItemContextType>('accordionItemContext');
 	uiSize = uiSize ?? context.uiSize;
+	uiTheme = uiTheme ?? context.uiTheme;
+
 	let style = tv({
 		extend: baseVariant,
-		base: `p-4 bg-gray-100`,
+		base: `p-4 ${accordion_content_themes[uiTheme]}`,
 		variants: {
 			uiSize: TEXT_SIZE
 		},
