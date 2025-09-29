@@ -27,6 +27,7 @@
 	};
 
 	uiColor = colorMap[uiColor] ?? uiColor;
+
 	let style = tv({
 		extend: baseVariant,
 		base: `zu_icon_button  bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700`,
