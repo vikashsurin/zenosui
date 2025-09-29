@@ -5,31 +5,41 @@
 	import { Icon } from '$lib/ui/index.js';
 	import type { IconButtonProps } from '$lib/types/index.js';
 	import { baseVariant, SIZE } from '$lib/style/index.js';
+	import { btn_variants } from './button.style.js';
 
 	let {
 		icon,
 		uiSize,
 		themed = false,
 		uiTheme = 'light',
-		uiColor,
+		uiColor = 'gray',
 		uiVariant = 'solid',
 		uiRounded,
 		class: _class,
 		...props
 	}: IconButtonProps = $props();
 
+	const colorMap: { [key: string]: string } = {
+		primary: 'var(--primary-surface-500',
+		success: 'green',
+		danger: 'red',
+		warning: 'orange'
+	};
+
+	uiColor = colorMap[uiColor] ?? uiColor;
 	let style = tv({
 		extend: baseVariant,
 		base: `zu_icon_button  bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700`,
 		variants: {
-			uiSize: SIZE
+			uiSize: SIZE,
+			uiVariant: btn_variants
 		},
 		defaultVariants: {
 			uiSize: 'md'
 		}
 	});
 	const finalClass = $derived(
-		style({ uiSize, uiRounded, class: clsx(_class, uiColor, uiVariant) })
+		style({ uiSize, uiRounded, uiVariant, class: clsx(_class, uiColor) })
 	);
 </script>
 

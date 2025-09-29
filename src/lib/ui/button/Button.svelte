@@ -19,7 +19,7 @@ Button
 	import { tv } from 'tailwind-variants';
 	import { baseVariant, TEXT_SIZE } from '$lib/style/index.js';
 	import { btn_themes, base, btn_variants } from './button.style.js';
-	import type { ButtonProps } from '$lib/types/index.js';
+	import type { ButtonProps, ColorVariant } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
 
@@ -46,6 +46,16 @@ Button
 	}: ButtonProps = $props();
 
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
+
+	const colorMap: { [key: string]: string } = {
+		primary: 'var(--primary-surface-500',
+		success: 'green',
+		danger: 'red',
+		warning: 'orange'
+	};
+
+	uiColor = colorMap[uiColor] ?? uiColor;
+
 	const buttonStyle = tv({
 		extend: baseVariant,
 		base: `button ${base} ${btn_themes[uiTheme]}`,
@@ -84,6 +94,7 @@ Button
 
 <svelte:element
 	this={as}
+	data-custom-color={uiColor}
 	bind:this={ref}
 	data-themed={themed}
 	role={href ? 'link' : 'button'}

@@ -26,17 +26,19 @@
 	--color-950: oklch(6% 0.02 var(--hue));
 
 	/* DANGER COLORS */
-	--danger-50: oklch(98% 0.025 30);
-	--danger-100: oklch(94% 0.05 30);
-	--danger-200: oklch(88% 0.1 30);
-	--danger-300: oklch(80% 0.15 30);
-	--danger-400: oklch(70% 0.2 30);
-	--danger-500: oklch(52% 0.25 30);
-	--danger-600: oklch(43% 0.23 30);
-	--danger-700: oklch(36% 0.2 30);
-	--danger-800: oklch(26% 0.18 30);
-	--danger-900: oklch(18% 0.09 30);
-	--danger-950: oklch(6% 0.02 30);
+	--danger-base: red; /* or #ff0000 or rgb(255, 0, 0) */
+
+	--danger-50: oklch(from var(--danger-base) 98% 0.025 h);
+	--danger-100: oklch(from var(--danger-base) 94% 0.05 h);
+	--danger-200: oklch(from var(--danger-base) 88% 0.1 h);
+	--danger-300: oklch(from var(--danger-base) 80% 0.15 h);
+	--danger-400: oklch(from var(--danger-base) 70% 0.2 h);
+	--danger-500: oklch(from var(--danger-base) 52% 0.25 h);
+	--danger-600: oklch(from var(--danger-base) 43% 0.23 h);
+	--danger-700: oklch(from var(--danger-base) 36% 0.2 h);
+	--danger-800: oklch(from var(--danger-base) 26% 0.18 h);
+	--danger-900: oklch(from var(--danger-base) 18% 0.09 h);
+	--danger-950: oklch(from var(--danger-base) 6% 0.02 h);
 
 	/* SUCCESS COLORS */
 	--success-50: oklch(98% 0.025 140);

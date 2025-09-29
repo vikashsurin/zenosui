@@ -11,8 +11,8 @@
 	<h2>Size</h2>
 	<div class="flex items-end gap-2">
 		<Button uiSize="xs" label="Button xs" uiColor="green" class="bg-green-600"></Button>
-		<Button uiSize="sm" label="Button sm" class="bg-purple-600"></Button>
-		<Button uiSize="md" uiColor="purple" label="Button md"></Button>
+		<Button uiSize="sm" label="Button sm"></Button>
+		<Button uiSize="md" label="Button md"></Button>
 		<Button uiSize="lg" label="Button lg"></Button>
 		<Button uiSize="xl" label="Button xl"></Button>
 		<Button uiSize="2xl" label="Button 2xl"></Button>
@@ -37,19 +37,19 @@
 
 	<h2>Colors</h2>
 	<div class="flex gap-2">
-		<Button uiColor="deeppink" label="Primary" />
-		<Button uiColor="success" label="Success" />
-		<Button uiColor="danger" label="Danger" />
-		<Button uiColor="warning" label="Warning" />
+		<Button uiColor="primary" label="Primary" />
+		<Button uiColor="green" label="Success" />
+		<Button uiColor="red" label="Danger" />
+		<Button uiColor="orange" label="Warning" />
 	</div>
 
 	<h2>Variants</h2>
 	<div class="flex gap-2">
-		<Button uiColor="red" uiVariant="solid" label="Solid" class="  text-white	" />
-		<Button uiColor="red" uiVariant="outlined" label="Outline" />
-		<Button uiColor="green" uiVariant="dashed" iconRight={ChevronRight} label="Dashed" />
-		<Button uiColor="primary" uiVariant="filled" label="Filled" />
-		<Button uiColor="brown" uiVariant="ghost" label="Ghost" />
-		<Button href="#" uiColor="primary" uiVariant="link" label="Link" />
+		<Button uiVariant="solid" label="Solid" class=" text-white	" />
+		<Button uiVariant="outlined" label="Outline" />
+		<Button uiVariant="dashed" iconRight={ChevronRight} label="Dashed" />
+		<Button uiVariant="filled" label="Filled" />
+		<Button uiVariant="ghost" label="Ghost" />
+		<Button href="#" uiVariant="link" label="Link" />
 	</div>
 </div>
