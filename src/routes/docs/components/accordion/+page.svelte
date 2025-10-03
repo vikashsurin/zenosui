@@ -3,6 +3,7 @@
 	import source from './AccordionDemo.svelte?raw';
 	import PreviewCode from '$lib/internal/PreviewCode.svelte';
 	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocFooter from '$lib/internal/DocFooter.svelte';
 </script>
 
 <DocHeader
@@ -11,3 +12,5 @@
 />
 
 <PreviewCode {source} Component={AccordionDemo} />
+
+<DocFooter />
