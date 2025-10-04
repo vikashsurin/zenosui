@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { shikiCode } from './shikiCode.js';
 
 	let { source, Component } = $props();
@@ -12,7 +13,28 @@
 		preview = false;
 	}
 	$inspect({ preview });
-	let code = shikiCode(source);
+
+	let code = $state();
+	onMount(async () => {
+		let html = await shikiCode(source);
+
+		const lines = html
+			.replace(/<pre[^>]*><code[^>]*>|<\/code><\/pre>/g, '')
+			.split('\n')
+			.filter((line) => line.length > 0);
+
+		html = lines
+			.map(
+				(line, i) => `
+      <div class="code-line">
+        <span style="pointer-events: none; opacity: 0.5;" class="line-number px-8 disabled" disabled>${i + 1}</span>${line}
+      </div>
+    `
+			)
+			.join('');
+
+		code = html;
+	});
 </script>
 
 <div class="flex flex-col gap-2 border border-gray-200 p-4">

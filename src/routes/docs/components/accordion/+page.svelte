@@ -12,5 +12,3 @@
 />
 
 <PreviewCode {source} Component={AccordionDemo} />
-
-<DocFooter />
