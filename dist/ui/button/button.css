@@ -1,0 +1,15 @@
+.btn {
+	--button-color-50: oklch(from var(--custom-color) 98% calc(c * 0.1) h);
+	--button-color-100: oklch(from var(--custom-color) 94% calc(c * 0.2) h);
+	--button-color-200: oklch(from var(--custom-color) 88% calc(c * 0.4) h);
+	--button-color-300: oklch(from var(--custom-color) 80% calc(c * 0.6) h);
+	--button-color-400: oklch(from var(--custom-color) 70% calc(c * 0.8) h);
+	--button-color-500: oklch(from var(--custom-color) 52% c h);
+	--button-color-600: oklch(from var(--custom-color) 43% calc(c * 0.92) h);
+	--button-color-700: oklch(from var(--custom-color) 36% calc(c * 0.8) h);
+	--button-color-800: oklch(from var(--custom-color) 26% calc(c * 0.72) h);
+	--button-color-900: oklch(from var(--custom-color) 18% calc(c * 0.36) h);
+	--button-color-950: oklch(from var(--custom-color) 6% calc(c * 0.08) h);
+	outline-width: 0.1em;
+	flex-shrink: 0;
+}

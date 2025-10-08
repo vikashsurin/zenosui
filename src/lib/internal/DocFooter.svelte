@@ -10,6 +10,10 @@
 		docStore.index = componentList.findIndex((item) => item.href === `/${component}`);
 	}
 
+	function isComponentsRoute() {
+		return page.url.pathname.includes('components');
+	}
+
 	function currentPath() {
 		const isComponentsRoute = page.url.pathname.includes('components');
 		console.log(isComponentsRoute);
@@ -28,27 +32,29 @@
 	}
 </script>
 
-<div class="flex justify-between">
-	{#if getPrev() === undefined}
-		<div></div>{:else}
-		<button
-			class="flex items-center gap-2 bg-gray-100 px-3 py-2"
-			onclick={() => handleclick(getPrev()?.href)}
-		>
-			<ArrowLeft size="16" />
-			{getPrev()?.label}
-		</button>
-	{/if}
+{#if isComponentsRoute()}
+	<div class="flex justify-between">
+		{#if getPrev() === undefined}
+			<div></div>{:else}
+			<button
+				class="flex items-center gap-2 bg-gray-100 px-3 py-2"
+				onclick={() => handleclick(getPrev()?.href)}
+			>
+				<ArrowLeft size="16" />
+				{getPrev()?.label}
+			</button>
+		{/if}
 
-	{#if getNext() === undefined}
-		<div></div>
-	{:else}
-		<button
-			class="flex items-center gap-2 bg-gray-100 px-3 py-2"
-			onclick={() => handleclick(getNext()?.href)}
-		>
-			{getNext()?.label}
-			<ArrowRight size="16" />
-		</button>
-	{/if}
-</div>
+		{#if getNext() === undefined}
+			<div></div>
+		{:else}
+			<button
+				class="flex items-center gap-2 bg-gray-100 px-3 py-2"
+				onclick={() => handleclick(getNext()?.href)}
+			>
+				{getNext()?.label}
+				<ArrowRight size="16" />
+			</button>
+		{/if}
+	</div>
+{/if}

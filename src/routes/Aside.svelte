@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { Navigation, NavigationList, NavigationListItem } from '$lib/ui/index.js';
 	import { componentList } from '$lib/internal/index.js';
+	import { page } from '$app/state';
 	const asideNavData = [
 		{ label: 'home', href: '/' },
 		{ label: 'pallete', href: '/docs/pallete' }
 	];
+
+	const path = $derived.by(() => page.url.pathname.split('/').pop());
 </script>
 
 <Navigation
@@ -15,7 +18,11 @@
 			<NavigationListItem href={item.href} label={item.label} />
 		{/each}
 		{#each componentList as item}
-			<NavigationListItem href={`/docs/components${item.href}`} label={item.label}>
+			<NavigationListItem
+				href={`/docs/components${item.href}`}
+				style={`background-color: ${`/${path}` === item.href ? 'gray' : ''}`}
+				label={item.label}
+			>
 				{#if item.submenu}
 					<NavigationList class="ml-4">
 						{#each item.submenu as submenuItem}

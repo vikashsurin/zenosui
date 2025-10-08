@@ -3,7 +3,7 @@
 	import clsx from 'clsx';
 	import { setContext } from 'svelte';
 	import type { ComboboxContextType } from './types.js';
-
+	import { clickOutside } from '$lib/utils/clickOutside.js';
 	import type { ComboboxProps } from '$lib/types/index.js';
 
 	let { children, data, uiSize, uiRounded }: ComboboxProps = $props();

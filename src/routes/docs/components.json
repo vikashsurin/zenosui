@@ -1,0 +1,634 @@
+{
+	"accordion": {
+		"title": "Accordion",
+		"name": "Accordion",
+		"desc": "Accordion is a component that is used to display a list of items that can be expanded or collapsed.",
+		"layout": {
+			"component": "Accordion",
+			"children": [
+				{
+					"component": "AccordionItem",
+					"children": [
+						{
+							"component": "AccordionTrigger",
+							"children": []
+						},
+						{
+							"component": "AccordionContent",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["uiSize", "uiRounded"]
+	},
+	"alert": {
+		"title": "Alert",
+		"name": "Alert",
+		"desc": "Alert component displays important messages in a modal overlay.",
+		"layout": {
+			"component": "Alert",
+			"children": [
+				{
+					"component": "AlertHeader",
+					"children": [
+						{
+							"component": "AlertTitle",
+							"children": []
+						}
+					]
+				},
+				{
+					"component": "AlertContent",
+					"children": []
+				},
+				{
+					"component": "AlertFooter",
+					"children": [
+						{
+							"component": "AlertActionButton",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["open", "bind:open"]
+	},
+	"alert-dialog": {
+		"title": "Alert Dialog",
+		"name": "AlertDialog",
+		"desc": "Alert Dialog displays critical information that requires user acknowledgment.",
+		"layout": {
+			"component": "AlertDialog",
+			"children": [
+				{
+					"component": "AlertDialogTrigger",
+					"children": []
+				},
+				{
+					"component": "AlertDialogContent",
+					"children": [
+						{
+							"component": "AlertDialogHeader",
+							"children": []
+						},
+						{
+							"component": "AlertDialogFooter",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["uiSize", "uiRounded"]
+	},
+	"breadcrumb": {
+		"title": "Breadcrumb",
+		"name": "Breadcrumb",
+		"desc": "Breadcrumb navigation helps users understand their current location within a website hierarchy.",
+		"layout": {
+			"component": "Breadcrumb",
+			"children": [
+				{
+					"component": "BreadcrumbItem",
+					"children": []
+				},
+				{
+					"component": "BreadcrumbSeparator",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["uiSize", "separator"]
+	},
+	"button": {
+		"title": "Button",
+		"name": "Button",
+		"desc": "Button component triggers actions when clicked.",
+		"layout": {
+			"component": "Button",
+			"children": []
+		},
+		"attributes": [
+			"label",
+			"href",
+			"uiSize",
+			"uiRounded",
+			"uiColor",
+			"uiVariant",
+			"uiTheme",
+			"themed",
+			"iconLeft",
+			"iconRight",
+			"iconRotation",
+			"iconLeftRotation",
+			"iconRightRotation",
+			"active",
+			"activeClass"
+		]
+	},
+	"icon-button": {
+		"title": "Icon Button",
+		"name": "IconButton",
+		"desc": "Icon Button displays only an icon without text label.",
+		"layout": {
+			"component": "IconButton",
+			"children": []
+		},
+		"attributes": ["icon", "uiSize", "uiRounded", "uiColor", "uiVariant", "iconRotation"]
+	},
+	"card": {
+		"title": "Card",
+		"name": "Card",
+		"desc": "Card component groups related content in a flexible container.",
+		"layout": {
+			"component": "Card",
+			"children": [
+				{
+					"component": "CardHeader",
+					"children": []
+				},
+				{
+					"component": "CardBody",
+					"children": []
+				},
+				{
+					"component": "CardFooter",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["themed", "theme", "class"]
+	},
+	"carousel": {
+		"title": "Carousel",
+		"name": "Carousel",
+		"desc": "Carousel displays a series of content in a rotating slideshow.",
+		"layout": {
+			"component": "Carousel",
+			"children": [
+				{
+					"component": "CarouselContent",
+					"children": [
+						{
+							"component": "CarouselItem",
+							"children": []
+						}
+					]
+				},
+				{
+					"component": "CarouselPrevious",
+					"children": []
+				},
+				{
+					"component": "CarouselNext",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["uiSize", "autoplay", "loop"]
+	},
+	"checkbox": {
+		"title": "Checkbox",
+		"name": "Checkbox",
+		"desc": "Checkbox allows users to select one or more options from a set.",
+		"layout": {
+			"component": "Checkbox",
+			"children": []
+		},
+		"attributes": ["checked", "uiSize", "uiColor", "disabled", "value"]
+	},
+	"chip": {
+		"title": "Chip",
+		"name": "Chip",
+		"desc": "Chip represents small blocks of information, typically used for tags or filters.",
+		"layout": {
+			"component": "Chip",
+			"children": []
+		},
+		"attributes": ["label", "uiSize", "uiColor", "uiVariant", "closable", "icon"]
+	},
+	"combobox": {
+		"title": "Combobox",
+		"name": "Combobox",
+		"desc": "Combobox combines a text input with a dropdown list for autocomplete functionality.",
+		"layout": {
+			"component": "Combobox",
+			"children": [
+				{
+					"component": "ComboboxTrigger",
+					"children": []
+				},
+				{
+					"component": "ComboboxContent",
+					"children": [
+						{
+							"component": "ComboboxItem",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["uiSize", "uiRounded", "placeholder", "searchable"]
+	},
+	"date-input": {
+		"title": "Date Input",
+		"name": "DateInput",
+		"desc": "Date Input provides a user interface for entering dates.",
+		"layout": {
+			"component": "DateInput",
+			"children": []
+		},
+		"attributes": ["value", "uiSize", "uiRounded", "format", "placeholder"]
+	},
+	"dialog": {
+		"title": "Dialog",
+		"name": "Dialog",
+		"desc": "Dialog displays content in a modal overlay that requires user interaction.",
+		"layout": {
+			"component": "Dialog",
+			"children": [
+				{
+					"component": "DialogHeader",
+					"children": []
+				},
+				{
+					"component": "DialogContent",
+					"children": []
+				},
+				{
+					"component": "DialogFooter",
+					"children": [
+						{
+							"component": "CloseDialogButton",
+							"children": []
+						},
+						{
+							"component": "ActionDialogButton",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["open", "bind:open", "backdrop", "class"]
+	},
+	"icon": {
+		"title": "Icon",
+		"name": "Icon",
+		"desc": "Icon component displays vector icons with consistent sizing and styling.",
+		"layout": {
+			"component": "Icon",
+			"children": []
+		},
+		"attributes": ["icon", "uiSize", "iconRotation", "class"]
+	},
+	"menu": {
+		"title": "Menu",
+		"name": "Menu",
+		"desc": "Menu displays a list of options when triggered, with support for submenus.",
+		"layout": {
+			"component": "Menu",
+			"children": [
+				{
+					"component": "MenuTrigger",
+					"children": []
+				},
+				{
+					"component": "MenuList",
+					"children": [
+						{
+							"component": "MenuItem",
+							"children": []
+						},
+						{
+							"component": "MenuSeparator",
+							"children": []
+						},
+						{
+							"component": "Submenu",
+							"children": [
+								{
+									"component": "SubmenuTrigger",
+									"children": []
+								},
+								{
+									"component": "SubmenuContent",
+									"children": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["uiSize", "placement"]
+	},
+	"meter": {
+		"title": "Meter",
+		"name": "Meter",
+		"desc": "Meter displays a scalar measurement within a known range.",
+		"layout": {
+			"component": "Meter",
+			"children": []
+		},
+		"attributes": ["value", "min", "max", "uiSize", "uiColor", "showValue"]
+	},
+	"navigation-menu": {
+		"title": "Navigation Menu",
+		"name": "NavigationMenu",
+		"desc": "Navigation Menu provides hierarchical navigation with dropdown support.",
+		"layout": {
+			"component": "NavigationMenu",
+			"children": [
+				{
+					"component": "NavigationMenuItem",
+					"children": [
+						{
+							"component": "NavigationMenuTrigger",
+							"children": []
+						},
+						{
+							"component": "NavigationMenuContent",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["orientation", "uiSize"]
+	},
+	"navigation-list": {
+		"title": "Navigation List",
+		"name": "NavigationList",
+		"desc": "Navigation List displays a vertical list of navigation items.",
+		"layout": {
+			"component": "NavigationList",
+			"children": [
+				{
+					"component": "NavigationListItem",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["orientation", "spacing"]
+	},
+	"pin-input": {
+		"title": "Pin Input",
+		"name": "PinInput",
+		"desc": "Pin Input allows users to enter a sequence of digits, typically for OTP or PIN codes.",
+		"layout": {
+			"component": "PinInput",
+			"children": [
+				{
+					"component": "PinInputField",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["length", "uiSize", "uiRounded", "type", "placeholder"]
+	},
+	"radio": {
+		"title": "Radio",
+		"name": "Radio",
+		"desc": "Radio buttons allow users to select one option from a set of mutually exclusive options.",
+		"layout": {
+			"component": "RadioGroup",
+			"children": [
+				{
+					"component": "Radio",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["value", "uiSize", "uiColor", "disabled", "name"]
+	},
+	"range-input": {
+		"title": "Range Input",
+		"name": "RangeInput",
+		"desc": "Range Input allows users to select a value within a specified range using a slider.",
+		"layout": {
+			"component": "RangeInput",
+			"children": []
+		},
+		"attributes": ["min", "max", "step", "value", "uiSize", "uiColor"]
+	},
+	"select": {
+		"title": "Select",
+		"name": "Select",
+		"desc": "Select provides a dropdown interface for choosing one option from a list.",
+		"layout": {
+			"component": "Select",
+			"children": [
+				{
+					"component": "SelectTrigger",
+					"children": []
+				},
+				{
+					"component": "SelectList",
+					"children": [
+						{
+							"component": "SelectOption",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["uiSize", "uiRounded", "placeholder", "disabled"]
+	},
+	"slider": {
+		"title": "Slider",
+		"name": "Slider",
+		"desc": "Slider allows users to select a value by dragging a handle along a track.",
+		"layout": {
+			"component": "Slider",
+			"children": []
+		},
+		"attributes": ["min", "max", "step", "value", "uiSize", "orientation"]
+	},
+	"snackbar": {
+		"title": "Snackbar",
+		"name": "Snackbar",
+		"desc": "Snackbar displays brief messages at the bottom of the screen.",
+		"layout": {
+			"component": "Snackbar",
+			"children": [
+				{
+					"component": "SnackbarAction",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["message", "duration", "action", "position"]
+	},
+	"switch": {
+		"title": "Switch",
+		"name": "Switch",
+		"desc": "Switch is a toggle control for binary choices between enabled and disabled states.",
+		"layout": {
+			"component": "Switch",
+			"children": []
+		},
+		"attributes": ["checked", "uiSize", "uiColor", "disabled"]
+	},
+	"table": {
+		"title": "Table",
+		"name": "Table",
+		"desc": "Table displays data in rows and columns with support for sorting and selection.",
+		"layout": {
+			"component": "Table",
+			"children": [
+				{
+					"component": "TableHeader",
+					"children": [
+						{
+							"component": "TableRow",
+							"children": [
+								{
+									"component": "TableHead",
+									"children": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"component": "TableBody",
+					"children": [
+						{
+							"component": "TableRow",
+							"children": [
+								{
+									"component": "TableCell",
+									"children": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["striped", "hover", "bordered", "uiSize"]
+	},
+	"tabs": {
+		"title": "Tabs",
+		"name": "Tabs",
+		"desc": "Tabs organize content into multiple panels, displaying one panel at a time.",
+		"layout": {
+			"component": "Tabs",
+			"children": [
+				{
+					"component": "TabBar",
+					"children": [
+						{
+							"component": "TabTrigger",
+							"children": []
+						}
+					]
+				},
+				{
+					"component": "TabContent",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["orientation", "uiSize", "variant"]
+	},
+	"text-input": {
+		"title": "Text Input",
+		"name": "TextInput",
+		"desc": "Text Input allows users to enter and edit text.",
+		"layout": {
+			"component": "TextInput",
+			"children": []
+		},
+		"attributes": ["value", "placeholder", "uiSize", "uiRounded", "type", "disabled", "readonly"]
+	},
+	"toast": {
+		"title": "Toast",
+		"name": "Toast",
+		"desc": "Toast displays temporary notification messages that appear and automatically disappear.",
+		"layout": {
+			"component": "Toast",
+			"children": [
+				{
+					"component": "ToastAction",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["message", "type", "duration", "position", "closable"]
+	},
+	"tooltip": {
+		"title": "Tooltip",
+		"name": "Tooltip",
+		"desc": "Tooltip displays helpful information when hovering over or focusing on an element.",
+		"layout": {
+			"component": "Tooltip",
+			"children": [
+				{
+					"component": "TooltipTrigger",
+					"children": []
+				},
+				{
+					"component": "TooltipContent",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["placement", "delay", "uiSize"]
+	},
+	"treeview": {
+		"title": "Tree View",
+		"name": "TreeView",
+		"desc": "Tree View displays hierarchical data in an expandable tree structure.",
+		"layout": {
+			"component": "TreeView",
+			"children": [
+				{
+					"component": "TreeItem",
+					"children": [
+						{
+							"component": "TreeItemContent",
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		"attributes": ["expandable", "selectable", "multiSelect"]
+	},
+	"window-splitter": {
+		"title": "Window Splitter",
+		"name": "WindowSplitter",
+		"desc": "Window Splitter allows users to resize adjacent panels by dragging a divider.",
+		"layout": {
+			"component": "WindowSplitter",
+			"children": [
+				{
+					"component": "SplitterPanel",
+					"children": []
+				},
+				{
+					"component": "SplitterResizer",
+					"children": []
+				}
+			]
+		},
+		"attributes": ["orientation", "defaultSize", "minSize", "maxSize"]
+	},
+	"primitives": {
+		"title": "Primitives",
+		"name": "Primitives",
+		"desc": "Basic building blocks and atomic components.",
+		"layout": {
+			"component": "Div",
+			"children": []
+		},
+		"attributes": ["uiSize", "uiRounded", "uiColor", "uiPadding", "uiMargin"]
+	}
+}
