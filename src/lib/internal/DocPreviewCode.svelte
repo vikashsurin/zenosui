@@ -37,33 +37,34 @@
 	{@html a11yLight}
 </svelte:head>
 
-<div>
+<div class="border border-gray-300 p-10">
 	<div>
 		<button class:dimmed={!isPreview} onclick={showPreview}>Preview</button>
 		<button class:dimmed={isPreview} onclick={showCode}>Code</button>
 	</div>
-
-	{#if isPreview}
-		<Component />
-	{:else}
-		<div class="flex justify-between">
-			<span></span>
-			<button class="opacity-50" onclick={handleClick}>
-				{#if isCopied}
-					<Tooltip content="Copied" uiRounded="sm" uiSize="xs">
-						<Check />
-					</Tooltip>
-				{:else}
-					<Tooltip content="Copy to clipboard" uiRounded="sm" uiSize="xs">
-						<Clipboard />
-					</Tooltip>
-				{/if}
-			</button>
-		</div>
-		<Highlight language={typescript} {code} let:highlighted>
-			<LineNumbers {highlighted} hideBorder />
-		</Highlight>
-	{/if}
+	<div class="">
+		{#if isPreview}
+			<Component />
+		{:else}
+			<div class="flex justify-between">
+				<span></span>
+				<button class="opacity-50" onclick={handleClick}>
+					{#if isCopied}
+						<Tooltip content="Copied" uiRounded="sm" uiSize="xs">
+							<Check />
+						</Tooltip>
+					{:else}
+						<Tooltip content="Copy to clipboard" uiRounded="sm" uiSize="xs">
+							<Clipboard />
+						</Tooltip>
+					{/if}
+				</button>
+			</div>
+			<Highlight language={typescript} {code} let:highlighted>
+				<LineNumbers {highlighted} hideBorder />
+			</Highlight>
+		{/if}
+	</div>
 </div>
 
 <style>

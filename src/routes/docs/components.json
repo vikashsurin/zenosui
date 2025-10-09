@@ -1,7 +1,7 @@
 {
 	"accordion": {
-		"title": "Accordion",
 		"name": "Accordion",
+		"title": "Accordion",
 		"desc": "Accordion is a component that is used to display a list of items that can be expanded or collapsed.",
 		"layout": {
 			"component": "Accordion",
@@ -21,7 +21,20 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "uiRounded"]
+		"props": ["uiSize", "uiRounded"],
+		"otherProps": [
+			{
+				"name": "Accordion Trigger Props",
+				"props": [
+					"iconLeft",
+					"iconRight",
+					"iconRightOpen",
+					"iconRightClose",
+					"iconLeftRotation",
+					"iconRightRotation"
+				]
+			}
+		]
 	},
 	"alert": {
 		"title": "Alert",
@@ -54,7 +67,7 @@
 				}
 			]
 		},
-		"attributes": ["open", "bind:open"]
+		"props": ["open", "bind:open"]
 	},
 	"alert-dialog": {
 		"title": "Alert Dialog",
@@ -82,7 +95,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "uiRounded"]
+		"props": ["uiSize", "uiRounded"]
 	},
 	"breadcrumb": {
 		"title": "Breadcrumb",
@@ -101,7 +114,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "separator"]
+		"props": ["uiSize", "separator"]
 	},
 	"button": {
 		"title": "Button",
@@ -111,7 +124,7 @@
 			"component": "Button",
 			"children": []
 		},
-		"attributes": [
+		"props": [
 			"label",
 			"href",
 			"uiSize",
@@ -137,7 +150,7 @@
 			"component": "IconButton",
 			"children": []
 		},
-		"attributes": ["icon", "uiSize", "uiRounded", "uiColor", "uiVariant", "iconRotation"]
+		"props": ["icon", "uiSize", "uiRounded", "uiColor", "uiVariant", "iconRotation"]
 	},
 	"card": {
 		"title": "Card",
@@ -160,7 +173,7 @@
 				}
 			]
 		},
-		"attributes": ["themed", "theme", "class"]
+		"props": ["themed", "theme", "class"]
 	},
 	"carousel": {
 		"title": "Carousel",
@@ -188,7 +201,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "autoplay", "loop"]
+		"props": ["uiSize", "autoplay", "loop"]
 	},
 	"checkbox": {
 		"title": "Checkbox",
@@ -198,7 +211,7 @@
 			"component": "Checkbox",
 			"children": []
 		},
-		"attributes": ["checked", "uiSize", "uiColor", "disabled", "value"]
+		"props": ["checked", "uiSize", "uiColor", "disabled", "value"]
 	},
 	"chip": {
 		"title": "Chip",
@@ -208,7 +221,7 @@
 			"component": "Chip",
 			"children": []
 		},
-		"attributes": ["label", "uiSize", "uiColor", "uiVariant", "closable", "icon"]
+		"props": ["label", "uiSize", "uiColor", "uiVariant", "closable", "icon"]
 	},
 	"combobox": {
 		"title": "Combobox",
@@ -232,7 +245,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "uiRounded", "placeholder", "searchable"]
+		"props": ["uiSize", "uiRounded", "placeholder", "searchable"]
 	},
 	"date-input": {
 		"title": "Date Input",
@@ -242,7 +255,7 @@
 			"component": "DateInput",
 			"children": []
 		},
-		"attributes": ["value", "uiSize", "uiRounded", "format", "placeholder"]
+		"props": ["value", "uiSize", "uiRounded", "format", "placeholder"]
 	},
 	"dialog": {
 		"title": "Dialog",
@@ -274,7 +287,7 @@
 				}
 			]
 		},
-		"attributes": ["open", "bind:open", "backdrop", "class"]
+		"props": ["open", "bind:open", "backdrop", "class"]
 	},
 	"icon": {
 		"title": "Icon",
@@ -284,7 +297,7 @@
 			"component": "Icon",
 			"children": []
 		},
-		"attributes": ["icon", "uiSize", "iconRotation", "class"]
+		"props": ["icon", "uiSize", "iconRotation", "class"]
 	},
 	"menu": {
 		"title": "Menu",
@@ -325,7 +338,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "placement"]
+		"props": ["uiSize", "placement"]
 	},
 	"meter": {
 		"title": "Meter",
@@ -335,7 +348,7 @@
 			"component": "Meter",
 			"children": []
 		},
-		"attributes": ["value", "min", "max", "uiSize", "uiColor", "showValue"]
+		"props": ["value", "min", "max", "uiSize", "uiColor", "showValue"]
 	},
 	"navigation-menu": {
 		"title": "Navigation Menu",
@@ -359,7 +372,7 @@
 				}
 			]
 		},
-		"attributes": ["orientation", "uiSize"]
+		"props": ["orientation", "uiSize"]
 	},
 	"navigation-list": {
 		"title": "Navigation List",
@@ -374,7 +387,7 @@
 				}
 			]
 		},
-		"attributes": ["orientation", "spacing"]
+		"props": ["orientation", "spacing"]
 	},
 	"pin-input": {
 		"title": "Pin Input",
@@ -389,7 +402,7 @@
 				}
 			]
 		},
-		"attributes": ["length", "uiSize", "uiRounded", "type", "placeholder"]
+		"props": ["length", "uiSize", "uiRounded", "type", "placeholder"]
 	},
 	"radio": {
 		"title": "Radio",
@@ -404,7 +417,7 @@
 				}
 			]
 		},
-		"attributes": ["value", "uiSize", "uiColor", "disabled", "name"]
+		"props": ["value", "uiSize", "uiColor", "disabled", "name"]
 	},
 	"range-input": {
 		"title": "Range Input",
@@ -414,7 +427,7 @@
 			"component": "RangeInput",
 			"children": []
 		},
-		"attributes": ["min", "max", "step", "value", "uiSize", "uiColor"]
+		"props": ["min", "max", "step", "value", "uiSize", "uiColor"]
 	},
 	"select": {
 		"title": "Select",
@@ -438,7 +451,7 @@
 				}
 			]
 		},
-		"attributes": ["uiSize", "uiRounded", "placeholder", "disabled"]
+		"props": ["uiSize", "uiRounded", "placeholder", "disabled"]
 	},
 	"slider": {
 		"title": "Slider",
@@ -448,7 +461,7 @@
 			"component": "Slider",
 			"children": []
 		},
-		"attributes": ["min", "max", "step", "value", "uiSize", "orientation"]
+		"props": ["min", "max", "step", "value", "uiSize", "orientation"]
 	},
 	"snackbar": {
 		"title": "Snackbar",
@@ -463,7 +476,7 @@
 				}
 			]
 		},
-		"attributes": ["message", "duration", "action", "position"]
+		"props": ["message", "duration", "action", "position"]
 	},
 	"switch": {
 		"title": "Switch",
@@ -473,7 +486,7 @@
 			"component": "Switch",
 			"children": []
 		},
-		"attributes": ["checked", "uiSize", "uiColor", "disabled"]
+		"props": ["checked", "uiSize", "uiColor", "disabled"]
 	},
 	"table": {
 		"title": "Table",
@@ -512,7 +525,7 @@
 				}
 			]
 		},
-		"attributes": ["striped", "hover", "bordered", "uiSize"]
+		"props": ["striped", "hover", "bordered", "uiSize"]
 	},
 	"tabs": {
 		"title": "Tabs",
@@ -536,7 +549,7 @@
 				}
 			]
 		},
-		"attributes": ["orientation", "uiSize", "variant"]
+		"props": ["orientation", "uiSize", "variant"]
 	},
 	"text-input": {
 		"title": "Text Input",
@@ -546,7 +559,7 @@
 			"component": "TextInput",
 			"children": []
 		},
-		"attributes": ["value", "placeholder", "uiSize", "uiRounded", "type", "disabled", "readonly"]
+		"props": ["value", "placeholder", "uiSize", "uiRounded", "type", "disabled", "readonly"]
 	},
 	"toast": {
 		"title": "Toast",
@@ -561,7 +574,7 @@
 				}
 			]
 		},
-		"attributes": ["message", "type", "duration", "position", "closable"]
+		"props": ["message", "type", "duration", "position", "closable"]
 	},
 	"tooltip": {
 		"title": "Tooltip",
@@ -580,7 +593,7 @@
 				}
 			]
 		},
-		"attributes": ["placement", "delay", "uiSize"]
+		"props": ["placement", "delay", "uiSize"]
 	},
 	"treeview": {
 		"title": "Tree View",
@@ -600,7 +613,7 @@
 				}
 			]
 		},
-		"attributes": ["expandable", "selectable", "multiSelect"]
+		"props": ["expandable", "selectable", "multiSelect"]
 	},
 	"window-splitter": {
 		"title": "Window Splitter",
@@ -619,7 +632,7 @@
 				}
 			]
 		},
-		"attributes": ["orientation", "defaultSize", "minSize", "maxSize"]
+		"props": ["orientation", "defaultSize", "minSize", "maxSize"]
 	},
 	"primitives": {
 		"title": "Primitives",
@@ -629,6 +642,6 @@
 			"component": "Div",
 			"children": []
 		},
-		"attributes": ["uiSize", "uiRounded", "uiColor", "uiPadding", "uiMargin"]
+		"props": ["uiSize", "uiRounded", "uiColor", "uiPadding", "uiMargin"]
 	}
 }

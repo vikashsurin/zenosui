@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { attributes } = $props();
+	let { props, otherProps } = $props();
 	const attr = {
 		uiSize: 'xs | sm | md | lg | xl | 2xl | 3xl | 4xl | 5xl | 6xl | 7xl | 8xl',
 		uiRounded: 'none | xs | sm | md | lg | xl | 2xl | 3xl | 4xl | 5xl | 6xl | 7xl | 8xl',
@@ -7,34 +7,55 @@
 		uiText: 'xs | sm | md | lg | xl | 2xl | 3xl | 4xl | 5xl | 6xl | 7xl | 8xl',
 		uiPadding: 'none | xs | sm | md | lg | xl | 2xl | 3xl | 4xl | 5xl | 6xl | 7xl | 8xl',
 		uiVariant: 'solid | outline | dashed | filled | ghost | link',
-		uiBg: 'primary | secondary | accent | info | success | warning | error | neutral'
+		uiBg: 'primary | secondary | accent | info | success | warning | error | neutral',
+		iconLeft: 'Svelte Component',
+		iconRight: 'Svelte Component',
+		iconRightOpen: 'Svelte Component',
+		iconRightClose: 'Svelte Component',
+		iconLeftRotation: 'Rotation value',
+		iconRightRotation: 'Rotation value'
 	};
 
-	$inspect({ attributes });
+	$inspect(otherProps);
 </script>
 
-<div>
-	<h2>Attributes</h2>
-</div>
+<h2 class="mt-20 text-2xl font-semibold">Props</h2>
 
-<table class="border text-left">
-	<thead class="border">
+<table class="w-full text-left text-sm">
+	<thead class="border-b">
 		<tr>
-			<th>Attribute</th>
-			<th>values</th>
+			<th class="border-b p-2 font-medium">Property</th>
+			<th class="p-2 font-medium">values</th>
 		</tr>
 	</thead>
-	<tbody class="border">
-		{#each attributes as attribute}
-			<tr>
-				<th>{attribute}</th>
-				<td>{attr[attribute]}</td>
+	<tbody class="">
+		{#each props as attribute}
+			<tr class="border-b">
+				<th class="p-2 font-semibold">{attribute}</th>
+				<td class="p-2">{attr[attribute]}</td>
 			</tr>
 		{/each}
 	</tbody>
-	<tfoot>
-		<tr>
-			<td> All the props from div</td>
-		</tr>
-	</tfoot>
 </table>
+
+{#if otherProps}
+	{#each otherProps as attribute}
+		<h2 class="mt-20 text-2xl font-semibold">{attribute.name}</h2>
+		<table class="w-full text-left text-sm">
+			<thead class="border-b">
+				<tr>
+					<th class="border-b p-2 font-medium">Property</th>
+					<th class="p-2 font-medium">values</th>
+				</tr>
+			</thead>
+			<tbody class="">
+				{#each attribute.props as val}
+					<tr class="border-b">
+						<th class="p-2">{val}</th>
+						<td class="p-2">{attr[val]}</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	{/each}
+{/if}
