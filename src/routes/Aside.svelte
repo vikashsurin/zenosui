@@ -4,7 +4,8 @@
 	import { page } from '$app/state';
 	const asideNavData = [
 		{ label: 'home', href: '/' },
-		{ label: 'pallete', href: '/docs/pallete' }
+		{ label: 'pallete', href: '/docs/pallete' },
+		{ label: 'Component Properties', href: '/docs/component-properties' }
 	];
 
 	const path = $derived.by(() => page.url.pathname.split('/').pop());
