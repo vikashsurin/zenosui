@@ -1,14 +1,22 @@
 <script lang="ts">
-	import { Chip } from '$lib/ui/index.js';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import ChipDemo from './ChipDemo.svelte';
+	import source from './ChipDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const chip = components.chip;
 </script>
 
-<div>
-	<Chip
-		label="Orange"
-		uiRounded="full"
-		uiSize="xs"
-		iconRight={BadgeCheck}
-		onclick={() => console.log('helo')}
-	/>
-</div>
+<DocHeader title={chip.title} description={chip.desc} />
+
+<PreviewCode {source} Component={ChipDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={chip.layout} />
+
+<DocAttributes props={chip.props} otherProps={chip.otherProps} />

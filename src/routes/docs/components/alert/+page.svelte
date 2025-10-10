@@ -1,24 +1,14 @@
 <script lang="ts">
-	import {
-		AlertActionButton,
-		AlertContent,
-		Alert,
-		AlertFooter,
-		AlertHeader,
-		AlertTitle
-	} from '$lib/ui/index.js';
-
-	let open = $state(true);
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import AlertDemo from './AlertDemo.svelte';
+	import source from './AlertDemo.svelte?raw';
+	import components from '../../components.json' with { type: 'json' };
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 </script>
 
-<div>
-	<Alert bind:open>
-		<AlertHeader>
-			<AlertTitle>Title</AlertTitle>
-		</AlertHeader>
-		<AlertContent>hello world</AlertContent>
-		<AlertFooter>
-			<AlertActionButton>OK</AlertActionButton>
-		</AlertFooter>
-	</Alert>
-</div>
+<DocHeader title={components.alert.title} description={components.alert.desc} />
+
+<DocPreviewCode {source} Component={AlertDemo} />
+
+<DocAttributes props={components.alert.props} />

@@ -1,27 +1,22 @@
 <script lang="ts">
-	import { Carousel } from '$lib/ui/index.js';
+	import CarouselDemo from './CarouselDemo.svelte';
+	import source from './CarouselDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	const data = [
-		{
-			id: 1,
-			href: 'https://images.pexels.com/photos/414781/pexels-photo-414781.jpeg'
-		},
-		{
-			id: 2,
-			href: 'https://images.pexels.com/photos/243757/pexels-photo-243757.jpeg'
-		},
-		{
-			id: 3,
-			href: 'https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg'
-		},
-		{
-			id: 4,
-			href: 'https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg'
-		}
-	];
+	import components from '../../components.json' with { type: 'json' };
+
+	const carousel = components.carousel;
 </script>
 
-<div>
-	<h1>Carousel</h1>
-	<Carousel uiSize="sm" uiRounded="none" {data}></Carousel>
-</div>
+<DocHeader title={carousel.title} description={carousel.desc} />
+
+<PreviewCode {source} Component={CarouselDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={carousel.layout} />
+
+<DocAttributes props={carousel.props} otherProps={carousel.otherProps} />

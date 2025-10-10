@@ -16,5 +16,5 @@
 </script>
 
 <svelte:element this={as} class={finalClass}>
-	{@render children()}
+	{@render children?.()}
 </svelte:element>

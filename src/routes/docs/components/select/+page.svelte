@@ -1,14 +1,22 @@
 <script lang="ts">
-	import { Select, SelectList, SelectOption, SelectTrigger } from '$lib/ui/index.js';
+	import SelectDemo from './SelectDemo.svelte';
+	import source from './SelectDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const select = components.select;
 </script>
 
-<div>
-	<Select uiSize="sm" uiRounded="xs">
-		<SelectTrigger label="Select" />
-		<SelectList>
-			<SelectOption value="option1">Option this is long</SelectOption>
-			<SelectOption value="option2">Option 2</SelectOption>
-			<SelectOption value="option3">Option 3</SelectOption>
-		</SelectList>
-	</Select>
-</div>
+<DocHeader title={select.title} description={select.desc} />
+
+<PreviewCode {source} Component={SelectDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={select.layout} />
+
+<DocAttributes props={select.props} otherProps={select.otherProps} />

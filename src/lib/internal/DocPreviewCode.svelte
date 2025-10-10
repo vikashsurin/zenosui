@@ -37,15 +37,18 @@
 	{@html a11yLight}
 </svelte:head>
 
-<div class="border border-gray-300 p-10">
+<div class="">
 	<div>
 		<button class:dimmed={!isPreview} onclick={showPreview}>Preview</button>
 		<button class:dimmed={isPreview} onclick={showCode}>Code</button>
 	</div>
-	<div class="">
-		{#if isPreview}
+
+	{#if isPreview}
+		<div class="flex min-h-96 items-center justify-center border border-gray-300 p-8">
 			<Component />
-		{:else}
+		</div>
+	{:else}
+		<div class="border border-gray-300 p-8">
 			<div class="flex justify-between">
 				<span></span>
 				<button class="opacity-50" onclick={handleClick}>
@@ -63,8 +66,8 @@
 			<Highlight language={typescript} {code} let:highlighted>
 				<LineNumbers {highlighted} hideBorder />
 			</Highlight>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </div>
 
 <style>

@@ -11,5 +11,6 @@ export const properties = {
     iconRightOpen: 'Svelte Component',
     iconRightClose: 'Svelte Component',
     iconLeftRotation: 'Rotation value',
-    iconRightRotation: 'Rotation value'
+    iconRightRotation: 'Rotation value',
+    bind: '$state()'
 }

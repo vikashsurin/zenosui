@@ -1,36 +1,22 @@
 <script lang="ts">
-	import Input from '$lib/ui/atoms/Input.svelte';
-	import Button from '$lib/ui/button/Button.svelte';
-	import { Card, CardHeader, CardBody, CardFooter, Icon } from '$lib/ui/index.js';
+	import CardDemo from './CardDemo.svelte';
+	import source from './CardDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const card = components.card;
 </script>
 
-<div>
-	<h1>Card</h1>
+<DocHeader title={card.title} description={card.desc} />
 
-	<Card>
-		<CardHeader class="p-6">
-			<h1>Login to your account</h1>
-			<p>Enter your email below to login</p>
-		</CardHeader>
-		<CardBody class="flex flex-col gap-4 p-6">
-			<label
-				>Email
-				<Input class="block w-full" type="email" placeholder="Email" />
-			</label>
-			<label>
-				<span class="flex justify-between">
-					<span>Password</span>
-					<a href="#" class="text-sm">forgot your password?</a>
-				</span>
-				<Input class="block w-full" type="password" placeholder="Password" />
-			</label>
-		</CardBody>
-		<CardFooter class="flex flex-col gap-4 p-6">
-			<Button class="w-full" label="Login"></Button>
-			<Button themed={false} uiFill="outline" class="w-full" label="Login with Google"></Button>
-		</CardFooter>
-	</Card>
-</div>
+<PreviewCode {source} Component={CardDemo} />
 
-<style>
-</style>
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={card.layout} />
+
+<DocAttributes props={card.props} otherProps={card.otherProps} />

@@ -67,7 +67,7 @@
 				}
 			]
 		},
-		"props": ["open", "bind:open"]
+		"props": ["bind"]
 	},
 	"alert-dialog": {
 		"title": "Alert Dialog",

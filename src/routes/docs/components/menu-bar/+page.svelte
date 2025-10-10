@@ -1,99 +1,22 @@
 <script lang="ts">
-	import {
-		Menu,
-		Menubar,
-		MenuItem,
-		Submenu,
-		MenuList,
-		MenuSeparator,
-		MenuTrigger,
-		MenuRadioGroup
-	} from '$lib/ui/index.js';
-	import SubmenuContent from '$lib/ui/menu/SubmenuContent.svelte';
-	import SubmenuTrigger from '$lib/ui/menu/SubmenuTrigger.svelte';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
-	import ChevronRight from '@lucide/svelte/icons/chevron-right';
+	import MenuBarDemo from './MenuBarDemo.svelte';
+	import source from './MenuBarDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	let bookmarks = $state(false);
-	let urls = $state(false);
-	let profileRadioValue = $state('benoit');
+	import components from '../../components.json' with { type: 'json' };
+
+	const menuBar = components['menu-bar'];
 </script>
 
-<div>
-	<h1>Menu bar</h1>
-	<Menubar uiSize="xs" class="border-1">
-		<Menu>
-			<MenuTrigger label="File" />
-			<MenuList>
-				<MenuItem shortcut="⌘N">one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>Settings</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
+<DocHeader title={menuBar.title} description={menuBar.desc} />
 
-						<Submenu>
-							<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-							<SubmenuContent>
-								<MenuItem>Settings</MenuItem>
-								<MenuItem>Apps</MenuItem>
-								<MenuItem>Display</MenuItem>
-							</SubmenuContent>
-						</Submenu>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger label="Edit" />
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger label="View" />
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger label="Profiles" />
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-	</Menubar>
-</div>
+<PreviewCode {source} Component={MenuBarDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={menuBar.layout} />
+
+<DocAttributes props={menuBar.props} otherProps={menuBar.otherProps} />

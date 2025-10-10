@@ -1,17 +1,22 @@
 <script lang="ts">
-	import { Meter, MeterIndicator, MeterTrack } from '$lib/ui/index.js';
+	import MeterDemo from './MeterDemo.svelte';
+	import source from './MeterDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const meter = components.meter;
 </script>
 
-<div>
-	<h1>Meter</h1>
-	<Meter class="w-50">
-		<div class="mb-2 flex items-center justify-between">
-			<label for="meter">Meter</label>
-			<label for="meter">25%</label>
-		</div>
-		<MeterTrack id="meter" uiSize="xs" uiRounded="full">
-			<MeterIndicator uiRounded="none" min="0" max="120" value="70" />
-			<MeterIndicator uiRounded="none" min="0" max="120" value="10" class="bg-amber-700" />
-		</MeterTrack>
-	</Meter>
-</div>
+<DocHeader title={meter.title} description={meter.desc} />
+
+<PreviewCode {source} Component={MeterDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={meter.layout} />
+
+<DocAttributes props={meter.props} otherProps={meter.otherProps} />

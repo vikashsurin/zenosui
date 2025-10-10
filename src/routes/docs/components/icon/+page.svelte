@@ -1,31 +1,22 @@
 <script lang="ts">
-	import { Icon } from '$lib/ui/index.js';
+	import IconDemo from './IconDemo.svelte';
+	import source from './IconDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import components from '../../components.json' with { type: 'json' };
+
+	const icon = components.icon;
 </script>
 
-<div>
-	<h1>Size</h1>
-	<div class="flex items-center gap-2">
-		<Icon icon={BadgeCheck} uiSize="xs" />
-		<Icon icon={BadgeCheck} uiSize="sm" />
-		<Icon icon={BadgeCheck} uiSize="md" />
-		<Icon icon={BadgeCheck} uiSize="lg" />
-		<Icon icon={BadgeCheck} uiSize="xl" />
-		<Icon icon={BadgeCheck} uiSize="2xl" />
-		<Icon icon={BadgeCheck} uiSize="3xl" />
-		<Icon icon={BadgeCheck} uiSize="4xl" />
-		<Icon icon={BadgeCheck} uiSize="5xl" />
-		<Icon icon={BadgeCheck} uiSize="6xl" />
-		<Icon icon={BadgeCheck} uiSize="7xl" />
-		<Icon icon={BadgeCheck} uiSize="8xl" />
-	</div>
+<DocHeader title={icon.title} description={icon.desc} />
 
-	<h2>Color</h2>
-	<div class="flex items-center gap-2">
-		<Icon icon={BadgeCheck} uiSize="lg" class="text-red-500" />
-		<Icon icon={BadgeCheck} uiSize="lg" class="text-green-500" />
-		<Icon icon={BadgeCheck} uiSize="lg" class="text-blue-500" />
-		<Icon icon={BadgeCheck} uiSize="lg" class="text-purple-500" />
-	</div>
-</div>
+<PreviewCode {source} Component={IconDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={icon.layout} />
+
+<DocAttributes props={icon.props} otherProps={icon.otherProps} />

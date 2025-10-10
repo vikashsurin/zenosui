@@ -1,0 +1,99 @@
+<script lang="ts">
+	import {
+		Menu,
+		Menubar,
+		MenuItem,
+		Submenu,
+		MenuList,
+		MenuSeparator,
+		MenuTrigger,
+		MenuRadioGroup
+	} from '$lib/ui/index.js';
+	import SubmenuContent from '$lib/ui/menu/SubmenuContent.svelte';
+	import SubmenuTrigger from '$lib/ui/menu/SubmenuTrigger.svelte';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import ChevronRight from '@lucide/svelte/icons/chevron-right';
+
+	let bookmarks = $state(false);
+	let urls = $state(false);
+	let profileRadioValue = $state('benoit');
+</script>
+
+<div>
+	<h1>Menu bar</h1>
+	<Menubar uiSize="xs" class="border-1">
+		<Menu>
+			<MenuTrigger label="File" />
+			<MenuList>
+				<MenuItem shortcut="⌘N">one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>Settings</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+
+						<Submenu>
+							<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+							<SubmenuContent>
+								<MenuItem>Settings</MenuItem>
+								<MenuItem>Apps</MenuItem>
+								<MenuItem>Display</MenuItem>
+							</SubmenuContent>
+						</Submenu>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+		<Menu>
+			<MenuTrigger label="Edit" />
+			<MenuList>
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+		<Menu>
+			<MenuTrigger label="View" />
+			<MenuList>
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+		<Menu>
+			<MenuTrigger label="Profiles" />
+			<MenuList>
+				<MenuItem>one</MenuItem>
+				<MenuItem>two</MenuItem>
+				<MenuItem>three</MenuItem>
+				<Submenu>
+					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
+					<SubmenuContent>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>Profile</MenuItem>
+					</SubmenuContent>
+				</Submenu>
+			</MenuList>
+		</Menu>
+	</Menubar>
+</div>

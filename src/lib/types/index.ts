@@ -105,7 +105,9 @@ export interface ListItemProps extends UiProps, IconProps, Type.HTMLAttributes<H
 
 export interface HrProps extends UiProps, Type.HTMLAttributes<HTMLHRElement> {}
 
-export interface HeadingProps extends UiProps, Type.HTMLAttributes<HTMLHeadingElement> {}
+export interface HeadingProps extends UiProps, Type.HTMLAttributes<HTMLHeadingElement> {
+	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
 
 export interface LinkProps extends UiProps, Type.HTMLAttributes<HTMLAnchorElement> {
 	href?: string;
@@ -161,6 +163,7 @@ export interface TextInputProps extends UiProps, IconProps, Type.HTMLInputAttrib
 
 export interface AlertDialogProps extends UiProps, Type.HTMLInputAttributes {
 	showModal?: boolean;
+	open?: boolean;
 }
 
 export interface AlertHeaderProps extends UiProps, Type.HTMLAttributes<HTMLElement> {}

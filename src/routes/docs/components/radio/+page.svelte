@@ -1,21 +1,22 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { Radio, RadioItem, RadioGroup } from '$lib/ui/index.js';
+	import RadioDemo from './RadioDemo.svelte';
+	import source from './RadioDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const radio = components.radio;
 </script>
 
-<div>
-	<h1 class="text-lg">Radio</h1>
-	<form action="?/submit" method="POST">
-		<RadioGroup uiSize="xl">
-			<RadioItem>
-				<Radio name="fruit" value="apple" class="bg-red-500 " />
-				Apples
-			</RadioItem>
-			<RadioItem>
-				<Radio name="fruit" value="orange" class="bg-green-500" />
-				orange
-			</RadioItem>
-		</RadioGroup>
-		<button class="block bg-blue-500 p-2 px-3 text-white">submit</button>
-	</form>
-</div>
+<DocHeader title={radio.title} description={radio.desc} />
+
+<PreviewCode {source} Component={RadioDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={radio.layout} />
+
+<DocAttributes props={radio.props} otherProps={radio.otherProps} />

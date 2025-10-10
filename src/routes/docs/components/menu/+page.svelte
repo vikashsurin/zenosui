@@ -1,38 +1,22 @@
 <script lang="ts">
-	import {
-		Menu,
-		MenuItemCustom,
-		MenuList,
-		MenuItem,
-		MenuTrigger,
-		MenuSeparator,
-		Submenu,
-		SubmenuTrigger,
-		SubmenuContent
-	} from '$lib/ui/index.js';
-	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import Trash2 from '@lucide/svelte/icons/trash-2';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
-	let checked = $state(true);
+	import MenuDemo from './MenuDemo.svelte';
+	import source from './MenuDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const menu = components.menu;
 </script>
 
-<div>
-	<h2 class="py-5 text-2xl">Submenu</h2>
-	<Menu>
-		<MenuTrigger>open</MenuTrigger>
-		<MenuList>
-			<MenuItem iconLeft={BadgeCheck}>one</MenuItem>
-			<MenuItem>one</MenuItem>
-			<MenuItem>two</MenuItem>
-			<MenuItem>three</MenuItem>
-			<Submenu>
-				<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-				<SubmenuContent>
-					<MenuItem>Profile</MenuItem>
-					<MenuItem>Profile</MenuItem>
-					<MenuItem>Profile</MenuItem>
-				</SubmenuContent>
-			</Submenu>
-		</MenuList>
-	</Menu>
-</div>
+<DocHeader title={menu.title} description={menu.desc} />
+
+<PreviewCode {source} Component={MenuDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={menu.layout} />
+
+<DocAttributes props={menu.props} otherProps={menu.otherProps} />

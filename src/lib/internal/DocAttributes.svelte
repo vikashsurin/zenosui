@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { properties } from './componentProperties.js';
-	let { props, otherProps } = $props();
+	let {
+		props,
+		otherProps
+	}: { props?: string[]; otherProps?: { name: string; props: string[] }[] } = $props();
 
 	$inspect(otherProps);
 </script>

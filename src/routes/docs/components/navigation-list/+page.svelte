@@ -1,19 +1,22 @@
 <script lang="ts">
-	import { Navigation, NavigationList, NavigationListItem } from '$lib/ui/index.js';
+	import NavigationListDemo from './NavigationListDemo.svelte';
+	import source from './NavigationListDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../components.json' with { type: 'json' };
+
+	const navigationList = components['navigation-list'];
 </script>
 
-<div>
-	<Navigation>
-		<NavigationList class="w-[200px]">
-			<NavigationListItem href="/docs/navigation-list" label="Item 1" />
-			<NavigationListItem href="/docs/navigation-list" label="Item 1" />
-			<NavigationListItem label="Item 1">
-				<NavigationList>
-					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
-					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
-					<NavigationListItem href="https://google.com" label="Item 1" />
-				</NavigationList></NavigationListItem
-			>
-		</NavigationList>
-	</Navigation>
-</div>
+<DocHeader title={navigationList.title} description={navigationList.desc} />
+
+<PreviewCode {source} Component={NavigationListDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={navigationList.layout} />
+
+<DocAttributes props={navigationList.props} otherProps={navigationList.otherProps} />

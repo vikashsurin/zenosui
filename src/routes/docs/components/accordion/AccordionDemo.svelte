@@ -5,7 +5,7 @@
 	import X from '@lucide/svelte/icons/x';
 </script>
 
-<div>
+<div class="w-1/2">
 	<Accordion uiSize="md">
 		<AccordionItem>
 			<AccordionTrigger iconRightOpen={X} iconRightClose={Plus} class="flex justify-start"

@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { PinInputBox, PinInputControl, PinInputSeparator } from '$lib/ui/index.js';
+	import PinInputDemo from './PinInputDemo.svelte';
+	import source from './PinInputDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	let value = $state(['', '', '', '', '', '', '', '']);
-	const pin = $derived.by(() => value.join(''));
+	import components from '../../components.json' with { type: 'json' };
+
+	const pinInput = components['pin-input'];
 </script>
 
-<div>
-	<h1>Pin Input</h1>
-	<form action="POST">
-		<PinInputControl class="gap-2" uiSize="md" uiRounded="sm">
-			{#each [0, 1, 2, 3] as i}
-				<PinInputBox bind:value={value[i]} />
-			{/each}
-			<PinInputSeparator />
-			{#each [4, 5, 6, 7] as i}
-				<PinInputBox bind:value={value[i]} />
-			{/each}
-		</PinInputControl>
-		<button>submit</button>
-	</form>
-</div>
+<DocHeader title={pinInput.title} description={pinInput.desc} />
+
+<PreviewCode {source} Component={PinInputDemo} />
+
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={pinInput.layout} />
+
+<DocAttributes props={pinInput.props} otherProps={pinInput.otherProps} />
