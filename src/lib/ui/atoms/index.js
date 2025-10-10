@@ -1,0 +1,6 @@
+export { default as H1 } from './headings/H1.svelte'
+export { default as H2 } from './headings/H2.svelte'
+export { default as H3 } from './headings/H3.svelte'
+export { default as H4 } from './headings/H4.svelte'
+export { default as H5 } from './headings/H5.svelte'
+export { default as H6 } from './headings/H6.svelte'

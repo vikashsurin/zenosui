@@ -16,6 +16,17 @@ export type sizeTokens =
 	| '7xl'
 	| '8xl';
 
+export type roundTokens =
+	| 'none'
+	| 'xs'
+	| 'sm'
+	| 'md'
+	| 'lg'
+	| 'xl'
+	| '2xl'
+	| '3xl'
+	| '4xl'
+	| 'full';
 export type colorTokens =
 	| 'none'
 	| 'primary'
@@ -33,13 +44,13 @@ export type positionTokens =
 	| 'bottom-right'
 	| 'center';
 
-export type variants = 'solid' | 'filled' | 'outlined' | 'ghost' | 'link' | 'dashed';
+export type variants = 'solid' | 'filled' | 'outlined' | 'dashed' | 'ghost' | 'link';
 
 export type ColorVariant = colorTokens;
 export type FillVariant = 'none' | 'filled' | 'outline' | 'ghost';
 export type SizeVariant = sizeTokens;
 export type PaddingVariant = 'none' | sizeTokens;
-export type RoundedVariant = 'none' | sizeTokens | 'full';
+export type RoundedVariant = roundTokens;
 export type BorderVariant = 'none' | sizeTokens;
 export type PositionVariant = positionTokens;
 export type Variant = variants;
@@ -105,9 +116,7 @@ export interface ListItemProps extends UiProps, IconProps, Type.HTMLAttributes<H
 
 export interface HrProps extends UiProps, Type.HTMLAttributes<HTMLHRElement> {}
 
-export interface HeadingProps extends UiProps, Type.HTMLAttributes<HTMLHeadingElement> {
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-}
+export interface HeadingProps extends UiProps, Type.HTMLAttributes<HTMLHeadingElement> {}
 
 export interface LinkProps extends UiProps, Type.HTMLAttributes<HTMLAnchorElement> {
 	href?: string;

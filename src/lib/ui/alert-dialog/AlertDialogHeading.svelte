@@ -2,7 +2,7 @@
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/index.js';
 	import clsx from 'clsx';
-	// import { Heading } from '$lib/ui/index.js';
+	import { H2 } from '$lib/ui/index.js';
 
 	let { children, class: _class } = $props();
 
@@ -20,7 +20,7 @@
 		})
 	);
 </script>
-<!-- 
-<Heading class={finalClasses}>
+
+<H2 class={finalClasses}>
 	{@render children()}
-</Heading> -->
+</H2>

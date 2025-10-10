@@ -2,7 +2,8 @@
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 	import IconButton from '../button/IconButton.svelte';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import Heading from '../atoms/Heading.svelte';
+
+	import { H2 } from '$lib/index.js';
 	import { tv } from 'tailwind-variants';
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
 	import clsx from 'clsx';
@@ -186,10 +187,10 @@
 			onclick={goToPrevMonth}
 		/>
 
-		<Heading {uiSize}>
+		<H2 {uiSize}>
 			{monthNames[currentDate.getMonth()]}
 			{currentDate.getFullYear()}
-		</Heading>
+		</H2>
 
 		<IconButton
 			themed={false}

@@ -11,7 +11,8 @@
 
 <div class="grid h-screen grid-cols-12">
 	<Aside />
-	<div class="col-span-8 p-8">
+
+	<div class="col-span-8 col-start-3 p-8">
 		{@render children()}
 
 		<DocFooter />

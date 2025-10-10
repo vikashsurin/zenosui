@@ -58,7 +58,7 @@ Button
 
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: `button ${base} ${btn_themes[uiTheme]}`,
+		base: `button ${base} ${btn_themes[uiTheme]} h-max w-max`,
 		variants: {
 			uiSize: TEXT_SIZE,
 			uiVariant: btn_variants,
