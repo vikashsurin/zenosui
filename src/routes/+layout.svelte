@@ -8,6 +8,7 @@
 	import { docStore } from '$lib/internal/docStore.svelte.js';
 	import components from '$lib/internal/components.json' with { type: 'json' };
 	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import { tick } from 'svelte';
 
 	let { children } = $props();
 	$effect(() => {
@@ -40,16 +41,49 @@
 	$effect(() => {
 		initDoc();
 	});
+
+	let main: HTMLElement;
+	let links;
+
+	let items = $state<{ id: string; text: string }[]>([]);
+	function getLinks() {
+		links = main.querySelectorAll('[data-heading]');
+		items = Array.from(links).map((el) => {
+			if (!el.id) {
+				el.id = el.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+			}
+			return {
+				id: el.id,
+				text: el.textContent
+			};
+		});
+		console.log({ links });
+	}
+
+	$inspect({ items });
+
+	$effect(() => {
+		tick().then(() => {
+			getLinks();
+		});
+	});
 </script>
 
 <div class="grid h-screen grid-cols-12">
 	<Aside />
 
-	<div class="col-span-8 col-start-3 p-8">
+	<div bind:this={main} class="col-span-8 col-start-3 p-8">
 		<DocHeader title={component?.title} description={component?.desc} {next} {previous} />
 		{@render children()}
 
 		<DocFooter {next} {previous} />
 	</div>
-	<div class="col-span-2 bg-gray-100"></div>
+	<div class="  col-span-2 min-h-dvh bg-gray-300">
+		<div class="fixed w-full">
+			<h2>on this page</h2>
+			{#each items as item}
+				<a href={`#${item?.id}`} class="block p-2 hover:bg-gray-200">{item?.text}</a>
+			{/each}
+		</div>
+	</div>
 </div>

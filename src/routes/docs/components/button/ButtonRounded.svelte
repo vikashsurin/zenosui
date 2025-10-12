@@ -3,7 +3,6 @@
 </script>
 
 <div class="">
-	<H2>Roundness</H2>
 	<div class="flex gap-2 py-4">
 		<Button uiSize="md" uiRounded="xs" label="Round xs" />
 		<Button uiSize="md" uiRounded="sm" label="Round sm" />

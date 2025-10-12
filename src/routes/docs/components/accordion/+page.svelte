@@ -13,7 +13,7 @@
 
 <PreviewCode {source} Component={AccordionDemo} />
 
-<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+<h2 data-heading="true" class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
 <DocLayoutBox layout={accordion.layout} />
 

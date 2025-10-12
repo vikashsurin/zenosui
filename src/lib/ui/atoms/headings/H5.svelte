@@ -13,6 +13,6 @@
 	let finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<h1 data-heading class={finalClass} {...props}>
+<h5 data-heading class={finalClass} {...props}>
 	{@render children?.()}
-</h1>
+</h5>

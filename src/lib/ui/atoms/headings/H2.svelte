@@ -3,6 +3,7 @@
 	import clsx from 'clsx';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import type { HeadingProps } from '$lib/types/index.ts';
+	import { tick } from 'svelte';
 
 	let { children, uiSize, class: _class, ...props }: HeadingProps = $props();
 	let style = tv({
@@ -13,9 +14,20 @@
 		defaultVariants: {}
 	});
 
+	let heading: HTMLHeadingElement;
+	let id = $state<string>('');
+	function generateID() {
+		return heading.innerText;
+	}
+
+	$effect(() => {
+		tick().then(() => {
+			generateID();
+		});
+	});
 	let finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
-<h1 data-heading class={finalClass} {...props}>
+<h2 bind:this={heading} data-heading="true" {id} class={finalClass} {...props}>
 	{@render children?.()}
-</h1>
+</h2>

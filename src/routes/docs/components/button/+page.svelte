@@ -22,7 +22,7 @@
 
 	import btnColors from './ButtonColors.svelte?raw';
 	import ButtonColors from './ButtonColors.svelte';
-	import { onMount } from 'svelte';
+
 	const button = components.button;
 </script>
 

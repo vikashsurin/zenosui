@@ -3,7 +3,6 @@
 </script>
 
 <div class="">
-	<H2>Size</H2>
 	<div class="grid gap-2 py-4">
 		<Button uiSize="xs" label="Button xs" />
 		<Button uiSize="sm" label="Button sm" />
