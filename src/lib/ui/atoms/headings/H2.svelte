@@ -16,6 +16,6 @@
 	let finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
-<h1 class={finalClass} {...props}>
+<h1 data-heading class={finalClass} {...props}>
 	{@render children?.()}
 </h1>

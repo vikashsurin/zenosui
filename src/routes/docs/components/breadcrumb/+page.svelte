@@ -6,12 +6,10 @@
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	import components from '../../components.json' with { type: 'json' };
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
 	const breadcrumb = components.breadcrumb;
 </script>
-
-<DocHeader title={breadcrumb.title} description={breadcrumb.desc} />
 
 <PreviewCode {source} Component={BreadcrumbDemo} />
 

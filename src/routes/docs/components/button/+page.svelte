@@ -5,7 +5,7 @@
 	import DocHeader from '$lib/internal/DocHeader.svelte';
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
-	import components from '../../components.json' with { type: 'json' };
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 	import { H1, H2 } from '$lib/index.js';
 	import Button from '$lib/ui/button/Button.svelte';
 	import buttonSizeSrc from './ButtonSize.svelte?raw';
@@ -24,11 +24,7 @@
 	import ButtonColors from './ButtonColors.svelte';
 	import { onMount } from 'svelte';
 	const button = components.button;
-
-	
 </script>
-
-<DocHeader title={button.title} description={button.desc} />
 
 <PreviewCode {source} Component={ButtonDemo} />
 

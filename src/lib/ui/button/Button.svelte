@@ -106,12 +106,12 @@ Button
 	{#if iconLeft}
 		<Icon {uiSize} icon={iconLeft} iconRotation={iconLeftRotation} />
 	{/if}
-	{#if label}
+	{#if children}
+		{@render children?.()}
+	{:else if label}
 		<span id="btn-label">
 			{label}
 		</span>
-	{:else}
-		{@render children?.()}
 	{/if}
 	{#if iconRight}
 		<Icon {uiSize} icon={iconRight} iconRotation={iconRightRotation} />

@@ -6,12 +6,10 @@
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	import components from '../../components.json' with { type: 'json' };
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
 	const card = components.card;
 </script>
-
-<DocHeader title={card.title} description={card.desc} />
 
 <PreviewCode {source} Component={CardDemo} />
 

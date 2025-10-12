@@ -6,12 +6,10 @@
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	import components from '../../components.json' with { type: 'json' };
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
 	const combobox = components.combobox;
 </script>
-
-<DocHeader title={combobox.title} description={combobox.desc} />
 
 <PreviewCode {source} Component={ComboboxDemo} />
 

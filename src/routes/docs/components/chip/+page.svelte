@@ -6,12 +6,10 @@
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
-	import components from '../../components.json' with { type: 'json' };
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
 	const chip = components.chip;
 </script>
-
-<DocHeader title={chip.title} description={chip.desc} />
 
 <PreviewCode {source} Component={ChipDemo} />
 

@@ -12,7 +12,7 @@
 			reprehenderit, possimus doloremque modi labore corporis facilis. Illo perferendis, harum eius
 			tempora iusto architecto omnis repellat mollitia itaque!
 		</p>
-		<Button uiVariant="primary" iconRight={ChevronRight} uiRounded="none" uiSize="sm" class=""
+		<Button uiColor="primary" iconRight={ChevronRight} uiRounded="none" uiSize="sm" class=""
 			>Submit</Button
 		>
 	</div>
