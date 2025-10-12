@@ -63,9 +63,10 @@
 	$inspect({ items });
 
 	$effect(() => {
-		tick().then(() => {
-			getLinks();
-		});
+		if (page.url)
+			tick().then(() => {
+				getLinks();
+			});
 	});
 </script>
 
