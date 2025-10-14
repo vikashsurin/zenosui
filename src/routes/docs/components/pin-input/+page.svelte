@@ -11,12 +11,10 @@
 	const pinInput = components['pin-input'];
 </script>
 
-<DocHeader title={pinInput.title} description={pinInput.desc} />
-
 <PreviewCode {source} Component={PinInputDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
 <DocLayoutBox layout={pinInput.layout} />
 
-<DocAttributes props={pinInput.props} otherProps={pinInput.otherProps} />
+<DocAttributes props={pinInput.props} />

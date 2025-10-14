@@ -5,10 +5,9 @@
 	const pin = $derived.by(() => value.join(''));
 </script>
 
-<div>
-	<h1>Pin Input</h1>
+<div class=" w-[500px] items-center flex justify-center bg-amber-500">
 	<form action="POST">
-		<PinInputControl class="gap-2" uiSize="md" uiRounded="sm">
+		<PinInputControl class="flex gap-2 bg-green-300" uiSize="md" uiRounded="sm">
 			{#each [0, 1, 2, 3] as i}
 				<PinInputBox bind:value={value[i]} />
 			{/each}
@@ -17,6 +16,5 @@
 				<PinInputBox bind:value={value[i]} />
 			{/each}
 		</PinInputControl>
-		<button>submit</button>
 	</form>
 </div>

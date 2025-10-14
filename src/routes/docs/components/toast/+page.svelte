@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { toastManager } from '$lib/index.js';
+	import ToastDemo from './ToastDemo.svelte';
+	import source from './ToastDemo.svelte?raw';
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
 
-	import type { Toast } from '$lib/ui/toast/toastManager.svelte.js';
-	let count = 0;
-	function addToast() {
-		const toast: Toast = {
-			message: 'newtoast this is a long text  and this is even longer..' + count,
-			duration: 5000,
-			styleClass:
-				'bg-rose-100 text-rose-600  text-sm w-[200px] border border-rose-400/20 shadow-inherit shadow-lg'
-		};
-		toastManager.createToast(toast).position('top-right').maxToasts(3);
-		count++;
-	}
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+
+	const toast = components.toast;
 </script>
 
-<div></div>
+<DocPreviewCode {source} Component={ToastDemo} />
 
-<button onclick={addToast} class="bg-amber-500 p-2">create Toast</button>
+<div class=" mt-12 border-l-6 border-amber-500 bg-amber-200 p-8">
+	<span>
+		<strong>Important:</strong>
+		<i>
+			Unlike any other components, and just like snackbar, the way to create a Toast is to use the
+			toastManager, which is a function which accepts a toast object and some parameters. Check
+			the source code to see how to use it.
+		</i>
+	</span>
+</div>

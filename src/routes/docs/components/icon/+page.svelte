@@ -7,16 +7,19 @@
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+	import IconColor from './IconColor.svelte';
+	import IconSize from './IconSize.svelte';
 
 	const icon = components.icon;
 </script>
 
-<DocHeader title={icon.title} description={icon.desc} />
-
 <PreviewCode {source} Component={IconDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
-
 <DocLayoutBox layout={icon.layout} />
 
-<DocAttributes props={icon.props} otherProps={icon.otherProps} />
+<IconSize />
+
+<IconColor />
+
+<DocAttributes props={icon.props} />

@@ -1,29 +1,25 @@
 <script lang="ts">
-	import { snackbarManager } from '$lib/index.js';
+	import SnackbarDemo from './SnackbarDemo.svelte';
+	import source from './SnackbarDemo.svelte?raw';
 
-	import type { Snackbar } from '$lib/ui/snackbar/types.ts';
-	let count = 0;
-	function addSnackbar() {
-		const snackbar: Snackbar = {
-			message: 'just a snackbar' + count,
-			duration: 5000,
-			styleClass:
-				'bg-rose-100 text-rose-600  text-sm w-[300px] border border-rose-400/20 shadow-inherit shadow-lg',
-			action: {
-				name: 'UNDO',
-				callback: undo
-			}
-		};
-		snackbarManager.createSnackbar(snackbar).position('top-right').maxSnackbars(3);
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
-		count++;
-	}
-
-	function undo() {
-		console.log('Action triggered');
-	}
+	const snackbar = components.snackbar;
 </script>
 
-<div></div>
+<PreviewCode {source} Component={SnackbarDemo} />
 
-<button onclick={addSnackbar} class="bg-amber-500 p-2">create Snackbar</button>
+<div class=" mt-12 border-l-6 border-amber-500 bg-amber-200 p-8">
+	<span>
+		<strong>Important:</strong>
+		<i>
+			Unlike any other components, the way to create a snackbar is to use the snackbarManager, which
+			is a function which accepts a snackbar object and some parameters. Check the source code to
+			see how to use it.
+		</i>
+	</span>
+</div>

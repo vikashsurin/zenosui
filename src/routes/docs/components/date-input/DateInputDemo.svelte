@@ -4,5 +4,6 @@
 
 <div>
 	<!-- <Calender /> -->
-	<DateInput uiSize="md"  uiRounded='xl'/>
+	<DateInput uiSize="md" uiRounded="xl" />
+	<!-- <Calender /> -->
 </div>

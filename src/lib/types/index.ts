@@ -185,6 +185,7 @@ export interface AlertContentProps extends UiProps, Type.HTMLAttributes<HTMLDivE
 
 export interface DialogProps extends UiProps, Type.HTMLAttributes<HTMLDialogElement> {
 	backdrop?: boolean;
+	open?: boolean;
 }
 
 export interface DialogContentProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
@@ -254,7 +255,9 @@ export interface NavigationMenuGroupProps extends UiProps, Type.HTMLAttributes<H
 export interface NavigationMenuItemProps
 	extends UiProps,
 		IconProps,
-		Type.HTMLAttributes<HTMLAnchorElement> {}
+		Type.HTMLAttributes<HTMLAnchorElement> {
+	href?: string;
+}
 
 export interface NavigationMenuBarProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 
@@ -323,9 +326,9 @@ export interface TabContentProps extends DivProps {}
 export interface MeterProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface MeterTrackProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 export interface MeterIndicatorProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
-	min?: number;
-	max?: number;
-	value?: number;
+	min?: string | number;
+	max?: string | number;
+	value?: string | number;
 }
 export interface WindowSplitterProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
 	initialSplitPosition?: number; // Initial split position in percentage

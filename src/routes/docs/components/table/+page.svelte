@@ -1,64 +1,16 @@
 <script lang="ts">
-	import {
-		Table,
-		TableBody,
-		TableCaption,
-		TableCell,
-		TableHead,
-		TableHeader,
-		TableRow,
-		TableFooter
-	} from '$lib/ui/index.js';
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import TableDemo from './TableDemo.svelte';
+	import source from './TableDemo.svelte?raw';
+
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	const table = components['table'];
 </script>
 
-<div>
-	<h1>Table</h1>
-	<div class="w-max border border-gray-200 bg-gray-100 p-4">
-		<Table uiSize="md">
-			<TableHeader>
-				<TableRow>
-					<TableHead>First Name</TableHead>
-					<TableHead>Last Name</TableHead>
-					<TableHead>Username</TableHead>
-					<TableHead>Mobile Number</TableHead>
-				</TableRow>
-			</TableHeader>
+<DocPreviewCode {source} Component={TableDemo} />
 
-			<TableBody>
-				<TableRow>
-					<TableHead>John</TableHead>
-					<TableCell>Doe</TableCell>
-					<TableCell>@johndoe</TableCell>
-					<TableCell>490233378245</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableHead>John</TableHead>
-					<TableCell>Doe</TableCell>
-					<TableCell>@johndoe</TableCell>
-					<TableCell>490233378245</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableHead>John</TableHead>
-					<TableCell>Doe</TableCell>
-					<TableCell>@johndoe</TableCell>
-					<TableCell>490233378245</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableHead>John</TableHead>
-					<TableCell>Doe</TableCell>
-					<TableCell>@johndoe</TableCell>
-					<TableCell>490233378245</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableHead>John</TableHead>
-					<TableCell>Doe</TableCell>
-					<TableCell>@johndoe</TableCell>
-					<TableCell>490233378245</TableCell>
-				</TableRow>
-			</TableBody>
-			<!-- <TableFooter>
-			<TableCaption>Footer</TableCaption>
-		</TableFooter> -->
-		</Table>
-	</div>
-</div>
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={table.layout} />

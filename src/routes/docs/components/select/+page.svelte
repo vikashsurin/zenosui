@@ -11,7 +11,6 @@
 	const select = components.select;
 </script>
 
-<DocHeader title={select.title} description={select.desc} />
 
 <PreviewCode {source} Component={SelectDemo} />
 
@@ -19,4 +18,4 @@
 
 <DocLayoutBox layout={select.layout} />
 
-<DocAttributes props={select.props} otherProps={select.otherProps} />
+<DocAttributes props={select.props}  />

@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { Tooltip } from '$lib/ui/index.js';
+	import TooltipDemo from './TooltipDemo.svelte';
+	import source from './TooltipDemo.svelte?raw';
+
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import { H2 } from '$lib/index.js';
+
+	const tooltip = components['tooltip'];
 </script>
 
-<div class="p-10">
-	<h1>Tooltip</h1>
-	<p>
-		This is a tooltip. It is used to display information about an element when the user hovers over
-		it.
+<DocPreviewCode {source} Component={TooltipDemo} />
 
-		<Tooltip
-			content="How are you doing?"
-			uiSize="xs"
-			uiRounded="md"
-			class="border border-amber-600/60 bg-amber-200 text-amber-600 shadow-amber-500/20"
-		>
-			<i class="bg-orange-300">hover me</i>
-		</Tooltip>
-	</p>
-</div>
+<H2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</H2>
+
+<DocLayoutBox layout={tooltip.layout} />
+
+<DocAttributes props={tooltip.props} />

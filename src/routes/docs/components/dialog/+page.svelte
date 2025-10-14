@@ -11,8 +11,6 @@
 	const dialog = components.dialog;
 </script>
 
-<DocHeader title={dialog.title} description={dialog.desc} />
-
 <PreviewCode {source} Component={DialogDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>

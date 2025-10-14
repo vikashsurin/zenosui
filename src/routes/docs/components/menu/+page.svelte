@@ -11,12 +11,10 @@
 	const menu = components.menu;
 </script>
 
-<DocHeader title={menu.title} description={menu.desc} />
-
 <PreviewCode {source} Component={MenuDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
 <DocLayoutBox layout={menu.layout} />
 
-<DocAttributes props={menu.props} otherProps={menu.otherProps} />
+<DocAttributes props={menu.props} />

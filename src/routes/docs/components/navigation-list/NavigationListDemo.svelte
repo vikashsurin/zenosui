@@ -12,8 +12,8 @@
 					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
 					<NavigationListItem href="/docs/navigation-list" label="Item 1" />
 					<NavigationListItem href="https://google.com" label="Item 1" />
-				</NavigationList></NavigationListItem
-			>
+				</NavigationList>
+			</NavigationListItem>
 		</NavigationList>
 	</Navigation>
 </div>

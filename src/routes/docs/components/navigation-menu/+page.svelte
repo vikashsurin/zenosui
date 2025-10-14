@@ -1,40 +1,21 @@
 <script lang="ts">
-	import {
-		NavigationMenu,
-		NavigationMenuBar,
-		NavigationMenuItem,
-		NavigationMenuList,
-		NavigationMenuTrigger
-	} from '$lib/ui/index.js';
+	import NavigationMenuDemo from './NavigationMenuDemo.svelte';
+
+	import source from './NavigationMenuDemo.svelte?raw';
+	import PreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocHeader from '$lib/internal/DocHeader.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+
+	const navigationMenu = components['navigation-menu'];
 </script>
 
-<div>
-	<h1>Navigation Menu</h1>
-	<NavigationMenuBar>
-		<NavigationMenu uiRounded="xs" uiText="sm">
-			<NavigationMenuTrigger class="bg-red-400">okay</NavigationMenuTrigger>
-			<NavigationMenuList class="w-100 grid-cols-2 bg-gray-200 p-2">
-				<NavigationMenuItem href="/" class="w-[200px] bg-red-500 hover:bg-red-600">
-					<div>
-						<h2 class="text-lg">Title</h2>
-						<p class="text-nowrap">This is a description.</p>
-					</div>
-				</NavigationMenuItem>
+<PreviewCode {source} Component={NavigationMenuDemo} />
 
-				<NavigationMenuItem class="">
-					<div>
-						<h2 class="text-lg">Title</h2>
-						<p>This is a description.</p>
-					</div>
-				</NavigationMenuItem>
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
-				<NavigationMenuItem class="">
-					<div>
-						<h2 class="text-lg">Title</h2>
-						<p>This is a description.</p>
-					</div>
-				</NavigationMenuItem>
-			</NavigationMenuList>
-		</NavigationMenu>
-	</NavigationMenuBar>
-</div>
+<DocLayoutBox layout={navigationMenu.layout} />
+
+<DocAttributes props={navigationMenu.props} />

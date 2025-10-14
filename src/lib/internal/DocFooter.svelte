@@ -12,7 +12,7 @@
 	}
 </script>
 
-<div class="flex justify-between">
+<div class="flex justify-between py-12">
 	{#if previous !== undefined}
 		<button
 			class="flex items-center gap-2 bg-gray-100 px-3 py-2"

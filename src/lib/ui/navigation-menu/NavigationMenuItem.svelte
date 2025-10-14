@@ -13,6 +13,7 @@
 		iconRight,
 		uiIconSize,
 		uiText,
+		href,
 		children,
 		class: _class,
 		...props

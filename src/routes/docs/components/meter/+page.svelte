@@ -11,12 +11,10 @@
 	const meter = components.meter;
 </script>
 
-<DocHeader title={meter.title} description={meter.desc} />
-
 <PreviewCode {source} Component={MeterDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
 <DocLayoutBox layout={meter.layout} />
 
-<DocAttributes props={meter.props} otherProps={meter.otherProps} />
+<DocAttributes props={meter.props} />

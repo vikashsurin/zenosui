@@ -12,10 +12,10 @@
 	}
 </script>
 
-<div class="p-4">
+<div class="mb-8">
 	<div class="flex justify-between">
-		<H1 class="text-3xl font-bold">{title}</H1>
-		<div>
+		<H1 class="bg-amber-300 px-2  pt-12 text-3xl font-bold">{title}</H1>
+		<div class="pt-12">
 			{#if previous === undefined}
 				<div></div>
 			{:else}
@@ -33,5 +33,5 @@
 			{/if}
 		</div>
 	</div>
-	<p class="py-4">{description}</p>
+	<p class="py-4 opacity-70">{description}</p>
 </div>

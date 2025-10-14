@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { Tabs, TabBar, TabTrigger, TabContent } from '$lib/ui/index.js';
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
+
+	import TabsDemo from './TabsDemo.svelte';
+	import source from './TabsDemo.svelte?raw';
+
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+
+	const tabs = components['tabs'];
 </script>
 
-<div>
-	<h1>Tabs</h1>
+<DocPreviewCode {source} Component={TabsDemo} />
 
-	<Tabs>
-		<TabBar>
-			<TabTrigger id="tab1">Tab 1</TabTrigger>
-			<TabTrigger id="tab2">Tab 2</TabTrigger>
-			<TabTrigger id="tab3">Tab 3</TabTrigger>
-		</TabBar>
-		<TabContent id="tab1">TabContent 1</TabContent>
-		<TabContent id="tab2">TabContent 2</TabContent>
-		<TabContent id="tab3">TabContent 3</TabContent>
-	</Tabs>
-</div>
+<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+
+<DocLayoutBox layout={tabs.layout} />

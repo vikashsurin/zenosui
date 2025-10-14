@@ -11,6 +11,7 @@
 		open: false
 	});
 	function handleClick(e: MouseEvent) {
+		console.log('clicked');
 		e.preventDefault();
 		inputState.open = !inputState.open;
 	}

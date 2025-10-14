@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import TooltipPopup from './TooltipPopup.svelte';
+	import TooltipPopup from './_TooltipPopup.svelte';
 	import type { TooltipProps } from '$lib/types/index.js';
 
 	let { children, uiRounded, content, uiSize, class: _class, ...props }: TooltipProps = $props();

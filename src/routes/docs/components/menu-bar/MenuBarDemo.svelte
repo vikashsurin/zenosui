@@ -23,7 +23,7 @@
 	<h1>Menu bar</h1>
 	<Menubar uiSize="xs" class="border-1">
 		<Menu>
-			<MenuTrigger label="File" />
+			<MenuTrigger>File</MenuTrigger>
 			<MenuList>
 				<MenuItem shortcut="⌘N">one</MenuItem>
 				<MenuItem>two</MenuItem>
@@ -48,7 +48,7 @@
 			</MenuList>
 		</Menu>
 		<Menu>
-			<MenuTrigger label="Edit" />
+			<MenuTrigger>Edit</MenuTrigger>
 			<MenuList>
 				<MenuItem>one</MenuItem>
 				<MenuItem>two</MenuItem>
@@ -64,7 +64,7 @@
 			</MenuList>
 		</Menu>
 		<Menu>
-			<MenuTrigger label="View" />
+			<MenuTrigger>View</MenuTrigger>
 			<MenuList>
 				<MenuItem>one</MenuItem>
 				<MenuItem>two</MenuItem>
@@ -80,7 +80,7 @@
 			</MenuList>
 		</Menu>
 		<Menu>
-			<MenuTrigger label="Profiles" />
+			<MenuTrigger>Profiles</MenuTrigger>
 			<MenuList>
 				<MenuItem>one</MenuItem>
 				<MenuItem>two</MenuItem>

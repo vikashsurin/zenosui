@@ -340,13 +340,69 @@
 		},
 		"props": ["uiSize", "placement"]
 	},
+	"menu-bar": {
+		"title": "Menu bar",
+		"name": "Menu bar",
+		"desc": "Menu displays a list of options when triggered, with support for submenus.",
+		"layout": {
+			"component": "Menubar",
+			"children": [
+				{
+					"component": "Menu",
+					"children": [
+						{
+							"component": "MenuTrigger",
+							"children": []
+						},
+						{
+							"component": "MenuList",
+							"children": [
+								{
+									"component": "MenuItem",
+									"children": []
+								},
+								{
+									"component": "MenuSeparator",
+									"children": []
+								},
+								{
+									"component": "Submenu",
+									"children": [
+										{
+											"component": "SubmenuTrigger",
+											"children": []
+										},
+										{
+											"component": "SubmenuContent",
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"props": ["uiSize", "placement"]
+	},
 	"meter": {
 		"title": "Meter",
 		"name": "Meter",
 		"desc": "Meter displays a scalar measurement within a known range.",
 		"layout": {
 			"component": "Meter",
-			"children": []
+			"children": [
+				{
+					"component": "MeterTrack",
+					"children": [
+						{
+							"component": "MeterIndicator",
+							"children": []
+						}
+					]
+				}
+			]
 		},
 		"props": ["value", "min", "max", "uiSize", "uiColor", "showValue"]
 	},
@@ -355,18 +411,28 @@
 		"name": "NavigationMenu",
 		"desc": "Navigation Menu provides hierarchical navigation with dropdown support.",
 		"layout": {
-			"component": "NavigationMenu",
+			"component": "NavigationMenuBar",
 			"children": [
 				{
-					"component": "NavigationMenuItem",
+					"component": "NavigationMenu",
 					"children": [
 						{
 							"component": "NavigationMenuTrigger",
 							"children": []
 						},
 						{
-							"component": "NavigationMenuContent",
-							"children": []
+							"component": "NavigationMenuList",
+							"children": [
+								{
+									"component": "NavigationMenuItem",
+									"children": [
+										{
+											"component": "NavigationMenuGroup",
+											"children": []
+										}
+									]
+								}
+							]
 						}
 					]
 				}
@@ -379,11 +445,16 @@
 		"name": "NavigationList",
 		"desc": "Navigation List displays a vertical list of navigation items.",
 		"layout": {
-			"component": "NavigationList",
+			"component": "Navigation",
 			"children": [
 				{
-					"component": "NavigationListItem",
-					"children": []
+					"component": "NavigationList",
+					"children": [
+						{
+							"component": "NavigationListItem",
+							"children": []
+						}
+					]
 				}
 			]
 		},
@@ -467,15 +538,7 @@
 		"title": "Snackbar",
 		"name": "Snackbar",
 		"desc": "Snackbar displays brief messages at the bottom of the screen.",
-		"layout": {
-			"component": "Snackbar",
-			"children": [
-				{
-					"component": "SnackbarAction",
-					"children": []
-				}
-			]
-		},
+		"layout": {},
 		"props": ["message", "duration", "action", "position"]
 	},
 	"switch": {
@@ -511,6 +574,20 @@
 				},
 				{
 					"component": "TableBody",
+					"children": [
+						{
+							"component": "TableRow",
+							"children": [
+								{
+									"component": "TableCell",
+									"children": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"component": "TableFooter",
 					"children": [
 						{
 							"component": "TableRow",
@@ -582,18 +659,9 @@
 		"desc": "Tooltip displays helpful information when hovering over or focusing on an element.",
 		"layout": {
 			"component": "Tooltip",
-			"children": [
-				{
-					"component": "TooltipTrigger",
-					"children": []
-				},
-				{
-					"component": "TooltipContent",
-					"children": []
-				}
-			]
+			"children": []
 		},
-		"props": ["placement", "delay", "uiSize"]
+		"props": ["placement", "content", "delay", "uiSize"]
 	},
 	"treeview": {
 		"title": "Tree View",

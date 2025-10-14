@@ -5,8 +5,9 @@
 	import { tv } from 'tailwind-variants';
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
 	import clsx from 'clsx';
+	import { H2 } from '../atoms/index.js';
 
-	let currentDate = $state(new Date(2025, 8, 12)); // September 12, 2025
+	let currentDate = $state(new Date()); // September 12, 2025
 	let selectedDate = $state<Date | null | undefined>(null);
 
 	let { uiSize = 'sm', date: _date = $bindable() } = $props();

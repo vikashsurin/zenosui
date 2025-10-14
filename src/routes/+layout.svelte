@@ -70,21 +70,25 @@
 	});
 </script>
 
-<div class="grid h-screen grid-cols-12">
-	<Aside />
+<div class="grid h-screen grid-cols-[15%_70%_15%]">
+	<div class="fixed top-0 bottom-0 left-0 col-start-1 w-[15%]">
+		<Aside />
+	</div>
 
-	<div bind:this={main} class="col-span-8 col-start-3 p-8">
+	<div class="fixed top-0 right-0 bottom-0 col-start-3 w-[15%] bg-gray-100">
+		<h2 class="p-3 text-base font-medium">On this page</h2>
+		{#each items as item}
+			<a href={`#${item?.id}`} class="block px-4 py-0.5 text-sm text-gray-600 hover:text-gray-800"
+				>{item?.text}</a
+			>
+		{/each}
+	</div>
+
+	<div bind:this={main} class="col-start-2 px-8">
 		<DocHeader title={component?.title} description={component?.desc} {next} {previous} />
+
 		{@render children()}
 
 		<DocFooter {next} {previous} />
-	</div>
-	<div class="  col-span-2 min-h-dvh bg-gray-300">
-		<div class="fixed w-full">
-			<h2>on this page</h2>
-			{#each items as item}
-				<a href={`#${item?.id}`} class="block p-2 hover:bg-gray-200">{item?.text}</a>
-			{/each}
-		</div>
 	</div>
 </div>

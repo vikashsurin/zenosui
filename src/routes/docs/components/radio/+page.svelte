@@ -11,12 +11,10 @@
 	const radio = components.radio;
 </script>
 
-<DocHeader title={radio.title} description={radio.desc} />
-
 <PreviewCode {source} Component={RadioDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
 
 <DocLayoutBox layout={radio.layout} />
 
-<DocAttributes props={radio.props} otherProps={radio.otherProps} />
+<DocAttributes props={radio.props} />

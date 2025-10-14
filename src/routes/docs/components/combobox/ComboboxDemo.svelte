@@ -49,6 +49,5 @@
 				</ComboboxList>
 			</ComboboxPopover>
 		</Combobox>
-		<button type="submit">Submit</button>
 	</form>
 </div>

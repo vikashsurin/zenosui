@@ -11,8 +11,6 @@
 	const dateInput = components['date-input'];
 </script>
 
-<DocHeader title={dateInput.title} description={dateInput.desc} />
-
 <PreviewCode {source} Component={DateInputDemo} />
 
 <h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>

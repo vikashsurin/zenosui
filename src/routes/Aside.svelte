@@ -11,8 +11,8 @@
 	const path = $derived.by(() => page.url.pathname.split('/').pop());
 </script>
 
-<Navigation class=" fixed h-dvh overflow-y-scroll ">
-	<NavigationList class="mb-10 w-[250px] overflow-y-auto">
+<Navigation class="  h-dvh w-full  overflow-y-scroll ">
+	<NavigationList class="mb-10">
 		{#each asideNavData as item}
 			<NavigationListItem href={item.href} label={item.label} />
 		{/each}
