@@ -59,15 +59,11 @@
 	setContext('subMenuContext', submenu);
 
 	function handleOpenSubmenu() {
-		// if (hasSubMenu) {
 		submenu.open = true;
-		// }
 	}
 
 	function handleCloseSubmenu() {
-		// if (hasSubMenu) {
 		submenu.open = false;
-		// }
 	}
 	let active = $state(false);
 
@@ -298,7 +294,7 @@
 		{:else if iconRight}
 			<Icon icon={iconRight} {uiSize} class="menuItems-center ml-auto flex" />
 		{:else}
-			<span class={`${finalIconPlaceholder} ml-auto`}></span>
+			<span style="width:1em; height:1em, margin-left:auto;"></span>
 		{/if}
 	</svelte:element>
 {/snippet}

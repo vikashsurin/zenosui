@@ -15,7 +15,7 @@
 		<thead class="border-b">
 			<tr>
 				<th class="border-b p-2 font-medium">Property</th>
-				<th class="p-2 font-medium">values</th>
+				<th class="p-2 font-medium">Type</th>
 			</tr>
 		</thead>
 		<tbody class="">
@@ -36,7 +36,7 @@
 			<thead class="border-b">
 				<tr>
 					<th class="border-b p-2 font-medium">Property</th>
-					<th class="p-2 font-medium">values</th>
+					<th class="p-2 font-medium">Type</th>
 				</tr>
 			</thead>
 			<tbody class="">

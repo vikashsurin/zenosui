@@ -473,7 +473,7 @@
 				}
 			]
 		},
-		"props": ["length", "uiSize", "uiRounded", "type", "placeholder"]
+		"props": ["length", "uiSize", "uiRounded", "type", "placeholder", "onlyNumbers"]
 	},
 	"radio": {
 		"title": "Radio",

@@ -15,7 +15,6 @@
 		document.documentElement.setAttribute('data-theme', 'light');
 	});
 
-	// $inspect({ page });
 
 	function currentPathUrl() {
 		const url = page.url.pathname;
@@ -57,10 +56,8 @@
 				text: el.textContent
 			};
 		});
-		console.log({ links });
 	}
 
-	$inspect({ items });
 
 	$effect(() => {
 		if (page.url)
