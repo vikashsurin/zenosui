@@ -671,17 +671,24 @@
 			"component": "TreeView",
 			"children": [
 				{
-					"component": "TreeItem",
-					"children": [
-						{
-							"component": "TreeItemContent",
-							"children": []
-						}
-					]
+					"component": "TreeViewItem",
+					"children": []
 				}
 			]
 		},
-		"props": ["expandable", "selectable", "multiSelect"]
+		"otherProps": [
+			{
+				"name": "TreeViewItem props",
+				"props": [
+					"iconLeftOpen",
+					"iconLeftClose",
+					"iconRightOpen",
+					"iconRightClose",
+					"iconLeftRotation",
+					"iconRightRotation"
+				]
+			}
+		]
 	},
 	"window-splitter": {
 		"title": "Window Splitter",
@@ -691,16 +698,28 @@
 			"component": "WindowSplitter",
 			"children": [
 				{
-					"component": "SplitterPanel",
+					"component": "WindowPaneLeft",
 					"children": []
 				},
 				{
-					"component": "SplitterResizer",
+					"component": "WindowSeparatorHandle",
+					"children": []
+				},
+				{
+					"component": "WindowPaneRight",
 					"children": []
 				}
 			]
 		},
-		"props": ["orientation", "defaultSize", "minSize", "maxSize"]
+		"props": [
+			"orientation",
+			"defaultSize",
+			"minSize",
+			"maxSize",
+			"initialsplitPosition",
+			"minLeftSplitPosition",
+			"maxRightSplitPosition"
+		]
 	},
 	"primitives": {
 		"title": "Primitives",

@@ -25,7 +25,7 @@
 
 <PreviewCode {source} Component={IconButtonDemo} />
 
-<h2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</h2>
+<H2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</H2>
 
 <DocLayoutBox layout={iconButton.layout} />
 

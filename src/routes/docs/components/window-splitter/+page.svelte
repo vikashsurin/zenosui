@@ -1,47 +1,18 @@
 <script lang="ts">
-	import {
-		WindowSplitter,
-		WindowPaneLeft,
-		WindowPaneRight,
-		WindowSeparatorHandle
-	} from '$lib/ui/index.js';
+	import WindowSplitterDemo from './WindowSplitterDemo.svelte';
+	import source from './WindowSplitterDemo.svelte?raw';
+
+	import components from '../../../../lib/internal/components.json' with { type: 'json' };
+	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
+	import DocAttributes from '$lib/internal/DocAttributes.svelte';
+	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
+	import { H2 } from '$lib/index.js';
 </script>
 
-<div>
-	<h1>WindowSplitter</h1>
-	<WindowSplitter
-		initialSplitPosition={25}
-		minLeftSplitPosition={0}
-		maxRightSplitPosition={100}
-		class="h-full"
-	>
-		<WindowPaneLeft class="bg-red-400">
-			<div class="p-2">
-				<ul>
-					<li>Item 1</li>
-					<li>Item 2</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-					<li>Item 3</li>
-				</ul>
-			</div>
-		</WindowPaneLeft>
-		<WindowSeparatorHandle />
-		<WindowPaneRight class="bg-blue-400">
-			<div class="flex flex-wrap gap-2 p-2">
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-				<div class=" flex h-40 w-40 items-center justify-center bg-amber-400">helo</div>
-			</div>
-		</WindowPaneRight>
-	</WindowSplitter>
-</div>
+<DocPreviewCode {source} Component={WindowSplitterDemo} />
+
+<H2 class="mt-20 py-8 text-2xl font-semibold">Component Layout</H2>
+
+<DocLayoutBox layout={components['window-splitter'].layout} />
+
+<DocAttributes props={components['window-splitter'].props} />

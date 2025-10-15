@@ -1,94 +1,37 @@
 <script lang="ts">
 	import '../app.css';
-	import Aside from './Aside.svelte';
-	import DocFooter from '$lib/internal/DocFooter.svelte';
-
-	import { page } from '$app/state';
-	import { componentList } from '$lib/internal/componentList.js';
-	import { docStore } from '$lib/internal/docStore.svelte.js';
-	import components from '$lib/internal/components.json' with { type: 'json' };
-	import DocHeader from '$lib/internal/DocHeader.svelte';
-	import { tick } from 'svelte';
 
 	let { children } = $props();
-	$effect(() => {
-		document.documentElement.setAttribute('data-theme', 'light');
-	});
+	import { page } from '$app/state';
 
-	// $inspect({ page });
+	let currentPathUrl = $derived(page.url.pathname);
 
-	function currentPathUrl() {
-		const url = page.url.pathname;
-		const isComponentRoute = url.includes('components');
-		if (isComponentRoute) {
-			return url;
-		} else {
-			return null;
+	let links = [
+		{
+			label: 'Docs',
+			href: '/docs'
+		},
+		{
+			label: 'Themes',
+			href: '/themes'
+		},
+		{
+			label: 'Pallete',
+			href: '/pallete'
 		}
-	}
-	let componentName = $state<string | undefined>('');
-	let component = $derived.by(() => components[componentName]);
-	let currentIndex = $derived.by(() =>
-		componentList.findIndex((item) => item.href === `/${componentName}`)
-	);
-
-	let next = $derived.by(() => componentList[currentIndex + 1]);
-	let previous = $derived.by(() => componentList[currentIndex - 1]);
-	function initDoc() {
-		const url = currentPathUrl();
-		componentName = url?.split('/').pop();
-	}
-	$effect(() => {
-		initDoc();
-	});
-
-	let main: HTMLElement;
-	let links;
-
-	let items = $state<{ id: string; text: string }[]>([]);
-	function getLinks() {
-		links = main.querySelectorAll('[data-heading]');
-		items = Array.from(links).map((el) => {
-			if (!el.id) {
-				el.id = el.textContent.trim().toLowerCase().replace(/\s+/g, '-');
-			}
-			return {
-				id: el.id,
-				text: el.textContent
-			};
-		});
-		console.log({ links });
-	}
-
-	$inspect({ items });
-
-	$effect(() => {
-		if (page.url)
-			tick().then(() => {
-				getLinks();
-			});
-	});
+	];
 </script>
 
-<div class="grid h-screen grid-cols-[15%_70%_15%]">
-	<div class="fixed top-0 bottom-0 left-0 col-start-1 w-[15%]">
-		<Aside />
-	</div>
+<div>
+	<nav class="flex gap-4 px-4 py-3">
+		<a href="/" style:color={currentPathUrl === '/' ? 'black' : 'gray'}> Home </a>
 
-	<div class="fixed top-0 right-0 bottom-0 col-start-3 w-[15%] bg-gray-100">
-		<h2 class="p-3 text-base font-medium">On this page</h2>
-		{#each items as item}
-			<a href={`#${item?.id}`} class="block px-4 py-0.5 text-sm text-gray-600 hover:text-gray-800"
-				>{item?.text}</a
-			>
+		{#each links as link}
+			<a href={link.href} style:color={currentPathUrl.includes(link.href) ? 'black' : 'gray'}>
+				{link.label}
+			</a>
 		{/each}
-	</div>
+	</nav>
 
-	<div bind:this={main} class="col-start-2 px-8">
-		<DocHeader title={component?.title} description={component?.desc} {next} {previous} />
-
-		{@render children()}
-
-		<DocFooter {next} {previous} />
-	</div>
+	{@render children?.()}
 </div>
