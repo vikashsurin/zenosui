@@ -1,4 +1,9 @@
 export const componentList = [
+    {
+        label: 'primitives',
+        href: '/_primitives',
+        submenu: [{ label: 'link', href: '/components/_primitives/link' }]
+    },
     { label: 'accordion', href: '/accordion' },
     { label: 'alert', href: '/alert' },
     { label: 'breadcrumb', href: '/breadcrumb' },
@@ -18,11 +23,6 @@ export const componentList = [
     { label: 'navigation-list', href: '/navigation-list' },
     { label: 'navigation-menu', href: '/navigation-menu' },
     { label: 'pin-input', href: '/pin-input' },
-    {
-        label: 'primitives',
-        href: '/primitives',
-        submenu: [{ label: 'link', href: '/primitives/link' }]
-    },
     { label: 'radio', href: '/radio' },
     { label: 'range input', href: '/range-input' },
     { label: 'select', href: '/select' },

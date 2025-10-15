@@ -1,5 +1,5 @@
 <script lang="ts">
-	import H2 from '$lib/ui/atoms/headings/H2.svelte';
+	import H2 from '$lib/ui/_primitives/headings/H2.svelte';
 	import { properties } from './componentProperties.js';
 	let {
 		props,

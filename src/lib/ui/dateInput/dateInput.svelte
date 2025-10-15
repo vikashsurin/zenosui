@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { RoundedVariant, SizeVariant } from '$lib/types/index.js';
 	import { clickOutside } from '$lib/utils/index.js';
-	import Input from '../atoms/Input.svelte';
+	import Input from '../_primitives/Input.svelte';
 	import Calender from './Calender.svelte';
 
 	let { uiSize = 'xs' as SizeVariant, uiRounded = 'sm' as RoundedVariant } = $props();

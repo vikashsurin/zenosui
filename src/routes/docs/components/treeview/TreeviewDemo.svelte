@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Treeview, TreeviewItem } from '$lib/index.js';
 	import { ListItem } from '$lib/index.js';
-	import Label from '$lib/ui/atoms/Label.svelte';
+	import Label from '$lib/ui/_primitives/Label.svelte';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 </script>

@@ -2,7 +2,7 @@
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import { goto } from '$app/navigation';
-	import H1 from '$lib/ui/atoms/headings/H1.svelte';
+	import H1 from '$lib/ui/_primitives/headings/H1.svelte';
 
 	let { title, description, next, previous } = $props();
 

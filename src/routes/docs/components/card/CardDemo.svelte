@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from '$lib/ui/atoms/Input.svelte';
+	import Input from '$lib/ui/_primitives/Input.svelte';
 	import Button from '$lib/ui/button/Button.svelte';
 	import { Card, CardHeader, CardBody, CardFooter, Icon } from '$lib/ui/index.js';
 </script>
