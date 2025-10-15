@@ -57,7 +57,7 @@
 			return false;
 		}
 		let inputValue = (e.target as HTMLInputElement)?.value;
-		console.log('inputValue', inputValue);
+
 		if (inputValue.length > 1) {
 			e.target.value = inputValue.slice(-1);
 		}
