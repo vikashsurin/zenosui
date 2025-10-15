@@ -6,7 +6,7 @@
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
-
+import { H2 } from '$lib/index.js';
 	const rangeInput = components['range-input'];
 </script>
 

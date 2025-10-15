@@ -5,7 +5,7 @@
 	import DocHeader from '$lib/internal/DocHeader.svelte';
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
-
+import { H2 } from '$lib/index.js';
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 
 	const dialog = components.dialog;

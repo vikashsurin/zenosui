@@ -23,7 +23,7 @@
 </script>
 
 <div>
-	<nav class="flex gap-4 px-4 py-3">
+	<nav class="flex gap-4 px-4 pt-3 pb-6">
 		<a href="/" style:color={currentPathUrl === '/' ? 'black' : 'gray'}> Home </a>
 
 		{#each links as link}

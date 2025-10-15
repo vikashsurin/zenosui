@@ -7,15 +7,14 @@
 	const path = $derived.by(() => page.url.pathname.split('/').pop());
 </script>
 
-<Navigation class="  h-dvh w-full  overflow-y-scroll ">
+<Navigation
+	class="h-dvh  w-full overflow-y-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden "
+>
 	<NavigationList class="mb-10">
-		{#each asideNavData as item}
-			<NavigationListItem href={item.href} label={item.label} />
-		{/each}
 		{#each componentList as item}
 			<NavigationListItem
 				href={`/docs/components${item.href}`}
-				style={`background-color: ${`/${path}` === item.href ? 'gray' : ''}`}
+				style={`background-color: ${`/${path}` === item.href ? '' : 'transparent'}`}
 				label={item.label}
 			>
 				{#if item.submenu}

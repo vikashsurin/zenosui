@@ -6,7 +6,7 @@
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 	import DocAttributes from '$lib/internal/DocAttributes.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
-
+import { H2 } from '$lib/index.js';
 	const treeview = components['treeview'];
 </script>
 

@@ -37,9 +37,37 @@
 	let itemsArray: HTMLInputElement[];
 
 	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class) }));
+
+	function isNumeric(e: Event) {
+		// Check if e.target is an HTMLInputElement before accessing its properties
+		if (!(e.target instanceof HTMLInputElement)) {
+			return false; // Or handle the case where the target is not an input element
+		}
+
+		const val = e.target.value;
+		const isNum = !isNaN(Number(val)) && !isNaN(parseFloat(val));
+		if (!isNum) e.target.value = '';
+
+		return isNum;
+	}
+
 	const id = crypto.randomUUID();
 	function handleChange(e: Event) {
+		if (!(e.target instanceof HTMLInputElement)) {
+			return false;
+		}
+		let inputValue = (e.target as HTMLInputElement)?.value;
+		console.log('inputValue', inputValue);
+		if (inputValue.length > 1) {
+			e.target.value = inputValue.slice(-1);
+		}
+
+		if (context.onlyNumbers) {
+			if (!isNumeric(e)) return;
+		}
+
 		value = (e.target as HTMLInputElement)?.value;
+
 		if (value.length > 1) value = value.slice(-1);
 		if (value.length === 0) return;
 		const currentIndex = itemsArray.findIndex((item) => item === inputEl);
@@ -97,6 +125,7 @@
 	bind:this={inputEl}
 	data-input-type="pin"
 	type="text"
+	size="1"
 	aria-label="pin"
 	aria-required="true"
 	class={finalClass}

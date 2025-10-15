@@ -5,7 +5,7 @@
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 	import DocPreviewCode from '$lib/internal/DocPreviewCode.svelte';
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
-
+import { H2 } from '$lib/index.js';
 	const textInput = components['text-input'];
 </script>
 

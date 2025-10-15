@@ -6,7 +6,7 @@
 
 	import components from '../../../../lib/internal/components.json' with { type: 'json' };
 	import DocLayoutBox from '$lib/internal/DocLayoutBox.svelte';
-
+import { H2 } from '$lib/index.js';
 	const tabs = components['tabs'];
 </script>
 

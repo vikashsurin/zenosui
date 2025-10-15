@@ -349,7 +349,9 @@ export interface ToasterProps extends UiProps, Type.HTMLAttributes<HTMLUListElem
 // PIN INPUT
 export interface PinInputProps extends UiProps, Type.HTMLAttributes<HTMLFormElement> {}
 
-export interface PinInputControlProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+export interface PinInputControlProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
+	onlyNumbers?: boolean;
+}
 
 export interface PinInputBoxProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
 	value?: string | number;
