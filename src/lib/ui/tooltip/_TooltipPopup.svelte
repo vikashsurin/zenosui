@@ -77,13 +77,13 @@
 	});
 </script>
 
-<div role="tooltip" transition:fly class={`zu_tooltip ${finalClass}`}>
+<span role="tooltip" transition:fly class={`zu_tooltip ${finalClass}`}>
 	<span class={`zu_tooltip_cont ${tooltipCont({ uiRounded, uiSize })}`}>
 		{@render children?.()}
 		{content}
 	</span>
 	<div class={`zu_tooltip_tip ${tooltipTipStyle({ uiSize })}`}></div>
-</div>
+</span>
 
 <style>
 	.zu_tooltip {

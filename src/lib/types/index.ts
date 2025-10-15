@@ -309,7 +309,7 @@ export interface SwitchProps extends ComponentProps, StateProps {
 	checked?: boolean;
 	withBorder?: boolean;
 }
-export interface TooltipProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends UiProps, Type.HTMLButtonAttributes {
 	content?: string;
 }
 

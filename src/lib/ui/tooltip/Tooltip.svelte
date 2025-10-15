@@ -23,9 +23,14 @@
 	}
 </script>
 
-<div class={finalClass} {...props} onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
+<button
+	class={finalClass}
+	{...props}
+	onmouseenter={handleMouseEnter}
+	onmouseleave={handleMouseLeave}
+>
 	{#if showTooltip}
 		<TooltipPopup {uiRounded} {content} {uiSize} class={_class} />
 	{/if}
 	{@render children?.()}
-</div>
+</button>
