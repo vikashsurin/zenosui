@@ -312,6 +312,7 @@ export interface SwitchProps extends ComponentProps, StateProps {
 export interface TooltipProps extends UiProps, Type.HTMLAttributes<HTMLSpanElement> {
 	content?: string;
 	render?: Component | Snippet;
+	delay?: number;
 }
 
 export interface TooltipPopupProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {

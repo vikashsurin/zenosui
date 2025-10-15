@@ -3,12 +3,14 @@
 	import clsx from 'clsx';
 	import TooltipPopup from './_TooltipPopup.svelte';
 	import type { TooltipProps } from '$lib/types/index.js';
+	import { c } from 'svelte-highlight/languages';
 
 	let {
 		children,
 		uiRounded,
 		render: CustomComponent,
 		content,
+		delay,
 		uiSize,
 		class: _class,
 		...props
@@ -21,12 +23,22 @@
 	});
 	const finalClass = $derived(style({ class: clsx() }));
 
+	function wait(ms: number | undefined) {
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(true);
+			}, ms ?? 0);
+		});
+	}
+
 	let showTooltip = $state(false);
 
-	function handleMouseEnter() {
+	async function handleMouseEnter() {
+		await wait(delay);
 		showTooltip = true;
 	}
-	function handleMouseLeave() {
+	async function handleMouseLeave() {
+		await wait(delay);
 		showTooltip = false;
 	}
 </script>
