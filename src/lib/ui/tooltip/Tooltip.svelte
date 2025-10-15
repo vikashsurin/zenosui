@@ -4,7 +4,15 @@
 	import TooltipPopup from './_TooltipPopup.svelte';
 	import type { TooltipProps } from '$lib/types/index.js';
 
-	let { children, uiRounded, content, uiSize, class: _class, ...props }: TooltipProps = $props();
+	let {
+		children,
+		uiRounded,
+		render: CustomComponent,
+		content,
+		uiSize,
+		class: _class,
+		...props
+	}: TooltipProps = $props();
 
 	let style = tv({
 		base: `.zu_tooltip_maker relative inline-block`,
@@ -23,14 +31,13 @@
 	}
 </script>
 
-<button
-	class={finalClass}
-	{...props}
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
->
+<span class={finalClass} {...props} onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
 	{#if showTooltip}
-		<TooltipPopup {uiRounded} {content} {uiSize} class={_class} />
+		<TooltipPopup {uiRounded} {content} {uiSize} class={_class}>
+			{#if CustomComponent !== undefined}
+				<CustomComponent />
+			{/if}
+		</TooltipPopup>
 	{/if}
 	{@render children?.()}
-</button>
+</span>

@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { Tooltip } from '$lib/ui/index.js';
+	import CustomTooltip from './CustomTooltip.svelte';
 </script>
 
 <div class="p-10">
 	<p>
 		Simply,
-		<Tooltip
-			content="How are you doing?"
-			uiSize="xs"
-			uiRounded="md"
-			class="border border-amber-600/60 bg-amber-200 text-amber-600 shadow-amber-500/20"
-		>
+		<Tooltip render={CustomTooltip} uiRounded="sm" uiSize="xs" class="bg-amber-300 ">
 			<i class="bg-orange-300">hover me</i>
 		</Tooltip>
 	</p>

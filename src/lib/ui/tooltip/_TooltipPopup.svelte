@@ -1,18 +1,12 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import { TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
+	import { TEXT_SIZE, TEXT_SIZE_WITH_PADDING } from '$lib/style/sizing.js';
 	import { ROUNDED } from '$lib/style/borders.js';
 	import { fly } from 'svelte/transition';
 	import type { TooltipPopupProps } from '$lib/types/index.js';
 
-	let {
-		children,
-		uiRounded,
-		uiSize,
-		content = 'this is a tooltip and this is long',
-		class: _class
-	}: TooltipPopupProps = $props();
+	let { children, uiRounded, uiSize, content, class: _class }: TooltipPopupProps = $props();
 
 	let marginBottom = $derived(uiSize);
 
@@ -45,7 +39,7 @@
 		base: '',
 		variants: {
 			uiRounded: ROUNDED,
-			uiSize: TEXT_SIZE_WITH_PADDING
+			uiSize: TEXT_SIZE
 		},
 		defaultVariants: {
 			uiSize: 'sm',
@@ -80,7 +74,10 @@
 <span role="tooltip" transition:fly class={`zu_tooltip ${finalClass}`}>
 	<span class={`zu_tooltip_cont ${tooltipCont({ uiRounded, uiSize })}`}>
 		{@render children?.()}
-		{content}
+
+		{#if content}
+			{content}
+		{/if}
 	</span>
 	<div class={`zu_tooltip_tip ${tooltipTipStyle({ uiSize })}`}></div>
 </span>
