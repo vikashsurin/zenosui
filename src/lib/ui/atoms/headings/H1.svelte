@@ -26,6 +26,6 @@
 	});
 </script>
 
-<h1 bind:this={heading} data-heading="true" {id} class={finalClass} {...props}>
+<h1 bind:this={heading} data-heading="true" id={crypto.randomUUID()} class={finalClass} {...props}>
 	{@render children?.()}
 </h1>

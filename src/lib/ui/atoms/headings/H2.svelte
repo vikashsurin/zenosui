@@ -28,6 +28,6 @@
 	let finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
-<h2 bind:this={heading} data-heading="true" {id} class={finalClass} {...props}>
+<h2 bind:this={heading} data-heading="true" id={crypto.randomUUID()} class={finalClass} {...props}>
 	{@render children?.()}
 </h2>

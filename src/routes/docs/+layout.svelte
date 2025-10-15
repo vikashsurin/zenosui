@@ -8,13 +8,12 @@
 	import { docStore } from '$lib/internal/docStore.svelte.js';
 	import components from '$lib/internal/components.json' with { type: 'json' };
 	import DocHeader from '$lib/internal/DocHeader.svelte';
-	import { tick } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	let { children } = $props();
 	$effect(() => {
 		document.documentElement.setAttribute('data-theme', 'light');
 	});
-
 
 	function currentPathUrl() {
 		const url = page.url.pathname;
@@ -42,12 +41,13 @@
 	});
 
 	let main: HTMLElement;
-	let links;
+	let headings = $state<HTMLElement[]>([]);
 
 	let items = $state<{ id: string; text: string }[]>([]);
-	function getLinks() {
-		links = main.querySelectorAll('[data-heading]');
-		items = Array.from(links).map((el) => {
+
+	function getheadings() {
+		headings = Array.from(main.querySelectorAll('[data-heading]'));
+		items = headings.map((el) => {
 			if (!el.id) {
 				el.id = el.textContent.trim().toLowerCase().replace(/\s+/g, '-');
 			}
@@ -57,14 +57,55 @@
 			};
 		});
 	}
-
-
+	let activeID = $state<string>('');
+	let observer: IntersectionObserver | null = null;
+	$inspect({ headings });
+	// Effect 1: Update headings when URL changes
 	$effect(() => {
-		if (page.url)
+		if (page.url) {
 			tick().then(() => {
-				getLinks();
+				getheadings();
 			});
+		} else {
+			headings = [];
+		}
 	});
+
+	// Effect 2: Set up observer when headings change
+	$effect(() => {
+		// Clean up previous observer
+		if (observer) {
+			observer.disconnect();
+		}
+
+		if (headings.length > 0) {
+			observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							activeID = entry.target.id;
+						}
+					});
+				},
+				{
+					rootMargin: '0px 0px -70% 0px',
+					// rootMargin: '-50% 0px -50% 0px',
+					threshold: 0
+				}
+			);
+
+			headings.forEach((heading) => {
+				observer?.observe(heading);
+			});
+		}
+
+		return () => {
+			observer?.disconnect();
+			observer = null;
+		};
+	});
+
+	$inspect({ activeID });
 </script>
 
 <div class="grid grid-cols-[15%_70%_15%]">
@@ -72,11 +113,13 @@
 		<Aside />
 	</div>
 
-	<div class="fixed right-0 col-start-3 min-h-dvh w-[15%] bg-gray-100">
+	<div class="fixed right-0 col-start-3 min-h-dvh w-[15%] text-gray-400">
 		<h2 class="p-3 text-base font-medium">On this page</h2>
 		{#each items as item}
-			<a href={`#${item?.id}`} class="block px-4 py-0.5 text-sm text-gray-600 hover:text-gray-800"
-				>{item?.text}</a
+			<a
+				href={`#${item?.id}`}
+				class:active={activeID === item?.id}
+				class="block px-4 py-0.5 text-sm hover:text-gray-800">{item?.text}</a
 			>
 		{/each}
 	</div>
@@ -89,3 +132,9 @@
 		<DocFooter {next} {previous} />
 	</div>
 </div>
+
+<style>
+	.active {
+		color: black;
+	}
+</style>
