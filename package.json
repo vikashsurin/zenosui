@@ -67,6 +67,7 @@
 		"svelte"
 	],
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^6.0.0",
 		"clsx": "^2.1.1",
 		"svelte-highlight": "^7.8.4",
 		"tailwind-merge": "^3.3.1",
