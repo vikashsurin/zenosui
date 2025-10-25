@@ -1,0 +1,1 @@
+export const dialogTheme = 'bg-[var(--theme-background)] text-[var(--theme-foreground)]'

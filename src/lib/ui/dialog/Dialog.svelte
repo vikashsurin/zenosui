@@ -5,6 +5,7 @@
 
 	import { baseVariant } from '$lib/style/index.js';
 	import type { DialogProps } from '$lib/types/index.js';
+	import { dialogTheme } from './theme.js';
 
 	let {
 		children,
@@ -23,7 +24,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] gap-2 p-4 bg-gray-100`,
+		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] gap-2 p-4 ${dialogTheme}`,
 		variants: {},
 		defaultVariants: {}
 	});

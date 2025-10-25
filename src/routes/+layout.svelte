@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '../app.css';
+	import { applyTheme } from '$lib/internal/theme.js';
 
+	applyTheme('light');
 	let { children } = $props();
 	import { page } from '$app/state';
 

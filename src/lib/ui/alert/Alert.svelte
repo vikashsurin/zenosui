@@ -15,7 +15,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] trn p-4 bg-gray-100 `,
+		base: `flex  flex-col w-1/4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]  p-4 `,
 		variants: {},
 		defaultVariants: {
 			uiRounded: 'lg'
@@ -32,7 +32,14 @@
 
 {#if open}
 	<div class="position absolute inset-0 bg-black/50"></div>
-	<dialog role="alertdialog" open={true} class={finalClass} {...props}>
+	<dialog open={true} class={finalClass} class:dialog_theme={true} {...props}>
 		{@render children?.()}
 	</dialog>
 {/if}
+
+<style>
+	.dialog_theme {
+		background-color: var(--theme-background);
+		color: var(--theme-foreground);
+	}
+</style>

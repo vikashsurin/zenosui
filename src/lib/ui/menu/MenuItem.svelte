@@ -12,6 +12,7 @@
 	} from './types.js';
 	import Check from '@lucide/svelte/icons/check';
 	import Dot from '@lucide/svelte/icons/dot';
+	import { menuItemTheme } from './theme.js';
 
 	let {
 		themed = true,
@@ -40,7 +41,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_menu_item px-3 hover:bg-gray-300 overflow-visible items-center inline-flex  relative text-nowrap w-full `,
+		base: `zu_menu_item px-3 overflow-visible items-center inline-flex  ${menuItemTheme} relative text-nowrap w-full `,
 		variants: {
 			uiSize: SIZE_PRESET
 		},

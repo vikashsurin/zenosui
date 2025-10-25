@@ -18,21 +18,21 @@ Button
 	import './button.css';
 	import { tv } from 'tailwind-variants';
 	import { baseVariant, TEXT_SIZE } from '$lib/style/index.js';
-	import { btn_themes, base, btn_variants } from './button.style.js';
+	import { base, btn_variants } from './button.style.js';
 	import type { ButtonProps, ColorVariant } from '$lib/types/index.js';
 	import clsx from 'clsx';
 	import Icon from '../icon/Icon.svelte';
+	import './button.css';
 
 	let {
 		label = 'Button',
 		href,
 		ref = $bindable(),
-		uiTheme = 'light',
 		themed = false,
+		uiColor = 'primary',
 		uiVariant = 'solid',
 		uiSize = 'md',
 		uiRounded = 'none',
-		uiColor = 'gray',
 		iconLeft,
 		iconRight,
 		iconRotation,
@@ -48,7 +48,7 @@ Button
 	activeClass = activeClass ?? 'bg-blue-500 text-white';
 
 	const colorMap: { [key: string]: string } = {
-		primary: 'var(--primary-surface-500',
+		primary: 'var(--brand)',
 		success: 'green',
 		danger: 'red',
 		warning: 'orange'
@@ -58,7 +58,7 @@ Button
 
 	const buttonStyle = tv({
 		extend: baseVariant,
-		base: `button ${base} ${btn_themes[uiTheme]} h-max w-max`,
+		base: `${base} ${uiVariant}  h-max w-max`,
 		variants: {
 			uiSize: TEXT_SIZE,
 			uiVariant: btn_variants,

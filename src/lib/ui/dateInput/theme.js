@@ -1,0 +1,1 @@
+export const calender = 'bg-[var(--theme-background)] text-[var(--theme-foreground)]'

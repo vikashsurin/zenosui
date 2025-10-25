@@ -39,12 +39,7 @@
 			<ComboboxPopover>
 				<ComboboxList class="  max-h-100">
 					{#snippet children(data)}
-						<ComboboxItem
-							uiSize="sm"
-							{data}
-							class="hover:bg-gray-500"
-							activeClass="bg-red-500 text-white"
-						/>
+						<ComboboxItem uiSize="sm" {data} class="" activeClass="bg-red-500 text-white" />
 					{/snippet}
 				</ComboboxList>
 			</ComboboxPopover>

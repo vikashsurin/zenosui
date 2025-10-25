@@ -8,6 +8,7 @@
 	import type { ComboboxItemProps } from '$lib/types/index.js';
 	import { Icon } from '$lib/ui/index.js';
 	import Check from '@lucide/svelte/icons/check';
+	import { comboboxItemTheme } from './theme.js';
 	let {
 		children,
 		uiSize,
@@ -22,7 +23,7 @@
 	uiSize = context.uiSize;
 	let style = tv({
 		extend: baseVariant,
-		base: `hover:bg-gray-200`,
+		base: `${comboboxItemTheme}`,
 		variants: {
 			uiSize: TEXT_SIZE_WITH_PADDING
 		},

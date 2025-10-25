@@ -12,7 +12,7 @@
 		uiSize,
 		themed = false,
 		uiTheme = 'light',
-		uiColor = 'gray',
+		uiColor = 'primary',
 		uiVariant = 'solid',
 		uiRounded,
 		class: _class,
@@ -20,7 +20,7 @@
 	}: IconButtonProps = $props();
 
 	const colorMap: { [key: string]: string } = {
-		primary: 'var(--primary-surface-500',
+		primary: 'var(--brand)',
 		success: 'green',
 		danger: 'red',
 		warning: 'orange'
@@ -30,7 +30,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_icon_button  bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700`,
+		base: `zu_icon_button  bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700 ${uiVariant} `,
 		variants: {
 			uiSize: SIZE,
 			uiVariant: btn_variants

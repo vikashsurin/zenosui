@@ -6,6 +6,7 @@
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
 	import clsx from 'clsx';
 	import { H2 } from '../_primitives/index.js';
+	import { calender } from './theme.js';
 
 	let currentDate = $state(new Date()); // September 12, 2025
 	let selectedDate = $state<Date | null | undefined>(null);
@@ -170,19 +171,22 @@
 	});
 
 	const calendarStyle = tv({
-		base: `zu_calender  bg-gray-200 p-2`,
+		base: `zu_calender ${calender} p-2`,
 		variants: {}
 	});
+
+	const finalCalenderStyle = $derived(calendarStyle({}));
 	const derivedStateStyle = $derived(cellStyle({ uiSize, class: clsx('date ') }));
 </script>
 
-<div class="zu_calender border border-gray-300 shadow-md">
+<div class={finalCalenderStyle}>
 	<div class="zu_calender_header">
 		<IconButton
 			themed={false}
 			{uiSize}
 			uiRounded="full"
 			icon={ChevronLeft}
+			class="bg-[var(--theme-background-600)] hover:bg-[var(--theme-background-500)] active:bg-[var(--theme-background-700)]"
 			onclick={goToPrevMonth}
 		/>
 
@@ -195,6 +199,7 @@
 			themed={false}
 			{uiSize}
 			uiRounded="full"
+			class="bg-[var(--theme-background-600)] hover:bg-[var(--theme-background-500)] active:bg-[var(--theme-background-700)]"
 			icon={ChevronRight}
 			onclick={goToNextMonth}
 		/>
@@ -234,7 +239,6 @@
 	.zu_calender {
 		width: max-content;
 		padding: 1rem;
-		/* background-color: yellow; */
 	}
 	.zu_calender_header {
 		display: flex;
@@ -260,7 +264,7 @@
 		color: gray;
 	}
 	.date_today {
-		background-color: #f2f2f2;
+		background-color: var(--theme-background-200);
 		color: black;
 	}
 	.date_selected {

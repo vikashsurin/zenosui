@@ -170,7 +170,7 @@ export interface TextInputProps extends UiProps, IconProps, Type.HTMLInputAttrib
 	invalid?: boolean;
 }
 
-export interface AlertDialogProps extends UiProps, Type.HTMLInputAttributes {
+export interface AlertDialogProps extends UiProps, Type.HTMLDialogAttributes {
 	showModal?: boolean;
 	open?: boolean;
 }

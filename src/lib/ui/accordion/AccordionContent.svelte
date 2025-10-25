@@ -17,7 +17,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `p-4 ${accordion_content_themes[uiTheme]}`,
+		base: `p-4 `,
 		variants: {
 			uiSize: TEXT_SIZE
 		},
@@ -27,7 +27,20 @@
 </script>
 
 {#if context.state.expanded}
-	<div class={finalClass} {...props} in:slide={{ duration: 300 }} out:slide={{ duration: 300 }}>
+	<div
+		class={finalClass}
+		class:accordion_content={true}
+		{...props}
+		in:slide={{ duration: 300 }}
+		out:slide={{ duration: 300 }}
+	>
 		{@render children?.()}
 	</div>
 {/if}
+
+<style>
+	.accordion_content {
+		background-color: oklch(from var(--theme-background) calc(l + 0.3) c h);
+		color: var(--theme-foreground);
+	}
+</style>

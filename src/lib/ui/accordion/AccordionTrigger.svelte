@@ -9,9 +9,10 @@
 	import { accordion_trigger_themes } from './style.js';
 	import type { AccordionItemContextType } from './types.js';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
+
 	let {
 		children,
-		uiTheme,
+		uiTheme = 'light',
 		uiSize,
 		uiRounded,
 		iconLeft,
@@ -29,7 +30,7 @@
 	uiTheme = context.uiTheme;
 	let style = tv({
 		extend: baseVariant,
-		base: `w-full flex items-center justify-between gap-2 py-[0.5em] px-[0.75em] ${accordion_trigger_themes[uiTheme]}`,
+		base: `w-full flex items-center justify-between gap-2 py-[0.5em] px-[0.75em] `,
 		variants: {
 			uiSize: TEXT_SIZE
 		},
@@ -43,7 +44,7 @@
 	}
 </script>
 
-<button class={finalClass} onclick={handleClick}>
+<button class={finalClass} class:accordion_trigger={true} onclick={handleClick}>
 	{#if iconLeft}
 		<Icon {uiSize} icon={iconLeft} iconRotation={iconLeftRotation} />
 	{/if}
@@ -62,3 +63,10 @@
 		<Icon {uiSize} {icon} class="ml-auto" />
 	{/if}
 </button>
+
+<style>
+	.accordion_trigger {
+		background-color: var(--theme-background);
+		color: var(--theme-foreground);
+	}
+</style>

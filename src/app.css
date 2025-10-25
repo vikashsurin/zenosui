@@ -1,47 +1,31 @@
 @import 'tailwindcss';
 @import './styles/foundation.css';
 @import './styles/components.css';
+@import './styles/theme.css';
 
 :root {
-	/* --primary-hue:xyz; */
-	/* --secondary-hue:xyz */
-	--hue: 240;
 	--theme-variant: 'dark';
+	--hue: 240;
 
-	/* DEFAULT	 */
-	--surface: oklch(100% 0 0);
-	--surface-elevated: var(--neutral-100);
-	--content: var(--neutral-900);
-	--content-subtle: var(--neutral-700);
-
-	/* PRIMARY	 */
-	--primary-surface-50: var(--color-50);
-	--primary-surface-100: var(--color-100);
-	--primary-surface-200: var(--color-200);
-	--primary-surface-300: var(--color-300);
-	--primary-surface-400: var(--color-400);
-	--primary-surface-500: var(--color-500);
-	--primary-surface-600: var(--color-600);
-	--primary-surface-700: var(--color-700);
-	--primary-surface-800: var(--color-800);
-	--primary-surface-900: var(--color-900);
-	--primary-surface-950: var(--color-950);
+	--primary-50: var(--color-50);
+	--primary-100: var(--color-100);
+	--primary-200: var(--color-200);
+	--primary-300: var(--color-300);
+	--primary-400: var(--color-400);
+	--primary-500: var(--color-500);
+	--primary-600: var(--color-600);
+	--primary-700: var(--color-700);
+	--primary-800: var(--color-800);
+	--primary-900: var(--color-900);
+	--primary-950: var(--color-950);
 
 	--primary-white: white;
 	--primary-black: black;
-
-	--primary-surface-hover: oklch(from var(--primary-surface-500) calc(l + 0.1) c h);
-	--primary-surface-active: oklch(from var(--primary-surface-500) calc(l - 0.1) c h);
-
-	--primary-outline: var(--color-400);
-
-	--primary-surface-dark: var(--color-neutral-900);
-	--primary-content-dark: var(--color-neutral-100);
-	--button-color: red;
 }
+
 *:focus {
 	outline: none;
-	/* background-color: var(--primary-surface-300); */
+	/* background-color: var(--primary-300); */
 }
 
 *:focus-visible {
@@ -54,62 +38,4 @@
 
 .zu_base_transition {
 	transition: all 0.1s ease-in-out;
-}
-
-/* INPUT ELEMENTS	 */
-.input[data-themed='true']:focus-within {
-	outline: 2px solid var(--primary-outline);
-	caret-color: var(--primary-outline);
-}
-/* .input_icon_left {
-	color: red;
-	opacity: 1;
-} */
-.input[data-themed='true']:hover {
-	background-color: var(--primary-surface-50);
-	border-color: var(--primary-surface-100);
-}
-.input[data-themed='true']:active {
-	background-color: var(--primary-surface-200);
-}
-
-/* LIST */
-.list[data-themed='true'] {
-	background-color: transparent;
-	color: black;
-}
-.list[data-themed='true']:hover {
-	background-color: var(--primary-surface-300);
-	color: white;
-}
-
-.list[data-themed='true']:active {
-	background-color: var(--primary-surface-500);
-	color: white;
-}
-/* .list[data-themed='true']:focus {
-	background-color: var(--primary-surface-300);
-	color: white;
-	outline: none;
-} */
-/* LINK */
-.link[data-themed='true'] {
-	color: var(--primary-surface-500);
-}
-.link[data-themed='true']:hover {
-	color: var(--primary-surface-hover);
-}
-.link[data-themed='true']:active {
-	color: var(--primary-surface-active);
-}
-
-/* RADIO */
-/* SWITCH */
-.switch[data-themed='true'] {
-	background-color: var(--primary-surface-500);
-}
-[data-theme='dark'] {
-	--background: oklch(0 0 0);
-	--button-background: var(--color-100);
-	--button-color: var(--color-950) --card-background: rgba();
 }

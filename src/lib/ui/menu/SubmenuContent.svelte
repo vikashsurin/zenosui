@@ -6,6 +6,7 @@
 	import type { MenuListProps } from '$lib/types/index.js';
 	import { getContext } from 'svelte';
 	import type { SubmenuContextType } from './types.js';
+	import { menuListTheme } from './theme.js';
 
 	let { children, placement, uiRounded, class: _class, ...props }: MenuListProps = $props();
 
@@ -23,7 +24,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_submenu absolute max-h-[${innerHeight.current}] py-0.5 bg-gray-200 w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
+		base: `zu_submenu absolute max-h-[${innerHeight.current}] py-0.5 ${menuListTheme} w-auto flex flex-col shadow-lg border border-gray-50/50 z-[9999]`,
 		variants: {
 			placement: {
 				bottom: 'top-[100%] left-[100%]',
