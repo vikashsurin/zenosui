@@ -4,7 +4,7 @@
 </script>
 
 {#if layout?.component}
-	<div class="doc-layout-box m-2 border border-dashed border-gray-300 bg-white p-4">
+	<div class="doc-layout-box m-2 p-4">
 		<div>
 			{layout.component}
 		</div>
@@ -18,7 +18,12 @@
 {/if}
 
 <style>
+	.doc-layout-box {
+		color: var(--theme-foreground);
+		background-color: var(--theme-background);
+		border: 1px dashed var(--theme-border);
+	}
 	.doc-layout-box:hover:not(:has(.doc-layout-box:hover)) {
-		background: oklch(92% 0 0);
+		background-color: var(--theme-background-200);
 	}
 </style>

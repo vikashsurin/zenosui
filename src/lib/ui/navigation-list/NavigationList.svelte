@@ -4,6 +4,7 @@
 	import { getContext, onMount, setContext } from 'svelte';
 	import type { NavigationListProps } from '$lib/types/index.js';
 	import type { NavigationListContextType } from './types.js';
+	import { navigationListTheme } from './theme.js';
 
 	let { children, uiSize, class: _class, ...props }: NavigationListProps = $props();
 
@@ -25,7 +26,7 @@
 	});
 
 	let style = tv({
-		base: ``,
+		base: `${navigationListTheme}`,
 		variants: {},
 		defaultVariants: {}
 	});

@@ -5,7 +5,7 @@
 	import { tick } from 'svelte';
 
 	let style = tv({
-		base: `text-[2em]`,
+		base: `text-[2em] `,
 		variants: {},
 		defaultVariants: {}
 	});

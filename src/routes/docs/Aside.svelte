@@ -12,11 +12,7 @@
 >
 	<NavigationList class="mb-10">
 		{#each componentList as item}
-			<NavigationListItem
-				href={`/docs/components${item.href}`}
-				style={`background-color: ${`/${path}` === item.href ? '' : 'transparent'}`}
-				label={item.label}
-			>
+			<NavigationListItem href={`/docs/components${item.href}`} label={item.label}>
 				{#if item.submenu}
 					<NavigationList class="ml-4">
 						{#each item.submenu as submenuItem}

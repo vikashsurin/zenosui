@@ -116,10 +116,8 @@
 	<div class="fixed right-0 col-start-3 min-h-dvh w-[15%] text-gray-400">
 		<h2 class="p-3 text-base font-medium">On this page</h2>
 		{#each items as item}
-			<a
-				href={`#${item?.id}`}
-				class:active={activeID === item?.id}
-				class="block px-4 py-0.5 text-sm hover:text-gray-800">{item?.text}</a
+			<a href={`#${item?.id}`} class:active={activeID === item?.id} class="link text-sm"
+				>{item?.text}</a
 			>
 		{/each}
 	</div>
@@ -134,7 +132,16 @@
 </div>
 
 <style>
+	.link {
+		display: block;
+		color: var(--theme-foreground);
+		padding: 0.25em 1em;
+		opacity: 0.5;
+	}
+	.link:hover {
+		opacity: 1;
+	}
 	.active {
-		color: black;
+		opacity: 1;
 	}
 </style>

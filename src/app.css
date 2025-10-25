@@ -39,3 +39,9 @@
 .zu_base_transition {
 	transition: all 0.1s ease-in-out;
 }
+
+html,
+body {
+	background-color: var(--theme-background);
+	color: var(--theme-foreground);
+}

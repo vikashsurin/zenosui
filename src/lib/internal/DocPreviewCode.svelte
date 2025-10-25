@@ -44,11 +44,11 @@
 	</div>
 
 	{#if isPreview}
-		<div class="flex min-h-96 items-center justify-center border border-gray-300 p-8">
+		<div class="flex min-h-96 items-center justify-center border border-[var(--theme-border)] p-8">
 			<Component />
 		</div>
 	{:else}
-		<div class="border border-gray-300 p-8">
+		<div class="border border-[var(--theme-border)] p-8">
 			<div class="flex justify-between">
 				<span></span>
 				<button class="opacity-50" onclick={handleClick}>

@@ -12,15 +12,15 @@
 {#if props}
 	<H2 class="mt-20 text-2xl font-semibold">Props</H2>
 	<table class="w-full text-left text-sm">
-		<thead class="border-b">
+		<thead class="border-b border-[var(--theme-background-300)]">
 			<tr>
-				<th class="border-b p-2 font-medium">Property</th>
+				<th class="border-b border-[var(--theme-background-300)] p-2 font-medium">Property</th>
 				<th class="p-2 font-medium">Type</th>
 			</tr>
 		</thead>
 		<tbody class="">
 			{#each props as attribute}
-				<tr class="border-b">
+				<tr class="border-b border-[var(--theme-background-300)]">
 					<th class="p-2 font-semibold">{attribute}</th>
 					<td class="p-2">{properties[attribute]}</td>
 				</tr>
@@ -33,15 +33,15 @@
 	{#each otherProps as attribute}
 		<H2 class="mt-20 text-2xl font-semibold">{attribute.name}</H2>
 		<table class="w-full text-left text-sm">
-			<thead class="border-b">
+			<thead class="border-[var(--theme-background-300)]] border-b">
 				<tr>
-					<th class="border-b p-2 font-medium">Property</th>
+					<th class="border-b border-[var(--theme-background-300)] p-2 font-medium">Property</th>
 					<th class="p-2 font-medium">Type</th>
 				</tr>
 			</thead>
 			<tbody class="">
 				{#each attribute.props as val}
-					<tr class="border-b">
+					<tr class="border-b border-[var(--theme-background-300)]">
 						<th class="p-2">{val}</th>
 						<td class="p-2">{properties[val]}</td>
 					</tr>

@@ -10,6 +10,7 @@
 	import type { NavigationListContextType } from './types.js';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { navigationListItemTheme } from './theme.js';
 	let {
 		children,
 		label,
@@ -38,7 +39,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex gap-2 bg-gray-100 p-2 w-full items-center hover:bg-gray-200 ${paddingY} ${paddingX} `,
+		base: `flex gap-2  p-2 w-full  ${navigationListItemTheme} items-center ${paddingY} ${paddingX} `,
 		variants: {
 			uiSize: TEXT_SIZE
 		},
