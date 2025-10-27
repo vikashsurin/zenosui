@@ -22,6 +22,5 @@
 </script>
 
 <div>
-	<h1>Carousel</h1>
 	<Carousel uiSize="sm" uiRounded="none" {data}></Carousel>
 </div>

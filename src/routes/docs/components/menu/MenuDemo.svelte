@@ -17,7 +17,6 @@
 </script>
 
 <div>
-	<h2 class="py-5 text-2xl">Submenu</h2>
 	<Menu>
 		<MenuTrigger>open</MenuTrigger>
 		<MenuList>

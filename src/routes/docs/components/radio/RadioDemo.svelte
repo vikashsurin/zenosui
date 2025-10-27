@@ -4,7 +4,6 @@
 </script>
 
 <div>
-	<h1 class="text-lg">Radio</h1>
 	<form action="?/submit" method="POST">
 		<RadioGroup uiSize="xl">
 			<RadioItem>

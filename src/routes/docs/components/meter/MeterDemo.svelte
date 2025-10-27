@@ -3,7 +3,6 @@
 </script>
 
 <div>
-	<h1>Meter</h1>
 	<Meter class="w-50">
 		<div class="mb-2 flex items-center justify-between">
 			<label for="meter">Meter</label>

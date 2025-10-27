@@ -12,7 +12,7 @@
 </script>
 
 <div class="flex gap-2">
-	<Button onclick={handleClick}>Button</Button>
+	<Button onclick={handleClick} active={true}>Button</Button>
 	<!-- <Button label="Button" /> -->
 
 	<!-- with icons -->

@@ -26,7 +26,7 @@ const theme_bg_light = {
     '--theme-background-600': 'oklch(from var(--theme-background) 43% calc(c * 0.92) h)',
     '--theme-background-700': 'oklch(from var(--theme-background) 36% calc(c * 0.8) h)',
     '--theme-background-800': 'oklch(from var(--theme-background) 26% calc(c * 0.72) h)',
-    '--theme-background-900': 'oklch(from var(--theme-background) 18% calc(c * 0.36) h),',
+    '--theme-background-900': 'oklch(from var(--theme-background) 18% calc(c * 0.36) h)',
     '--theme-background-950': 'oklch(from var(--theme-background) 6% calc(c * 0.08) h)'
 }
 
@@ -40,7 +40,7 @@ const theme_bg_dark = {
     '--theme-background-400': 'oklch(from var(--theme-background) 43% calc(c * 0.92) h)',
     '--theme-background-300': 'oklch(from var(--theme-background) 36% calc(c * 0.8) h)',
     '--theme-background-200': 'oklch(from var(--theme-background) 26% calc(c * 0.72) h)',
-    '--theme-background-100': 'oklch(from var(--theme-background) 18% calc(c * 0.36) h),',
+    '--theme-background-100': 'oklch(from var(--theme-background) 18% calc(c * 0.36) h)',
     '--theme-background-50': 'oklch(from var(--theme-background) 6% calc(c * 0.08) h)'
 }
 

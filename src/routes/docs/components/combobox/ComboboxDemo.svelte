@@ -32,7 +32,6 @@
 </script>
 
 <div>
-	<h1>Combobox</h1>
 	<form action="?/combobox" method="POST">
 		<Combobox data={options} uiSize="xs" uiRounded="xs">
 			<ComboboxInput editable={true} name="fruit" />

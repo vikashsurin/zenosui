@@ -10,7 +10,6 @@
 </script>
 
 <div>
-	<h1>Navigation Menu</h1>
 	<NavigationMenuBar>
 		<NavigationMenu uiRounded="xs" uiText="sm">
 			<NavigationMenuTrigger class="bg-red-400">okay</NavigationMenuTrigger>

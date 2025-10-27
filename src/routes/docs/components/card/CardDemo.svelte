@@ -5,8 +5,6 @@
 </script>
 
 <div>
-	<h1>Card</h1>
-
 	<Card>
 		<CardHeader class="p-6">
 			<h1>Login to your account</h1>

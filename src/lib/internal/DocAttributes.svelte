@@ -36,7 +36,7 @@
 			<thead class="border-[var(--theme-background-300)]] border-b">
 				<tr>
 					<th class="border-b border-[var(--theme-background-300)] p-2 font-medium">Property</th>
-					<th class="p-2 font-medium">Type</th>
+					<th class=" border-b border-[var(--theme-background-300)] p-2 font-medium">Type</th>
 				</tr>
 			</thead>
 			<tbody class="">

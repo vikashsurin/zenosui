@@ -45,10 +45,11 @@ Button
 		...props
 	}: ButtonProps = $props();
 
-	activeClass = activeClass ?? 'bg-blue-500 text-white';
+	activeClass = activeClass ?? 'bg-amber-500';
 
 	const colorMap: { [key: string]: string } = {
 		primary: 'var(--brand)',
+		secondary: 'gray',
 		success: 'green',
 		danger: 'red',
 		warning: 'orange'

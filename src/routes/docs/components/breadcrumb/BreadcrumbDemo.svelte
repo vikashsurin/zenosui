@@ -5,7 +5,6 @@
 </script>
 
 <div>
-	<h1>Breadcrumb</h1>
 	<div>
 		<Breadcrumb uiSize="sm">
 			<BreadcrumbList>

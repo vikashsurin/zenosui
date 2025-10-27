@@ -20,7 +20,6 @@
 </script>
 
 <div>
-	<h1>Menu bar</h1>
 	<Menubar uiSize="xs" class="border-1">
 		<Menu>
 			<MenuTrigger>File</MenuTrigger>

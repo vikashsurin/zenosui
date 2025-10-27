@@ -3,8 +3,6 @@
 </script>
 
 <div>
-	<h1>Tabs</h1>
-
 	<Tabs>
 		<TabBar>
 			<TabTrigger id="tab1">Tab 1</TabTrigger>

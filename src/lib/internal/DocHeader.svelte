@@ -14,7 +14,7 @@
 
 <div class="mb-8">
 	<div class="flex justify-between">
-		<H1 class=" pt-12 text-4xl font-bold text-[var(--theme-foreground)] ">{title}</H1>
+		<H1 class="bg-amber-500 pt-12 px-2 text-4xl font-bold text-black">{title}</H1>
 		<div class="pt-12">
 			{#if previous === undefined}
 				<div></div>
@@ -37,6 +37,6 @@
 <style>
 	button {
 		background-color: var(--theme-background-200);
-		padding: .75em;
+		padding: 0.75em;
 	}
 </style>

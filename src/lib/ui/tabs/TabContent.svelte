@@ -9,7 +9,7 @@
 	let tabState = getContext<TabContextType>('tabState');
 
 	let style = tv({
-		base: `inline-block p-2 bg-gray-100 w-full h-full`,
+		base: `inline-block p-2  w-full h-full`,
 		variants: {},
 		defaultVariants: {}
 	});

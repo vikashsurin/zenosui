@@ -12,7 +12,7 @@
 </script>
 
 <div>
-	<button class="rounded-md bg-gray-200 px-3 py-2" onclick={() => (open = true)}>show alert</button>
+	<button class="rounded-md px-3 py-2" onclick={() => (open = true)}>show alert</button>
 	<Alert bind:open>
 		<AlertHeader>
 			<AlertTitle>Title</AlertTitle>

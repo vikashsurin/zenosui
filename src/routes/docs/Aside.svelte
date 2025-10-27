@@ -12,11 +12,20 @@
 >
 	<NavigationList class="mb-10">
 		{#each componentList as item}
-			<NavigationListItem href={`/docs/components${item.href}`} label={item.label}>
+			<NavigationListItem
+				href={`/docs/components${item.href}`}
+				style={`background-color: ${`/${path}` === item.href ? 'var(--theme-background-400)' : ''}`}
+				label={item.label}
+			>
 				{#if item.submenu}
 					<NavigationList class="ml-4">
 						{#each item.submenu as submenuItem}
-							<NavigationListItem href={`/docs${submenuItem.href}`} label={submenuItem.label} />
+							<NavigationListItem
+								href={`/docs${submenuItem.href}`}
+								style={`background-color: ${`/${path}` === item.href ? 'var(--theme-background-400)' : ''}`}
+								label={submenuItem.label}
+								class="active"
+							/>
 						{/each}
 					</NavigationList>
 				{/if}
@@ -24,3 +33,6 @@
 		{/each}
 	</NavigationList>
 </Navigation>
+
+<style>
+</style>

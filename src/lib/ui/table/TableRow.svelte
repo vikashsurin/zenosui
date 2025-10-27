@@ -2,10 +2,11 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import type { HTMLAttributes } from 'svelte/elements';
+	import { tableRowTheme } from './theme.js';
 	let { children, class: _class, ...props }: HTMLAttributes<HTMLTableRowElement> = $props();
 
 	let style = tv({
-		base: `w-full border-b  border-gray-300 hover:bg-gray-200`,
+		base: `w-full border-b  ${tableRowTheme} `,
 		variants: {},
 		defaultVariants: {}
 	});
