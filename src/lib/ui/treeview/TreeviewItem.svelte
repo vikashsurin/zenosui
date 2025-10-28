@@ -10,6 +10,7 @@
 	import { treeViewState } from './stateManager.svelte.js';
 	import type { TreeviewItemProps } from '$lib/types/index.js';
 	import type { TreeviewContextType } from './types.js';
+	import { treeviewItemTheme } from './theme.js';
 	let {
 		children,
 		label,
@@ -37,7 +38,7 @@
 
 	let style = tv({
 		extend: baseVariant,
-		base: `flex gap-2 bg-gray-100 p-2 w-full items-center hover:bg-gray-200 ${paddingY} ${paddingX} `,
+		base: `flex gap-2  p-2 w-full items-center ${treeviewItemTheme} ${paddingY} ${paddingX} `,
 		variants: {
 			uiSize: TEXT_SIZE
 		},

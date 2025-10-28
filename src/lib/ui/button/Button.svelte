@@ -91,6 +91,10 @@ Button
 	);
 	let as = href ? 'a' : 'button';
 	let hrefProp = href ? { href } : {};
+
+	function handleClick(e) {
+		e.stopPropagation();
+	}
 </script>
 
 <svelte:element
@@ -101,6 +105,7 @@ Button
 	role={href ? 'link' : 'button'}
 	class={finalClasses}
 	style={`--custom-color: ${uiColor}`}
+	onclick={(e) => handleClick(e)}
 	{...hrefProp}
 	{...props}
 >

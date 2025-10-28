@@ -5,13 +5,14 @@
 	import { ROUNDED } from '$lib/style/borders.js';
 	import { fly } from 'svelte/transition';
 	import type { TooltipPopupProps } from '$lib/types/index.js';
+	import { tooltipPopupTheme } from './theme.js';
 
 	let { children, uiRounded, uiSize, content, class: _class }: TooltipPopupProps = $props();
 
 	let marginBottom = $derived(uiSize);
 
 	let style = tv({
-		base: `shadow-md bg-white `,
+		base: `shadow-md ${tooltipPopupTheme}`,
 		variants: {
 			uiRounded: ROUNDED,
 			marginBottom: {

@@ -1,0 +1,1 @@
+export const textInputTheme = 'focus-within:ring-[0.2em] focus-within:ring-[var(--brand-300)] border-[0.1em] focus-within:border-[var(--brand-500)] border-[--theme-border)] '

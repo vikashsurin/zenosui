@@ -1,19 +1,25 @@
 export const themes = {
     light: {
-        '--brand': '#1E88E5',
-        '--brand-text': '#fff',
+        '--brand': '#fff',
+        '--brand-text': '#111',
         '--theme-background': '#f9f9f9',
         '--theme-foreground': '#111',
         '--theme-border': '#444',
     },
     dark: {
-        '--brand': '#1E88E5',
+        '--brand': '#111',
         '--brand-text': '#fff',
         '--theme-background': '#111',
         '--theme-foreground': '#eee',
         '--theme-border': '#444',
     },
-
+    coral: {
+        '--brand': 'coral',
+        '--brand-text': '#fff',
+        '--theme-background': '#f9f9f9',
+        '--theme-foreground': '#111',
+        '--theme-border': '#444',
+    },
 };
 
 const theme_bg_light = {
@@ -44,6 +50,19 @@ const theme_bg_dark = {
     '--theme-background-50': 'oklch(from var(--theme-background) 6% calc(c * 0.08) h)'
 }
 
+const brand = {
+    '--brand-50': 'oklch(from var(--brand) 98% calc(c * 0.1) h)',
+    '--brand-100': 'oklch(from var(--brand) 94% calc(c * 0.2) h)',
+    '--brand-200': 'oklch(from var(--brand) 88% calc(c * 0.4) h)',
+    '--brand-300': 'oklch(from var(--brand) 80% calc(c * 0.6) h)',
+    '--brand-400': 'oklch(from var(--brand) 70% calc(c * 0.8) h)',
+    '--brand-500': 'oklch(from var(--brand) 52% c h)',
+    '--brand-600': 'oklch(from var(--brand) 43% calc(c * 0.92) h)',
+    '--brand-700': 'oklch(from var(--brand) 36% calc(c * 0.8) h)',
+    '--brand-800': 'oklch(from var(--brand) 26% calc(c * 0.72) h)',
+    '--brand-900': 'oklch(from var(--brand) 18% calc(c * 0.36) h)',
+    '--brand-950': 'oklch(from var(--brand) 6% calc(c * 0.08) h)'
+}
 /**
  * Applies a theme to the document by setting CSS variables
  * @param {string} themeName - The name of the theme to apply
@@ -75,6 +94,10 @@ export function applyTheme(themeName) {
         }
 
         Object.entries(theme_bg).forEach(([key, value]) => {
+            root.style.setProperty(key, value);
+        });
+
+        Object.entries(brand).forEach(([key, value]) => {
             root.style.setProperty(key, value);
         });
     } catch (error) {

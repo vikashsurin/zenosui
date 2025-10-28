@@ -12,13 +12,13 @@
 	<Treeview class="w-[200px] " uiSize="xs">
 		<TreeviewItem label="Item 1" />
 		<TreeviewItem label="Item 2" iconLeftClose={ChevronRight} iconLeftOpen={ChevronDown}>
-			<Treeview>
+			<Treeview class="ml-8">
 				<TreeviewItem label="index.html" />
 				<TreeviewItem label="Item 2.2" />
 				<TreeviewItem label="Item 2.3" />
 				<TreeviewItem label="Item 2.4"></TreeviewItem>
 				<TreeviewItem iconLeftClose={ChevronRight} iconLeftOpen={ChevronDown} label="Item 2.5">
-					<Treeview>
+					<Treeview class="ml-8">
 						<TreeviewItem label="Item 2.5.1" />
 						<TreeviewItem label="Item 2.5.2" />
 						<TreeviewItem label="Item 2.5.3" />
@@ -27,7 +27,7 @@
 							iconLeftClose={ChevronRight}
 							label="Item 2.5.4"
 						>
-							<Treeview>
+							<Treeview class="ml-8">
 								<TreeviewItem label="Item 2.5.4.1" />
 								<TreeviewItem label="Item 2.5.4.2" />
 								<TreeviewItem label="Item 2.5.4.3" />

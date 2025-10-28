@@ -12,7 +12,7 @@
 	let { children, class: _class, ...props }: ToasterProps = $props();
 
 	let style = tv({
-		base: `zu_toaster m-2 flex flex-col gap-2 fixed `,
+		base: `zu_toaster m-2 flex flex-col gap-2 fixed z-999 `,
 		variants: {
 			position: POSITION
 		},

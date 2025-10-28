@@ -59,7 +59,6 @@
 	}
 	let activeID = $state<string>('');
 	let observer: IntersectionObserver | null = null;
-	$inspect({ headings });
 	// Effect 1: Update headings when URL changes
 	$effect(() => {
 		if (page.url) {
@@ -105,7 +104,6 @@
 		};
 	});
 
-	$inspect({ activeID });
 </script>
 
 <div class="grid grid-cols-[15%_70%_15%]">

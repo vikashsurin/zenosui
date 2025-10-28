@@ -168,6 +168,9 @@ export interface SidebarItemProps
 
 export interface TextInputProps extends UiProps, IconProps, Type.HTMLInputAttributes {
 	invalid?: boolean;
+	iconClear?: Snippet;
+	leftSlot?: Snippet;
+	rightSlot?: Snippet;
 }
 
 export interface AlertDialogProps extends UiProps, Type.HTMLDialogAttributes {

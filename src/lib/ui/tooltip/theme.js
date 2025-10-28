@@ -1,0 +1,1 @@
+export const tooltipPopupTheme = 'bg-[var(--theme-background-50)] text-[var(--theme-foreground)]'

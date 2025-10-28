@@ -10,14 +10,19 @@
 	import type { TextInputProps } from '$lib/types/index.js';
 	import { Icon, IconButton } from '$lib/ui/index.js';
 	import X from '@lucide/svelte/icons/x';
+	import { textInputTheme } from './theme.js';
 
 	let {
+		children,
 		themed = false,
 		uiRounded,
 		uiSize,
 		iconLeft,
 		invalid,
 		iconRight,
+		leftSlot,
+		iconClear,
+		rightSlot,
 		placeholder = 'Input text',
 		value = $bindable(),
 		class: _class,
@@ -25,13 +30,13 @@
 	}: TextInputProps = $props();
 
 	const id = crypto.randomUUID();
-	const paddingY = 'py-0';
-	const paddingX = 'px-[0.75em]';
+	const paddingY = 'py-[0.25em]';
+	const paddingX = 'px-[0.25em]';
 	const gap = 'gap-[0.25em]';
 
 	let style = tv({
 		extend: baseVariant,
-		base: `zu_input inline-flex w-fit items-center focus-within:outline-2 border border-gray-200 ${paddingY} ${paddingX} ${gap}`,
+		base: `zu_input inline-flex w-fit items-center  ${textInputTheme}  ${paddingY} ${paddingX} ${gap}`,
 		variants: {
 			uiSize: TEXT_SIZE,
 			invalid: {
@@ -51,41 +56,14 @@
 		}
 	});
 	const finalClass = $derived(style({ invalid, uiSize, uiRounded, class: clsx(_class) }));
-
-	function clearInput() {
-		value = '';
-	}
 </script>
 
-<label data-themed={themed} class={finalClass}>
-	{#if iconLeft}
-		<Icon {uiSize} icon={iconLeft} class="input_icon_left opacity-50" />
-	{/if}
-	<input
-		{id}
-		class:input={true}
-		type="text"
-		class="px-[0.5em] py-[0.5em]"
-		bind:value
-		{placeholder}
-		{...props}
-	/>
+<div role="group" data-themed={themed} class={finalClass}>
+	{@render leftSlot?.()}
 
-	<IconButton
-		themed={false}
-		{uiSize}
-		{uiRounded}
-		icon={X}
-		onclick={clearInput}
-		class="h-fit w-fit bg-transparent p-[0.2em] text-inherit hover:bg-gray-200 active:bg-gray-300"
-	/>
-	{#if iconRight}
-		<Icon {uiSize} icon={iconRight} class="input_icon_right" />
-	{/if}
-</label>
+	<input {id} type={props.type ?? 'text'} class="px-[0.5em]" bind:value {placeholder} {...props} />
 
-<style>
-	input:focus {
-		outline: none;
-	}
-</style>
+	{@render children?.()}
+
+	{@render rightSlot?.()}
+</div>

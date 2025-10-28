@@ -3,10 +3,9 @@
 	import { applyTheme } from '$lib/internal/theme.js';
 	import Sun from '@lucide/svelte/icons/sun';
 	import Moon from '@lucide/svelte/icons/moon';
-	// applyTheme('dark');
+
 	let { children } = $props();
 	import { page } from '$app/state';
-
 	let currentPathUrl = $derived(page.url.pathname);
 
 	let links = [
@@ -27,18 +26,23 @@
 	let isDark = $state(false);
 
 	$effect(() => {
-		let theme = localStorage.getItem('theme');
-		console.log('theme', theme);
-		applyTheme(theme);
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme) {
+			isDark = savedTheme === 'dark';
+			applyTheme(savedTheme);
+		} else {
+			// Optional: detect system preference
+			const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			isDark = prefersDark;
+			applyTheme(prefersDark ? 'dark' : 'light');
+		}
 	});
 
 	function toggleTheme() {
 		isDark = !isDark;
-		if (isDark) {
-			applyTheme('dark');
-		} else {
-			applyTheme('light');
-		}
+		const newTheme = isDark ? 'dark' : 'light';
+		applyTheme(newTheme);
+		localStorage.setItem('theme', newTheme);
 	}
 </script>
 
@@ -62,6 +66,7 @@
 				</button>
 			</div>
 		</div>
+		<div></div>
 	</nav>
 
 	{@render children?.()}

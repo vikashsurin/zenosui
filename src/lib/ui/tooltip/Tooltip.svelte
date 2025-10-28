@@ -3,7 +3,6 @@
 	import clsx from 'clsx';
 	import TooltipPopup from './_TooltipPopup.svelte';
 	import type { TooltipProps } from '$lib/types/index.js';
-	import { c } from 'svelte-highlight/languages';
 
 	let {
 		children,

@@ -1,16 +1,9 @@
 <script lang="ts">
 	import TextInput from '$lib/ui/textInput/TextInput.svelte';
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
-	let kal = $state();
+
+	let val = $state();
 </script>
 
-<div>
-	<TextInput
-		invalid={false}
-		bind:value={kal}
-		uiSize="md"
-		uiRounded="full"
-		iconLeft={BadgeCheck}
-		iconRight={BadgeCheck}
-	/>
+<div class="flex flex-col gap-3">
+	<TextInput invalid={false} bind:value={val} uiSize="md" uiRounded="none" placeholder="Email" />
 </div>
