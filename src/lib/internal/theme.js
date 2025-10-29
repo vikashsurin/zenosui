@@ -75,7 +75,7 @@ export function applyTheme(themeName) {
         return; // SSR environment, skip
     }
     localStorage.setItem('theme', themeName);
-    console.log("switching theme!")
+
 
     try {
         const theme = themes[themeName];
