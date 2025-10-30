@@ -31,6 +31,15 @@
 						<MenuItem>Item 10</MenuItem>
 						<MenuItem>Item 11</MenuItem>
 						<MenuItem>Item 12</MenuItem>
+
+						<SubMenu>
+							<SubMenuTrigger>Submenu 2</SubMenuTrigger>
+							<SubMenuContent>
+								<MenuItem>Item 13</MenuItem>
+								<MenuItem>Item 14</MenuItem>
+								<MenuItem>Item 15</MenuItem>
+							</SubMenuContent>
+						</SubMenu>
 					</SubMenuContent>
 				</SubMenu>
 			</MenuContent>

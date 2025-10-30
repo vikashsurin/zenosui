@@ -54,7 +54,14 @@
 		if (e.key === 'ArrowDown') {
 			console.log('arrow down');
 			e.preventDefault();
+			e.stopPropagation();
 			focusNextItem();
+		}
+		if (e.key === 'ArrowUp') {
+			console.log('arrow up');
+			e.preventDefault();
+			e.stopPropagation();
+			focusPrevItem();
 		}
 	}
 
@@ -66,10 +73,17 @@
 
 	$effect(() => {
 		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
-			console.log('i am running');
 			focusFirstItem();
 		}
 	});
+
+	function handleMouseEnter() {
+		subMenuContext.subMenuState.open();
+	}
+
+	function handleMouseLeave() {
+		subMenuContext.subMenuState.close();
+	}
 </script>
 
 {#if subMenuContext.subMenuState.isOpen}
@@ -79,6 +93,9 @@
 		id={'subMenu-' + subMenuId}
 		aria-labelledby={'subMenu-trigger-' + subMenuId}
 		onkeydown={(e) => handleKeyDown(e)}
+		onmouseenter={() => handleMouseEnter()}
+		onmouseleave={() => handleMouseLeave()}
+		onfocus={() => console.log('focus')}
 		class="absolute top-0 left-[100%] ml-2 w-max"
 	>
 		{@render children?.()}

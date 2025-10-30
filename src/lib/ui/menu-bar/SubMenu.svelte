@@ -10,6 +10,8 @@
 	let focusFirstItem = $state(false);
 	let focusSubMenuTrigger = $state(false);
 
+	let closeTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+
 	const subMenuState = {
 		get subMenuId() {
 			return subMenuId;
@@ -18,11 +20,14 @@
 			return isOpen;
 		},
 		open() {
+			clearTimeout(closeTimeoutId);
 			isOpen = true;
 		},
 		close() {
-			isOpen = false;
-			focusFirstItem = false;
+			closeTimeoutId = setTimeout(() => {
+				isOpen = false;
+				focusFirstItem = false;
+			}, 500);
 		},
 		get focusFirstMenuItem() {
 			return focusFirstItem;
@@ -37,8 +42,6 @@
 			focusSubMenuTrigger = val;
 		}
 	};
-
-	$inspect({ focusSubMenuTrigger });
 
 	setContext('subMenuContext', {
 		subMenuState

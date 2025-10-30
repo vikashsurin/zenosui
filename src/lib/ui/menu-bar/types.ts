@@ -27,5 +27,6 @@ export type MenuBarContextType = {
 		get focusFirstMenuItem(): boolean;
 		setFirstMenuItemFocus(): void;
 		resetFirstMenuItemFocus(): void;
+		get anyOpen(): boolean;
 	};
 };

@@ -11,7 +11,6 @@
 	function clearInput() {
 		val = '';
 	}
-	$inspect({ val });
 </script>
 
 <div>

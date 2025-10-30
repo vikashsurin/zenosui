@@ -105,6 +105,7 @@
 				updateItems();
 
 				if (menuBarContext?.menuBarState.focusFirstMenuItem) {
+					console.log('focusing first item');
 					focusFirstItem();
 				}
 			});
@@ -125,6 +126,7 @@
 
 		switch (e.key) {
 			case 'ArrowDown':
+				console.log('tracking arrow down');
 				e.preventDefault();
 				focusNextItem();
 				break;

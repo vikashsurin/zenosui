@@ -56,6 +56,7 @@
 	class="focus:ring-2"
 	data-submenu-id={subMenuContext.subMenuState.subMenuId}
 	onmouseenter={openSubmenu}
+	onmouseleave={closeSubmenu}
 	onclick={handleClick}
 	onkeydown={(e) => handlekeydown(e)}
 >

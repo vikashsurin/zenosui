@@ -6,7 +6,6 @@
 		otherProps
 	}: { props?: string[]; otherProps?: { name: string; props: string[] }[] } = $props();
 
-	$inspect(otherProps);
 </script>
 
 {#if props}

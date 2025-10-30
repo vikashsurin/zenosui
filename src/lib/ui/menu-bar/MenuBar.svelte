@@ -6,6 +6,7 @@
 	let activeMenuId = $state<string | null>(null);
 	let focusFirstMenuItem = $state(false);
 
+	$inspect({ focusFirstMenuItem });
 	let menuBarState: MenuBarContextType = {
 		get activeMenuId() {
 			return activeMenuId;
@@ -26,16 +27,18 @@
 			return focusFirstMenuItem;
 		},
 		setFirstMenuItemFocus() {
+            console.log('setting first menu item focus');
 			focusFirstMenuItem = true;
 		},
 		resetFirstMenuItemFocus() {
 			focusFirstMenuItem = false;
+		},
+		get anyOpen() {
+			return activeMenuId !== null;
 		}
 	};
 
-	function anyOpen() {
-		return activeMenuId !== null;
-	}
+	// function anyOpen() {}
 
 	setContext('menuBarContext', {
 		menuBarState
@@ -76,7 +79,7 @@
 		items[nextIndex]?.focus();
 		const nextMenuId = items[nextIndex]?.getAttribute('data-menu-id');
 
-		if (anyOpen() && nextMenuId) {
+		if (menuBarState.anyOpen && nextMenuId) {
 			menuBarState.openMenuId(nextMenuId);
 			menuBarState.setFirstMenuItemFocus();
 		}
@@ -91,7 +94,7 @@
 		items[prevIndex]?.focus();
 		const prevMenuId = items[prevIndex]?.getAttribute('data-menu-id');
 
-		if (anyOpen() && prevMenuId) {
+		if (menuBarState.anyOpen && prevMenuId) {
 			menuBarState.openMenuId(prevMenuId);
 			menuBarState.setFirstMenuItemFocus();
 		}
