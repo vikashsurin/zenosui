@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import Menu from './Menu.svelte';
+	import { type MenuBarContextType, type MenuContextType } from './types.ts';
 
 	let { children } = $props();
 
 	let el = $state<HTMLElement>(null);
 
-	const menuContext = getContext('menuContext');
+	const menuContext = getContext<MenuContextType>('menuContext');
 	const id = menuContext.menuId;
-	const menuBarContext = getContext('menuBarContext');
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 
 	function toggleMenu() {
-		menuContext.state.triggerElement = el;
 		if (menuBarContext.menuBarState.activeMenuId === id) {
 			menuBarContext.menuBarState.closeMenuId(id);
 		} else {
@@ -25,8 +25,6 @@
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
 			e.preventDefault();
-			console.log('from menu trigger');
-
 			toggleMenu();
 		}
 	}

@@ -4,6 +4,9 @@
 	import MenuTrigger from '$lib/ui/menu-bar/MenuTrigger.svelte';
 	import MenuContent from '$lib/ui/menu-bar/MenuContent.svelte';
 	import MenuItem from '$lib/ui/menu-bar/MenuItem.svelte';
+	import SubMenu from '$lib/ui/menu-bar/SubMenu.svelte';
+	import SubMenuContent from '$lib/ui/menu-bar/SubMenuContent.svelte';
+	import SubMenuTrigger from '$lib/ui/menu-bar/SubMenuTrigger.svelte';
 </script>
 
 <div class="p-8">
@@ -22,6 +25,14 @@
 				<MenuItem>Item 4</MenuItem>
 				<MenuItem>Item 5</MenuItem>
 				<MenuItem>Item 6</MenuItem>
+				<SubMenu>
+					<SubMenuTrigger>Submenu</SubMenuTrigger>
+					<SubMenuContent>
+						<MenuItem>Item 10</MenuItem>
+						<MenuItem>Item 11</MenuItem>
+						<MenuItem>Item 12</MenuItem>
+					</SubMenuContent>
+				</SubMenu>
 			</MenuContent>
 		</Menu>
 		<Menu>

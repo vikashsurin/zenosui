@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { getContext, tick } from 'svelte';
+	import { type MenuBarContextType, type MenuContextType } from './types.ts';
 	let { children } = $props();
 
-	const menuContext = getContext('menuContext');
-	const menuBarContext = getContext('menuBarContext');
+	const menuContext = getContext<MenuContextType>('menuContext');
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 
 	let menu = $state<HTMLElement>();
@@ -50,10 +51,13 @@
 	}
 
 	function openSubmenu(element: HTMLElement) {
+		// console.log('opening submenu');
 		// Trigger submenu open - this depends on your submenu implementation
 		// You might need to dispatch a custom event or call a method
 		const submenuId = element.getAttribute('data-submenu-id');
+		console.log({ submenuId });
 		if (submenuId) {
+			console.log('opening submenu');
 			element.click(); // or whatever opens your submenu
 			// After opening, focus should move to first item of submenu
 		}
@@ -135,7 +139,8 @@
 				if (focusedElement && hasSubmenu(focusedElement)) {
 					e.preventDefault();
 					e.stopPropagation(); // Prevent menubar from handling this
-					openSubmenu(focusedElement);
+					// openSubmenu(focusedElement);
+					return;
 				}
 				// Otherwise, let it bubble up to menubar (for top-level menus)
 				// or do nothing (for submenus)

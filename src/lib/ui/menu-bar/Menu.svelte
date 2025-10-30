@@ -1,26 +1,22 @@
 <script lang="ts">
 	import { getContext, setContext } from 'svelte';
+	import type { MenuBarContextType, MenuContextType } from './types.ts';
 
 	let { children } = $props();
 
 	let menuId = crypto.randomUUID();
-	const menuBarContext = getContext('menuBarContext');
+	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 
-	let state = $state({
-		triggerElement: null
-	});
-
-	const isOpen = $derived(menuBarContext.menuBarState.isOpen(menuId));
+	const isOpen = $derived<boolean>(menuBarContext.menuBarState.isOpen(menuId));
 
 	function closeMenu() {
 		menuBarContext.menuBarState.closeMenuId(menuId);
 	}
 	setContext('menuContext', {
-		state,
 		menuId,
 		close: () => closeMenu(),
 		isOpen: () => isOpen
-	});
+	} as MenuContextType);
 </script>
 
 <li role="none" class="relative border">

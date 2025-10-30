@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { setContext, onMount } from 'svelte';
+	import type { MenuBarContextType } from './types.ts';
 	let { children } = $props();
 
 	let activeMenuId = $state<string | null>(null);
 	let focusFirstMenuItem = $state(false);
 
-	let menuBarState = {
+	let menuBarState: MenuBarContextType = {
 		get activeMenuId() {
 			return activeMenuId;
 		},
