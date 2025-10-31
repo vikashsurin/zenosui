@@ -19,14 +19,22 @@ export type MenuContextType = {
 
 export type MenuBarContextType = {
 	menuBarState: {
-		activeMenuId: string;
+		get activeMenuId(): string | null;
+		get anyOpen(): boolean;
 		openMenuId(id: string): void;
 		closeMenuId(id: string): void;
 		closeAll(): void;
 		isOpen(id: string): boolean;
-		get focusFirstMenuItem(): boolean;
-		setFirstMenuItemFocus(): void;
-		resetFirstMenuItemFocus(): void;
-		get anyOpen(): boolean;
+		focusNextTrigger(): void;
+		focusPrevTrigger(): void;
+		focusRecentTrigger(): void;
+	};
+};
+
+export type MenuRadioGroupContextType = {
+	radioGroupState: {
+		get value(): string | number | string[] | null | undefined;
+		setValue(val: string | number | string[] | null | undefined): void;
+		get name(): string | null | undefined;
 	};
 };

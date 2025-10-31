@@ -12,14 +12,13 @@
 
 	function updateItems() {
 		if (menu) {
-			items = Array.from(menu.querySelectorAll(':scope > li > [role="menuitem"]:not([disabled])'));
+			items = Array.from(menu.querySelectorAll(':scope  [data-menu-item]:not([disabled])'));
 		}
 	}
 
 	function focusFirstItem() {
 		if (items.length > 0) {
 			items[0].focus();
-			menuBarContext?.menuBarState.resetFirstMenuItemFocus();
 		}
 	}
 
@@ -48,19 +47,6 @@
 
 	function hasSubmenu(element: HTMLElement): boolean {
 		return element.hasAttribute('aria-haspopup') || element.hasAttribute('data-has-submenu');
-	}
-
-	function openSubmenu(element: HTMLElement) {
-		// console.log('opening submenu');
-		// Trigger submenu open - this depends on your submenu implementation
-		// You might need to dispatch a custom event or call a method
-		const submenuId = element.getAttribute('data-submenu-id');
-		console.log({ submenuId });
-		if (submenuId) {
-			console.log('opening submenu');
-			element.click(); // or whatever opens your submenu
-			// After opening, focus should move to first item of submenu
-		}
 	}
 
 	function closeCurrentMenu() {
@@ -103,11 +89,6 @@
 		if (menu && menuContext.isOpen()) {
 			tick().then(() => {
 				updateItems();
-
-				if (menuBarContext?.menuBarState.focusFirstMenuItem) {
-					console.log('focusing first item');
-					focusFirstItem();
-				}
 			});
 		}
 	});
@@ -126,13 +107,14 @@
 
 		switch (e.key) {
 			case 'ArrowDown':
-				console.log('tracking arrow down');
 				e.preventDefault();
+				e.stopPropagation();
 				focusNextItem();
 				break;
 
 			case 'ArrowUp':
 				e.preventDefault();
+				e.stopPropagation();
 				focusPrevItem();
 				break;
 
@@ -141,7 +123,6 @@
 				if (focusedElement && hasSubmenu(focusedElement)) {
 					e.preventDefault();
 					e.stopPropagation(); // Prevent menubar from handling this
-					// openSubmenu(focusedElement);
 					return;
 				}
 				// Otherwise, let it bubble up to menubar (for top-level menus)
@@ -177,22 +158,10 @@
 
 			case ' ':
 			case 'Enter':
+				menuBarContext.menuBarState.focusRecentTrigger();
 				e.preventDefault();
-				if (focusedElement) {
-					// If has submenu, open it
-					if (hasSubmenu(focusedElement)) {
-						openSubmenu(focusedElement);
-					} else {
-						// Otherwise trigger the menu item
-						focusedElement.click();
-					}
-				}
-				break;
-
-			case 'Escape':
-				e.preventDefault();
-				e.stopPropagation();
 				closeCurrentMenu();
+				e.stopPropagation();
 				break;
 		}
 	}

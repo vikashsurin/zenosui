@@ -19,7 +19,6 @@
 
 	function focusNextItem() {
 		if (items.length === 0) return;
-		console.log('focus next item');
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
 		items[nextIndex].focus();
@@ -44,7 +43,6 @@
 
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'ArrowLeft') {
-			console.log('arrow left');
 			subMenuContext.subMenuState.close();
 			subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
 			subMenuContext.subMenuState.setFirstMenuItemFocus(false);
@@ -52,13 +50,11 @@
 		}
 
 		if (e.key === 'ArrowDown') {
-			console.log('arrow down');
 			e.preventDefault();
 			e.stopPropagation();
 			focusNextItem();
 		}
 		if (e.key === 'ArrowUp') {
-			console.log('arrow up');
 			e.preventDefault();
 			e.stopPropagation();
 			focusPrevItem();
@@ -95,7 +91,6 @@
 		onkeydown={(e) => handleKeyDown(e)}
 		onmouseenter={() => handleMouseEnter()}
 		onmouseleave={() => handleMouseLeave()}
-		onfocus={() => console.log('focus')}
 		class="absolute top-0 left-[100%] ml-2 w-max"
 	>
 		{@render children?.()}

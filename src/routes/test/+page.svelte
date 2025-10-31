@@ -7,6 +7,16 @@
 	import SubMenu from '$lib/ui/menu-bar/SubMenu.svelte';
 	import SubMenuContent from '$lib/ui/menu-bar/SubMenuContent.svelte';
 	import SubMenuTrigger from '$lib/ui/menu-bar/SubMenuTrigger.svelte';
+
+	import MenuRadioGroup from '$lib/ui/menu-bar/MenuRadioGroup.svelte';
+	import MenuRadioItem from '$lib/ui/menu-bar/MenuRadioItem.svelte';
+
+	import MenuCheckboxItem from '$lib/ui/menu-bar/MenuCheckboxItem.svelte';
+
+	let radioValue = $state('banana');
+
+	let bookmarks = $state(false);
+	let urls = $state(false);
 </script>
 
 <div class="p-8">
@@ -47,9 +57,28 @@
 		<Menu>
 			<MenuTrigger>Trigger 3</MenuTrigger>
 			<MenuContent>
-				<MenuItem>Item 7</MenuItem>
+				<MenuItem href="#" onclick={() => setTimeout(() => console.log('clicked'), 1000)}
+					>Item 7</MenuItem
+				>
 				<MenuItem>Item 8</MenuItem>
 				<MenuItem>Item 9</MenuItem>
+			</MenuContent>
+		</Menu>
+		<Menu>
+			<MenuTrigger>Trigger 4</MenuTrigger>
+			<MenuContent>
+				<MenuRadioGroup name="fruits" bind:value={radioValue}>
+					<MenuRadioItem value="orange">Item 1</MenuRadioItem>
+					<MenuRadioItem value="apple">Item 2</MenuRadioItem>
+					<MenuRadioItem value="banana">Item 3</MenuRadioItem>
+				</MenuRadioGroup>
+			</MenuContent>
+		</Menu>
+		<Menu>
+			<MenuTrigger>Trigger 5</MenuTrigger>
+			<MenuContent>
+				<MenuCheckboxItem bind:checked={bookmarks}>show bookmarks</MenuCheckboxItem>
+				<MenuCheckboxItem bind:checked={urls}>show urls</MenuCheckboxItem>
 			</MenuContent>
 		</Menu>
 	</MenuBar>

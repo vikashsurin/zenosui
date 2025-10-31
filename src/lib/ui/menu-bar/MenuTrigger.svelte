@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import Menu from './Menu.svelte';
+
 	import { type MenuBarContextType, type MenuContextType } from './types.ts';
 
 	let { children } = $props();
@@ -32,17 +32,12 @@
 		}
 
 		if (e.key === 'ArrowDown') {
-			console.log('arrow down');
+			e.preventDefault();
 			openMenu();
-			menuBarContext.menuBarState.setFirstMenuItemFocus();
 		}
 	}
 
-	function handleFocus(e: FocusEvent) {
-		// if (menuBarContext) {
-		// 	menuBarContext.menuBarState.openMenuId(id);
-		// }
-	}
+	function handleFocus(e: FocusEvent) {}
 
 	function handleMouseEnter(e: MouseEvent) {
 		if (menuBarContext) {
@@ -56,6 +51,7 @@
 </script>
 
 <button
+	data-menu-trigger
 	bind:this={el}
 	data-menu-id={id}
 	role="menuitem"

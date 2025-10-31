@@ -23,6 +23,12 @@
 	function handlekeydown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			openSubmenu();
+			e.preventDefault();
+			e.stopPropagation();
+			if (subMenuContext) {
+				subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
+				subMenuContext.subMenuState.setFirstMenuItemFocus(true);
+			}
 		}
 
 		if (e.key === 'Escape') {
@@ -33,7 +39,6 @@
 		}
 
 		if (e.key === 'ArrowRight') {
-			console.log('arrow right');
 			openSubmenu();
 			if (subMenuContext) {
 				subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
@@ -50,6 +55,7 @@
 </script>
 
 <button
+	data-menu-item
 	bind:this={el}
 	role="menuitem"
 	aria-haspopup="true"
