@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { setContext, onMount } from 'svelte';
+	import { setContext, onMount, tick } from 'svelte';
 	import type { MenuBarContextType } from './types.ts';
 	let { children } = $props();
 
 	let activeMenuId = $state<string | null>(null);
-	let focusFirstMenuItem = $state(false);
 
-	$inspect({ focusFirstMenuItem });
-	let menuBarState: MenuBarContextType = {
+	$inspect({ activeMenuId });
+	let menuBarState = {
 		get activeMenuId() {
 			return activeMenuId;
 		},
@@ -23,33 +22,25 @@
 		isOpen(id: string) {
 			return activeMenuId === id;
 		},
-		get focusFirstMenuItem() {
-			return focusFirstMenuItem;
-		},
-		setFirstMenuItemFocus() {
-            console.log('setting first menu item focus');
-			focusFirstMenuItem = true;
-		},
-		resetFirstMenuItemFocus() {
-			focusFirstMenuItem = false;
-		},
+
 		get anyOpen() {
 			return activeMenuId !== null;
-		}
+		},
+		focusNextTrigger: focusNextTrigger,
+		focusPrevTrigger: focusPrevTrigger,
+		focusRecentTrigger: focusRecentTrigger
 	};
-
-	// function anyOpen() {}
 
 	setContext('menuBarContext', {
 		menuBarState
-	});
+	} as MenuBarContextType);
 
-	let nav = $state<HTMLElement>();
+	let menubar = $state<HTMLElement>();
 	let items: HTMLElement[] = $state([]);
 
 	function updateItems() {
-		if (nav) {
-			items = Array.from(nav.querySelectorAll('ul[role="menubar"] > li > [role="menuitem"]'));
+		if (menubar) {
+			items = Array.from(menubar.querySelectorAll('ul[role="menubar"] [data-menu-trigger]'));
 		}
 	}
 
@@ -81,7 +72,15 @@
 
 		if (menuBarState.anyOpen && nextMenuId) {
 			menuBarState.openMenuId(nextMenuId);
-			menuBarState.setFirstMenuItemFocus();
+			focusFirstMenuItem();
+		}
+	}
+
+	function focusRecentTrigger() {
+		const currentIndex = getCurrentTriggerIndex();
+		if (currentIndex !== -1) {
+			items[currentIndex]?.focus();
+			console.log(items[currentIndex]);
 		}
 	}
 
@@ -96,22 +95,28 @@
 
 		if (menuBarState.anyOpen && prevMenuId) {
 			menuBarState.openMenuId(prevMenuId);
-			menuBarState.setFirstMenuItemFocus();
+			focusFirstMenuItem();
 		}
 	}
 
+	async function focusFirstMenuItem() {
+		await tick();
+		const menuItems = menubar?.querySelectorAll(
+			`#menu-${activeMenuId} [data-menu-item]:not([disabled])`
+		) as NodeListOf<HTMLElement>;
+
+		if (menuItems?.length > 0) {
+			menuItems[0].focus();
+		}
+	}
 	function handleKeyDown(e: KeyboardEvent) {
 		// Update items in case DOM changed
 		updateItems();
 
 		if (e.key === 'Escape') {
-			const currentIndex = getCurrentTriggerIndex();
-			menuBarState.closeAll();
-			// Refocus the trigger that was active
-			if (currentIndex !== -1) {
-				items[currentIndex]?.focus();
-			}
+			focusRecentTrigger();
 			e.preventDefault();
+			menuBarState.closeAll();
 			return;
 		}
 
@@ -126,13 +131,16 @@
 		}
 
 		if (e.key === 'ArrowDown') {
-			menuBarState.setFirstMenuItemFocus();
+			focusFirstMenuItem();
+		}
+		if (e.key === 'Enter' || e.key === ' ') {
+			focusFirstMenuItem();
 		}
 	}
 </script>
 
-<nav bind:this={nav} onkeydown={handleKeyDown} class="bg-amber-600 p-4">
-	<ul role="menubar" class="flex gap-2">
+<nav class="bg-amber-600 p-4">
+	<ul bind:this={menubar} role="menubar" onkeydown={handleKeyDown} class="flex gap-2">
 		{@render children?.()}
 	</ul>
 </nav>
