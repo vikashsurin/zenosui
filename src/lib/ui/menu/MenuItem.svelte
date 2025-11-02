@@ -9,7 +9,7 @@
 		type MenuBarContextType,
 		type MenuContextType,
 		type RadioMenuContextType
-	} from './types.js';
+	} from './types.ts';
 	import Check from '@lucide/svelte/icons/check';
 	import Dot from '@lucide/svelte/icons/dot';
 	import { menuItemTheme } from './theme.js';

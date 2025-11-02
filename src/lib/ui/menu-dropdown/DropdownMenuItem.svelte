@@ -31,6 +31,7 @@
 	}
 
 	let el = $state('button');
+
 	$effect(() => {
 		if (href) {
 			el = 'a';
