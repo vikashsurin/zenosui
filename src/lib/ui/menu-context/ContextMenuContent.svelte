@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { getContext, tick } from 'svelte';
-	import { type DropdownMenuContextType } from './types.ts';
+	import { type ContextMenuContextType } from './types.ts';
 	let { children } = $props();
 
-	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
+	const contextMenuContext = getContext<ContextMenuContextType>('contextMenuContext');
 
-	const id = dropdownMenuContext.menuId;
+	const clientX = $derived(contextMenuContext.ContextMenuState.menuPosition.x);
+	const clientY = $derived(contextMenuContext.ContextMenuState.menuPosition.y);
+
+	$inspect({ clientX, clientY });
+	const id = contextMenuContext.menuId;
 
 	let menu = $state<HTMLElement>();
 	let items: HTMLElement[] = $state([]);
@@ -50,7 +54,7 @@
 	}
 
 	function closeCurrentMenu() {
-		dropdownMenuContext.dropdownMenuState.close();
+		contextMenuContext.ContextMenuState.close();
 	}
 
 	// Typeahead search functionality
@@ -81,7 +85,7 @@
 	}
 
 	$effect(() => {
-		if (menu && dropdownMenuContext.dropdownMenuState.isOpen) {
+		if (menu && contextMenuContext.ContextMenuState.isOpen) {
 			tick().then(() => {
 				updateItems();
 			});
@@ -89,7 +93,7 @@
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
-		if (!dropdownMenuContext.dropdownMenuState.isOpen) return;
+		if (!contextMenuContext.ContextMenuState.isOpen) return;
 
 		const focusedElement = document.activeElement as HTMLElement;
 
@@ -139,12 +143,12 @@
 				break;
 
 			case 'Tab':
-				dropdownMenuContext.dropdownMenuState.close();
+				contextMenuContext.ContextMenuState.close();
 				break;
 
 			case ' ':
 			case 'Enter':
-				dropdownMenuContext.dropdownMenuState.focusTrigger();
+				contextMenuContext.ContextMenuState.focusTrigger();
 				e.preventDefault();
 				closeCurrentMenu();
 				e.stopPropagation();
@@ -155,31 +159,32 @@
 	// Close menu when clicking outside
 	function handleClickOutside(e: MouseEvent) {
 		if (menu && !menu.contains(e.target as Node)) {
-			const trigger = document.querySelector(`[data-menu-id="${id}"]`);
-			if (trigger && !trigger.contains(e.target as Node)) {
-				dropdownMenuContext.dropdownMenuState.close();
-			}
+			contextMenuContext.ContextMenuState.close();
 		}
 	}
 
 	$effect(() => {
-		if (dropdownMenuContext.dropdownMenuState.isOpen) {
+		if (contextMenuContext.ContextMenuState.isOpen) {
 			document.addEventListener('click', handleClickOutside);
+			// document.addEventListener('contextmenu', handleClickOutside);
 			return () => {
 				document.removeEventListener('click', handleClickOutside);
+				// document.removeEventListener('contextmenu', handleClickOutside);
 			};
 		}
 	});
 </script>
 
-{#if dropdownMenuContext.dropdownMenuState.isOpen}
+{#if contextMenuContext.ContextMenuState.isOpen}
 	<ul
 		bind:this={menu}
 		role="menu"
 		id={'menu-' + id}
 		aria-labelledby={'menu-trigger-' + id}
 		onkeydown={handleKeyDown}
-		class="absolute"
+		style:position="absolute"
+		style:top={`${clientY + 2}px`}
+		style:left={`${clientX + 2}px`}
 	>
 		{@render children?.()}
 	</ul>

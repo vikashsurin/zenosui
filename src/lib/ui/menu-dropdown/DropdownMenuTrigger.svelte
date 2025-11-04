@@ -56,10 +56,10 @@
 	onclick={(e) => handleClick(e)}
 	tabindex="0"
 	onfocus={(e) => handleFocus(e)}
-	onmouseenter={(e) => handleMouseEnter(e)}
 	onmouseleave={(e) => handleMouseLeave(e)}
 	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
 	class="focus:ring-2"
+	onmouseenter={(e) => handleMouseEnter(e)}
 >
 	{@render children?.()}
 </button>
