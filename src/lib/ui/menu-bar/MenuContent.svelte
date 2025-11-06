@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { getContext, tick } from 'svelte';
 	import { type MenuBarContextType, type MenuContextType } from './types.ts';
-	let { children } = $props();
+	import { tv } from 'tailwind-variants';
+	import { baseVariant } from '$lib/style/base.js';
+	import clsx from 'clsx';
+	import { menuContentTheme } from './theme.js';
+	let { children, class: _class } = $props();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
@@ -184,6 +188,13 @@
 			};
 		}
 	});
+
+	const style = tv({
+		extend: baseVariant,
+		base: `min-w-[8rem] mt-2 absolute ${menuContentTheme}`
+	});
+
+	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
 {#if menuContext.isOpen()}
@@ -193,7 +204,7 @@
 		id={'menu-' + id}
 		aria-labelledby={'menu-trigger-' + id}
 		onkeydown={handleKeyDown}
-		class="absolute"
+		class={finalClass}
 	>
 		{@render children?.()}
 	</ul>

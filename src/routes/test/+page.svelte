@@ -1,9 +1,7 @@
 <script lang="ts">
-	import CtxMenu from './CtxMenu.svelte';
-	import DdMenu from './DdMenu.svelte';
+	import Menubar from './Menubar.svelte';
 </script>
 
 <div class="p-8">
-	<CtxMenu />
-	<!-- <DdMenu /> -->
+	<Menubar />
 </div>

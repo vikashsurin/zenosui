@@ -8,7 +8,7 @@
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 
 	const isOpen = $derived<boolean>(menuBarContext.menuBarState.isOpen(menuId));
-
+	$inspect({ menuId });
 	function closeMenu() {
 		menuBarContext.menuBarState.closeMenuId(menuId);
 	}
@@ -19,6 +19,6 @@
 	} as MenuContextType);
 </script>
 
-<li role="none" class="relative border">
+<li role="none" class="relative">
 	{@render children?.()}
 </li>

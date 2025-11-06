@@ -4,12 +4,15 @@
 	import clsx from 'clsx';
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { baseVariant } from '$lib/style/base.js';
+	import { getContext } from 'svelte';
+	import type { MenuContextType } from './types.ts';
 
 	let { children, props, onclick, href, uiSize, class: _class } = $props();
+	const menuContext = getContext<MenuContextType>('menuContext');
 
 	const style = tv({
 		extend: baseVariant,
-		base: ` ${menuItemTheme}`,
+		base: `w-full ${menuItemTheme}`,
 		variants: {
 			uiSize: SIZE_PRESET
 		}
@@ -26,7 +29,7 @@
 	function handleClick(e: MouseEvent) {
 		// e.preventDefault();
 		// onclick();
-
+		menuContext.close();
 		console.log('clicked');
 	}
 

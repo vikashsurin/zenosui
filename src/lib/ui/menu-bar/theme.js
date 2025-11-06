@@ -1,5 +1,15 @@
 
 
-const baseMenuItem = 'px-[0.7em] py-[0.2em] w-max'
+const baseMenuItem = 'px-[0.7em] py-[0.2em] w-full text-nowrap text-left '
 
-export const menuItemTheme = `${baseMenuItem} focus:bg-[var(--theme-background-500)] focus-within:bg-[var(--theme-background-500)] focus-within:text-[var(--theme-background-100)] focus:text-[var(--theme-background-100)] hover:bg-[var(--theme-background-500)] active:bg-[var(--theme-background-700)] text-[var(--theme-foreground)] hover:text-[var(--theme-background-100)] active:text-[var(--theme-background-200)]`;
+export const menuItemTheme = `${baseMenuItem} text-[var(--theme-text)] focus-within:bg-[var(--theme-background-200)] hover:bg-[var(--theme-background-200)] active:bg-[var(--theme-background-300)]`;
+
+
+export const menuTriggerTheme = `${baseMenuItem}  text-[var(--theme-text)] focus:bg-[var(--theme-background-200)]`;
+
+export const activeMenuTrigger = `bg-[var(--theme-background-200)]`;
+
+export const menuBarTheme = `border-1 border-[var(--theme-border)] `;
+
+
+export const menuContentTheme = `bg-[var(--theme-background)] text-[var(--theme-foreground)] border-1 border-[var(--theme-border)] `

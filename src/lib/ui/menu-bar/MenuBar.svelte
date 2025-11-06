@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { setContext, onMount, tick } from 'svelte';
 	import type { MenuBarContextType } from './types.ts';
-	let { children } = $props();
+	import { tv } from 'tailwind-variants';
+	import { baseVariant } from '$lib/style/base.js';
+	import clsx from 'clsx';
+	import { menuBarTheme } from './theme.js';
+	let { children, class: _class } = $props();
 
 	let activeMenuId = $state<string | null>(null);
-
 	$inspect({ activeMenuId });
+
 	let menuBarState = {
 		get activeMenuId() {
 			return activeMenuId;
@@ -137,10 +141,24 @@
 			focusFirstMenuItem();
 		}
 	}
+
+	const dynamic = {
+		direction: {
+			ltr: 'flex ',
+			ttb: 'flex flex-col'
+		}
+	};
+
+	const style = tv({
+		extend: baseVariant,
+		base: `${dynamic.direction.ltr} ${menuBarTheme} w-max p-[0.2em]`
+	});
+
+	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<nav class="bg-amber-600 p-4">
-	<ul bind:this={menubar} role="menubar" onkeydown={handleKeyDown} class="flex gap-2">
+<nav class="p-4">
+	<ul bind:this={menubar} role="menubar" onkeydown={handleKeyDown} class={finalClass}>
 		{@render children?.()}
 	</ul>
 </nav>
