@@ -8,7 +8,7 @@
 	let { children, class: _class } = $props();
 
 	let activeMenuId = $state<string | null>(null);
-	$inspect({ activeMenuId });
+
 
 	let menuBarState = {
 		get activeMenuId() {
@@ -84,7 +84,7 @@
 		const currentIndex = getCurrentTriggerIndex();
 		if (currentIndex !== -1) {
 			items[currentIndex]?.focus();
-			console.log(items[currentIndex]);
+
 		}
 	}
 

@@ -11,7 +11,7 @@
 
 	const style = tv({
 		extend: baseVariant,
-		base: `flex w-max items-center gap-2 focus-within:ring-2  ${menuItemTheme}`,
+		base: `flex w-max items-center gap-2  ${menuItemTheme}`,
 		variants: {
 			uiSize: SIZE_PRESET
 		}

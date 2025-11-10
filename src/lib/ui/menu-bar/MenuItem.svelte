@@ -10,19 +10,11 @@
 	let { children, props, onclick, href, uiSize, class: _class } = $props();
 	const menuContext = getContext<MenuContextType>('menuContext');
 
-	const style = tv({
-		extend: baseVariant,
-		base: `w-full ${menuItemTheme}`,
-		variants: {
-			uiSize: SIZE_PRESET
-		}
-	});
-
 	function handleKeyDown(e: KeyboardEvent) {
 		const target = e.target as HTMLElement;
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-			console.log('from menu item');
+			
 			target.click();
 		}
 	}
@@ -30,13 +22,21 @@
 		// e.preventDefault();
 		// onclick();
 		menuContext.close();
-		console.log('clicked');
+
 	}
 
 	let el = $state('button');
 	$effect(() => {
 		if (href) {
 			el = 'a';
+		}
+	});
+
+	const style = tv({
+		extend: baseVariant,
+		base: `w-full inline-block ${menuItemTheme}`,
+		variants: {
+			uiSize: SIZE_PRESET
 		}
 	});
 

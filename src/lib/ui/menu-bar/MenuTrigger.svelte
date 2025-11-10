@@ -16,7 +16,7 @@
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 
-	// $inspect('id : ', menuContext.isOpen());
+
 
 	function toggleMenu() {
 		if (menuBarContext.menuBarState.activeMenuId === id) {
@@ -60,7 +60,7 @@
 
 	function handleMouseLeave(e: MouseEvent) {}
 
-	$inspect({ status: id === menuBarContext.menuBarState.activeMenuId });
+
 
 	function getActiveStyle() {
 		if (menuContext.isOpen()) {

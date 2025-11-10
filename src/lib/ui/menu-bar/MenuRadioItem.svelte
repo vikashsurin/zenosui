@@ -27,7 +27,6 @@
 	function handleChange(e) {
 		const value = e.target.value;
 		radioGroupContext.radioGroupState.setValue(value);
-		console.log('changed');
 	}
 
 	function isChecked() {
