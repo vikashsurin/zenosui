@@ -21,7 +21,10 @@ export type DropdownMenuContextType = {
 		focusTrigger(): void;
 	};
 };
-
+export type DropdownMenuContentContextType = {
+	get leftSpaced(): boolean;
+	set leftSpaced(value: boolean);
+};
 export type MenuBarContextType = {
 	menuBarState: {
 		get activeMenuId(): string | null;

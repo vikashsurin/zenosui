@@ -1,13 +1,32 @@
 <script lang="ts">
-	import { getContext, tick } from 'svelte';
-	import { type MenuBarContextType, type MenuContextType } from './types.ts';
+	import { getContext, setContext, tick } from 'svelte';
+	import {
+		type MenuBarContextType,
+		type MenuContentContextType,
+		type MenuContextType
+	} from './types.ts';
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
 	import { menuContentTheme } from './theme.js';
+	import { menuState } from '../menu/menustore.svelte.ts';
 	let { children, class: _class } = $props();
 
+	let leftSpaced = $state<boolean>(false);
+
+	const menuContentContext = {
+		get leftSpaced() {
+			return leftSpaced;
+		},
+		set leftSpaced(value: boolean) {
+			leftSpaced = value;
+		}
+	};
+
+	setContext('menuContentContext', menuContentContext);
+
 	const menuContext = getContext<MenuContextType>('menuContext');
+
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 

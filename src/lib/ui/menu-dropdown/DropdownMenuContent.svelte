@@ -1,11 +1,27 @@
 <script lang="ts">
-	import { getContext, tick } from 'svelte';
+	import { getContext, setContext, tick } from 'svelte';
 	import { type DropdownMenuContextType } from './types.ts';
-	let { children } = $props();
+	import { baseVariant } from '$lib/style/base.js';
+	import { tv } from 'tailwind-variants';
+	import { menuContentTheme } from './theme.js';
+	import clsx from 'clsx';
+	let { children, class: _class } = $props();
 
 	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
 
 	const id = dropdownMenuContext.menuId;
+	let leftSpaced = $state(false);
+
+	const dropdownMenuContentContext = {
+		get leftSpaced() {
+			return leftSpaced;
+		},
+		set leftSpaced(value: boolean) {
+			leftSpaced = value;
+		}
+	};
+
+	setContext('dropdownMenuContentContext', dropdownMenuContentContext);
 
 	let menu = $state<HTMLElement>();
 	let items: HTMLElement[] = $state([]);
@@ -170,6 +186,13 @@
 			};
 		}
 	});
+
+	const style = tv({
+		extend: baseVariant,
+		base: `min-w-[8rem] mt-2 absolute ${menuContentTheme}`
+	});
+
+	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
 {#if dropdownMenuContext.dropdownMenuState.isOpen}
@@ -179,7 +202,7 @@
 		id={'menu-' + id}
 		aria-labelledby={'menu-trigger-' + id}
 		onkeydown={handleKeyDown}
-		class="absolute"
+		class={finalClass}
 	>
 		{@render children?.()}
 	</ul>

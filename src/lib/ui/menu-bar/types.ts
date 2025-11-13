@@ -17,6 +17,11 @@ export type MenuContextType = {
 	isOpen: () => boolean;
 };
 
+export type MenuContentContextType = {
+	get leftSpaced(): boolean;
+	set leftSpaced(value: boolean);
+};
+
 export type MenuBarContextType = {
 	menuBarState: {
 		get activeMenuId(): string | null;

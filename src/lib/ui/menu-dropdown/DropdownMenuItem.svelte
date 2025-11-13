@@ -4,8 +4,32 @@
 	import clsx from 'clsx';
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { baseVariant } from '$lib/style/base.js';
+	import { getContext } from 'svelte';
+	import type { DropdownMenuContentContextType } from './types.ts';
+	import { Icon } from '../icon/index.ts';
+	let {
+		children,
+		props,
+		onclick,
+		href,
+		uiSize,
+		class: _class,
+		iconLeft,
+		leftSlot,
+		iconRight,
+		rightSlot
+	} = $props();
 
-	let { children, props, onclick, href, uiSize, class: _class } = $props();
+	const dropdownMenuContentContext = getContext<DropdownMenuContentContextType>(
+		'dropdownMenuContentContext'
+	);
+	const leftSpaced = $derived(dropdownMenuContentContext.leftSpaced);
+
+	$effect(() => {
+		if (iconLeft || leftSlot) {
+			dropdownMenuContentContext.leftSpaced = true;
+		}
+	});
 
 	const style = tv({
 		extend: baseVariant,
@@ -14,6 +38,8 @@
 			uiSize: SIZE_PRESET
 		}
 	});
+
+	$inspect({ leftSpaced });
 
 	function handleKeyDown(e: KeyboardEvent) {
 		const target = e.target as HTMLElement;
@@ -52,6 +78,22 @@
 		{...props}
 		class={finalClass}
 	>
+		{#if iconLeft}
+			<Icon icon={iconLeft} {uiSize} />
+		{:else if leftSlot}
+			{@render leftSlot?.()}
+		{:else if leftSpaced}
+			<span class="h-[1em] w-[1em]"></span>
+		{/if}
+
 		{@render children?.()}
+
+		{#if iconRight}
+			<Icon icon={iconRight} {uiSize} class="ml-auto" />
+		{:else if rightSlot}
+			{@render rightSlot?.()}
+		{:else}
+			<span class="h-[1em] w-[1em]"></span>
+		{/if}
 	</svelte:element>
 </li>

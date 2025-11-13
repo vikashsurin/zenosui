@@ -12,6 +12,9 @@
 	import MenuRadioItem from '$lib/ui/menu-bar/MenuRadioItem.svelte';
 
 	import MenuCheckboxItem from '$lib/ui/menu-bar/MenuCheckboxItem.svelte';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import ChevronRight from '@lucide/svelte/icons/chevron-right';
+	import MenuSeparator from '$lib/ui/menu-bar/MenuSeparator.svelte';
 
 	let radioValue = $state('banana');
 
@@ -24,9 +27,36 @@
 		<Menu>
 			<MenuTrigger>Trigger</MenuTrigger>
 			<MenuContent>
-				<MenuItem>Item 1</MenuItem>
-				<MenuItem>Item 2</MenuItem>
+				<MenuItem class="">Item 1</MenuItem>
+				<MenuItem>
+					{#snippet leftSlot()}
+						<img src="https://avatar.iran.liara.run/public" alt="Item 2" class="h-4 w-4" />
+					{/snippet}
+
+					Item 2</MenuItem
+				>
 				<MenuItem>Item 3</MenuItem>
+				<MenuSeparator />
+				<SubMenu>
+					<SubMenuTrigger iconRight={ChevronRight}
+						>Submenu
+						<span class="text-sm text-gray-400">description</span>
+					</SubMenuTrigger>
+					<SubMenuContent>
+						<MenuItem>Item 10</MenuItem>
+						<MenuItem>Item 11</MenuItem>
+						<MenuItem>Item 12</MenuItem>
+
+						<SubMenu>
+							<SubMenuTrigger>Submenu 2</SubMenuTrigger>
+							<SubMenuContent>
+								<MenuItem>Item 13</MenuItem>
+								<MenuItem>Item 14</MenuItem>
+								<MenuItem>Item 15</MenuItem>
+							</SubMenuContent>
+						</SubMenu>
+					</SubMenuContent>
+				</SubMenu>
 			</MenuContent>
 		</Menu>
 		<Menu>
@@ -67,10 +97,14 @@
 		<Menu>
 			<MenuTrigger>Trigger 4</MenuTrigger>
 			<MenuContent>
+				<MenuItem>Item 1</MenuItem>
+				<MenuItem>Item 2</MenuItem>
+				<MenuItem>Item 3</MenuItem>
+				<MenuSeparator />
 				<MenuRadioGroup name="fruits" bind:value={radioValue}>
-					<MenuRadioItem value="orange">Item 1</MenuRadioItem>
-					<MenuRadioItem value="apple">Item 2</MenuRadioItem>
-					<MenuRadioItem value="banana">Item 3</MenuRadioItem>
+					<MenuRadioItem value="orange">Sort by Name</MenuRadioItem>
+					<MenuRadioItem value="apple">Sort by Date</MenuRadioItem>
+					<MenuRadioItem value="banana">Sort by Size</MenuRadioItem>
 				</MenuRadioGroup>
 			</MenuContent>
 		</Menu>

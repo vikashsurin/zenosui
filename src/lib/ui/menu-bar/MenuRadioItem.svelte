@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { type MenuRadioGroupContextType } from './types.ts';
+	import { type MenuContentContextType, type MenuRadioGroupContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
 
@@ -13,6 +13,12 @@
 
 	let { children, value, checkmark = Check, uiSize, class: _class } = $props();
 	let id = crypto.randomUUID();
+
+	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
+
+	if (menuContentContext) {
+		menuContentContext.leftSpaced = true;
+	}
 
 	const style = tv({
 		extend: baseVariant,

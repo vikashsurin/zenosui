@@ -63,9 +63,9 @@
 	} as DropdownMenuContextType);
 </script>
 
-<nav>
-	<ul>
-		<li bind:this={menu} role="none" class="relative border" onkeydown={(e) => handleKeyDown(e)}>
+<nav class="w-max">
+	<ul class="w-max">
+		<li bind:this={menu} role="none" class="relative w-max" onkeydown={(e) => handleKeyDown(e)}>
 			{@render children?.()}
 		</li>
 	</ul>

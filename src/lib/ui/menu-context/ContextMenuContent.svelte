@@ -1,7 +1,24 @@
 <script lang="ts">
-	import { getContext, tick } from 'svelte';
+	import { getContext, setContext, tick } from 'svelte';
 	import { type ContextMenuContextType } from './types.ts';
-	let { children } = $props();
+	import { baseVariant } from '$lib/style/base.js';
+	import clsx from 'clsx';
+	import { tv } from 'tailwind-variants';
+	import { menuContentTheme } from './theme.js';
+	let { children, class: _class } = $props();
+
+	let leftSpaced = $state(false);
+
+	const contextMenuContentContext = {
+		get leftSpaced() {
+			return leftSpaced;
+		},
+		set leftSpaced(value: boolean) {
+			leftSpaced = value;
+		}
+	};
+
+	setContext('contextMenuContentContext', contextMenuContentContext);
 
 	const contextMenuContext = getContext<ContextMenuContextType>('contextMenuContext');
 
@@ -173,6 +190,13 @@
 			};
 		}
 	});
+
+	const style = tv({
+		extend: baseVariant,
+		base: `min-w-[8rem] mt-2 absolute ${menuContentTheme}`
+	});
+
+	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
 {#if contextMenuContext.ContextMenuState.isOpen}
@@ -185,6 +209,7 @@
 		style:position="absolute"
 		style:top={`${clientY + 2}px`}
 		style:left={`${clientX + 2}px`}
+		class={finalClass}
 	>
 		{@render children?.()}
 	</ul>

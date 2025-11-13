@@ -5,16 +5,40 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { getContext } from 'svelte';
-	import type { MenuContextType } from './types.ts';
+	import type { MenuContentContextType, MenuContextType } from './types.ts';
+	import { Icon } from '../icon/index.ts';
 
-	let { children, props, onclick, href, uiSize, class: _class } = $props();
+	let {
+		children,
+		props,
+		onclick,
+		href,
+		iconLeft,
+		leftSlot,
+		iconRight,
+		rightSlot,
+		uiSize,
+		class: _class
+	} = $props();
 	const menuContext = getContext<MenuContextType>('menuContext');
+
+	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
+
+	const leftSpaced = $derived(menuContentContext.leftSpaced);
+
+	$inspect({ leftSpaced });
+
+	$effect(() => {
+		if (iconLeft || leftSlot) {
+			menuContentContext.leftSpaced = true;
+		}
+	});
 
 	function handleKeyDown(e: KeyboardEvent) {
 		const target = e.target as HTMLElement;
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-			
+
 			target.click();
 		}
 	}
@@ -22,7 +46,6 @@
 		// e.preventDefault();
 		// onclick();
 		menuContext.close();
-
 	}
 
 	let el = $state('button');
@@ -54,6 +77,22 @@
 		{...props}
 		class={finalClass}
 	>
+		{#if iconLeft}
+			<Icon icon={iconLeft} {uiSize} />
+		{:else if leftSlot}
+			{@render leftSlot?.()}
+		{:else if leftSpaced}
+			<span class="h-[1em] w-[1em]"></span>
+		{/if}
+
 		{@render children?.()}
+
+		{#if iconRight}
+			<Icon icon={iconRight} {uiSize} class="ml-auto" />
+		{:else if rightSlot}
+			{@render rightSlot?.()}
+		{:else}
+			<span class="h-[1em] w-[1em]"></span>
+		{/if}
 	</svelte:element>
 </li>

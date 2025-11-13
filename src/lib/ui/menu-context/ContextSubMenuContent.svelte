@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { getContext, tick } from 'svelte';
 	import type { subMenuContextType } from './types.ts';
-	let { children } = $props();
+	import { baseVariant } from '$lib/style/base.js';
+	import clsx from 'clsx';
+	import { tv } from 'tailwind-variants';
+	import { menuContentTheme } from './theme.js';
+
+	let { children, class: _class } = $props();
 
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
 	const subMenuId = subMenuContext.subMenuState?.subMenuId;
@@ -80,6 +85,12 @@
 	function handleMouseLeave() {
 		subMenuContext.subMenuState.close();
 	}
+
+	const style = tv({
+		extend: baseVariant,
+		base: `min-w-[8rem] absolute ${menuContentTheme} left-[100%] -translate-y-1/2 top-1/2`
+	});
+	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
 {#if subMenuContext.subMenuState.isOpen}
@@ -91,7 +102,7 @@
 		onkeydown={(e) => handleKeyDown(e)}
 		onmouseenter={() => handleMouseEnter()}
 		onmouseleave={() => handleMouseLeave()}
-		class="absolute top-0 left-[100%] ml-2 w-max"
+		class={finalClass}
 	>
 		{@render children?.()}
 	</ul>

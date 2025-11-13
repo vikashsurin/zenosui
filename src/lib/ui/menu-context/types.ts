@@ -24,6 +24,11 @@ export type ContextMenuContextType = {
 	};
 };
 
+export type ContextMenuContentContextType = {
+	get leftSpaced(): boolean;
+	set leftSpaced(value: boolean);
+};
+
 export type MenuBarContextType = {
 	menuBarState: {
 		get activeMenuId(): string | null;

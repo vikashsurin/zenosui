@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-
+	import { tv } from 'tailwind-variants';
+	import { baseVariant } from '$lib/style/base.js';
+	import clsx from 'clsx';
+	import { activeMenuTrigger, menuTriggerTheme } from './theme.js';
 	import { type DropdownMenuContextType } from './types.ts';
+	import { TEXT_SIZE } from '$lib/style/sizing.js';
 
-	let { children } = $props();
+	let { children, uiSize, uiRounded, class: _class } = $props();
 
 	let el = $state<HTMLElement | null>(null);
 
@@ -43,6 +47,20 @@
 	}
 
 	function handleMouseLeave(e: MouseEvent) {}
+
+	const style = tv({
+		extend: baseVariant,
+		base: `${menuTriggerTheme} `,
+		variants: {
+			uiSize: TEXT_SIZE
+		}
+	});
+
+	const activeStyle = $derived(
+		dropdownMenuContext.dropdownMenuState.isOpen ? activeMenuTrigger : ''
+	);
+
+	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class, `${activeStyle}`) }));
 </script>
 
 <button
@@ -58,8 +76,8 @@
 	onfocus={(e) => handleFocus(e)}
 	onmouseleave={(e) => handleMouseLeave(e)}
 	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-	class="focus:ring-2"
 	onmouseenter={(e) => handleMouseEnter(e)}
+	class={finalClass}
 >
 	{@render children?.()}
 </button>
