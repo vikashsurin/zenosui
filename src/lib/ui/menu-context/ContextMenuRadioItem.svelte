@@ -4,15 +4,15 @@
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
 
-import Minus from '@lucide/svelte/icons/minus';
-import { baseVariant } from '$lib/style/base.js';
-import { menuItemTheme } from './theme.js';
-import { SIZE_PRESET } from '$lib/style/presets.js';
-import { tv } from 'tailwind-variants';
-import clsx from 'clsx';
+	import Minus from '@lucide/svelte/icons/minus';
+	import { baseVariant } from '$lib/style/base.js';
+	import { menuItemTheme } from './theme.js';
+	import { SIZE_PRESET } from '$lib/style/presets.js';
+	import { tv } from 'tailwind-variants';
+	import clsx from 'clsx';
 
-let { children, value, checkmark = Check, uiSize, class: _class } = $props();
-const id = crypto.randomUUID();
+	let { children, value, checkmark = Check, uiSize, class: _class } = $props();
+	const id = crypto.randomUUID();
 
 	const style = tv({
 		extend: baseVariant,
@@ -22,21 +22,23 @@ const id = crypto.randomUUID();
 		}
 	});
 
-const radioGroupContext = getContext<MenuRadioGroupContextType>('menuRadioGroupContext');
-const isChecked = $derived(value === radioGroupContext.radioGroupState.value);
-const name = $derived(radioGroupContext.radioGroupState.name || 'menu-radio-item');
+	const radioGroupContext = getContext<MenuRadioGroupContextType>('menuRadioGroupContext');
 
-function handleChange(event: Event) {
-	const target = event.target as HTMLInputElement;
-	radioGroupContext.radioGroupState.setValue(target.value);
-}
+	const isChecked = $derived(value === radioGroupContext.radioGroupState.value);
 
-function handleKeyDown(e: KeyboardEvent) {
-	if (e.key === 'Enter' || e.key === ' ') {
-		e.preventDefault();
-		radioGroupContext.radioGroupState.setValue(value);
+	const name = $derived(radioGroupContext.radioGroupState.name || 'menu-radio-item');
+
+	function handleChange(event: Event) {
+		const target = event.target as HTMLInputElement;
+		radioGroupContext.radioGroupState.value = target.value;
 	}
-}
+
+	function handleKeyDown(e: KeyboardEvent) {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			radioGroupContext.radioGroupState.value = value;
+		}
+	}
 
 	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
@@ -52,7 +54,7 @@ function handleKeyDown(e: KeyboardEvent) {
 		role="menuitemradio"
 		{id}
 		type="radio"
-		name={name}
+		{name}
 		{value}
 		onchange={handleChange}
 		checked={isChecked}

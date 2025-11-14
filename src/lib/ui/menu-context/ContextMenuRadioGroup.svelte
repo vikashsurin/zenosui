@@ -9,7 +9,7 @@
 		get value() {
 			return value;
 		},
-		setValue(val: string | number | string[] | null | undefined) {
+		set value(val: string | number | string[] | null | undefined) {
 			value = val;
 		},
 		get name() {
