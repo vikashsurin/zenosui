@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, tick } from 'svelte';
+	import { getContext } from 'svelte';
 	import type { subMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
@@ -26,7 +26,7 @@
 		if (items.length === 0) return;
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
-		items[nextIndex].focus();
+		items[nextIndex]?.focus();
 	}
 
 	function focusPrevItem() {
@@ -35,14 +35,24 @@
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const prevIndex =
 			currentIndex === -1 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length;
-		items[prevIndex].focus();
+		items[prevIndex]?.focus();
+	}
+
+	function focusFirstItem() {
+		if (items.length > 0) {
+			items[0]?.focus();
+		}
 	}
 
 	$effect(() => {
 		if (subMenu && subMenuContext.subMenuState.isOpen) {
-			tick().then(() => {
-				updateItems();
-			});
+			updateItems();
+		}
+	});
+
+	$effect(() => {
+		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
+			focusFirstItem();
 		}
 	});
 
@@ -52,6 +62,7 @@
 			subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
 			subMenuContext.subMenuState.setFirstMenuItemFocus(false);
 			e.stopPropagation();
+			return;
 		}
 
 		if (e.key === 'ArrowDown') {
@@ -66,26 +77,6 @@
 		}
 	}
 
-	function focusFirstItem() {
-		if (items.length > 0) {
-			items[0].focus();
-		}
-	}
-
-	$effect(() => {
-		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
-			focusFirstItem();
-		}
-	});
-
-	function handleMouseEnter() {
-		subMenuContext.subMenuState.open();
-	}
-
-	function handleMouseLeave() {
-		subMenuContext.subMenuState.close();
-	}
-
 	const style = tv({
 		extend: baseVariant,
 		base: `min-w-[8rem] absolute ${menuContentTheme} left-[100%] -translate-y-1/2 top-1/2`
@@ -97,11 +88,11 @@
 	<ul
 		bind:this={subMenu}
 		role="menu"
-		id={'subMenu-' + subMenuId}
-		aria-labelledby={'subMenu-trigger-' + subMenuId}
-		onkeydown={(e) => handleKeyDown(e)}
-		onmouseenter={() => handleMouseEnter()}
-		onmouseleave={() => handleMouseLeave()}
+		id={`subMenu-${subMenuId}`}
+		aria-labelledby={`subMenu-trigger-${subMenuId}`}
+		onkeydown={handleKeyDown}
+		onmouseenter={() => subMenuContext.subMenuState.open()}
+		onmouseleave={() => subMenuContext.subMenuState.close()}
 		class={finalClass}
 	>
 		{@render children?.()}

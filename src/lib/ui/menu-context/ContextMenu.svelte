@@ -4,12 +4,25 @@
 
 	let { children } = $props();
 
-	let isOpen = $state<boolean>(false);
-
-	let menuId = crypto.randomUUID();
+	const menuId = crypto.randomUUID();
+	let isOpen = $state(false);
 	let menuPosition = $state({ x: 0, y: 0 });
+	let menu = $state<HTMLElement | null>(null);
 
-	$inspect({ menuPosition });
+	async function focusTrigger() {
+		await tick();
+		const trigger = menu?.querySelector('[data-menu-trigger]') as HTMLElement | null;
+		trigger?.focus();
+	}
+
+	async function focusFirstMenuItem() {
+		await tick();
+		const menuItems = menu?.querySelectorAll(
+			'[data-menu-item]:not([disabled])'
+		) as NodeListOf<HTMLElement>;
+		menuItems?.[0]?.focus();
+	}
+
 	const ContextMenuState = {
 		get isOpen() {
 			return isOpen;
@@ -29,37 +42,16 @@
 		setMenuPosition(position: { x: number; y: number }) {
 			menuPosition = position;
 		},
-		focusTrigger: focusTrigger
+		focusTrigger
 	};
 
-	let menu = $state<HTMLElement | null>(null);
-
-	async function focusTrigger() {
-		await tick();
-		const menuTrigger = menu?.querySelector('[data-menu-trigger') as HTMLElement;
-		// console.log({ menuTrigger });
-		menuTrigger?.focus();
-	}
-
-	async function focusFirstMenuItem() {
-		await tick();
-		const menuItems = menu?.querySelectorAll(
-			'[data-menu-item]:not([disabled])'
-		) as NodeListOf<HTMLElement>;
-
-		console.log({ menuItems });
-		menuItems?.[0]?.focus();
-	}
-
-	// focusTrigger();
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {
-			// focusTrigger();
 			ContextMenuState.close();
+			return;
 		}
 
 		if (e.key === 'ArrowDown') {
-			console.log('arrowdown');
 			e.preventDefault();
 			focusFirstMenuItem();
 		}
@@ -73,7 +65,7 @@
 
 <nav>
 	<ul>
-		<li bind:this={menu} role="none" class="" onkeydown={(e) => handleKeyDown(e)}>
+		<li bind:this={menu} role="none" onkeydown={handleKeyDown}>
 			{@render children?.()}
 		</li>
 	</ul>

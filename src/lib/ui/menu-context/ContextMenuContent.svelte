@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getContext, setContext, tick } from 'svelte';
-	import { type ContextMenuContextType } from './types.ts';
+	import { getContext, setContext } from 'svelte';
+	import type { ContextMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
 	import { tv } from 'tailwind-variants';
@@ -24,8 +24,7 @@
 
 	const clientX = $derived(contextMenuContext.ContextMenuState.menuPosition.x);
 	const clientY = $derived(contextMenuContext.ContextMenuState.menuPosition.y);
-
-	$inspect({ clientX, clientY });
+	const isOpen = $derived(contextMenuContext.ContextMenuState.isOpen);
 	const id = contextMenuContext.menuId;
 
 	let menu = $state<HTMLElement>();
@@ -33,7 +32,7 @@
 
 	function updateItems() {
 		if (menu) {
-			items = Array.from(menu.querySelectorAll(':scope  [data-menu-item]:not([disabled])'));
+			items = Array.from(menu.querySelectorAll(':scope [data-menu-item]:not([disabled])'));
 		}
 	}
 
@@ -54,7 +53,7 @@
 
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
-		items[nextIndex].focus();
+		items[nextIndex]?.focus();
 	}
 
 	function focusPrevItem() {
@@ -63,7 +62,7 @@
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const prevIndex =
 			currentIndex === -1 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length;
-		items[prevIndex].focus();
+		items[prevIndex]?.focus();
 	}
 
 	function hasSubmenu(element: HTMLElement): boolean {
@@ -102,17 +101,24 @@
 	}
 
 	$effect(() => {
-		if (menu && contextMenuContext.ContextMenuState.isOpen) {
-			tick().then(() => {
-				updateItems();
-			});
+		if (menu && isOpen) {
+			updateItems();
 		}
 	});
 
-	function handleKeyDown(e: KeyboardEvent) {
-		if (!contextMenuContext.ContextMenuState.isOpen) return;
+	$effect(() => {
+		return () => {
+			if (searchTimeout) {
+				clearTimeout(searchTimeout);
+				searchTimeout = null;
+			}
+		};
+	});
 
-		const focusedElement = document.activeElement as HTMLElement;
+	function handleKeyDown(e: KeyboardEvent) {
+		if (!isOpen) return;
+
+		const focusedElement = document.activeElement as HTMLElement | null;
 
 		// Handle printable characters for typeahead
 		if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
@@ -135,18 +141,10 @@
 				break;
 
 			case 'ArrowRight':
-				// If current item has a submenu, open it
 				if (focusedElement && hasSubmenu(focusedElement)) {
 					e.preventDefault();
-					e.stopPropagation(); // Prevent menubar from handling this
-					return;
+					e.stopPropagation();
 				}
-
-				break;
-
-			case 'ArrowLeft':
-				return;
-
 				break;
 
 			case 'Home':
@@ -160,7 +158,7 @@
 				break;
 
 			case 'Tab':
-				contextMenuContext.ContextMenuState.close();
+				closeCurrentMenu();
 				break;
 
 			case ' ':
@@ -174,41 +172,41 @@
 	}
 
 	// Close menu when clicking outside
-	function handleClickOutside(e: MouseEvent) {
-		if (menu && !menu.contains(e.target as Node)) {
-			contextMenuContext.ContextMenuState.close();
-		}
-	}
-
 	$effect(() => {
-		if (contextMenuContext.ContextMenuState.isOpen) {
-			document.addEventListener('click', handleClickOutside);
-			// document.addEventListener('contextmenu', handleClickOutside);
-			return () => {
-				document.removeEventListener('click', handleClickOutside);
-				// document.removeEventListener('contextmenu', handleClickOutside);
-			};
+		if (!isOpen || !menu) return;
+
+		function handleClickOutside(e: MouseEvent) {
+			if (menu.contains(e.target as Node)) return;
+			closeCurrentMenu();
 		}
+
+		document.addEventListener('click', handleClickOutside, true);
+		document.addEventListener('contextmenu', handleClickOutside, true);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside, true);
+			document.removeEventListener('contextmenu', handleClickOutside, true);
+		};
 	});
 
 	const style = tv({
 		extend: baseVariant,
-		base: `min-w-[8rem] mt-2 absolute ${menuContentTheme}`
+		base: `min-w-[8rem] absolute ${menuContentTheme}`
 	});
 
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-{#if contextMenuContext.ContextMenuState.isOpen}
+{#if isOpen}
 	<ul
 		bind:this={menu}
 		role="menu"
-		id={'menu-' + id}
-		aria-labelledby={'menu-trigger-' + id}
+		id={`menu-${id}`}
+		aria-labelledby={`menu-trigger-${id}`}
 		onkeydown={handleKeyDown}
-		style:position="absolute"
 		style:top={`${clientY + 2}px`}
 		style:left={`${clientX + 2}px`}
+		style:position="absolute"
 		class={finalClass}
 	>
 		{@render children?.()}

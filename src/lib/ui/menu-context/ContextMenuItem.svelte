@@ -28,8 +28,6 @@
 	);
 	const leftSpaced = $derived(contextMenuContentContext.leftSpaced);
 
-	$inspect({ leftSpaced });
-
 	$effect(() => {
 		if (iconLeft || leftSlot) {
 			contextMenuContentContext.leftSpaced = true;
@@ -45,11 +43,9 @@
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
-		const target = e.target as HTMLElement;
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-			console.log('from menu item');
-			target.click();
+			(e.target as HTMLElement).click();
 		}
 	}
 
@@ -57,17 +53,7 @@
 		contextMenuContext.ContextMenuState.close();
 	}
 
-	function handleClick(e: MouseEvent) {
-		closeMenu();
-	}
-
-	let el = $state('button');
-
-	$effect(() => {
-		if (href) {
-			el = 'a';
-		}
-	});
+	const el = $derived(href ? 'a' : 'button');
 
 	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
@@ -76,13 +62,13 @@
 	<svelte:element
 		this={el}
 		data-menu-item
-		{...el === 'a' && href ? { href } : {}}
+		href={el === 'a' ? href ?? undefined : undefined}
 		role="menuitem"
-		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
+		onkeydown={handleKeyDown}
 		class={finalClass}
 		onclick={(e) => {
 			onclick?.(e);
-			handleClick(e);
+			closeMenu();
 		}}
 		{...props}
 	>

@@ -4,13 +4,22 @@
 
 	let { children } = $props();
 
-	let isOpen = $state<boolean>(false);
-	let subMenuId = crypto.randomUUID();
+	let isOpen = $state(false);
+	const subMenuId = crypto.randomUUID();
 
 	let focusFirstItem = $state(false);
 	let focusSubMenuTrigger = $state(false);
 
 	let closeTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+
+	$effect(() => {
+		return () => {
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+				closeTimeoutId = undefined;
+			}
+		};
+	});
 
 	const subMenuState = {
 		get subMenuId() {
@@ -20,13 +29,20 @@
 			return isOpen;
 		},
 		open() {
-			clearTimeout(closeTimeoutId);
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+				closeTimeoutId = undefined;
+			}
 			isOpen = true;
 		},
 		close() {
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+			}
 			closeTimeoutId = setTimeout(() => {
 				isOpen = false;
 				focusFirstItem = false;
+				closeTimeoutId = undefined;
 			}, 500);
 		},
 		get focusFirstMenuItem() {

@@ -6,38 +6,39 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 
-	import Minus from '@lucide/svelte/icons/minus';
-	import Check from '@lucide/svelte/icons/check';
-	let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
+import Minus from '@lucide/svelte/icons/minus';
+import Check from '@lucide/svelte/icons/check';
+let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
 
-	const style = tv({
-		extend: baseVariant,
-		base: `flex w-max items-center gap-2  ${menuItemTheme}`,
-		variants: {
-			uiSize: SIZE_PRESET
-		}
-	});
-
-	let id = crypto.randomUUID();
-
-	function handleChange(e) {
-		checked = !checked;
+const style = tv({
+	extend: baseVariant,
+	base: `flex w-max items-center gap-2  ${menuItemTheme}`,
+	variants: {
+		uiSize: SIZE_PRESET
 	}
+});
 
-	function handlekeydown(e) {
-		if (e.key === 'Enter' || e.key === ' ') {
-			handleChange(e);
-		}
+const id = crypto.randomUUID();
+
+function handleChange(event?: Event) {
+	checked = event ? (event.target as HTMLInputElement).checked : !checked;
+}
+
+function handleKeyDown(e: KeyboardEvent) {
+	if (e.key === 'Enter' || e.key === ' ') {
+		e.preventDefault();
+		handleChange();
 	}
+}
 
-	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
+const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
 
 <label for={id} class={finalClass}>
 	{#if checkmark && checked}
 		<Icon icon={checkmark} />
 	{:else}
-		<Icon icon={Minus} class="opacity-0" />
+		<Icon icon={Minus} class="invisible" />
 	{/if}
 	<input
 		data-menu-item
@@ -45,9 +46,9 @@
 		{id}
 		type="checkbox"
 		{checked}
-		onchange={(e) => handleChange(e)}
+		onchange={handleChange}
 		aria-checked={checked}
-		onkeydown={(e) => handlekeydown(e)}
+		onkeydown={handleKeyDown}
 		class="sr-only"
 	/>
 	{@render children?.()}
