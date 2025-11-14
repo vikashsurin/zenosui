@@ -5,7 +5,7 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { baseVariant } from '$lib/style/base.js';
 	import { getContext } from 'svelte';
-	import type { DropdownMenuContentContextType } from './types.ts';
+	import type { DropdownMenuContentContextType, DropdownMenuContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	let {
 		children,
@@ -20,6 +20,8 @@
 		rightSlot
 	} = $props();
 
+	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
+		
 	const dropdownMenuContentContext = getContext<DropdownMenuContentContextType>(
 		'dropdownMenuContentContext'
 	);
@@ -39,30 +41,19 @@
 		}
 	});
 
-	$inspect({ leftSpaced });
-
 	function handleKeyDown(e: KeyboardEvent) {
-		const target = e.target as HTMLElement;
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-			console.log('from menu item');
-			target.click();
+			(e.target as HTMLElement).click();
 		}
 	}
-	function handleClick(e: MouseEvent) {
-		// e.preventDefault();
-		// onclick();
 
-		console.log('clicked');
+	function closeMenu() {
+		dropdownMenuContext.dropdownMenuState.close();
 	}
 
-	let el = $state('button');
-
-	$effect(() => {
-		if (href) {
-			el = 'a';
-		}
-	});
+	// Determine element type based on href prop
+	const el = $derived(href ? 'a' : 'button');
 
 	const finalClass = $derived(style({ uiSize, class: clsx(_class) }));
 </script>
@@ -71,10 +62,13 @@
 	<svelte:element
 		this={el}
 		data-menu-item
-		href={href || undefined}
+		href={el === 'a' ? href ?? undefined : undefined}
 		role="menuitem"
-		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-		onclick={(e: MouseEvent) => handleClick(e)}
+		onkeydown={handleKeyDown}
+		onclick={(e) => {
+			onclick?.(e);
+			closeMenu();
+		}}
 		{...props}
 		class={finalClass}
 	>

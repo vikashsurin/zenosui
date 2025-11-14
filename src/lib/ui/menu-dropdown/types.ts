@@ -25,19 +25,6 @@ export type DropdownMenuContentContextType = {
 	get leftSpaced(): boolean;
 	set leftSpaced(value: boolean);
 };
-export type MenuBarContextType = {
-	menuBarState: {
-		get activeMenuId(): string | null;
-		get anyOpen(): boolean;
-		openMenuId(id: string): void;
-		closeMenuId(id: string): void;
-		closeAll(): void;
-		isOpen(id: string): boolean;
-		focusNextTrigger(): void;
-		focusPrevTrigger(): void;
-		focusRecentTrigger(): void;
-	};
-};
 
 export type MenuRadioGroupContextType = {
 	radioGroupState: {

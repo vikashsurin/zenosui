@@ -6,8 +6,11 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 
-	import Minus from '@lucide/svelte/icons/minus';
 	import Check from '@lucide/svelte/icons/check';
+	import Minus from '@lucide/svelte/icons/minus';
+	import { getContext } from 'svelte';
+	import type { DropdownMenuContextType } from './types.ts';
+	import Page from '../../../routes/+page.svelte';
 	let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
 
 	const style = tv({
@@ -18,15 +21,24 @@
 		}
 	});
 
-	let id = crypto.randomUUID();
+	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
 
-	function handleChange(e) {
-		checked = !checked;
+	function closeMenu() {
+		dropdownMenuContext.dropdownMenuState.close();
 	}
 
-	function handlekeydown(e) {
+	// Generate ID once on component initialization (constant, doesn't need to be reactive)
+	const id = crypto.randomUUID();
+
+	function handleChange() {
+		checked = !checked;
+		closeMenu();
+	}
+
+	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
-			handleChange(e);
+			e.preventDefault();
+			handleChange();
 		}
 	}
 
@@ -37,7 +49,7 @@
 	{#if checkmark && checked}
 		<Icon icon={checkmark} />
 	{:else}
-		<Icon icon={Minus} class="opacity-0" />
+		<Icon icon={Minus} class="invisible" />
 	{/if}
 	<input
 		data-menu-item
@@ -45,9 +57,9 @@
 		{id}
 		type="checkbox"
 		{checked}
-		onchange={(e) => handleChange(e)}
+		onchange={handleChange}
 		aria-checked={checked}
-		onkeydown={(e) => handlekeydown(e)}
+		onkeydown={handleKeyDown}
 		class="sr-only"
 	/>
 	{@render children?.()}

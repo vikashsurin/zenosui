@@ -9,6 +9,10 @@
 	import ContextSubMenuTrigger from '$lib/ui/menu-context/ContextSubMenuTrigger.svelte';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
+	import ContextMenuRadioGroup from '$lib/ui/menu-context/ContextMenuRadioGroup.svelte';
+	import ContextMenuRadioItem from '$lib/ui/menu-context/ContextMenuRadioItem.svelte';
+
+	let radioValue = $state('banana');
 </script>
 
 <ContextMenu>
@@ -29,5 +33,11 @@
 				<ContextMenuItem>Item 12</ContextMenuItem>
 			</ContextSubMenuContent>
 		</ContextSubMenu>
+
+		<ContextMenuRadioGroup name="fruits" bind:value={radioValue}>
+			<ContextMenuRadioItem value="apple">Apple</ContextMenuRadioItem>
+			<ContextMenuRadioItem value="mango">Mango</ContextMenuRadioItem>
+			<ContextMenuRadioItem value="banana">Banana</ContextMenuRadioItem>
+		</ContextMenuRadioGroup>
 	</ContextMenuContent>
 </ContextMenu>

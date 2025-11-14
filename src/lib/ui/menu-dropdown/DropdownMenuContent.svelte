@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, setContext, tick } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { type DropdownMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
 	import { tv } from 'tailwind-variants';
@@ -10,6 +10,7 @@
 	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
 
 	const id = dropdownMenuContext.menuId;
+	const isOpen = $derived(dropdownMenuContext.dropdownMenuState.isOpen);
 	let leftSpaced = $state(false);
 
 	const dropdownMenuContentContext = {
@@ -28,19 +29,19 @@
 
 	function updateItems() {
 		if (menu) {
-			items = Array.from(menu.querySelectorAll(':scope  [data-menu-item]:not([disabled])'));
+			items = Array.from(menu.querySelectorAll(':scope [data-menu-item]:not([disabled])'));
 		}
 	}
 
 	function focusFirstItem() {
 		if (items.length > 0) {
-			items[0].focus();
+			items[0]?.focus();
 		}
 	}
 
 	function focusLastItem() {
 		if (items.length > 0) {
-			items[items.length - 1].focus();
+			items[items.length - 1]?.focus();
 		}
 	}
 
@@ -49,7 +50,7 @@
 
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
-		items[nextIndex].focus();
+		items[nextIndex]?.focus();
 	}
 
 	function focusPrevItem() {
@@ -58,7 +59,7 @@
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const prevIndex =
 			currentIndex === -1 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length;
-		items[prevIndex].focus();
+		items[prevIndex]?.focus();
 	}
 
 	function hasSubmenu(element: HTMLElement): boolean {
@@ -72,6 +73,16 @@
 	// Typeahead search functionality
 	let searchString = $state('');
 	let searchTimeout: ReturnType<typeof setTimeout> | null = null;
+
+	// Cleanup timeout on unmount
+	$effect(() => {
+		return () => {
+			if (searchTimeout) {
+				clearTimeout(searchTimeout);
+				searchTimeout = null;
+			}
+		};
+	});
 
 	function searchByCharacter(char: string) {
 		searchString += char.toLowerCase();
@@ -96,18 +107,17 @@
 		}
 	}
 
+	// Update items when menu opens
 	$effect(() => {
-		if (menu && dropdownMenuContext.dropdownMenuState.isOpen) {
-			tick().then(() => {
-				updateItems();
-			});
+		if (menu && isOpen) {
+			updateItems();
 		}
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
-		if (!dropdownMenuContext.dropdownMenuState.isOpen) return;
+		if (!isOpen) return;
 
-		const focusedElement = document.activeElement as HTMLElement;
+		const focusedElement = document.activeElement as HTMLElement | null;
 
 		// Handle printable characters for typeahead
 		if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
@@ -133,15 +143,8 @@
 				// If current item has a submenu, open it
 				if (focusedElement && hasSubmenu(focusedElement)) {
 					e.preventDefault();
-					e.stopPropagation(); // Prevent menubar from handling this
-					return;
+					e.stopPropagation();
 				}
-
-				break;
-
-			case 'ArrowLeft':
-				return;
-
 				break;
 
 			case 'Home':
@@ -155,7 +158,7 @@
 				break;
 
 			case 'Tab':
-				dropdownMenuContext.dropdownMenuState.close();
+				closeCurrentMenu();
 				break;
 
 			case ' ':
@@ -169,22 +172,24 @@
 	}
 
 	// Close menu when clicking outside
-	function handleClickOutside(e: MouseEvent) {
-		if (menu && !menu.contains(e.target as Node)) {
-			const trigger = document.querySelector(`[data-menu-id="${id}"]`);
-			if (trigger && !trigger.contains(e.target as Node)) {
-				dropdownMenuContext.dropdownMenuState.close();
-			}
-		}
-	}
-
 	$effect(() => {
-		if (dropdownMenuContext.dropdownMenuState.isOpen) {
-			document.addEventListener('click', handleClickOutside);
-			return () => {
-				document.removeEventListener('click', handleClickOutside);
-			};
+		if (!isOpen || !menu) return;
+
+		function handleClickOutside(e: MouseEvent) {
+			const target = e.target as Node;
+			if (menu.contains(target)) return;
+
+			const trigger = document.querySelector(`[data-menu-id="${id}"]`);
+			if (trigger && trigger.contains(target)) return;
+
+			closeCurrentMenu();
 		}
+
+		// Use capture phase to catch clicks before they bubble
+		document.addEventListener('click', handleClickOutside, true);
+		return () => {
+			document.removeEventListener('click', handleClickOutside, true);
+		};
 	});
 
 	const style = tv({
@@ -195,12 +200,12 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-{#if dropdownMenuContext.dropdownMenuState.isOpen}
+{#if isOpen}
 	<ul
 		bind:this={menu}
 		role="menu"
-		id={'menu-' + id}
-		aria-labelledby={'menu-trigger-' + id}
+		id={`menu-${id}`}
+		aria-labelledby={`menu-trigger-${id}`}
 		onkeydown={handleKeyDown}
 		class={finalClass}
 	>

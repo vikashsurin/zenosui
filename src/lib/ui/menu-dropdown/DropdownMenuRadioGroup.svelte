@@ -5,6 +5,7 @@
 
 	let { children, value = $bindable(), name } = $props();
 
+	// Create radioGroupState object once - functions reference reactive state
 	const radioGroupState = {
 		get value() {
 			return value;

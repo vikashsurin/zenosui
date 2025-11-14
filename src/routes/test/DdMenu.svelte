@@ -9,6 +9,11 @@
 	import DropdownMenuRadioGroup from '$lib/ui/menu-dropdown/DropdownMenuRadioGroup.svelte';
 	import DropdownMenuRadioItem from '$lib/ui/menu-dropdown/DropdownMenuRadioItem.svelte';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import DropdownMenuCheckboxItem from '$lib/ui/menu-dropdown/DropdownMenuCheckboxItem.svelte';
+
+	let radioValue = $state('banana');
+
+	let bookmarks = $state(false);
 </script>
 
 <DropdownMenu>
@@ -25,10 +30,11 @@
 				<DropdownMenuItem>Item 12</DropdownMenuItem>
 			</DropdownSubMenuContent>
 		</DropdownSubMenu>
-		<DropdownMenuRadioGroup>
-			<DropdownMenuRadioItem value="1">Item 1</DropdownMenuRadioItem>
-			<DropdownMenuRadioItem value="2">Item 2</DropdownMenuRadioItem>
-			<DropdownMenuRadioItem value="3">Item 3</DropdownMenuRadioItem>
+		<DropdownMenuRadioGroup name="fruits" bind:value={radioValue}>
+			<DropdownMenuRadioItem value="apple">Apple</DropdownMenuRadioItem>
+			<DropdownMenuRadioItem value="orange">Orange</DropdownMenuRadioItem>
+			<DropdownMenuRadioItem value="banana">Banana</DropdownMenuRadioItem>
 		</DropdownMenuRadioGroup>
+		<DropdownMenuCheckboxItem bind:checked={bookmarks}>Bookmarks</DropdownMenuCheckboxItem>
 	</DropdownMenuContent>
 </DropdownMenu>

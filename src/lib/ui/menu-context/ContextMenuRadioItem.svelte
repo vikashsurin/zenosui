@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { type MenuRadioGroupContextType } from './types.ts';
+	import { type ContextMenuContextType, type MenuRadioGroupContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
 
@@ -21,6 +21,11 @@
 			uiSize: SIZE_PRESET
 		}
 	});
+	const contextMenuContext = getContext<ContextMenuContextType>('contextMenuContext');
+
+	function closeMenu() {
+		contextMenuContext.ContextMenuState.close();
+	}
 
 	const radioGroupContext = getContext<MenuRadioGroupContextType>('menuRadioGroupContext');
 
@@ -31,6 +36,7 @@
 	function handleChange(event: Event) {
 		const target = event.target as HTMLInputElement;
 		radioGroupContext.radioGroupState.value = target.value;
+		closeMenu();
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {

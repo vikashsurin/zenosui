@@ -12,17 +12,19 @@
 	let el = $state<HTMLElement | null>(null);
 
 	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
-
-	// const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = dropdownMenuContext.menuId;
+	const isOpen = $derived(dropdownMenuContext.dropdownMenuState.isOpen);
+	const activeStyle = $derived(isOpen ? activeMenuTrigger : '');
 
 	function toggleMenu() {
 		dropdownMenuContext.dropdownMenuState.toggleOpen();
 	}
+
 	function openMenu() {
 		dropdownMenuContext.dropdownMenuState.open();
 	}
-	function handleClick(e) {
+
+	function handleClick() {
 		toggleMenu();
 	}
 
@@ -30,23 +32,11 @@
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			toggleMenu();
-		}
-
-		if (e.key === 'ArrowDown') {
+		} else if (e.key === 'ArrowDown') {
 			e.preventDefault();
 			openMenu();
 		}
 	}
-
-	function handleFocus(e: FocusEvent) {}
-
-	function handleMouseEnter(e: MouseEvent) {
-		// if (dropdownMenuContext) {
-		// 	openMenu();
-		// }
-	}
-
-	function handleMouseLeave(e: MouseEvent) {}
 
 	const style = tv({
 		extend: baseVariant,
@@ -56,11 +46,7 @@
 		}
 	});
 
-	const activeStyle = $derived(
-		dropdownMenuContext.dropdownMenuState.isOpen ? activeMenuTrigger : ''
-	);
-
-	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class, `${activeStyle}`) }));
+	const finalClass = $derived(style({ uiSize, uiRounded, class: clsx(_class, activeStyle) }));
 </script>
 
 <button
@@ -69,14 +55,11 @@
 	data-menu-id={id}
 	role="menuitem"
 	aria-haspopup="true"
-	aria-expanded={dropdownMenuContext.dropdownMenuState.isOpen}
-	aria-controls="menu-{id}"
-	onclick={(e) => handleClick(e)}
+	aria-expanded={isOpen}
+	aria-controls={`menu-${id}`}
+	onclick={handleClick}
 	tabindex="0"
-	onfocus={(e) => handleFocus(e)}
-	onmouseleave={(e) => handleMouseLeave(e)}
-	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-	onmouseenter={(e) => handleMouseEnter(e)}
+	onkeydown={handleKeyDown}
 	class={finalClass}
 >
 	{@render children?.()}

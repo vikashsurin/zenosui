@@ -32,7 +32,7 @@ export type ContextMenuContentContextType = {
 export type MenuRadioGroupContextType = {
 	radioGroupState: {
 		get value(): string | number | string[] | null | undefined;
-		setValue(val: string | number | string[] | null | undefined): void;
+		set value(val: string | number | string[] | null | undefined);
 		get name(): string | null | undefined;
 	};
-};
+}
