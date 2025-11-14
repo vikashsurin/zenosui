@@ -15,7 +15,7 @@
 		trigger?.focus();
 	}
 
-	async function focusFirstMenuItem() {
+	async function shouldFocusFirstItem() {
 		await tick();
 		const menuItems = menu?.querySelectorAll(
 			'[data-menu-item]:not([disabled])'
@@ -53,7 +53,7 @@
 
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
-			focusFirstMenuItem();
+			shouldFocusFirstItem();
 		}
 	}
 

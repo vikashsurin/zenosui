@@ -189,7 +189,6 @@
 
 			case ' ':
 			case 'Enter':
-				menuBarContext.menuBarState.focusRecentTrigger();
 				e.preventDefault();
 				closeCurrentMenu();
 				e.stopPropagation();
@@ -203,7 +202,7 @@
 
 		function handleClickOutside(e: MouseEvent) {
 			if (!menu) return;
-			
+
 			const target = e.target as Node;
 			if (menu.contains(target)) return;
 

@@ -11,15 +11,17 @@
 
 	let {
 		children,
-		props,
+		onclick,
 		href,
 		iconLeft,
 		leftSlot,
 		iconRight,
 		rightSlot,
 		uiSize,
-		class: _class
+		class: _class,
+		...props
 	}: MenuBarMenuItemProps = $props();
+
 	const menuContext = getContext<MenuContextType>('menuContext');
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
@@ -59,8 +61,11 @@
 		data-menu-item
 		href={href || undefined}
 		role="menuitem"
-		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-		onclick={() => menuContext.close()}
+		onkeydown={handleKeyDown}
+		onclick={(e: MouseEvent) => {
+			onclick?.(e);
+			menuContext?.close?.();
+		}}
 		{...props}
 		class={finalClass}
 	>

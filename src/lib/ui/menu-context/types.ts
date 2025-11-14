@@ -2,12 +2,12 @@ export type subMenuContextType = {
 	subMenuState: {
 		get subMenuId(): string;
 		get isOpen(): boolean;
-		get focusFirstMenuItem(): boolean;
+		get shouldFocusFirstItem(): boolean;
 		open(): void;
 		close(): void;
-		setFirstMenuItemFocus(value: boolean): void;
-		get focusSubMenuTrigger(): boolean;
-		setSubMenuTriggerFocus(value: boolean): void;
+		requestFocusFirstItem(value: boolean): void;
+		get shouldFocusTrigger(): boolean;
+		requestFocusTrigger(value: boolean): void;
 	};
 };
 

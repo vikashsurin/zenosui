@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { type MenuContentContextType, type MenuRadioGroupContextType } from './types.ts';
+	import { type MenuContentContextType, type MenuContextType, type MenuRadioGroupContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
 	import { baseVariant } from '$lib/style/base.js';
@@ -21,6 +21,12 @@
 
 	// Generate ID once on component initialization (constant, doesn't need to be reactive)
 	const id = crypto.randomUUID();
+
+	const menuContext = getContext<MenuContextType>('menuContext');
+
+	function closeMenu() {
+		menuContext.close();
+	}
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
 
@@ -47,6 +53,7 @@
 	function handleChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		radioGroupContext.radioGroupState.setValue(target.value);
+		closeMenu();
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {

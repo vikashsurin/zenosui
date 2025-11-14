@@ -9,7 +9,7 @@
 	const subMenuId = crypto.randomUUID();
 
 	let focusFirstItem = $state(false);
-	let focusSubMenuTrigger = $state(false);
+	let shouldFocusTrigger = $state(false);
 
 	let closeTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
 
@@ -47,17 +47,17 @@
 				closeTimeoutId = undefined;
 			}, 500);
 		},
-		get focusFirstMenuItem() {
+		get shouldFocusFirstItem() {
 			return focusFirstItem;
 		},
-		setFirstMenuItemFocus(val: boolean) {
+		requestFocusFirstItem(val: boolean) {
 			focusFirstItem = val;
 		},
-		get focusSubMenuTrigger() {
-			return focusSubMenuTrigger;
+		get shouldFocusTrigger() {
+			return shouldFocusTrigger;
 		},
-		setSubMenuTriggerFocus(val: boolean) {
-			focusSubMenuTrigger = val;
+		requestFocusTrigger(val: boolean) {
+			shouldFocusTrigger = val;
 		}
 	};
 

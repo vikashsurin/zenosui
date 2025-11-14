@@ -87,9 +87,7 @@
 		<Menu>
 			<MenuTrigger>Trigger 3</MenuTrigger>
 			<MenuContent>
-				<MenuItem href="#" onclick={() => setTimeout(() => console.log('clicked'), 1000)}
-					>Item 7</MenuItem
-				>
+				<MenuItem onclick={() => console.log('clicked')}>Item 7</MenuItem>
 				<MenuItem>Item 8</MenuItem>
 				<MenuItem>Item 9</MenuItem>
 			</MenuContent>

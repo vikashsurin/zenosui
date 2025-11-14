@@ -40,19 +40,19 @@
 			e.preventDefault();
 			e.stopPropagation();
 			openSubmenu();
-			subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
-			subMenuContext.subMenuState.setFirstMenuItemFocus(true);
+			subMenuContext.subMenuState.requestFocusTrigger(false);
+			subMenuContext.subMenuState.requestFocusFirstItem(true);
 		} else if (e.key === 'Escape' || e.key === 'ArrowLeft') {
 			closeSubmenu();
 		} else if (e.key === 'ArrowRight') {
 			openSubmenu();
-			subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
-			subMenuContext.subMenuState.setFirstMenuItemFocus(true);
+			subMenuContext.subMenuState.requestFocusTrigger(false);
+			subMenuContext.subMenuState.requestFocusFirstItem(true);
 		}
 	}
 
 	$effect(() => {
-		if (subMenuContext.subMenuState.focusSubMenuTrigger) {
+		if (subMenuContext.subMenuState.shouldFocusTrigger) {
 			el?.focus();
 		}
 	});

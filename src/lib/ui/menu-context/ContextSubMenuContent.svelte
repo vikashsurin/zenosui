@@ -51,7 +51,7 @@
 	});
 
 	$effect(() => {
-		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
+		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.shouldFocusFirstItem) {
 			focusFirstItem();
 		}
 	});
@@ -59,8 +59,8 @@
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'ArrowLeft') {
 			subMenuContext.subMenuState.close();
-			subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
-			subMenuContext.subMenuState.setFirstMenuItemFocus(false);
+			subMenuContext.subMenuState.requestFocusTrigger(true);
+			subMenuContext.subMenuState.requestFocusFirstItem(false);
 			e.stopPropagation();
 			return;
 		}

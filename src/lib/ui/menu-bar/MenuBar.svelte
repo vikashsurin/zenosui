@@ -15,10 +15,19 @@
 	// Update items reactively when menubar changes or DOM updates
 	$effect(() => {
 		if (menubar) {
-			items = Array.from(menubar.querySelectorAll('ul[role="menubar"] [data-menu-trigger]'));
+			items = Array.from(menubar.querySelectorAll('button[data-menu-trigger]'));
 		}
 	});
 
+	function clearFocus() {
+		// Check if there is an active element and if it's not the document body (optional, for older IE compatibility)
+		if (document.activeElement && document.activeElement !== document.body) {
+			// Ensure the active element is an HTMLElement before calling blur() (useful for TypeScript)
+			if (document.activeElement instanceof HTMLElement) {
+				document.activeElement.blur();
+			}
+		}
+	}
 	function getCurrentTriggerIndex(): number {
 		// If a trigger is focused, return its index
 		const focusedTriggerIndex = items.findIndex((item) => item === document.activeElement);
@@ -32,7 +41,7 @@
 		return -1;
 	}
 
-	async function focusFirstMenuItem() {
+	async function shouldFocusFirstItem() {
 		if (!activeMenuId) return;
 		await tick();
 		const menuItems = menubar?.querySelectorAll(
@@ -57,11 +66,11 @@
 
 		if (activeMenuId !== null && nextMenuId) {
 			activeMenuId = nextMenuId;
-			focusFirstMenuItem();
+			shouldFocusFirstItem();
 		}
 	}
 
-	function focusRecentTrigger() {
+	function focusLastFocusedTrigger() {
 		const currentIndex = getCurrentTriggerIndex();
 		if (currentIndex !== -1) {
 			items[currentIndex]?.focus();
@@ -81,7 +90,7 @@
 
 		if (activeMenuId !== null && prevMenuId) {
 			activeMenuId = prevMenuId;
-			focusFirstMenuItem();
+			shouldFocusFirstItem();
 		}
 	}
 
@@ -94,6 +103,7 @@
 			activeMenuId = id;
 		},
 		closeMenuId(id: string) {
+			focusLastFocusedTrigger();
 			if (activeMenuId === id) activeMenuId = null;
 		},
 		closeAll() {
@@ -102,12 +112,11 @@
 		isOpen(id: string) {
 			return activeMenuId === id;
 		},
-		get anyOpen() {
+		get hasOpenMenu() {
 			return activeMenuId !== null;
 		},
 		focusNextTrigger,
-		focusPrevTrigger,
-		focusRecentTrigger
+		focusPrevTrigger
 	};
 
 	setContext('menuBarContext', {
@@ -116,7 +125,11 @@
 
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {
-			focusRecentTrigger();
+			if (menuBarState.hasOpenMenu) {
+				focusLastFocusedTrigger();
+			} else {
+				clearFocus();
+			}
 			e.preventDefault();
 			activeMenuId = null;
 			return;
@@ -133,7 +146,7 @@
 		}
 
 		if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-			focusFirstMenuItem();
+			shouldFocusFirstItem();
 		}
 	}
 

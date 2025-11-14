@@ -9,6 +9,8 @@
 	import Check from '@lucide/svelte/icons/check';
 	import type { MenuBarCheckboxItemProps } from '$lib/types/index.ts';
 	import Minus from '@lucide/svelte/icons/minus';
+	import { getContext } from 'svelte';
+	import type { MenuContextType } from './types.ts';
 	let {
 		children,
 		checked = $bindable(),
@@ -28,8 +30,15 @@
 	// Generate ID once on component initialization (constant, doesn't need to be reactive)
 	const id = crypto.randomUUID();
 
+	const menuContext = getContext<MenuContextType>('menuContext');
+
+	function closeMenu() {
+		menuContext.close();
+	}
+
 	function handleChange() {
 		checked = !checked;
+		closeMenu();
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {

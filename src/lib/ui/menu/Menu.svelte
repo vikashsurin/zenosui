@@ -92,11 +92,11 @@
 
 	$effect(() => {
 		if (state.open) {
-			focusFirstMenuItem();
+			shouldFocusFirstItem();
 		}
 	});
 
-	async function focusFirstMenuItem() {
+	async function shouldFocusFirstItem() {
 		menuItems = menu.querySelectorAll('[role="menu"] > li > [role="menuitem"]');
 		menuItemsArray = Array.from(menuItems);
 		menuItemsArray[0].focus();

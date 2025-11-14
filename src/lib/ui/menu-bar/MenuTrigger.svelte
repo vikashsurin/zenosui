@@ -50,7 +50,7 @@
 		const target = e.target as HTMLElement;
 		target.focus();
 
-		if (menuBarContext?.menuBarState.anyOpen) {
+		if (menuBarContext?.menuBarState.hasOpenMenu) {
 			openMenu();
 		}
 	}
@@ -73,7 +73,7 @@
 	role="menuitem"
 	aria-haspopup="true"
 	aria-expanded={isOpen}
-	aria-controls="menu-{id}"
+	aria-controls={'menu-' + id}
 	onclick={handleClick}
 	tabindex="0"
 	onmouseenter={handleMouseEnter}

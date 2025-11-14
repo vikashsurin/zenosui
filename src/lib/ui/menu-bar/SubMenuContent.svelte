@@ -6,7 +6,7 @@
 	import type { subMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
 	import type { MenuBarSubMenuContentProps } from '$lib/types/index.ts';
-	
+
 	let { children, class: _class }: MenuBarSubMenuContentProps = $props();
 
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
@@ -54,7 +54,7 @@
 
 	// Focus first item when requested
 	$effect(() => {
-		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
+		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.shouldFocusFirstItem) {
 			focusFirstItem();
 		}
 	});
@@ -63,8 +63,8 @@
 		switch (e.key) {
 			case 'ArrowLeft':
 				subMenuContext.subMenuState.close();
-				subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
-				subMenuContext.subMenuState.setFirstMenuItemFocus(false);
+				subMenuContext.subMenuState.requestFocusTrigger(true);
+				subMenuContext.subMenuState.requestFocusFirstItem(false);
 				e.stopPropagation();
 				break;
 			case 'ArrowDown':

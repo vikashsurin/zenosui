@@ -28,7 +28,6 @@
 
 	let isActive = $derived(menuBarContext && menuBarContext.state.openMenuId === menuId);
 
-;
 	function openMenu() {
 		if (menuBarContext) {
 			menuBarContext.state.openMenuId = menuId;
@@ -45,7 +44,7 @@
 
 		if (menuBarContext.state.isMenuBarActive) {
 			menuBarContext.state.openMenuId = menuId;
-			// focusFirstMenuItem();
+			// shouldFocusFirstItem();
 		} else {
 			menuBarContext.state.openMenuId = null;
 		}
