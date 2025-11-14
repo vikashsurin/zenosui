@@ -10,7 +10,8 @@
 	import clsx from 'clsx';
 	import { menuContentTheme } from './theme.js';
 	import { menuState } from '../menu/menustore.svelte.ts';
-	let { children, class: _class } = $props();
+	import { type MenuBarMenuContentProps } from '$lib/types/index.ts';
+	let { children, class: _class }: MenuBarMenuContentProps = $props();
 
 	let leftSpaced = $state<boolean>(false);
 

@@ -10,8 +10,15 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { MenuBarRadioItemProps } from '$lib/types/index.ts';
 
-	let { children, value, checkmark = Check, uiSize, class: _class } = $props();
+	let {
+		children,
+		value,
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: MenuBarRadioItemProps = $props();
 	let id = crypto.randomUUID();
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');

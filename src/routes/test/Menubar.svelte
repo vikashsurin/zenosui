@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MenuBar from '$lib/ui/menu-bar/MenuBar.svelte';
-	import Menu from '$lib/ui/menu-bar/Menu.svelte';
+	import Menu from '$lib/ui/menu-bar/MenubarMenu.svelte';
 	import MenuTrigger from '$lib/ui/menu-bar/MenuTrigger.svelte';
 	import MenuContent from '$lib/ui/menu-bar/MenuContent.svelte';
 	import MenuItem from '$lib/ui/menu-bar/MenuItem.svelte';
@@ -23,7 +23,7 @@
 </script>
 
 <div class="p-8">
-	<MenuBar>
+	<MenuBar class="border-1">
 		<Menu>
 			<MenuTrigger>Trigger</MenuTrigger>
 			<MenuContent>

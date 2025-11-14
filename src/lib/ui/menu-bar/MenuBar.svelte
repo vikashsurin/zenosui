@@ -9,7 +9,6 @@
 
 	let activeMenuId = $state<string | null>(null);
 
-
 	let menuBarState = {
 		get activeMenuId() {
 			return activeMenuId;
@@ -84,7 +83,6 @@
 		const currentIndex = getCurrentTriggerIndex();
 		if (currentIndex !== -1) {
 			items[currentIndex]?.focus();
-
 		}
 	}
 
@@ -157,7 +155,7 @@
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>
 
-<nav class="p-4">
+<nav>
 	<ul bind:this={menubar} role="menubar" onkeydown={handleKeyDown} class={finalClass}>
 		{@render children?.()}
 	</ul>

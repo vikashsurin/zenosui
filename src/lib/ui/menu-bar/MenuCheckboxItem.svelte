@@ -8,7 +8,14 @@
 
 	import Minus from '@lucide/svelte/icons/minus';
 	import Check from '@lucide/svelte/icons/check';
-	let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
+	import type { MenuBarCheckboxItemProps } from '$lib/types/index.ts';
+	let {
+		children,
+		checked = $bindable(),
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: MenuBarCheckboxItemProps = $props();
 
 	const style = tv({
 		extend: baseVariant,

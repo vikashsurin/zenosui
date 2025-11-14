@@ -7,8 +7,17 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { MenuBarSubMenuTriggerProps } from '../../types/index.ts';
 	import { Icon } from '../icon/index.ts';
-	let { children, uiSize, class: _class, iconLeft, leftSlot, iconRight, rightSlot } = $props();
+	let {
+		children,
+		uiSize,
+		class: _class,
+		iconLeft,
+		leftSlot,
+		iconRight,
+		rightSlot
+	}: MenuBarSubMenuTriggerProps = $props();
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
 

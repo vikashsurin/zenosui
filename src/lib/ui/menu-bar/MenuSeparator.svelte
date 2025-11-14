@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { SeparatorProps } from '$lib/types/index.ts';
 
-	let { class: _class } = $props();
+	let { class: _class }: SeparatorProps = $props();
 
 	let style = tv({
 		base: `py-1 opacity-10`,

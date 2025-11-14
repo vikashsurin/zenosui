@@ -441,3 +441,38 @@ export interface NavigationListItemProps
 	label?: string;
 	href?: string;
 }
+
+// MENU BAR
+export type MenuBarMenuTriggerProps = ComponentProps;
+
+export type MenuBarMenuContentProps = ComponentProps;
+
+export interface MenuBarMenuItemProps extends ComponentProps {
+	href?: string | null;
+	iconLeft?: Component | null;
+	leftSlot?: Snippet | null;
+	iconRight?: Component | null;
+	rightSlot?: Snippet | null;
+}
+
+export interface SeparatorProps {
+	class?: string | null;
+}
+
+export interface MenuBarSubMenuTriggerProps extends ComponentProps {
+	iconLeft?: Component | null;
+	iconRight?: Component | null;
+	leftSlot?: Snippet | null;
+	rightSlot?: Snippet | null;
+}
+
+export type MenuBarSubMenuContentProps = ComponentProps;
+
+export interface MenuBarRadioItemProps extends UiProps, Type.HTMLInputAttributes {
+	checkmark?: Component | null;
+}
+
+export interface MenuBarCheckboxItemProps extends UiProps, Type.HTMLInputAttributes {
+	checked?: boolean;
+	checkmark?: Component | null;
+}

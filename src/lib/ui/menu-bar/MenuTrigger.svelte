@@ -7,16 +7,15 @@
 	import clsx from 'clsx';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { activeMenuTrigger, menuTriggerTheme } from './theme.js';
+	import type { MenuBarMenuTriggerProps } from '$lib/types/index.ts';
 
-	let { children, uiRounded, uiSize, class: _class } = $props();
+	let { children, uiRounded, uiSize, class: _class }: MenuBarMenuTriggerProps = $props();
 
-	let el = $state<HTMLElement>(null);
+	let el = $state<HTMLElement | null>(null);
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = menuContext.menuId;
-
-
 
 	function toggleMenu() {
 		if (menuBarContext.menuBarState.activeMenuId === id) {
@@ -59,8 +58,6 @@
 	}
 
 	function handleMouseLeave(e: MouseEvent) {}
-
-
 
 	function getActiveStyle() {
 		if (menuContext.isOpen()) {
