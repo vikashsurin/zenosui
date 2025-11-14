@@ -3,14 +3,13 @@
 	import { type MenuContentContextType, type MenuRadioGroupContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
-
-	import Minus from '@lucide/svelte/icons/minus';
 	import { baseVariant } from '$lib/style/base.js';
 	import { menuItemTheme } from './theme.js';
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import type { MenuBarRadioItemProps } from '$lib/types/index.ts';
+	import Minus from '@lucide/svelte/icons/minus';
 
 	let {
 		children,
@@ -19,13 +18,18 @@
 		uiSize,
 		class: _class
 	}: MenuBarRadioItemProps = $props();
-	let id = crypto.randomUUID();
+
+	// Generate ID once on component initialization (constant, doesn't need to be reactive)
+	const id = crypto.randomUUID();
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
 
-	if (menuContentContext) {
-		menuContentContext.leftSpaced = true;
-	}
+	// Set leftSpaced when component mounts if context exists
+	$effect(() => {
+		if (menuContentContext) {
+			menuContentContext.leftSpaced = true;
+		}
+	});
 
 	const style = tv({
 		extend: baseVariant,
@@ -37,26 +41,19 @@
 
 	const radioGroupContext = getContext<MenuRadioGroupContextType>('menuRadioGroupContext');
 
-	function handleChange(e) {
-		const value = e.target.value;
-		radioGroupContext.radioGroupState.setValue(value);
+	const isChecked = $derived(value === radioGroupContext.radioGroupState.value);
+	const name = $derived(radioGroupContext.radioGroupState.name || 'menu-radio-item');
+
+	function handleChange(e: Event) {
+		const target = e.target as HTMLInputElement;
+		radioGroupContext.radioGroupState.setValue(target.value);
 	}
 
-	function isChecked() {
-		return value === radioGroupContext.radioGroupState.value;
-	}
-
-	function setName() {
-		if (radioGroupContext.radioGroupState.name) {
-			return radioGroupContext.radioGroupState.name;
-		} else {
-			return 'menu-radio-item';
-		}
-	}
-
-	function handlekeydown(e) {
+	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
-			handleChange(e);
+			e.preventDefault();
+			// Set the value directly through the radio group context
+			radioGroupContext.radioGroupState.setValue(value);
 		}
 	}
 
@@ -64,22 +61,22 @@
 </script>
 
 <label for={id} class={finalClass}>
-	{#if checkmark && isChecked()}
+	{#if checkmark && isChecked}
 		<Icon icon={checkmark} />
 	{:else}
-		<Icon icon={Minus} class="opacity-0" />
+		<Icon icon={Minus} class="invisible" />
 	{/if}
 	<input
 		data-menu-item
 		role="menuitemradio"
 		{id}
 		type="radio"
-		name={setName()}
+		{name}
 		{value}
-		onchange={(e) => handleChange(e)}
-		checked={isChecked()}
-		aria-checked={isChecked()}
-		onkeydown={(e) => handlekeydown(e)}
+		onchange={handleChange}
+		checked={isChecked}
+		aria-checked={isChecked}
+		onkeydown={handleKeyDown}
 		class="sr-only"
 	/>
 	{@render children?.()}

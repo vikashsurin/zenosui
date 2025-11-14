@@ -4,17 +4,19 @@
 
 	let { children } = $props();
 
-	let menuId = crypto.randomUUID();
+	// Generate ID once on component initialization (constant, doesn't need to be reactive)
+	const menuId = crypto.randomUUID();
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 
-	const isOpen = $derived<boolean>(menuBarContext.menuBarState.isOpen(menuId));
+	const isOpen = $derived(menuBarContext.menuBarState.isOpen(menuId));
 
 	function closeMenu() {
 		menuBarContext.menuBarState.closeMenuId(menuId);
 	}
+	
 	setContext('menuContext', {
 		menuId,
-		close: () => closeMenu(),
+		close: closeMenu,
 		isOpen: () => isOpen
 	} as MenuContextType);
 </script>

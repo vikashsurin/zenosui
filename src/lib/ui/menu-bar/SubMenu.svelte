@@ -1,16 +1,27 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import type { subMenuContextType } from './types.js';
+	import type { subMenuContextType } from './types.ts';
 
 	let { children } = $props();
 
 	let isOpen = $state<boolean>(false);
-	let subMenuId = crypto.randomUUID();
+	// Generate ID once on component initialization (constant, doesn't need to be reactive)
+	const subMenuId = crypto.randomUUID();
 
 	let focusFirstItem = $state(false);
 	let focusSubMenuTrigger = $state(false);
 
 	let closeTimeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+
+	// Cleanup timeout on unmount
+	$effect(() => {
+		return () => {
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+				closeTimeoutId = undefined;
+			}
+		};
+	});
 
 	const subMenuState = {
 		get subMenuId() {
@@ -20,13 +31,20 @@
 			return isOpen;
 		},
 		open() {
-			clearTimeout(closeTimeoutId);
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+				closeTimeoutId = undefined;
+			}
 			isOpen = true;
 		},
 		close() {
+			if (closeTimeoutId !== undefined) {
+				clearTimeout(closeTimeoutId);
+			}
 			closeTimeoutId = setTimeout(() => {
 				isOpen = false;
 				focusFirstItem = false;
+				closeTimeoutId = undefined;
 			}, 500);
 		},
 		get focusFirstMenuItem() {

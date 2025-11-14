@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setContext, onMount, tick } from 'svelte';
+	import { setContext, tick } from 'svelte';
 	import type { MenuBarContextType } from './types.ts';
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/base.js';
@@ -9,46 +9,14 @@
 
 	let activeMenuId = $state<string | null>(null);
 
-	let menuBarState = {
-		get activeMenuId() {
-			return activeMenuId;
-		},
-		openMenuId(id: string) {
-			activeMenuId = id;
-		},
-		closeMenuId(id: string) {
-			if (activeMenuId === id) activeMenuId = null;
-		},
-		closeAll() {
-			activeMenuId = null;
-		},
-		isOpen(id: string) {
-			return activeMenuId === id;
-		},
-
-		get anyOpen() {
-			return activeMenuId !== null;
-		},
-		focusNextTrigger: focusNextTrigger,
-		focusPrevTrigger: focusPrevTrigger,
-		focusRecentTrigger: focusRecentTrigger
-	};
-
-	setContext('menuBarContext', {
-		menuBarState
-	} as MenuBarContextType);
-
 	let menubar = $state<HTMLElement>();
 	let items: HTMLElement[] = $state([]);
 
-	function updateItems() {
+	// Update items reactively when menubar changes or DOM updates
+	$effect(() => {
 		if (menubar) {
 			items = Array.from(menubar.querySelectorAll('ul[role="menubar"] [data-menu-trigger]'));
 		}
-	}
-
-	onMount(() => {
-		updateItems();
 	});
 
 	function getCurrentTriggerIndex(): number {
@@ -64,17 +32,31 @@
 		return -1;
 	}
 
+	async function focusFirstMenuItem() {
+		if (!activeMenuId) return;
+		await tick();
+		const menuItems = menubar?.querySelectorAll(
+			`#menu-${activeMenuId} [data-menu-item]:not([disabled])`
+		) as NodeListOf<HTMLElement>;
+
+		if (menuItems?.length > 0) {
+			menuItems[0].focus();
+		}
+	}
+
 	function focusNextTrigger() {
 		const currentIndex = getCurrentTriggerIndex();
 		if (currentIndex === -1) return;
 
 		const nextIndex = (currentIndex + 1) % items.length;
+		const nextItem = items[nextIndex];
+		if (!nextItem) return;
 
-		items[nextIndex]?.focus();
-		const nextMenuId = items[nextIndex]?.getAttribute('data-menu-id');
+		nextItem.focus();
+		const nextMenuId = nextItem.getAttribute('data-menu-id');
 
-		if (menuBarState.anyOpen && nextMenuId) {
-			menuBarState.openMenuId(nextMenuId);
+		if (activeMenuId !== null && nextMenuId) {
+			activeMenuId = nextMenuId;
 			focusFirstMenuItem();
 		}
 	}
@@ -91,34 +73,52 @@
 		if (currentIndex === -1) return;
 
 		const prevIndex = (currentIndex - 1 + items.length) % items.length;
+		const prevItem = items[prevIndex];
+		if (!prevItem) return;
 
-		items[prevIndex]?.focus();
-		const prevMenuId = items[prevIndex]?.getAttribute('data-menu-id');
+		prevItem.focus();
+		const prevMenuId = prevItem.getAttribute('data-menu-id');
 
-		if (menuBarState.anyOpen && prevMenuId) {
-			menuBarState.openMenuId(prevMenuId);
+		if (activeMenuId !== null && prevMenuId) {
+			activeMenuId = prevMenuId;
 			focusFirstMenuItem();
 		}
 	}
 
-	async function focusFirstMenuItem() {
-		await tick();
-		const menuItems = menubar?.querySelectorAll(
-			`#menu-${activeMenuId} [data-menu-item]:not([disabled])`
-		) as NodeListOf<HTMLElement>;
+	// Create menuBarState object once - functions reference reactive state
+	const menuBarState = {
+		get activeMenuId() {
+			return activeMenuId;
+		},
+		openMenuId(id: string) {
+			activeMenuId = id;
+		},
+		closeMenuId(id: string) {
+			if (activeMenuId === id) activeMenuId = null;
+		},
+		closeAll() {
+			activeMenuId = null;
+		},
+		isOpen(id: string) {
+			return activeMenuId === id;
+		},
+		get anyOpen() {
+			return activeMenuId !== null;
+		},
+		focusNextTrigger,
+		focusPrevTrigger,
+		focusRecentTrigger
+	};
 
-		if (menuItems?.length > 0) {
-			menuItems[0].focus();
-		}
-	}
+	setContext('menuBarContext', {
+		menuBarState
+	} as MenuBarContextType);
+
 	function handleKeyDown(e: KeyboardEvent) {
-		// Update items in case DOM changed
-		updateItems();
-
 		if (e.key === 'Escape') {
 			focusRecentTrigger();
 			e.preventDefault();
-			menuBarState.closeAll();
+			activeMenuId = null;
 			return;
 		}
 
@@ -132,24 +132,14 @@
 			e.preventDefault();
 		}
 
-		if (e.key === 'ArrowDown') {
-			focusFirstMenuItem();
-		}
-		if (e.key === 'Enter' || e.key === ' ') {
+		if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
 			focusFirstMenuItem();
 		}
 	}
 
-	const dynamic = {
-		direction: {
-			ltr: 'flex ',
-			ttb: 'flex flex-col'
-		}
-	};
-
 	const style = tv({
 		extend: baseVariant,
-		base: `${dynamic.direction.ltr} ${menuBarTheme} w-max p-[0.2em]`
+		base: `flex ${menuBarTheme} w-max p-[0.2em]`
 	});
 
 	const finalClass = $derived(style({ class: clsx(_class) }));

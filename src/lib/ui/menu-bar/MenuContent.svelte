@@ -9,7 +9,6 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
 	import { menuContentTheme } from './theme.js';
-	import { menuState } from '../menu/menustore.svelte.ts';
 	import { type MenuBarMenuContentProps } from '$lib/types/index.ts';
 	let { children, class: _class }: MenuBarMenuContentProps = $props();
 
@@ -79,12 +78,22 @@
 
 	function isTopLevelMenu(): boolean {
 		// Check if this is a top-level menu (attached to menubar) or a submenu
-		return menuBarContext !== null && menuBarContext !== undefined;
+		return menuBarContext != null;
 	}
 
 	// Typeahead search functionality
 	let searchString = $state('');
 	let searchTimeout: ReturnType<typeof setTimeout> | null = null;
+
+	// Cleanup timeout on unmount
+	$effect(() => {
+		return () => {
+			if (searchTimeout) {
+				clearTimeout(searchTimeout);
+				searchTimeout = null;
+			}
+		};
+	});
 
 	function searchByCharacter(char: string) {
 		searchString += char.toLowerCase();
@@ -111,9 +120,7 @@
 
 	$effect(() => {
 		if (menu && menuContext.isOpen()) {
-			tick().then(() => {
-				updateItems();
-			});
+			updateItems();
 		}
 	});
 
@@ -191,22 +198,26 @@
 	}
 
 	// Close menu when clicking outside
-	function handleClickOutside(e: MouseEvent) {
-		if (menu && !menu.contains(e.target as Node)) {
-			const trigger = document.querySelector(`[data-menu-id="${id}"]`);
-			if (trigger && !trigger.contains(e.target as Node)) {
-				menuContext.close();
-			}
-		}
-	}
-
 	$effect(() => {
-		if (menuContext.isOpen()) {
-			document.addEventListener('click', handleClickOutside);
-			return () => {
-				document.removeEventListener('click', handleClickOutside);
-			};
+		if (!menuContext.isOpen() || !menu) return;
+
+		function handleClickOutside(e: MouseEvent) {
+			if (!menu) return;
+			
+			const target = e.target as Node;
+			if (menu.contains(target)) return;
+
+			const trigger = document.querySelector(`[data-menu-id="${id}"]`);
+			if (trigger && trigger.contains(target)) return;
+
+			menuContext.close();
 		}
+
+		// Use capture phase to catch clicks before they bubble
+		document.addEventListener('click', handleClickOutside, true);
+		return () => {
+			document.removeEventListener('click', handleClickOutside, true);
+		};
 	});
 
 	const style = tv({

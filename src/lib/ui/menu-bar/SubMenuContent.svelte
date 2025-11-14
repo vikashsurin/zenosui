@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { getContext, tick } from 'svelte';
+	import { getContext } from 'svelte';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { menuContentTheme } from './theme.js';
-	import type { subMenuContextType } from './types.js';
+	import type { subMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
 	import type { MenuBarSubMenuContentProps } from '$lib/types/index.ts';
 	
@@ -27,7 +27,7 @@
 		if (items.length === 0) return;
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % items.length;
-		items[nextIndex].focus();
+		items[nextIndex]?.focus();
 	}
 
 	function focusPrevItem() {
@@ -36,55 +36,48 @@
 		const currentIndex = items.findIndex((item) => item === document.activeElement);
 		const prevIndex =
 			currentIndex === -1 ? items.length - 1 : (currentIndex - 1 + items.length) % items.length;
-		items[prevIndex].focus();
-	}
-
-	$effect(() => {
-		if (subMenu && subMenuContext.subMenuState.isOpen) {
-			tick().then(() => {
-				updateItems();
-			});
-		}
-	});
-
-	function handleKeyDown(e: KeyboardEvent) {
-		if (e.key === 'ArrowLeft') {
-			subMenuContext.subMenuState.close();
-			subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
-			subMenuContext.subMenuState.setFirstMenuItemFocus(false);
-			e.stopPropagation();
-		}
-
-		if (e.key === 'ArrowDown') {
-			e.preventDefault();
-			e.stopPropagation();
-			focusNextItem();
-		}
-		if (e.key === 'ArrowUp') {
-			e.preventDefault();
-			e.stopPropagation();
-			focusPrevItem();
-		}
+		items[prevIndex]?.focus();
 	}
 
 	function focusFirstItem() {
 		if (items.length > 0) {
-			items[0].focus();
+			items[0]?.focus();
 		}
 	}
 
+	// Update items when submenu opens
+	$effect(() => {
+		if (subMenu && subMenuContext.subMenuState.isOpen) {
+			updateItems();
+		}
+	});
+
+	// Focus first item when requested
 	$effect(() => {
 		if (subMenuContext.subMenuState.isOpen && subMenuContext.subMenuState.focusFirstMenuItem) {
 			focusFirstItem();
 		}
 	});
 
-	function handleMouseEnter() {
-		subMenuContext.subMenuState.open();
-	}
-
-	function handleMouseLeave() {
-		subMenuContext.subMenuState.close();
+	function handleKeyDown(e: KeyboardEvent) {
+		switch (e.key) {
+			case 'ArrowLeft':
+				subMenuContext.subMenuState.close();
+				subMenuContext.subMenuState.setSubMenuTriggerFocus(true);
+				subMenuContext.subMenuState.setFirstMenuItemFocus(false);
+				e.stopPropagation();
+				break;
+			case 'ArrowDown':
+				e.preventDefault();
+				e.stopPropagation();
+				focusNextItem();
+				break;
+			case 'ArrowUp':
+				e.preventDefault();
+				e.stopPropagation();
+				focusPrevItem();
+				break;
+		}
 	}
 
 	const style = tv({
@@ -101,9 +94,9 @@
 		role="menu"
 		id={'subMenu-' + subMenuId}
 		aria-labelledby={'subMenu-trigger-' + subMenuId}
-		onkeydown={(e) => handleKeyDown(e)}
-		onmouseenter={() => handleMouseEnter()}
-		onmouseleave={() => handleMouseLeave()}
+		onkeydown={handleKeyDown}
+		onmouseenter={() => subMenuContext.subMenuState.open()}
+		onmouseleave={() => subMenuContext.subMenuState.close()}
 		class={finalClass}
 	>
 		{@render children?.()}

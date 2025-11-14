@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import type { MenuContentContextType, subMenuContextType } from './types.ts';
-	import SubmenuContent from '../menu/SubmenuContent.svelte';
 	import { baseVariant } from '$lib/style/base.js';
 	import { menuItemTheme } from './theme.js';
 	import { SIZE_PRESET } from '$lib/style/presets.js';
@@ -27,7 +26,7 @@
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
 
 	$effect(() => {
-		if (iconLeft) {
+		if (iconLeft || leftSlot) {
 			menuContentContext.leftSpaced = true;
 		}
 	});
@@ -41,33 +40,22 @@
 	}
 
 	function handleClick() {
-		subMenuContext.subMenuState.open();
+		openSubmenu();
 	}
 
-	function handlekeydown(e: KeyboardEvent) {
+	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
-			openSubmenu();
 			e.preventDefault();
 			e.stopPropagation();
-			if (subMenuContext) {
-				subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
-				subMenuContext.subMenuState.setFirstMenuItemFocus(true);
-			}
-		}
-
-		if (e.key === 'Escape') {
-			closeSubmenu();
-		}
-		if (e.key === 'ArrowLeft') {
-			closeSubmenu();
-		}
-
-		if (e.key === 'ArrowRight') {
 			openSubmenu();
-			if (subMenuContext) {
-				subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
-				subMenuContext.subMenuState.setFirstMenuItemFocus(true);
-			}
+			subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
+			subMenuContext.subMenuState.setFirstMenuItemFocus(true);
+		} else if (e.key === 'Escape' || e.key === 'ArrowLeft') {
+			closeSubmenu();
+		} else if (e.key === 'ArrowRight') {
+			openSubmenu();
+			subMenuContext.subMenuState.setSubMenuTriggerFocus(false);
+			subMenuContext.subMenuState.setFirstMenuItemFocus(true);
 		}
 	}
 
@@ -96,7 +84,7 @@
 	onmouseenter={openSubmenu}
 	onmouseleave={closeSubmenu}
 	onclick={handleClick}
-	onkeydown={(e) => handlekeydown(e)}
+	onkeydown={handleKeyDown}
 >
 	{#if iconLeft}
 		<Icon icon={iconLeft} {uiSize} />

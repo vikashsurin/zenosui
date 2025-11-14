@@ -5,10 +5,8 @@
 
 	let { class: _class }: SeparatorProps = $props();
 
-	let style = tv({
-		base: `py-1 opacity-10`,
-		variants: {},
-		defaultVariants: {}
+	const style = tv({
+		base: `py-1 opacity-10`
 	});
 	const finalClass = $derived(style({ class: clsx(_class) }));
 </script>

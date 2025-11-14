@@ -26,8 +26,6 @@
 
 	const leftSpaced = $derived(menuContentContext.leftSpaced);
 
-	$inspect({ leftSpaced });
-
 	$effect(() => {
 		if (iconLeft || leftSlot) {
 			menuContentContext.leftSpaced = true;
@@ -35,25 +33,14 @@
 	});
 
 	function handleKeyDown(e: KeyboardEvent) {
-		const target = e.target as HTMLElement;
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
-
-			target.click();
+			(e.target as HTMLElement).click();
 		}
 	}
-	function handleClick(e: MouseEvent) {
-		// e.preventDefault();
-		// onclick();
-		menuContext.close();
-	}
 
-	let el = $state('button');
-	$effect(() => {
-		if (href) {
-			el = 'a';
-		}
-	});
+	// Determine element type based on href prop
+	const el = $derived(href ? 'a' : 'button');
 
 	const style = tv({
 		extend: baseVariant,
@@ -73,7 +60,7 @@
 		href={href || undefined}
 		role="menuitem"
 		onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
-		onclick={(e: MouseEvent) => handleClick(e)}
+		onclick={() => menuContext.close()}
 		{...props}
 		class={finalClass}
 	>

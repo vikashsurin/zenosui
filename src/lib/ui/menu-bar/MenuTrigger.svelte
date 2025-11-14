@@ -17,6 +17,9 @@
 	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 
+	const isOpen = $derived(menuContext.isOpen());
+	const activeStyle = $derived(isOpen ? activeMenuTrigger : '');
+
 	function toggleMenu() {
 		if (menuBarContext.menuBarState.activeMenuId === id) {
 			menuBarContext.menuBarState.closeMenuId(id);
@@ -28,7 +31,8 @@
 	function openMenu() {
 		menuBarContext.menuBarState.openMenuId(id);
 	}
-	function handleClick(e) {
+
+	function handleClick() {
 		toggleMenu();
 	}
 
@@ -36,36 +40,20 @@
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			toggleMenu();
-		}
-
-		if (e.key === 'ArrowDown') {
+		} else if (e.key === 'ArrowDown') {
 			e.preventDefault();
 			openMenu();
 		}
 	}
 
-	function handleFocus(e: FocusEvent) {}
-
 	function handleMouseEnter(e: MouseEvent) {
 		const target = e.target as HTMLElement;
 		target.focus();
 
-		if (menuBarContext) {
-			if (menuBarContext.menuBarState.anyOpen) {
-				openMenu();
-			}
+		if (menuBarContext?.menuBarState.anyOpen) {
+			openMenu();
 		}
 	}
-
-	function handleMouseLeave(e: MouseEvent) {}
-
-	function getActiveStyle() {
-		if (menuContext.isOpen()) {
-			return activeMenuTrigger;
-		}
-	}
-
-	const activeStyle = $derived(menuContext.isOpen() ? activeMenuTrigger : '');
 
 	const style = tv({
 		extend: baseVariant,
@@ -84,14 +72,12 @@
 	data-menu-id={id}
 	role="menuitem"
 	aria-haspopup="true"
-	aria-expanded={menuContext.isOpen()}
+	aria-expanded={isOpen}
 	aria-controls="menu-{id}"
-	onclick={(e) => handleClick(e)}
+	onclick={handleClick}
 	tabindex="0"
-	onfocus={(e) => handleFocus(e)}
-	onmouseenter={(e) => handleMouseEnter(e)}
-	onmouseleave={(e) => handleMouseLeave(e)}
-	onkeydown={(e: KeyboardEvent) => handleKeyDown(e)}
+	onmouseenter={handleMouseEnter}
+	onkeydown={handleKeyDown}
 	class={finalClass}
 >
 	{@render children?.()}
