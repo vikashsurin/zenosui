@@ -8,7 +8,9 @@ export * from './_primitives/index.js';
 export * from './alert/index.js';
 export * from './dialog/index.js';
 export * from './alert-dialog/index.js';
-export * from './menu/index.js';
+export * from './menu-bar/index.js'
+export * from './menu-context/index.js'
+export * from './menu-dropdown/index.js'
 export * from './radio/index.js';
 export * from './checkbox/index.js';
 export * from './accordion/index.js';
