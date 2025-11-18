@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { setContext, tick } from 'svelte';
-	import type { MenuBarContextType } from './types.ts';
+	import type { MenubarContextType } from './types.ts';
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
@@ -121,7 +121,7 @@
 
 	setContext('menuBarContext', {
 		menuBarState
-	} as MenuBarContextType);
+	} as MenubarContextType);
 
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {

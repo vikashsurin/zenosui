@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 
-	import { type MenuBarContextType, type MenuContextType } from './types.ts';
+	import { type MenubarContextType, type MenuContextType } from './types.ts';
 	import { tv } from 'tailwind-variants';
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
 	import { activeMenuTrigger, menuTriggerTheme } from './theme.js';
-	import type { MenuBarMenuTriggerProps } from '$lib/types/index.ts';
+	import type { MenubarMenuTriggerProps } from '$lib/types/index.ts';
 
-	let { children, uiRounded, uiSize, class: _class }: MenuBarMenuTriggerProps = $props();
+	let { children, uiRounded, uiSize, class: _class }: MenubarMenuTriggerProps = $props();
 
 	let el = $state<HTMLElement | null>(null);
 
 	const menuContext = getContext<MenuContextType>('menuContext');
-	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
+	const menuBarContext = getContext<MenubarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 
 	const isOpen = $derived(menuContext.isOpen());

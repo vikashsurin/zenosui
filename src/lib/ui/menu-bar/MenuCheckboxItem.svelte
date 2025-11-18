@@ -7,7 +7,7 @@
 	import clsx from 'clsx';
 
 	import Check from '@lucide/svelte/icons/check';
-	import type { MenuBarCheckboxItemProps } from '$lib/types/index.ts';
+	import type { MenubarCheckboxItemProps } from '$lib/types/index.ts';
 	import Minus from '@lucide/svelte/icons/minus';
 	import { getContext } from 'svelte';
 	import type { MenuContextType } from './types.ts';
@@ -17,7 +17,7 @@
 		checkmark = Check,
 		uiSize,
 		class: _class
-	}: MenuBarCheckboxItemProps = $props();
+	}: MenubarCheckboxItemProps = $props();
 
 	const style = tv({
 		extend: baseVariant,

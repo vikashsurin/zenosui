@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, setContext, tick } from 'svelte';
 	import {
-		type MenuBarContextType,
+		type MenubarContextType,
 		type MenuContentContextType,
 		type MenuContextType
 	} from './types.ts';
@@ -9,8 +9,8 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import clsx from 'clsx';
 	import { menuContentTheme } from './theme.js';
-	import { type MenuBarMenuContentProps } from '$lib/types/index.ts';
-	let { children, class: _class }: MenuBarMenuContentProps = $props();
+	import { type MenubarMenuContentProps } from '$lib/types/index.ts';
+	let { children, class: _class }: MenubarMenuContentProps = $props();
 
 	let leftSpaced = $state<boolean>(false);
 
@@ -27,7 +27,7 @@
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 
-	const menuBarContext = getContext<MenuBarContextType>('menuBarContext');
+	const menuBarContext = getContext<MenubarContextType>('menuBarContext');
 	const id = menuContext.menuId;
 
 	let menu = $state<HTMLElement>();

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MenuBar from '$lib/ui/menu-bar/MenuBar.svelte';
+	import MenuBar from '$lib/ui/menu-bar/Menubar.svelte';
 	import Menu from '$lib/ui/menu-bar/MenubarMenu.svelte';
 	import MenuTrigger from '$lib/ui/menu-bar/MenuTrigger.svelte';
 	import MenuContent from '$lib/ui/menu-bar/MenuContent.svelte';

@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { type MenuContentContextType, type MenuContextType, type MenuRadioGroupContextType } from './types.ts';
+	import {
+		type MenuContentContextType,
+		type MenuContextType,
+		type MenuRadioGroupContextType
+	} from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import Check from '@lucide/svelte/icons/check';
 	import { baseVariant } from '$lib/style/base.js';
@@ -8,7 +12,7 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { MenuBarRadioItemProps } from '$lib/types/index.ts';
+	import type { MenubarRadioItemProps } from '$lib/types/index.ts';
 	import Minus from '@lucide/svelte/icons/minus';
 
 	let {
@@ -17,7 +21,7 @@
 		checkmark = Check,
 		uiSize,
 		class: _class
-	}: MenuBarRadioItemProps = $props();
+	}: MenubarRadioItemProps = $props();
 
 	// Generate ID once on component initialization (constant, doesn't need to be reactive)
 	const id = crypto.randomUUID();

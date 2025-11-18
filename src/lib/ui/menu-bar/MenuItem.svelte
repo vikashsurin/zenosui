@@ -7,7 +7,7 @@
 	import { getContext } from 'svelte';
 	import type { MenuContentContextType, MenuContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
-	import type { MenuBarMenuItemProps } from '$lib/types/index.ts';
+	import type { MenubarMenuItemProps } from '$lib/types/index.ts';
 
 	let {
 		children,
@@ -20,7 +20,7 @@
 		uiSize,
 		class: _class,
 		...props
-	}: MenuBarMenuItemProps = $props();
+	}: MenubarMenuItemProps = $props();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
 

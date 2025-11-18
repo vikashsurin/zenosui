@@ -5,9 +5,9 @@
 	import { menuContentTheme } from './theme.js';
 	import type { subMenuContextType } from './types.ts';
 	import { baseVariant } from '$lib/style/base.js';
-	import type { MenuBarSubMenuContentProps } from '$lib/types/index.ts';
+	import type { MenubarSubMenuContentProps } from '$lib/types/index.ts';
 
-	let { children, class: _class }: MenuBarSubMenuContentProps = $props();
+	let { children, class: _class }: MenubarSubMenuContentProps = $props();
 
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
 	const subMenuId = subMenuContext.subMenuState?.subMenuId;

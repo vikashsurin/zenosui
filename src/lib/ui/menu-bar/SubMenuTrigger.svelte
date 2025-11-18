@@ -6,7 +6,7 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	import type { MenuBarSubMenuTriggerProps } from '../../types/index.ts';
+	import type { MenubarSubMenuTriggerProps } from '../../types/index.ts';
 	import { Icon } from '../icon/index.ts';
 	let {
 		children,
@@ -16,7 +16,7 @@
 		leftSlot,
 		iconRight,
 		rightSlot
-	}: MenuBarSubMenuTriggerProps = $props();
+	}: MenubarSubMenuTriggerProps = $props();
 
 	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
 
