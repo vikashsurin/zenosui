@@ -8,6 +8,7 @@
 	import type { MenuContentContextType, MenuContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
 	import type { MenubarMenuItemProps } from '$lib/types/index.ts';
+	import { MenubarShortcut } from './index.ts';
 
 	let {
 		children,
@@ -18,6 +19,7 @@
 		iconRight,
 		rightSlot,
 		uiSize,
+		shortcut,
 		class: _class,
 		...props
 	}: MenubarMenuItemProps = $props();
@@ -46,7 +48,7 @@
 
 	const style = tv({
 		extend: baseVariant,
-		base: `w-full inline-block ${menuItemTheme}`,
+		base: `w-full flex ${menuItemTheme}`,
 		variants: {
 			uiSize: SIZE_PRESET
 		}
@@ -83,8 +85,8 @@
 			<Icon icon={iconRight} {uiSize} class="ml-auto" />
 		{:else if rightSlot}
 			{@render rightSlot?.()}
-		{:else}
-			<span class="h-[1em] w-[1em]"></span>
+		{:else if shortcut}
+			<MenubarShortcut>{@render shortcut?.()}</MenubarShortcut>
 		{/if}
 	</svelte:element>
 </li>

@@ -11,6 +11,7 @@
 	class="h-dvh  w-full overflow-y-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden "
 >
 	<NavigationList class="mb-10">
+		<NavigationListItem href="/test" label="test"></NavigationListItem>
 		{#each componentList as item}
 			<NavigationListItem
 				href={`/docs/components${item.href}`}

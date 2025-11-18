@@ -1,20 +1,21 @@
 <script lang="ts">
 	import MenuBar from '$lib/ui/menu-bar/Menubar.svelte';
 	import Menu from '$lib/ui/menu-bar/MenubarMenu.svelte';
-	import MenuTrigger from '$lib/ui/menu-bar/MenuTrigger.svelte';
-	import MenuContent from '$lib/ui/menu-bar/MenuContent.svelte';
-	import MenuItem from '$lib/ui/menu-bar/MenuItem.svelte';
-	import SubMenu from '$lib/ui/menu-bar/SubMenu.svelte';
-	import SubMenuContent from '$lib/ui/menu-bar/SubMenuContent.svelte';
-	import SubMenuTrigger from '$lib/ui/menu-bar/SubMenuTrigger.svelte';
+	import MenuTrigger from '$lib/ui/menu-bar/MenubarTrigger.svelte';
+	import MenuContent from '$lib/ui/menu-bar/MenubarContent.svelte';
+	import MenuItem from '$lib/ui/menu-bar/MenubarItem.svelte';
+	import SubMenu from '$lib/ui/menu-bar/MenubarSub.svelte';
+	import SubMenuContent from '$lib/ui/menu-bar/MenubarSubContent.svelte';
+	import SubMenuTrigger from '$lib/ui/menu-bar/MenubarSubTrigger.svelte';
+	import MenubarShortcut from '$lib/ui/menu-bar/MenubarShortcut.svelte';
 
-	import MenuRadioGroup from '$lib/ui/menu-bar/MenuRadioGroup.svelte';
-	import MenuRadioItem from '$lib/ui/menu-bar/MenuRadioItem.svelte';
+	import MenuRadioGroup from '$lib/ui/menu-bar/MenubarRadioGroup.svelte';
+	import MenuRadioItem from '$lib/ui/menu-bar/MenubarRadioItem.svelte';
 
-	import MenuCheckboxItem from '$lib/ui/menu-bar/MenuCheckboxItem.svelte';
+	import MenubarCheckboxItem from '$lib/ui/menu-bar/MenubarCheckboxItem.svelte';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-	import MenuSeparator from '$lib/ui/menu-bar/MenuSeparator.svelte';
+	import MenuSeparator from '$lib/ui/menu-bar/MenubarSeparator.svelte';
 
 	let radioValue = $state('banana');
 
@@ -27,7 +28,10 @@
 		<Menu>
 			<MenuTrigger>Trigger</MenuTrigger>
 			<MenuContent>
-				<MenuItem class="">Item 1</MenuItem>
+				<MenuItem class=""
+					>Item 1
+					<MenubarShortcut>⌘B</MenubarShortcut>
+				</MenuItem>
 				<MenuItem>
 					{#snippet leftSlot()}
 						<img src="https://avatar.iran.liara.run/public" alt="Item 2" class="h-4 w-4" />
@@ -109,64 +113,9 @@
 		<Menu>
 			<MenuTrigger>Trigger 5</MenuTrigger>
 			<MenuContent>
-				<MenuCheckboxItem bind:checked={bookmarks}>show bookmarks</MenuCheckboxItem>
-				<MenuCheckboxItem bind:checked={urls}>show urls</MenuCheckboxItem>
+				<MenubarCheckboxItem bind:checked={bookmarks}>show bookmarks</MenubarCheckboxItem>
+				<MenubarCheckboxItem bind:checked={urls}>show urls</MenubarCheckboxItem>
 			</MenuContent>
 		</Menu>
 	</MenuBar>
 </div>
-
-<!-- <nav aria-label="Main navigation">
-  <ul role="menubar">
-    <li role="none" style="position: relative;">
-      <button 
-        role="menuitem" 
-        aria-haspopup="true" 
-        tabindex="0"
-        aria-expanded="true"
-        aria-controls="menu-1"
-      >
-        Trigger
-      </button>
-      <ul 
-        role="menu" 
-        id="menu-1"
-        style="position: absolute; top: 100%; left: 0;"
-      >
-        <li role="none">
-          <button role="menuitem" tabindex="-1">Item 1</button>
-        </li>
-        <li role="none">
-          <button role="menuitem" tabindex="-1">Item 2</button>
-        </li>
-        <li role="none">
-          <button role="menuitem" tabindex="-1">Item 3</button>
-        </li>
-      </ul>
-    </li>
-    
-    <li role="none">
-      <button 
-        role="menuitem" 
-        aria-haspopup="true" 
-        tabindex="-1"
-        aria-expanded="false"
-        aria-controls="menu-2"
-      >
-        Trigger 2
-      </button>
-    </li>
-    
-    <li role="none">
-      <button 
-        role="menuitem" 
-        aria-haspopup="true" 
-        tabindex="-1"
-        aria-expanded="false"
-        aria-controls="menu-3"
-      >
-        Trigger 3
-      </button>
-    </li>
-  </ul>
-</nav> -->

@@ -262,7 +262,7 @@ export interface NavigationMenuItemProps
 	href?: string;
 }
 
-export interface NavigationMenuBarProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
+export interface NavigationMenubarProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {}
 
 export type NavigationMenuTriggerProps = ButtonProps;
 
@@ -443,36 +443,39 @@ export interface NavigationListItemProps
 }
 
 // MENU BAR
-export type MenuBarMenuTriggerProps = ComponentProps;
+export type MenubarMenuTriggerProps = ComponentProps;
 
-export type MenuBarMenuContentProps = ComponentProps;
+export type MenubarMenuContentProps = ComponentProps;
 
-export interface MenuBarMenuItemProps extends ComponentProps {
+export interface MenubarMenuItemProps extends ComponentProps {
 	href?: string | null;
 	iconLeft?: Component | null;
 	leftSlot?: Snippet | null;
 	iconRight?: Component | null;
 	rightSlot?: Snippet | null;
+	shortcut?: Snippet | null;
 }
 
 export interface SeparatorProps {
 	class?: string | null;
 }
 
-export interface MenuBarSubMenuTriggerProps extends ComponentProps {
+export interface MenubarSubMenuTriggerProps extends ComponentProps {
 	iconLeft?: Component | null;
 	iconRight?: Component | null;
 	leftSlot?: Snippet | null;
 	rightSlot?: Snippet | null;
 }
 
-export type MenuBarSubMenuContentProps = ComponentProps;
+export type MenubarSubMenuContentProps = ComponentProps;
 
-export interface MenuBarRadioItemProps extends UiProps, Type.HTMLInputAttributes {
+export interface MenubarRadioItemProps extends UiProps, Type.HTMLInputAttributes {
 	checkmark?: Component | null;
 }
 
-export interface MenuBarCheckboxItemProps extends UiProps, Type.HTMLInputAttributes {
+export interface MenubarCheckboxItemProps extends UiProps, Type.HTMLInputAttributes {
 	checked?: boolean;
 	checkmark?: Component | null;
 }
+
+export type MenubarShortcutProps = ComponentProps;

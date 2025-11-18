@@ -10,3 +10,4 @@ export { default as ContextMenuTrigger } from './ContextMenuTrigger.svelte';
 export { default as ContextMenuSubMenu } from './ContextSubMenu.svelte';
 export { default as ContextSubMenuContent } from './ContextSubMenuContent.svelte';
 export { default as ContextSubMenuTrigger } from './ContextSubMenuTrigger.svelte';
+export { default as ContextMenuShortcut } from './ContextMenuShortcut.svelte';

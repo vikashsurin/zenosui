@@ -1,16 +1,16 @@
 <script lang="ts">
 	import {
-		Menu,
 		Menubar,
-		MenuItem,
-		Submenu,
-		MenuList,
-		MenuSeparator,
-		MenuTrigger,
-		MenuRadioGroup
+		MenubarMenu,
+		MenubarItem,
+		MenubarContent,
+		MenubarSeparator,
+		MenubarTrigger,
+		MenubarRadioGroup,
+		MenubarSubContent,
+		MenubarSubTrigger,
+		MenubarSub
 	} from '$lib/ui/index.js';
-	import SubmenuContent from '$lib/ui/menu/SubmenuContent.svelte';
-	import SubmenuTrigger from '$lib/ui/menu/SubmenuTrigger.svelte';
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 
@@ -21,78 +21,78 @@
 
 <div>
 	<Menubar uiSize="xs" class="border-1">
-		<Menu>
-			<MenuTrigger>File</MenuTrigger>
-			<MenuList>
-				<MenuItem shortcut="⌘N">one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>Settings</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
+		<MenubarMenu>
+			<MenubarTrigger>File</MenubarTrigger>
+			<MenubarContent>
+				<MenubarItem shortcut="⌘N">one</MenubarItem>
+				<MenubarItem>two</MenubarItem>
+				<MenubarItem>three</MenubarItem>
+				<MenubarSub>
+					<MenubarSubTrigger iconRight={ChevronRight}>Settings</MenubarSubTrigger>
+					<MenubarSubContent>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
 
-						<Submenu>
-							<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-							<SubmenuContent>
-								<MenuItem>Settings</MenuItem>
-								<MenuItem>Apps</MenuItem>
-								<MenuItem>Display</MenuItem>
-							</SubmenuContent>
-						</Submenu>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger>Edit</MenuTrigger>
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger>View</MenuTrigger>
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
-		<Menu>
-			<MenuTrigger>Profiles</MenuTrigger>
-			<MenuList>
-				<MenuItem>one</MenuItem>
-				<MenuItem>two</MenuItem>
-				<MenuItem>three</MenuItem>
-				<Submenu>
-					<SubmenuTrigger iconRight={ChevronRight}>more</SubmenuTrigger>
-					<SubmenuContent>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-						<MenuItem>Profile</MenuItem>
-					</SubmenuContent>
-				</Submenu>
-			</MenuList>
-		</Menu>
+						<MenubarSub>
+							<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
+							<MenubarSubContent>
+								<MenubarItem>Settings</MenubarItem>
+								<MenubarItem>Apps</MenubarItem>
+								<MenubarItem>Display</MenubarItem>
+							</MenubarSubContent>
+						</MenubarSub>
+					</MenubarSubContent>
+				</MenubarSub>
+			</MenubarContent>
+		</MenubarMenu>
+		<MenubarMenu>
+			<MenubarTrigger>Edit</MenubarTrigger>
+			<MenubarContent>
+				<MenubarItem>one</MenubarItem>
+				<MenubarItem>two</MenubarItem>
+				<MenubarItem>three</MenubarItem>
+				<MenubarSub>
+					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
+					<MenubarSubContent>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+					</MenubarSubContent>
+				</MenubarSub>
+			</MenubarContent>
+		</MenubarMenu>
+		<MenubarMenu>
+			<MenubarTrigger>View</MenubarTrigger>
+			<MenubarContent>
+				<MenubarItem>one</MenubarItem>
+				<MenubarItem>two</MenubarItem>
+				<MenubarItem>three</MenubarItem>
+				<MenubarSub>
+					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
+					<MenubarSubContent>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+					</MenubarSubContent>
+				</MenubarSub>
+			</MenubarContent>
+		</MenubarMenu>
+		<MenubarMenu>
+			<MenubarTrigger>Profiles</MenubarTrigger>
+			<MenubarContent>
+				<MenubarItem>one</MenubarItem>
+				<MenubarItem>two</MenubarItem>
+				<MenubarItem>three</MenubarItem>
+				<MenubarSub>
+					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
+					<MenubarSubContent>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Profile</MenubarItem>
+					</MenubarSubContent>
+				</MenubarSub>
+			</MenubarContent>
+		</MenubarMenu>
 	</Menubar>
 </div>
