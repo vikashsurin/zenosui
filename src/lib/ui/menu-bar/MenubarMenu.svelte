@@ -11,7 +11,6 @@
 	const isOpen = $derived(menuBarContext.menuBarState.isOpen(menuId));
 
 	function closeMenu() {
-		console.log('9 wasd caled');
 		menuBarContext.menuBarState.closeMenuId(menuId);
 	}
 

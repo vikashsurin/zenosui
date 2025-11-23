@@ -5,7 +5,8 @@
 	import { tv } from 'tailwind-variants';
 	import { menuContentTheme } from './theme.js';
 	import clsx from 'clsx';
-	let { children, class: _class } = $props();
+	import type { DropdownMenuContentProps } from '$lib/types/index.ts';
+	let { children, class: _class }: DropdownMenuContentProps = $props();
 
 	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
 

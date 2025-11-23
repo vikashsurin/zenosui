@@ -13,8 +13,16 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { DropdownRadioItemProps } from '$lib/types/index.ts';
 
-	let { children, onclick, value, checkmark = Check, uiSize, class: _class } = $props();
+	let {
+		children,
+		onclick,
+		value,
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: DropdownRadioItemProps = $props();
 
 	// Generate ID once on component initialization (constant, doesn't need to be reactive)
 	const id = crypto.randomUUID();

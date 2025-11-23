@@ -9,8 +9,12 @@
 		MenubarRadioGroup,
 		MenubarSubContent,
 		MenubarSubTrigger,
-		MenubarSub
+		MenubarSub,
+		MenubarRadioItem,
+		MenubarCheckboxItem,
+		MenubarShortcut
 	} from '$lib/ui/index.js';
+
 	import BadgeCheck from '@lucide/svelte/icons/badge-check';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 
@@ -24,74 +28,92 @@
 		<MenubarMenu>
 			<MenubarTrigger>File</MenubarTrigger>
 			<MenubarContent>
-				<MenubarItem shortcut="⌘N">one</MenubarItem>
-				<MenubarItem>two</MenubarItem>
-				<MenubarItem>three</MenubarItem>
-				<MenubarSub>
-					<MenubarSubTrigger iconRight={ChevronRight}>Settings</MenubarSubTrigger>
-					<MenubarSubContent>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
+				<MenubarItem
+					>New Tab
 
-						<MenubarSub>
-							<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
-							<MenubarSubContent>
-								<MenubarItem>Settings</MenubarItem>
-								<MenubarItem>Apps</MenubarItem>
-								<MenubarItem>Display</MenubarItem>
-							</MenubarSubContent>
-						</MenubarSub>
+					<MenubarShortcut>⌘T</MenubarShortcut>
+				</MenubarItem>
+				<MenubarItem
+					>New Window
+
+					<MenubarShortcut>⌘N</MenubarShortcut>
+				</MenubarItem>
+				<MenubarItem>New Incognito Window</MenubarItem>
+				<MenubarSeparator />
+
+				<MenubarSub>
+					<MenubarSubTrigger iconRight={ChevronRight}>Share</MenubarSubTrigger>
+					<MenubarSubContent>
+						<MenubarItem>Email link</MenubarItem>
+						<MenubarItem>Messages</MenubarItem>
+						<MenubarItem>Notes</MenubarItem>
 					</MenubarSubContent>
 				</MenubarSub>
+				<MenubarSeparator />
+				<MenubarItem
+					>Print
+					<MenubarShortcut>⌘P</MenubarShortcut>
+				</MenubarItem>
 			</MenubarContent>
 		</MenubarMenu>
+
 		<MenubarMenu>
 			<MenubarTrigger>Edit</MenubarTrigger>
 			<MenubarContent>
-				<MenubarItem>one</MenubarItem>
-				<MenubarItem>two</MenubarItem>
-				<MenubarItem>three</MenubarItem>
+				<MenubarItem>Undo</MenubarItem>
+				<MenubarItem>Redo</MenubarItem>
+				<MenubarSeparator />
 				<MenubarSub>
-					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
+					<MenubarSubTrigger iconRight={ChevronRight}>Find</MenubarSubTrigger>
 					<MenubarSubContent>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
+						<MenubarItem>Search the web</MenubarItem>
+						<MenubarSeparator />
+						<MenubarItem>Find</MenubarItem>
+						<MenubarItem>Find Next</MenubarItem>
+						<MenubarItem>Find Previous</MenubarItem>
 					</MenubarSubContent>
 				</MenubarSub>
+				<MenubarSeparator />
+				<MenubarItem>Cut</MenubarItem>
+				<MenubarItem>Copy</MenubarItem>
+				<MenubarItem>Paste</MenubarItem>
 			</MenubarContent>
 		</MenubarMenu>
+
 		<MenubarMenu>
 			<MenubarTrigger>View</MenubarTrigger>
 			<MenubarContent>
-				<MenubarItem>one</MenubarItem>
-				<MenubarItem>two</MenubarItem>
-				<MenubarItem>three</MenubarItem>
-				<MenubarSub>
-					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
-					<MenubarSubContent>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-					</MenubarSubContent>
-				</MenubarSub>
+				<MenubarCheckboxItem bind:checked={bookmarks}>Always Show Bookmarks</MenubarCheckboxItem>
+				<MenubarCheckboxItem bind:checked={urls}>Always Show Full URLs</MenubarCheckboxItem>
+				<MenubarSeparator />
+				<MenubarItem
+					>Reload
+					<MenubarShortcut>⌘R</MenubarShortcut>
+				</MenubarItem>
+				<MenubarItem
+					>Force Reload
+
+					<MenubarShortcut>⇧⌘R</MenubarShortcut>
+				</MenubarItem>
+				<MenubarSeparator />
+				<MenubarItem>Toggle Fullscreen</MenubarItem>
+				<MenubarSeparator />
+				<MenubarItem>Hide Sidebar</MenubarItem>
 			</MenubarContent>
 		</MenubarMenu>
+
 		<MenubarMenu>
-			<MenubarTrigger>Profiles</MenubarTrigger>
+			<MenubarTrigger>Profile</MenubarTrigger>
 			<MenubarContent>
-				<MenubarItem>one</MenubarItem>
-				<MenubarItem>two</MenubarItem>
-				<MenubarItem>three</MenubarItem>
-				<MenubarSub>
-					<MenubarSubTrigger iconRight={ChevronRight}>more</MenubarSubTrigger>
-					<MenubarSubContent>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-						<MenubarItem>Profile</MenubarItem>
-					</MenubarSubContent>
-				</MenubarSub>
+				<MenubarRadioGroup bind:value={profileRadioValue} name="profile">
+					<MenubarRadioItem value="andy">Andy</MenubarRadioItem>
+					<MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
+					<MenubarRadioItem value="louis">Louis</MenubarRadioItem>
+				</MenubarRadioGroup>
+				<MenubarSeparator />
+				<MenubarItem>Edit...</MenubarItem>
+				<MenubarSeparator />
+				<MenubarItem>Add Profile</MenubarItem>
 			</MenubarContent>
 		</MenubarMenu>
 	</Menubar>

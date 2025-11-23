@@ -7,7 +7,16 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { Icon } from '../icon/index.ts';
-	let { children, uiSize, class: _class, iconLeft, leftSlot, iconRight, rightSlot } = $props();
+	import type { DropdownSubMenuTriggerProps } from '$lib/types/index.ts';
+	let {
+		children,
+		uiSize,
+		class: _class,
+		iconLeft,
+		leftSlot,
+		iconRight,
+		rightSlot
+	}: DropdownSubMenuTriggerProps = $props();
 
 	const dropdownMenuContentContext = getContext<DropdownMenuContentContextType>(
 		'dropdownMenuContentContext'

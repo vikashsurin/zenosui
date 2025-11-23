@@ -1,3 +1,4 @@
+import type Menu from '$lib/ui/menu/Menu.svelte';
 import type { Snippet, Component } from 'svelte';
 
 import type * as Type from 'svelte/elements';
@@ -479,3 +480,25 @@ export interface MenubarCheckboxItemProps extends UiProps, Type.HTMLInputAttribu
 }
 
 export type MenubarShortcutProps = ComponentProps;
+
+// DROPDOWN MENU
+export type DropdownMenuItemProps = MenubarMenuItemProps;
+export type DropdownMenuTriggerProps = MenubarMenuTriggerProps;
+export type DropdownMenuContentProps = MenubarMenuContentProps;
+export type DropdownSubMenuTriggerProps = MenubarSubMenuTriggerProps;
+export type DropdownSubMenuContentProps = MenubarSubMenuContentProps;
+
+export type DropdownRadioItemProps = MenubarRadioItemProps;
+export type DropdownCheckboxItemProps = MenubarCheckboxItemProps;
+
+export type DropdownShortcutProps = MenubarShortcutProps;
+
+// CONTEXT MENU
+export type ContextMenuTriggerProps = MenubarMenuTriggerProps;
+export type ContextMenuContentProps = MenubarMenuContentProps;
+export type ContextMenuItemProps = MenubarMenuItemProps;
+export type ContextSubMenuTriggerProps = MenubarSubMenuTriggerProps;
+export type ContextSubMenuContentProps = MenubarSubMenuContentProps;
+export type ContextMenuRadioItemProps = MenubarRadioItemProps;
+export type ContextMenuCheckboxItemProps = MenubarCheckboxItemProps;
+export type ContextMenuShortcutProps = MenubarShortcutProps;

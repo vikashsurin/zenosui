@@ -6,8 +6,9 @@
 	import { activeMenuTrigger, menuTriggerTheme } from './theme.js';
 	import { type DropdownMenuContextType } from './types.ts';
 	import { TEXT_SIZE } from '$lib/style/sizing.js';
+	import type { DropdownMenuTriggerProps } from '$lib/types/index.ts';
 
-	let { children, uiSize, uiRounded, class: _class } = $props();
+	let { children, uiSize, uiRounded, class: _class }: DropdownMenuTriggerProps = $props();
 
 	let el = $state<HTMLElement | null>(null);
 

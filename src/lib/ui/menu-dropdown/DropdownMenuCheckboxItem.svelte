@@ -10,8 +10,14 @@
 	import Minus from '@lucide/svelte/icons/minus';
 	import { getContext } from 'svelte';
 	import type { DropdownMenuContextType } from './types.ts';
-	import Page from '../../../routes/+page.svelte';
-	let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
+	import type { DropdownMenuCheckboxItemProps } from '$lib/types/index.ts';
+	let {
+		children,
+		checked = $bindable(),
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: DropdownMenuCheckboxItemProps = $props();
 
 	const style = tv({
 		extend: baseVariant,

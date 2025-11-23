@@ -10,7 +10,7 @@
 	import type { MenubarCheckboxItemProps } from '$lib/types/index.ts';
 	import Minus from '@lucide/svelte/icons/minus';
 	import { getContext } from 'svelte';
-	import type { MenuContextType } from './types.ts';
+	import type { MenuContentContextType, MenuContextType } from './types.ts';
 	let {
 		children,
 		checked = $bindable(),
@@ -31,6 +31,7 @@
 	const id = crypto.randomUUID();
 
 	const menuContext = getContext<MenuContextType>('menuContext');
+	const menuContentContext = getContext<MenuContentContextType>('menuContentContext');
 
 	function closeMenu() {
 		menuContext.close();
@@ -40,7 +41,12 @@
 		checked = !checked;
 		closeMenu();
 	}
-
+	// Set leftSpaced when component mounts if context exists
+	$effect(() => {
+		if (menuContentContext) {
+			menuContentContext.leftSpaced = true;
+		}
+	});
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();

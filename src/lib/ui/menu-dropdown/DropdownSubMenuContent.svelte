@@ -5,7 +5,8 @@
 	import { baseVariant } from '$lib/style/base.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
-	let { children, class: _class } = $props();
+	import type { DropdownSubMenuContentProps } from '$lib/types/index.ts';
+	let { children, class: _class }: DropdownSubMenuContentProps = $props();
 
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
 	const subMenuId = subMenuContext.subMenuState?.subMenuId;

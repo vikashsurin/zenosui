@@ -348,32 +348,78 @@
 			"component": "Menubar",
 			"children": [
 				{
-					"component": "Menu",
+					"component": "MenubarMenu",
 					"children": [
 						{
-							"component": "MenuTrigger",
+							"component": "MenubarTrigger",
 							"children": []
 						},
 						{
-							"component": "MenuList",
+							"component": "MenubarContent",
 							"children": [
 								{
-									"component": "MenuItem",
+									"component": "MenubarItem",
 									"children": []
 								},
 								{
-									"component": "MenuSeparator",
+									"component": "MenubarSeparator",
 									"children": []
 								},
 								{
-									"component": "Submenu",
+									"component": "MenubarSub",
 									"children": [
 										{
-											"component": "SubmenuTrigger",
+											"component": "MenubarSubTrigger",
 											"children": []
 										},
 										{
-											"component": "SubmenuContent",
+											"component": "MenubarSubContent",
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"props": ["uiSize", "placement"]
+	},
+	"menu-dropdown": {
+		"title": "Dropdown Menu ",
+		"name": "dropdonwn menu ",
+		"desc": "Menu displays a list of options when triggered, with support for submenus.",
+		"layout": {
+			"component": "DropdownMenu",
+			"children": [
+				{
+					"component": "DropdownMenuTrigger",
+					"children": []
+				},
+				{
+					"component": "DropdonwnMenuContent",
+					"children": [
+						{
+							"component": "DropdownMenuItem",
+							"children": []
+						},
+						{
+							"component": "DropdownMenuSeparator",
+							"children": []
+						},
+						{
+							"component": "DropdownMenuSub",
+							"children": [
+								{
+									"component": "DropdownMenuSubTrigger",
+									"children": []
+								},
+								{
+									"component": "DropdownMenuSubContent",
+									"children": [
+										{
+											"component": "DropdownMenuItem",
 											"children": []
 										}
 									]

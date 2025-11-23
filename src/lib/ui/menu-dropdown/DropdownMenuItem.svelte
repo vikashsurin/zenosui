@@ -7,6 +7,7 @@
 	import { getContext } from 'svelte';
 	import type { DropdownMenuContentContextType, DropdownMenuContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
+	import type { DropdownMenuItemProps } from '$lib/types/index.ts';
 	let {
 		children,
 		props,
@@ -18,10 +19,10 @@
 		leftSlot,
 		iconRight,
 		rightSlot
-	} = $props();
+	}: DropdownMenuItemProps = $props();
 
 	const dropdownMenuContext = getContext<DropdownMenuContextType>('dropdownMenuContext');
-		
+
 	const dropdownMenuContentContext = getContext<DropdownMenuContentContextType>(
 		'dropdownMenuContentContext'
 	);
@@ -62,7 +63,7 @@
 	<svelte:element
 		this={el}
 		data-menu-item
-		href={el === 'a' ? href ?? undefined : undefined}
+		href={el === 'a' ? (href ?? undefined) : undefined}
 		role="menuitem"
 		onkeydown={handleKeyDown}
 		onclick={(e) => {
