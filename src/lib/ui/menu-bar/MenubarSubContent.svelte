@@ -59,7 +59,51 @@
 		}
 	});
 
+	// Typeahead search functionality
+	let searchString = $state('');
+	let searchTimeout: ReturnType<typeof setTimeout> | null = null;
+
+	// Cleanup timeout on unmount
+	$effect(() => {
+		return () => {
+			if (searchTimeout) {
+				clearTimeout(searchTimeout);
+				searchTimeout = null;
+			}
+		};
+	});
+
+	function searchByCharacter(char: string) {
+		searchString += char.toLowerCase();
+
+		if (searchTimeout) clearTimeout(searchTimeout);
+		searchTimeout = setTimeout(() => {
+			searchString = '';
+		}, 500);
+
+		const currentIndex = items.findIndex((item) => item === document.activeElement);
+		const startIndex = currentIndex + 1;
+
+		for (let i = 0; i < items.length; i++) {
+			const index = (startIndex + i) % items.length;
+			const item = items[index];
+			const text = item.textContent?.toLowerCase() || '';
+
+			if (text.startsWith(searchString)) {
+				item.focus();
+				return;
+			}
+		}
+	}
+
 	function handleKeyDown(e: KeyboardEvent) {
+		// Handle printable characters for typeahead
+		if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+			e.preventDefault();
+			searchByCharacter(e.key);
+			return;
+		}
+
 		switch (e.key) {
 			case 'ArrowLeft':
 				subMenuContext.subMenuState.close();
