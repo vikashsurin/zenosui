@@ -68,6 +68,7 @@
 			e.preventDefault();
 			// Set the value directly through the radio group context
 			radioGroupContext.radioGroupState.setValue(value);
+			closeMenu();
 		}
 	}
 

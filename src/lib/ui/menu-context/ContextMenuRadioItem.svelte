@@ -43,6 +43,7 @@
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			radioGroupContext.radioGroupState.value = value;
+			closeMenu();
 		}
 	}
 
