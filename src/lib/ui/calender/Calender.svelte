@@ -8,6 +8,7 @@
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
 	import clsx from 'clsx';
 	import type { CalenderProps } from '$lib/types/index.ts';
+	import { calenderIconStyle, calenderStyleBase } from './theme.js';
 
 	let {
 		uiSize = 'sm',
@@ -177,7 +178,7 @@
 	});
 
 	const calendarStyle = tv({
-		base: `zu_calender  bg-gray-200 p-2`,
+		base: `zu_calender bg-white p-2 ${calenderStyleBase}`,
 		variants: {}
 	});
 	const derivedCalendarStyle = $derived(calendarStyle({ class: clsx(_class) }));
@@ -195,10 +196,10 @@
 			uiRounded="full"
 			icon={ChevronLeft}
 			onclick={goToPrevMonth}
-			class="calender_prev_icon"
+			class={`calender_prev_icon ${calenderIconStyle} `}
 		/>
 
-		<H2 {uiSize} class="calender_month_year text-black">
+		<H2 {uiSize} class="calender_month_year">
 			{monthNames[currentDate.getMonth()]}
 			{currentDate.getFullYear()}
 		</H2>
@@ -209,7 +210,7 @@
 			uiRounded="full"
 			icon={ChevronRight}
 			onclick={goToNextMonth}
-			class="calender_next_icon"
+			class={`calender_next_icon ${calenderIconStyle} `}
 		/>
 	</div>
 

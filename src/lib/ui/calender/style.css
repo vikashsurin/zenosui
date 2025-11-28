@@ -23,9 +23,7 @@
 .date {
 	cursor: pointer;
 }
-.calender_date {
-	color: #111;
-}
+
 .calender_date_muted {
 	color: gray;
 }
@@ -38,6 +36,7 @@
 	background-color: #444;
 	color: white;
 }
+
 /* Optional: Add any custom styles here */
 button:focus {
 	/* outline: 2px solid #3b82f6; */

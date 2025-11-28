@@ -2,7 +2,6 @@
 	import type { RoundedVariant, SizeVariant } from '$lib/types/index.js';
 	import { clickOutside } from '$lib/utils/index.js';
 	import Input from '../_primitives/Input.svelte';
-	import { Calender } from '$lib/ui/index.js';
 
 	let {
 		children,

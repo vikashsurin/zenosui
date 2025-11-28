@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { Calender, DateInput } from '$lib/ui/index.js';
+	let date = $state(new Date());
 </script>
 
 <div>
-	<!-- <Calender /> -->
-	<DateInput uiSize="md" uiRounded="xl" />
-	<!-- <Calender /> -->
+	<DateInput bind:date uiSize="md" uiRounded="xl">
+		<Calender bind:date />
+	</DateInput>
 </div>
+
+<style>
+</style>
