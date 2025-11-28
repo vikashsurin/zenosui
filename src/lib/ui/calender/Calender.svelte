@@ -2,16 +2,22 @@
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 	import IconButton from '../button/IconButton.svelte';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
-
+	import './style.css';
 	import { H2 } from '$lib/index.js';
 	import { tv } from 'tailwind-variants';
 	import { TEXT_SIZE_WITH_DIMENSIONS } from '$lib/style/sizing.js';
 	import clsx from 'clsx';
+	import type { CalenderProps } from '$lib/types/index.ts';
 
-	let currentDate = $state(new Date(2025, 8, 12)); // September 12, 2025
+	let {
+		uiSize = 'sm',
+		class: _class,
+		date: _date = $bindable(),
+		...props
+	}: CalenderProps = $props();
+	let currentDate = $derived(_date);
 	let selectedDate = $state<Date | null | undefined>(null);
 
-	let { uiSize = 'sm', date: _date = $bindable() } = $props();
 	const daysNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 	const monthNames = [
 		'January',
@@ -174,10 +180,14 @@
 		base: `zu_calender  bg-gray-200 p-2`,
 		variants: {}
 	});
+	const derivedCalendarStyle = $derived(calendarStyle({ class: clsx(_class) }));
+
 	const derivedStateStyle = $derived(cellStyle({ uiSize, class: clsx('date ') }));
+
+	// const calender_date_class = () => 'classs';
 </script>
 
-<div class="zu_calender border border-gray-300 shadow-md">
+<div class={derivedCalendarStyle}>
 	<div class="zu_calender_header">
 		<IconButton
 			themed={false}
@@ -185,9 +195,10 @@
 			uiRounded="full"
 			icon={ChevronLeft}
 			onclick={goToPrevMonth}
+			class="calender_prev_icon"
 		/>
 
-		<H2 {uiSize}>
+		<H2 {uiSize} class="calender_month_year text-black">
 			{monthNames[currentDate.getMonth()]}
 			{currentDate.getFullYear()}
 		</H2>
@@ -198,22 +209,29 @@
 			uiRounded="full"
 			icon={ChevronRight}
 			onclick={goToNextMonth}
+			class="calender_next_icon"
 		/>
 	</div>
 
 	<div class="zu_calender_grid">
 		{#each daysNames as day}
-			<button disabled class:disabled={true} class={cellStyle({ uiSize })}>
+			<button
+				class:calender_day={true}
+				disabled
+				class:disabled={true}
+				class={cellStyle({ uiSize })}
+			>
 				{day}
 			</button>
 		{/each}
 		{#each allDays() as dayObj, index}
 			<button
-				class={derivedStateStyle}
-				class:date_selected={isSelected(dayObj)}
-				class:date_muted={dayObj.isPrevMonth || !dayObj.isCurrentMonth}
-				class:date_today={isToday(dayObj)}
+				class:calender_date={true}
+				class:calender_date_selected={isSelected(dayObj)}
+				class:calender_date_muted={dayObj.isPrevMonth || !dayObj.isCurrentMonth}
+				class:calender_date_today={isToday(dayObj)}
 				onclick={() => handleDateClick(dayObj)}
+				class={derivedStateStyle}
 			>
 				{dayObj.day}
 			</button>
@@ -231,7 +249,7 @@
 	{/if} -->
 </div>
 
-<style>
+<!-- <style>
 	.zu_calender {
 		width: max-content;
 		padding: 1rem;
@@ -257,19 +275,19 @@
 	.date {
 		cursor: pointer;
 	}
-	.date_muted {
+	.calender_date_muted {
 		color: gray;
 	}
-	.date_today {
+	.calender_date_today {
 		background-color: #f2f2f2;
 		color: black;
 	}
-	.date_selected {
+	/* .calender_date_selected {
 		background-color: #444;
 		color: white;
-	}
+	} */
 	/* Optional: Add any custom styles here */
 	button:focus {
 		/* outline: 2px solid #3b82f6; */
 	}
-</style>
+</style> -->

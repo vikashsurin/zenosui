@@ -502,3 +502,8 @@ export type ContextSubMenuContentProps = MenubarSubMenuContentProps;
 export type ContextMenuRadioItemProps = MenubarRadioItemProps;
 export type ContextMenuCheckboxItemProps = MenubarCheckboxItemProps;
 export type ContextMenuShortcutProps = MenubarShortcutProps;
+
+// CALENDER
+export interface CalenderProps extends UiProps, Type.HTMLAttributes<HTMLDivElement> {
+	date: Date;
+}

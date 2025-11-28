@@ -6,6 +6,7 @@ export { default as Input } from '$lib/ui/_primitives/Input.svelte';
 
 export * from './_primitives/index.js';
 export * from './alert/index.js';
+export * from './calender/index.js';
 export * from './dialog/index.js';
 export * from './alert-dialog/index.js';
 export * from './menu-bar/index.js'

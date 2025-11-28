@@ -2,10 +2,14 @@
 	import type { RoundedVariant, SizeVariant } from '$lib/types/index.js';
 	import { clickOutside } from '$lib/utils/index.js';
 	import Input from '../_primitives/Input.svelte';
-	import Calender from './Calender.svelte';
+	import { Calender } from '$lib/ui/index.js';
 
-	let { uiSize = 'xs' as SizeVariant, uiRounded = 'sm' as RoundedVariant } = $props();
-	let date = $state(new Date());
+	let {
+		children,
+		uiSize = 'xs' as SizeVariant,
+		date = $bindable(),
+		uiRounded = 'sm' as RoundedVariant
+	} = $props();
 
 	let inputState = $state({
 		open: false
@@ -23,8 +27,9 @@
 	}
 </script>
 
-<div class="grid w-max items-center justify-center" use:clickOutside={onClickOutside}>
+<div class="relative grid w-max items-center justify-center" use:clickOutside={onClickOutside}>
 	<Input
+		name="date"
 		type="date"
 		{uiSize}
 		{uiRounded}
@@ -34,8 +39,8 @@
 	/>
 
 	{#if inputState.open}
-		<div class="mt-2">
-			<Calender bind:date />
+		<div class="absolute top-[100%]">
+			{@render children?.()}
 		</div>
 	{/if}
 </div>

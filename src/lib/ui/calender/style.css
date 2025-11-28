@@ -1,0 +1,44 @@
+.zu_calender {
+	width: max-content;
+	padding: 1rem;
+	/* background-color: yellow; */
+}
+.zu_calender_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.disabled {
+	color: gray;
+	background-color: transparent;
+}
+.zu_calender_grid {
+	display: grid;
+	gap: 0.2rem;
+	margin-top: 1rem;
+	grid-template-columns: repeat(7, max-content);
+	align-items: center;
+	justify-items: center;
+}
+.date {
+	cursor: pointer;
+}
+.calender_date {
+	color: #111;
+}
+.calender_date_muted {
+	color: gray;
+}
+
+.calender_date_today {
+	background-color: #f2f2f2;
+	color: black;
+}
+.calender_date_selected {
+	background-color: #444;
+	color: white;
+}
+/* Optional: Add any custom styles here */
+button:focus {
+	/* outline: 2px solid #3b82f6; */
+}
