@@ -7,7 +7,17 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { Icon } from '../icon/index.ts';
-	let { children, uiSize, class: _class, iconLeft, leftSlot, iconRight, rightSlot } = $props();
+	import type { ContextSubMenuTriggerProps } from '$lib/types/index.ts';
+
+	let {
+		children,
+		uiSize,
+		class: _class,
+		iconLeft,
+		leftSlot,
+		iconRight,
+		rightSlot
+	}: ContextSubMenuTriggerProps = $props();
 
 	let el = $state<HTMLElement | null>(null);
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');

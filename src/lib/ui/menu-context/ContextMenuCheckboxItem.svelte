@@ -10,7 +10,14 @@
 	import Check from '@lucide/svelte/icons/check';
 	import { getContext } from 'svelte';
 	import type { ContextMenuContextType } from './types.ts';
-	let { children, checked = $bindable(), checkmark = Check, uiSize, class: _class } = $props();
+	import type { ContextMenuCheckboxItemProps } from '$lib/types/index.ts';
+	let {
+		children,
+		checked = $bindable(),
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: ContextMenuCheckboxItemProps = $props();
 
 	const style = tv({
 		extend: baseVariant,

@@ -5,8 +5,9 @@
 	import clsx from 'clsx';
 	import { tv } from 'tailwind-variants';
 	import { menuContentTheme } from './theme.js';
+	import type { ContextSubMenuContentProps } from '$lib/types/index.ts';
 
-	let { children, class: _class } = $props();
+	let { children, class: _class }: ContextSubMenuContentProps = $props();
 
 	const subMenuContext = getContext<subMenuContextType>('subMenuContext');
 	const subMenuId = subMenuContext.subMenuState?.subMenuId;

@@ -4,8 +4,9 @@
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
 	import { baseVariant } from '$lib/style/base.js';
+	import type { ContextMenuTriggerProps } from '$lib/types/index.ts';
 
-	let { children, uiSize, class: _class } = $props();
+	let { children, uiSize, class: _class }: ContextMenuTriggerProps = $props();
 
 	let el = $state<HTMLElement | null>(null);
 

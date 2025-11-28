@@ -5,7 +5,9 @@
 	import clsx from 'clsx';
 	import { tv } from 'tailwind-variants';
 	import { menuContentTheme } from './theme.js';
-	let { children, class: _class } = $props();
+	import type { ContextMenuContentProps } from '$lib/types/index.ts';
+	
+	let { children, class: _class }: ContextMenuContentProps = $props();
 
 	let leftSpaced = $state(false);
 

@@ -7,6 +7,7 @@
 	import { getContext } from 'svelte';
 	import type { ContextMenuContentContextType, ContextMenuContextType } from './types.ts';
 	import { Icon } from '../icon/index.ts';
+	import type { ContextMenuItemProps } from '$lib/types/index.ts';
 
 	let {
 		children,
@@ -19,7 +20,7 @@
 		iconRight,
 		rightSlot,
 		...props
-	} = $props();
+	}: ContextMenuItemProps = $props();
 
 	const contextMenuContext = getContext<ContextMenuContextType>('contextMenuContext');
 
@@ -62,7 +63,7 @@
 	<svelte:element
 		this={el}
 		data-menu-item
-		href={el === 'a' ? href ?? undefined : undefined}
+		href={el === 'a' ? (href ?? undefined) : undefined}
 		role="menuitem"
 		onkeydown={handleKeyDown}
 		class={finalClass}

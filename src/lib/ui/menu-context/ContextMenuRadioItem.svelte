@@ -10,8 +10,15 @@
 	import { SIZE_PRESET } from '$lib/style/presets.js';
 	import { tv } from 'tailwind-variants';
 	import clsx from 'clsx';
+	import type { ContextMenuRadioItemProps } from '$lib/types/index.ts';
 
-	let { children, value, checkmark = Check, uiSize, class: _class } = $props();
+	let {
+		children,
+		value,
+		checkmark = Check,
+		uiSize,
+		class: _class
+	}: ContextMenuRadioItemProps = $props();
 	const id = crypto.randomUUID();
 
 	const style = tv({

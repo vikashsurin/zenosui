@@ -377,6 +377,19 @@
 											"children": []
 										}
 									]
+								},
+								{
+									"component": "MenubarCheckboxItem",
+									"children": []
+								},
+								{
+									"component": "MenubarRadioGroup",
+									"children": [
+										{
+											"component": "MenubarRadioItem",
+											"children": []
+										}
+									]
 								}
 							]
 						}
@@ -423,6 +436,78 @@
 											"children": []
 										}
 									]
+								}
+							]
+						},
+						{
+							"component": "DropdownMenuCheckboxItem",
+							"children": []
+						},
+						{
+							"component": "DropdownMenuRadioGroup",
+							"children": [
+								{
+									"component": "DropdownMenuRadioItem",
+									"children": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"props": ["uiSize", "placement"]
+	},
+	"menu-context": {
+		"title": "Context Menu ",
+		"name": "context menu ",
+		"desc": "Menu displays a list of options when triggered, with support for submenus.",
+		"layout": {
+			"component": "ContextMenu",
+			"children": [
+				{
+					"component": "ContextMenuTrigger",
+					"children": []
+				},
+				{
+					"component": "ContextMenuContent",
+					"children": [
+						{
+							"component": "ContextMenuItem",
+							"children": []
+						},
+						{
+							"component": "ContextMenuSeparator",
+							"children": []
+						},
+						{
+							"component": "ContextMenuSub",
+							"children": [
+								{
+									"component": "ContextMenuSubTrigger",
+									"children": []
+								},
+								{
+									"component": "ContextMenuSubContent",
+									"children": [
+										{
+											"component": "ContextMenuItem",
+											"children": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"component": "ContextMenuCheckboxItem",
+							"children": []
+						},
+						{
+							"component": "ContextMenuRadioGroup",
+							"children": [
+								{
+									"component": "ContextMenuRadioItem",
+									"children": []
 								}
 							]
 						}
